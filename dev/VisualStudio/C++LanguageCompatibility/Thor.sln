@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stm32f7", "stm32f7\stm32f7.vcxproj", "{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stm32f4", "stm32f4\stm32f4.vcxproj", "{D3157EDE-D95F-4024-8DF5-FE8D588319E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug-C++11|VisualGDB = Debug-C++11|VisualGDB
+		Debug-C++14|VisualGDB = Debug-C++14|VisualGDB
+		Debug-C++17|VisualGDB = Debug-C++17|VisualGDB
+		Release-C++11|VisualGDB = Release-C++11|VisualGDB
+		Release-C++14|VisualGDB = Release-C++14|VisualGDB
+		Release-C++17|VisualGDB = Release-C++17|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Debug-C++11|VisualGDB.ActiveCfg = F7-Debug-C++11|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Debug-C++11|VisualGDB.Build.0 = F7-Debug-C++11|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Debug-C++14|VisualGDB.ActiveCfg = F7-Debug-C++14|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Debug-C++14|VisualGDB.Build.0 = F7-Debug-C++14|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Debug-C++17|VisualGDB.ActiveCfg = F7-Debug-C++17|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Debug-C++17|VisualGDB.Build.0 = F7-Debug-C++17|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Release-C++11|VisualGDB.ActiveCfg = F7-Release-C++11|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Release-C++11|VisualGDB.Build.0 = F7-Release-C++11|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Release-C++14|VisualGDB.ActiveCfg = F7-Release-C++14|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Release-C++14|VisualGDB.Build.0 = F7-Release-C++14|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Release-C++17|VisualGDB.ActiveCfg = F7-Release-C++17|VisualGDB
+		{8AEC5356-EDA7-4DBC-B89E-2F001CC421F5}.Release-C++17|VisualGDB.Build.0 = F7-Release-C++17|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Debug-C++11|VisualGDB.ActiveCfg = F4-Debug-C++11|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Debug-C++11|VisualGDB.Build.0 = F4-Debug-C++11|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Debug-C++14|VisualGDB.ActiveCfg = F4-Debug-C++14|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Debug-C++14|VisualGDB.Build.0 = F4-Debug-C++14|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Debug-C++17|VisualGDB.ActiveCfg = F4-Debug-C++17|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Debug-C++17|VisualGDB.Build.0 = F4-Debug-C++17|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Release-C++11|VisualGDB.ActiveCfg = F4-Release-C++11|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Release-C++11|VisualGDB.Build.0 = F4-Release-C++11|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Release-C++14|VisualGDB.ActiveCfg = F4-Release-C++14|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Release-C++14|VisualGDB.Build.0 = F4-Release-C++14|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Release-C++17|VisualGDB.ActiveCfg = F4-Release-C++17|VisualGDB
+		{D3157EDE-D95F-4024-8DF5-FE8D588319E7}.Release-C++17|VisualGDB.Build.0 = F4-Release-C++17|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1EB8830-B0F6-4AB2-9731-A7C4DC296D4B}
+	EndGlobalSection
+EndGlobal
