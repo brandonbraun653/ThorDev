@@ -32,7 +32,7 @@ explicit_alias CHIMERA_PORT : : : : <use>/THOR//CHIMERA_PORT ;
 explicit_alias FreeRTOS_CFG : : : : <include>Thor/Thor/config/freertos ;
 explicit_alias TARGET_OPTIONS : : : : <use>/THOR//CORE_PUB ;
 
-project Arche
+project Thor
     : requirements
         <architecture>arm
         <toolset>gcc
@@ -41,10 +41,3 @@ project Arche
         <Chimera>enabled
         <ChimeraBackend>Thor
     ;
-
-
-# <ThorFamily>STM32F4
-# <ThorChip>STM32F446
-# <ThorVariant>RE
-# <FreeRTOS>enabled
-# <FreeRTOSMem>heap4
