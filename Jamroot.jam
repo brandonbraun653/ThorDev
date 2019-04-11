@@ -1,0 +1,51 @@
+import os ;
+import feature ;
+
+rule explicit_alias ( name : sources * : requirements * : default-build * : usage-requirements * )
+    {
+    alias $(name) : $(sources) : $(requirements) : $(default-build) : $(usage-requirements) ;
+    explicit $(name) ;
+    }
+
+path-constant TOP : . ;
+path-constant COMMON_FEATURES : lib/CommonTools/boost-build/features ;
+
+using gcc ;
+
+use-project /PRJ : . ;
+use-project /CHIMERA : lib/Chimera ;
+use-project /FREERTOS : lib/FreeRTOS ;
+use-project /STM32F4 : lib/stm32hal_f4 ;
+use-project /STM32F7 : lib/stm32hal_f7 ;
+use-project /THOR : Thor ;
+
+
+local boost_install_dir = [ os.environ BOOST_ROOT ] ;
+path-constant boost_inc_dir : $(boost_install_dir)/boost_1_68_0 ;
+path-constant artifacts_dir : $(TOP)/artifacts ;
+
+# ------------------------------------------
+# /PRJ//XXXX Aliases
+# ------------------------------------------
+explicit_alias BOOST : : : : <include>$(boost_inc_dir) ;
+explicit_alias CHIMERA_PORT : : : : <use>/THOR//CHIMERA_PORT ;
+explicit_alias FreeRTOS_CFG : : : : <include>Arche/Arche/config/freertos ;
+explicit_alias TARGET_OPTIONS : : : : <use>/THOR//CORE_PUB ;
+explicit_alias ARCHE_USER_CONFIG : : : : <include>dev/VisualStudio/ArcheFCDevBoard/ArcheFCDevBoard ;
+
+project Arche
+    : requirements
+        <architecture>arm
+        <toolset>gcc
+        <link>static
+        <cxxflags>--std=gnu++14
+        <Chimera>enabled
+        <ChimeraBackend>Thor
+    ;
+
+
+# <ThorFamily>STM32F4
+# <ThorChip>STM32F446
+# <ThorVariant>RE
+# <FreeRTOS>enabled
+# <FreeRTOSMem>heap4

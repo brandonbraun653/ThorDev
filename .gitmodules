@@ -1,18 +1,21 @@
 [submodule "Thor"]
 	path = Thor
-	url = git@github.com:brandonbraun653/Thor.git
+	url = https://github.com/brandonbraun653/Thor.git
 [submodule "lib/cmsis"]
 	path = lib/cmsis
 	url = https://github.com/ARM-software/CMSIS_5.git
 [submodule "lib/FreeRTOS"]
 	path = lib/FreeRTOS
-	url = git@github.com:brandonbraun653/FreeRTOS.git
+	url = https://github.com/brandonbraun653/FreeRTOS.git
 [submodule "lib/CommonTools"]
 	path = lib/CommonTools
-	url = git@github.com:brandonbraun653/CommonTools.git
+	url = https://github.com/brandonbraun653/CommonTools.git
 [submodule "lib/stm32hal_f4"]
 	path = lib/stm32hal_f4
-	url = git@github.com:brandonbraun653/STM32HAL_F4.git
+	url = https://github.com/brandonbraun653/STM32HAL_F4.git
 [submodule "lib/stm32hal_f7"]
 	path = lib/stm32hal_f7
-	url = git@github.com:brandonbraun653/STM32HAL_F7.git
+	url = https://github.com/brandonbraun653/STM32HAL_F7.git
+[submodule "lib/Chimera"]
+	path = lib/Chimera
+	url = https://github.com/brandonbraun653/Chimera.git
