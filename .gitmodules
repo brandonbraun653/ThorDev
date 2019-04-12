@@ -1,9 +1,6 @@
 [submodule "Thor"]
 	path = Thor
 	url = https://github.com/brandonbraun653/Thor.git
-[submodule "lib/cmsis"]
-	path = lib/cmsis
-	url = https://github.com/ARM-software/CMSIS_5.git
 [submodule "lib/FreeRTOS"]
 	path = lib/FreeRTOS
 	url = https://github.com/brandonbraun653/FreeRTOS.git
