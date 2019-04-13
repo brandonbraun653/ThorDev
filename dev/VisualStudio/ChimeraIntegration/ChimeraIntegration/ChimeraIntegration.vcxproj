@@ -33,10 +33,113 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_crc.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_exception.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_logging.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_threading.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_flash.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_gpio_integration.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.cpp" />
     <ClCompile Include="..\..\..\..\tests\ChimeraIntegration\main.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\sram.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_allocator.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_boost_stub.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_core.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_crc.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_defaults.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_dma.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_exceptions.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_exti.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_flash.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_gpio.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_print.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_serial.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_spi.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_sram.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_system.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_uart.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_usart.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_watchdog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\assertion.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\chimera.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\clock.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\crc.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\dma.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\exception.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\gpio.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\logging.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\memory.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\blockDevice.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\flash.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\preprocessor.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\serial.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\spi.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\system.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\threading.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\utilities.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\watchdog.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\core_cm4.h" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f446xx.h" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx.h" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_conf.h" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_def.h" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\allocator.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\boostStub.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\config.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\chimera\chimeraPort.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\core.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\crc.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\defaults.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\dma.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\exceptions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\exti.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\flash.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\gpio.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\headers.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\macro.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\nucleo.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\preprocessor.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\print.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\serial.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\spi.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\sram.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\system.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\thor.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\uart.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\usart.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\watchdog.hpp" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -49,15 +152,17 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalUsingDirectories>$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../lib;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -65,49 +170,55 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalUsingDirectories>$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../lib;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalUsingDirectories>$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../lib;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalUsingDirectories>$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../lib;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
