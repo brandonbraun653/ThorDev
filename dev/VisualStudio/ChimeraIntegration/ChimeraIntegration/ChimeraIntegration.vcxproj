@@ -40,7 +40,11 @@
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_threading.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_flash.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_gpio_integration.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_serial_integration.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_spi_integration.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.cpp" />
@@ -48,6 +52,7 @@
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.cpp" />
@@ -97,7 +102,9 @@
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\utilities.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\watchdog.hpp" />
-    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\core_cm4.h" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.hpp" />
@@ -106,6 +113,7 @@
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.hpp" />

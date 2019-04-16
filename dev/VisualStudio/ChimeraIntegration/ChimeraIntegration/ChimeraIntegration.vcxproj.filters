@@ -120,6 +120,21 @@
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.cpp">
       <Filter>stm32hal_f4\mock</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_spi_integration.cpp">
+      <Filter>Chimera\test\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.cpp">
+      <Filter>Chimera\test\fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_serial_integration.cpp">
+      <Filter>Chimera\test\integration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.cpp">
+      <Filter>Chimera\test\fixtures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -322,9 +337,6 @@
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\flash.hpp">
       <Filter>Chimera\modules\memory</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration.hpp">
-      <Filter>Chimera\test\fixtures</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.hpp">
       <Filter>stm32hal_f4\mock</Filter>
     </ClInclude>
@@ -354,6 +366,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.hpp">
       <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.hpp">
+      <Filter>Chimera\test\fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.hpp">
+      <Filter>Chimera\test\fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.hpp">
+      <Filter>Chimera\test\fixtures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
