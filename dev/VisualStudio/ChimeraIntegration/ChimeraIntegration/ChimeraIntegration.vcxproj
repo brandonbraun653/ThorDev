@@ -49,6 +49,7 @@
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_fixtures.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.cpp" />
@@ -57,6 +58,7 @@
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.cpp" />
     <ClCompile Include="..\..\..\..\tests\ChimeraIntegration\main.cpp" />
+    <ClCompile Include="..\..\..\..\tests\fixtures\thor_test_fixtures.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\sram.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_allocator.cpp" />
@@ -102,6 +104,7 @@
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\utilities.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\watchdog.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\common_fixture.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.hpp" />
@@ -110,6 +113,7 @@
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_fixtures.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.hpp" />
@@ -121,6 +125,7 @@
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx.h" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_def.h" />
+    <ClInclude Include="..\..\..\..\tests\fixtures\thor_test_fixtures.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\allocator.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\boostStub.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\config.hpp" />

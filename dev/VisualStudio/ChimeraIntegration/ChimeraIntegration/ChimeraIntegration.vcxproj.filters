@@ -1,66 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Thor\Thor\sram.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_allocator.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_boost_stub.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_core.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_crc.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_defaults.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_dma.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_exceptions.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_exti.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_flash.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_gpio.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_print.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_serial.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_spi.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_sram.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_system.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_uart.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_usart.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_watchdog.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\tests\ChimeraIntegration\main.cpp">
       <Filter>tests</Filter>
     </ClCompile>
@@ -135,6 +75,72 @@
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.cpp">
       <Filter>Chimera\test\fixtures</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_fixtures.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\sram.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_allocator.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_boost_stub.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_core.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_crc.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_defaults.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_dma.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_exceptions.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_exti.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_flash.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_gpio.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_print.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_serial.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_spi.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_sram.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_system.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_uart.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_usart.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\thor_watchdog.cpp">
+      <Filter>Thor\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\tests\fixtures\thor_test_fixtures.cpp">
+      <Filter>Thor\fixtures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -179,83 +185,14 @@
     <Filter Include="Chimera\test\integration">
       <UniqueIdentifier>{d019b9ce-c3ef-418f-bffe-d9f5aeb5d001}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thor\source">
+      <UniqueIdentifier>{7ee6a0c5-42af-4062-ad0f-c59dc7423e4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\fixtures">
+      <UniqueIdentifier>{50704fb2-28b5-4565-a850-ff1c053a45f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Thor\Thor\allocator.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\boostStub.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\config.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\core.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\crc.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\defaults.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\definitions.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\dma.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\exceptions.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\exti.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\flash.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\gpio.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\headers.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\macro.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\nucleo.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\preprocessor.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\print.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\serial.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\spi.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\sram.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\system.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\thor.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\uart.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\usart.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\watchdog.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h">
       <Filter>Thor\config\freertos</Filter>
     </ClInclude>
@@ -378,6 +315,90 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.hpp">
       <Filter>Chimera\test\fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_fixtures.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\common_fixture.hpp">
+      <Filter>Chimera\test\fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\allocator.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\boostStub.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\config.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\core.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\crc.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\defaults.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\dma.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\exceptions.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\exti.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\flash.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\gpio.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\headers.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\macro.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\nucleo.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\preprocessor.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\print.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\serial.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\spi.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\sram.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\system.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\thor.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\uart.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\usart.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\watchdog.hpp">
+      <Filter>Thor\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\tests\fixtures\thor_test_fixtures.hpp">
+      <Filter>Thor\fixtures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
