@@ -1,8 +1,0 @@
-interface TEST_UART {
-    turnGreenLEDON() -> void
-    turnGreenLEDOFF() -> void
-    
-    setupSerialUnderTest() -> void
-    testStart_blockingTX() -> void
-    testEnd_blockingTX() -> void
-}

@@ -1,7 +1,0 @@
-Testing Types Ideas:
-
-BLOCKING RX:
-    1. How does it handle overrun? Ask for 5 chars and transmit 10. It should truncate cleanly.
-    2. How does it handle underrun? Ask for 5 chars, transmit 2, then transmit 4. It should truncate cleanly.
-    3. Validate the timeout feature. Don't send anything and make sure you get an ACK or something.
-    

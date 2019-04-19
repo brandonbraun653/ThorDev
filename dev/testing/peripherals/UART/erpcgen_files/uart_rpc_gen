@@ -1,5 +1,0 @@
-mkdir -p ./src
-mkdir -p ./py
-
-erpcgen -g c -o ./src/ -v uart_rpc.erpc 
-erpcgen -g py -o ./py/ -v uart_rpc.erpc
