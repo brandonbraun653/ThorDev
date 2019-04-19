@@ -75,9 +75,6 @@
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.cpp">
       <Filter>Chimera\test\fixtures</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_fixtures.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\Thor\Thor\sram.cpp">
       <Filter>Thor\source</Filter>
     </ClCompile>
@@ -315,9 +312,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.hpp">
       <Filter>Chimera\test\fixtures</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_fixtures.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\common_fixture.hpp">
       <Filter>Chimera\test\fixtures</Filter>

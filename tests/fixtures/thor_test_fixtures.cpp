@@ -16,6 +16,8 @@
 
 /* STM32 Mock Includes */
 #include "mock_stm32_hal_gpio.hpp"
+#include "mock_stm32_hal_uart.hpp"
+#include "mock_stm32_hal_usart.hpp"
 
 namespace Chimera
 {
@@ -28,7 +30,11 @@ namespace Chimera
 
     void CommonTearDown()
     {
-      STM32HAL_Mock::gpioMockObj.reset();
+      using namespace STM32HAL_Mock;
+
+      gpioMockObj.reset();
+      uartMockObj.reset();
+      usartMockObj.reset();
     }
 
   }
