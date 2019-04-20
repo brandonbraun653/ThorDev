@@ -1,0 +1,6 @@
+# Place holder 
+# Eventually this file will let you run individual tests on a device, or perhaps even all of them at once.
+# I will need to get quite a bit of software linked together though to accomplish that:
+#   VisualGDB server/driver/flasher
+#   Build the test modules (not hard)
+#   Somehow report the testing results back to the user. Currently this is done in Visual Studio Test Explorer.

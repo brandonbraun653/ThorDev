@@ -83,12 +83,16 @@
       </KeyValue>
     </Entries>
   </FrameworkProperties>
-  <TestFrameworkID>com.sysprogs.unittest.googletest</TestFrameworkID>
+  <TestFrameworkID>com.sysprogs.unittest.tinyembtest</TestFrameworkID>
   <TestFrameworkProperties>
     <Entries>
       <KeyValue>
         <Key>com.sysprogs.testsettings.timeout</Key>
         <Value>1800</Value>
+      </KeyValue>
+      <KeyValue>
+        <Key>com.sysprogs.testsettings.testendmode</Key>
+        <Value>0</Value>
       </KeyValue>
       <KeyValue>
         <Key>com.sysprogs.tests.shortnames</Key>

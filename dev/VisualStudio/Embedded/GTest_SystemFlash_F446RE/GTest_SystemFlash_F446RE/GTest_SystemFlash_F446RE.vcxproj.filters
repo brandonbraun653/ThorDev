@@ -109,14 +109,17 @@
     <Filter Include="Chimera\types">
       <UniqueIdentifier>{e7d7f513-574f-43b5-aa27-d59e74ce6526}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{8024c22e-9ee6-4c06-a4a8-69c6b0b01ae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\embedded">
+      <UniqueIdentifier>{fe19817a-2c20-4a6a-88c8-6efb9a379c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\embedded\system_flash">
+      <UniqueIdentifier>{b0466ae2-329f-4529-a5cf-76c97c2e9634}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GTest_SystemFlash_F446RETests.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="GTest_SystemFlash_F446RE.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <None Include="stm32.props">
       <Filter>Source files\Device-specific files</Filter>
     </None>
@@ -131,48 +134,6 @@
     </ClCompile>
     <ClCompile Include="$(EFP_BASE)\Profiler\ProfilerRTOS_FreeRTOS.c">
       <Filter>Source files\Device-specific files\Semihosting/Profiler</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest-death-test.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest-filepath.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest-port.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest-printers.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest-test-part.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest-typed-test.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\Platforms\SysprogsTestHooks.cpp">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gmock-cardinalities.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gmock-internal-utils.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gmock-matchers.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gmock-spec-builders.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gmock.cc">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\Platforms\Embedded\GoogleTestEmbeddedStubs.cpp">
-      <Filter>Source files\Device-specific files\Test Framework</Filter>
     </ClCompile>
     <ClInclude Include="stm32f4xx_hal_conf.h">
       <Filter>Header files</Filter>
@@ -194,117 +155,6 @@
     </ClInclude>
     <ClInclude Include="$(EFP_BASE)\Profiler\DebuggerChecker.h">
       <Filter>Header files\Device-specific files\Semihosting/Profiler</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest-death-test.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest-message.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest-param-test.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\custom\gtest-printers.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest-spi.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest-test-part.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest-typed-test.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\custom\gtest.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest_pred_impl.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\gtest_prod.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-death-test-internal.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-filepath.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-internal.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-linked_ptr.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-param-util-generated.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-param-util.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-port-arch.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\custom\gtest-port.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-string.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-tuple.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gtest\internal\gtest-type-util.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\src\gtest-internal-inl.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-actions.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-cardinalities.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\internal\custom\gmock-generated-actions.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-generated-function-mockers.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-generated-matchers.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-generated-nice-strict.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\internal\custom\gmock-matchers.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-more-actions.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-more-matchers.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock-spec-builders.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\gmock.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\internal\gmock-generated-internal-utils.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\internal\gmock-internal-utils.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\include\gmock\internal\custom\gmock-port.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.googletest\Platforms\SysprogsTestHooks.h">
-      <Filter>Header files\Device-specific files\Test Framework</Filter>
     </ClInclude>
     <None Include="GTest_SystemFlash_F446RE-Debug.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
@@ -977,6 +827,24 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_memory_device.cpp">
       <Filter>Chimera\modules\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\TinyEmbeddedTest.cpp">
+      <Filter>Source files\Device-specific files\Test Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\SysprogsTestHooks.cpp">
+      <Filter>Source files\Device-specific files\Test Framework</Filter>
+    </ClCompile>
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\TinyEmbeddedTest.h">
+      <Filter>Header files\Device-specific files\Test Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\SysprogsTestHooks.h">
+      <Filter>Header files\Device-specific files\Test Framework</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\tests\embedded\system_flash\system_flash_main.cpp">
+      <Filter>tests\embedded\system_flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\tests\embedded\system_flash\system_flash_test.cpp">
+      <Filter>tests\embedded\system_flash</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
