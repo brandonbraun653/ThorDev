@@ -24,7 +24,7 @@ int main(void)
 {
   ChimeraInit();
 
-  InitializeSamplingProfiler();
+  //InitializeSamplingProfiler();
   InitializeInstrumentingProfiler();
 
   Chimera::Threading::addThread( testThread, "tt", 1000, NULL, 2, NULL );

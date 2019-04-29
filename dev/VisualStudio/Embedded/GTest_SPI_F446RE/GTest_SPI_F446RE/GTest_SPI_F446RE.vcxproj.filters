@@ -174,9 +174,6 @@
     <ClInclude Include="stm32f4xx_hal_conf.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClCompile Include="C:\Users\Valkyrie\AppData\Local\VisualGDB\EmbeddedEFPs\Profiler\ProfilerDriver_STM32_HAL.cpp">
-      <Filter>Resource files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera.cpp">
       <Filter>Chimera</Filter>
     </ClCompile>
@@ -924,9 +921,6 @@
     <ClInclude Include="..\..\..\..\..\Thor\Thor\crc.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\dma.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
@@ -1094,6 +1088,9 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_serial.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_usart.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\defaults\spi_defaults.hpp">
@@ -1160,6 +1157,9 @@
       <Filter>Thor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\serial.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\usart.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
   </ItemGroup>

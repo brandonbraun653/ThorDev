@@ -107,6 +107,7 @@
     <ClInclude Include="..\..\..\..\..\Thor\Thor\types\uart_types.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\types\usart_types.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\uart.hpp" />
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\usart.hpp" />
     <ClInclude Include="stm32f4xx_hal_conf.h" />
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_buffer.cpp" />
     <ClCompile Include="..\..\..\..\..\tests\embedded\spi\spi_main.cpp" />
@@ -115,7 +116,6 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\defaults\spi_defaults.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_serial.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_uart.cpp" />
-    <ClCompile Include="C:\Users\Valkyrie\AppData\Local\VisualGDB\EmbeddedEFPs\Profiler\ProfilerDriver_STM32_HAL.cpp" />
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera.cpp" />
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_crc.cpp" />
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_exception.cpp" />
@@ -359,13 +359,13 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_spi.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_sram.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_system.cpp" />
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_usart.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_watchdog.cpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\allocator.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\boostStub.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\config.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\core.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\crc.hpp" />
-    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\dma.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\exceptions.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\exti.hpp" />
