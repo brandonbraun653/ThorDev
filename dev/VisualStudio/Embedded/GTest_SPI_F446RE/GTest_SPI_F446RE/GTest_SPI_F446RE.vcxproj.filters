@@ -897,9 +897,6 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_print.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_serial.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_spi.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
@@ -907,12 +904,6 @@
       <Filter>Thor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_system.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_uart.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_usart.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_watchdog.cpp">
@@ -969,9 +960,6 @@
     <ClInclude Include="..\..\..\..\..\Thor\Thor\print.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Thor\Thor\serial.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\spi.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
@@ -982,12 +970,6 @@
       <Filter>Thor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\thor.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Thor\Thor\uart.hpp">
-      <Filter>Thor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Thor\Thor\usart.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\watchdog.hpp">
@@ -1103,6 +1085,15 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\defaults\serial_defaults.cpp">
       <Filter>Thor\defaults</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_buffer.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_uart.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_serial.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\defaults\spi_defaults.hpp">
@@ -1152,6 +1143,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\Thor\Thor\types\clock_types.hpp">
       <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\event_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\event_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\buffer_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\buffer.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\uart.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\serial.hpp">
+      <Filter>Thor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
