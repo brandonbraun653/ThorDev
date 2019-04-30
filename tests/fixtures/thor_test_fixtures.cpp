@@ -15,6 +15,7 @@
 #include <Chimera/test/fixtures/common_fixture.hpp>
 
 /* STM32 Mock Includes */
+#include "mock_stm32_hal_cortex.hpp"
 #include "mock_stm32_hal_gpio.hpp"
 #include "mock_stm32_hal_spi.hpp"
 #include "mock_stm32_hal_uart.hpp"
@@ -26,13 +27,16 @@ namespace Chimera
   {
     void CommonSetUp()
     {
+      using namespace STM32HAL_Mock;
 
+      cortexMockObj = std::make_shared<CortexNiceMock>();
     }
 
     void CommonTearDown()
     {
       using namespace STM32HAL_Mock;
 
+      cortexMockObj.reset();
       gpioMockObj.reset();
       spiMockObj.reset();
       uartMockObj.reset();
