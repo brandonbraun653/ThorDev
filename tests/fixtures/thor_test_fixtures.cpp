@@ -16,6 +16,7 @@
 
 /* STM32 Mock Includes */
 #include "mock_stm32_hal_gpio.hpp"
+#include "mock_stm32_hal_spi.hpp"
 #include "mock_stm32_hal_uart.hpp"
 #include "mock_stm32_hal_usart.hpp"
 
@@ -33,6 +34,7 @@ namespace Chimera
       using namespace STM32HAL_Mock;
 
       gpioMockObj.reset();
+      spiMockObj.reset();
       uartMockObj.reset();
       usartMockObj.reset();
     }

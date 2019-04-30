@@ -34,21 +34,34 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_buffer.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_crc.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_exception.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_logging.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_threading.cpp" />
-    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_flash.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks_prj.cpp" />
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_memory_device.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_gpio_integration.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_serial_integration.cpp" />
     <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_spi_integration.cpp" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\croutine.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\event_groups.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\list.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\portable\MemMang\heap_4.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\portable\MSVC-MingW\port.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\queue.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\stream_buffer.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\tasks.c" />
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\timers.c" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash.cpp" />
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash_ex.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.cpp" />
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.cpp" />
@@ -58,13 +71,13 @@
     <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.cpp" />
     <ClCompile Include="..\..\..\..\tests\ChimeraIntegration\main.cpp" />
     <ClCompile Include="..\..\..\..\tests\fixtures\thor_test_fixtures.cpp" />
-    <ClCompile Include="..\..\..\..\Thor\Thor\sram.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\defaults\serial_defaults.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\defaults\spi_defaults.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_allocator.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_boost_stub.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_core.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_crc.cpp" />
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_defaults.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_dma.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_exceptions.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_exti.cpp" />
@@ -83,35 +96,75 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\assertion.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\chimera.hpp" />
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\clock.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\crc.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\dma.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\exception.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\gpio.hpp" />
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\buffer_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\crc_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\dma_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\event_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\gpio_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\macro.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\memory_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\power_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\serial_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\spi_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\system_intf.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\watchdog_intf.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\logging.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\memory.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks_prj.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\blockDevice.hpp" />
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\flash.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\device.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\preprocessor.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\serial.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\spi.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\system.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\threading.hpp" />
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\common_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\crc_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\dma_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\event_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\gpio_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\memory_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\power_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\serial_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\spi_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\system_types.hpp" />
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\watchdog_types.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\utilities.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\watchdog.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\common_fixture.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.hpp" />
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.hpp" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\croutine.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\deprecated_definitions.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\event_groups.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\FreeRTOS.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\list.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\message_buffer.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\mpu_prototypes.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\mpu_wrappers.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\portable.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\projdefs.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\queue.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\semphr.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\StackMacros.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\stack_macros.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\stream_buffer.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\task.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\timers.h" />
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\portable\MSVC-MingW\portmacro.h" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\core_cm4.h" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash.hpp" />
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash_ex.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.hpp" />
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.hpp" />
@@ -131,8 +184,14 @@
     <ClInclude Include="..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h" />
     <ClInclude Include="..\..\..\..\Thor\Thor\core.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\crc.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\defaults.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\defaults\serial_defaults.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\defaults\spi_defaults.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\dma_definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\interrupt_definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\serial_definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\spi_definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\uart_definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\dma.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\exceptions.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\exti.hpp" />
@@ -148,6 +207,14 @@
     <ClInclude Include="..\..\..\..\Thor\Thor\sram.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\system.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\thor.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\clock_types.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\dma_types.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\gpio_types.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\interrupt_types.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\serial_types.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\spi_types.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\uart_types.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\usart_types.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\uart.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\usart.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\watchdog.hpp" />
@@ -163,12 +230,12 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;;USING_FREERTOS;_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/freertos;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc;$(ProjectDir)../../../../lib/FreeRTOS/include;$(ProjectDir)../../../../lib/FreeRTOS/portable/MSVC-MingW</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -181,12 +248,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;;USING_FREERTOS;_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/freertos;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc;$(ProjectDir)../../../../lib/FreeRTOS/include;$(ProjectDir)../../../../lib/FreeRTOS/portable/MSVC-MingW</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -198,12 +266,12 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;;USING_FREERTOS;_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/freertos;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc;$(ProjectDir)../../../../lib/FreeRTOS/include;$(ProjectDir)../../../../lib/FreeRTOS/portable/MSVC-MingW</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -217,12 +285,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);STM32F446xx;BOOST_NO_EXCEPTIONS;GMOCK_TEST;;NOMINMAX;CHIMERA_LITTLE_ENDIAN;;USING_FREERTOS;_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\lib\native\include\;%(AdditionalIncludeDirectories);$(BOOST_ROOT)/boost_1_68_0;$(ProjectDir)../../../../Thor;$(ProjectDir)../../../../Thor/Thor/config/freertos;$(ProjectDir)../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../lib;$(ProjectDir)../../../../lib/Chimera;$(ProjectDir)../../../../lib/stm32hal_f4/mock;$(ProjectDir)../../../../lib/stm32hal_f4/Device/sys;$(ProjectDir)../../../../lib/stm32hal_f4/STM32F4xx_HAL_Driver/Inc;$(ProjectDir)../../../../lib/FreeRTOS/include;$(ProjectDir)../../../../lib/FreeRTOS/portable/MSVC-MingW</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

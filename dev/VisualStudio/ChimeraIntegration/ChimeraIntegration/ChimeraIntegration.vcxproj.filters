@@ -21,44 +21,11 @@
     <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_threading.cpp">
       <Filter>Chimera</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_flash.cpp">
-      <Filter>Chimera\modules\memory</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_gpio_integration.cpp">
       <Filter>Chimera\test\integration</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.cpp">
       <Filter>Chimera\test\fixtures</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_spi_integration.cpp">
       <Filter>Chimera\test\integration</Filter>
@@ -66,17 +33,11 @@
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\spi_integration_fixture.cpp">
       <Filter>Chimera\test\fixtures</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.cpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\lib\Chimera\test\integration\test_serial_integration.cpp">
       <Filter>Chimera\test\integration</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\lib\Chimera\test\fixtures\serial_integration_fixture.cpp">
       <Filter>Chimera\test\fixtures</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\sram.cpp">
-      <Filter>Thor\source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Thor\Thor\thor.cpp">
       <Filter>Thor\source</Filter>
@@ -91,9 +52,6 @@
       <Filter>Thor\source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_crc.cpp">
-      <Filter>Thor\source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\thor_defaults.cpp">
       <Filter>Thor\source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Thor\Thor\thor_dma.cpp">
@@ -137,6 +95,87 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\tests\fixtures\thor_test_fixtures.cpp">
       <Filter>Thor\fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\defaults\serial_defaults.cpp">
+      <Filter>Thor\defaults</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Thor\Thor\defaults\spi_defaults.cpp">
+      <Filter>Thor\defaults</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_memory_device.cpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\croutine.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\event_groups.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\list.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\queue.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\stream_buffer.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\tasks.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\timers.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\portable\MSVC-MingW\port.c">
+      <Filter>FreeRTOS\portable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\FreeRTOS\portable\MemMang\heap_4.c">
+      <Filter>FreeRTOS\MemMang</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\chimera_buffer.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks_prj.cpp">
+      <Filter>Chimera\modules\freertos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash_ex.cpp">
+      <Filter>stm32hal_f4\mock</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +227,36 @@
     <Filter Include="Thor\fixtures">
       <UniqueIdentifier>{50704fb2-28b5-4565-a850-ff1c053a45f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thor\defaults">
+      <UniqueIdentifier>{8ccf063e-0600-4420-a8c2-b77278a8ae76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\types">
+      <UniqueIdentifier>{d1559122-144e-4c68-92bb-c9be82cc9460}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\definitions">
+      <UniqueIdentifier>{c6679c44-62b5-491b-8670-deed30c7a41e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\types">
+      <UniqueIdentifier>{ee9e7e36-2b84-4524-8bdd-6378160849b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\interface">
+      <UniqueIdentifier>{423fb005-9e68-4fb8-92fb-54581bb394f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS">
+      <UniqueIdentifier>{4028c7c4-803f-4941-b3e9-88725f41b3df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\include">
+      <UniqueIdentifier>{b921dcea-c398-4cef-80bd-0cca71647ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable">
+      <UniqueIdentifier>{1c955188-3d1a-4d4c-8f6b-134d5abf595e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\MemMang">
+      <UniqueIdentifier>{6f367080-4eea-47ec-8aa9-b0519396d633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules\freertos">
+      <UniqueIdentifier>{c585fd43-1136-4eaa-aaa1-0a0d7ed08707}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h">
@@ -196,28 +265,7 @@
     <ClInclude Include="..\..\..\..\Thor\Thor\config\chimera\chimeraPort.hpp">
       <Filter>Thor\config\chimera</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx.h">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_conf.h">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_def.h">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f446xx.h">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\core_cm4.h">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\assertion.hpp">
-      <Filter>Chimera</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\chimera.hpp">
-      <Filter>Chimera</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\clock.hpp">
       <Filter>Chimera</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\crc.hpp">
@@ -230,9 +278,6 @@
       <Filter>Chimera</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\gpio.hpp">
-      <Filter>Chimera</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface.hpp">
       <Filter>Chimera</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\logging.hpp">
@@ -256,9 +301,6 @@
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\threading.hpp">
       <Filter>Chimera</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types.hpp">
-      <Filter>Chimera</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\utilities.hpp">
       <Filter>Chimera</Filter>
     </ClInclude>
@@ -267,42 +309,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\blockDevice.hpp">
       <Filter>Chimera\modules\memory</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\flash.hpp">
-      <Filter>Chimera\modules\memory</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.hpp">
-      <Filter>stm32hal_f4\mock</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\lib\Chimera\test\fixtures\gpio_integration_fixture.hpp">
       <Filter>Chimera\test\fixtures</Filter>
@@ -329,12 +335,6 @@
       <Filter>Thor\source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Thor\Thor\crc.hpp">
-      <Filter>Thor\source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\defaults.hpp">
-      <Filter>Thor\source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\definitions.hpp">
       <Filter>Thor\source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Thor\Thor\dma.hpp">
@@ -393,6 +393,237 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\tests\fixtures\thor_test_fixtures.hpp">
       <Filter>Thor\fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\defaults\serial_defaults.hpp">
+      <Filter>Thor\defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\defaults\spi_defaults.hpp">
+      <Filter>Thor\defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\dma_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\interrupt_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\serial_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\spi_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\uart_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\clock_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\dma_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\gpio_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\interrupt_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\serial_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\spi_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\uart_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\types\usart_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\common_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\crc_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\dma_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\event_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\gpio_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\memory_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\power_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\serial_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\spi_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\system_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\types\watchdog_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\buffer_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\crc_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\dma_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\event_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\gpio_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\macro.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\memory_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\power_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\serial_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\spi_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\system_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\interface\watchdog_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\memory\device.hpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\croutine.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\deprecated_definitions.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\event_groups.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\FreeRTOS.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\list.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\message_buffer.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\mpu_prototypes.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\mpu_wrappers.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\portable.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\projdefs.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\queue.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\semphr.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\stack_macros.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\StackMacros.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\stream_buffer.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\task.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\include\timers.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\FreeRTOS\portable\MSVC-MingW\portmacro.h">
+      <Filter>FreeRTOS\portable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_cortex.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_crc.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_dma.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_gpio.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_iwdg.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_rcc.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_spi.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_uart.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_usart.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_wwdg.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx.h">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_conf.h">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f4xx_hal_def.h">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\stm32f446xx.h">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\core_cm4.h">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks_prj.hpp">
+      <Filter>Chimera\modules\freertos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash_ex.hpp">
+      <Filter>stm32hal_f4\mock</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
