@@ -625,5 +625,8 @@
     <ClInclude Include="..\..\..\..\lib\stm32hal_f4\mock\mock_stm32_hal_flash_ex.hpp">
       <Filter>stm32hal_f4\mock</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\system_checks.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

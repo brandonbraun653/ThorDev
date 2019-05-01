@@ -190,6 +190,7 @@
     <ClInclude Include="..\..\..\..\Thor\Thor\definitions\interrupt_definitions.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\definitions\serial_definitions.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\definitions\spi_definitions.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\definitions\system_checks.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\definitions\uart_definitions.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\dma.hpp" />
@@ -241,6 +242,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <StackReserveSize>4235264</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -260,6 +262,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <StackReserveSize>4235264</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -279,6 +282,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <StackReserveSize>4235264</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -299,6 +303,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_68_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <StackReserveSize>4235264</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
