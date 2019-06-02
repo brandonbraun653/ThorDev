@@ -1,0 +1,1259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{3c1eb017-23c8-4c1b-859a-e188e0077d4a}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{f566cca3-d504-4fc4-815c-659ba9d62283}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{3ddfcee6-0890-4586-b994-180811c986c9}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{76a277ad-81ad-48e2-9c46-679a73ea4322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\Semihosting/Profiler">
+      <UniqueIdentifier>{7059867e-e1aa-48ed-99fd-d6f72c5319d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\Test Framework">
+      <UniqueIdentifier>{9615bdcf-0b70-4229-b365-394351e6e10f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{e970bfa4-8272-40e4-9fa2-dff95244eae9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\Semihosting/Profiler">
+      <UniqueIdentifier>{f6ca76e3-d21e-4a2a-8c89-85239fd65ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\Test Framework">
+      <UniqueIdentifier>{b633a20e-e59a-4cc1-a5aa-457914d3fce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera">
+      <UniqueIdentifier>{a741d856-7619-428f-b2ea-ead859b26953}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules">
+      <UniqueIdentifier>{582997f2-b09c-429d-88f2-3e0d654347fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules\memory">
+      <UniqueIdentifier>{34b3d195-870c-4ef2-ba28-66e0b335a923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules\freertos">
+      <UniqueIdentifier>{f2a2bc60-ca61-43e8-81d9-593da62d2484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\interface">
+      <UniqueIdentifier>{34b1c02e-e49e-43f6-86fa-dc8eb0c20ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\types">
+      <UniqueIdentifier>{69b402b8-04f7-4f86-995c-90fed40d4f2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor">
+      <UniqueIdentifier>{5a861ab3-b96e-4f2f-b5a7-6076622c1d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS">
+      <UniqueIdentifier>{77242c8e-7b50-403e-971a-7a9db4e965dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\include">
+      <UniqueIdentifier>{1ef2bfea-e99c-4869-8cc3-1b8c0e56ec10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable">
+      <UniqueIdentifier>{fc492090-9e8e-46b8-95ef-1e6f937509a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable\GCC">
+      <UniqueIdentifier>{c26d57a9-363a-41dd-8962-dfe51ea7cd8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable\GCC\ARM_CM4F">
+      <UniqueIdentifier>{45e31e72-d5dc-49e4-a0a3-200d164ed67f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable\MemMang">
+      <UniqueIdentifier>{024def12-1f3a-4508-a51d-f366ce941b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{c6b93da0-7cfd-41c7-86b5-77417c418153}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\config">
+      <UniqueIdentifier>{16d86eb1-a80c-4d1f-bbdb-31a99e7a7809}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\config\chimera">
+      <UniqueIdentifier>{23a7a2e5-545e-4be7-8825-114fb235b32e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\config\freertos">
+      <UniqueIdentifier>{af9a4848-e0da-41af-b98b-29adf1013ed7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\defaults">
+      <UniqueIdentifier>{8b2e8c27-7a7a-4c10-a0d5-cb105e360a74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\definitions">
+      <UniqueIdentifier>{9097dd1e-4357-4956-b11f-e11d1a0beb66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\types">
+      <UniqueIdentifier>{3b9821d8-14e4-421c-b3dd-76264874ba8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4">
+      <UniqueIdentifier>{c23b7c8e-780f-478e-98bc-10f22bc11c55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device">
+      <UniqueIdentifier>{9810cdc6-bff5-499e-9dc5-78b43fcc58ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device\cmsis">
+      <UniqueIdentifier>{46c34de2-a242-4634-8f1e-2969f47ba46b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device\cmsis\core">
+      <UniqueIdentifier>{8cc4062c-b97f-41cd-8126-7307535410b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device\cmsis\core\include">
+      <UniqueIdentifier>{5b5251fd-a930-4772-8d1d-eec1a3da4873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device\conf">
+      <UniqueIdentifier>{edaac64d-4864-418a-a301-0e9251b6052b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device\include">
+      <UniqueIdentifier>{df5b36aa-7e1d-4670-bc02-6d96b664d107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device\startup">
+      <UniqueIdentifier>{72ce12b7-e5c6-41dd-b2da-b8319d3852b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\Device\sys">
+      <UniqueIdentifier>{1a607828-a2a8-49d0-b900-d0d9163b501a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\STM32F4xx_HAL_Driver">
+      <UniqueIdentifier>{17730fee-92ff-4d78-83ff-faae125aa262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\STM32F4xx_HAL_Driver\Inc">
+      <UniqueIdentifier>{2c75b044-9fcb-40bf-84be-cda303845261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\STM32F4xx_HAL_Driver\Inc\Legacy">
+      <UniqueIdentifier>{22e53b20-209e-4faf-8cee-073c6a81a753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4\STM32F4xx_HAL_Driver\Src">
+      <UniqueIdentifier>{a3723e6d-fa37-45f8-a6ac-2c0f78a0d531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers">
+      <UniqueIdentifier>{5edc616d-ac6f-4d25-9615-3fecf1ad83fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4">
+      <UniqueIdentifier>{c2812c1f-f808-4952-b545-34a25152185e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="stm32.props">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+    <ClCompile Include="$(EFP_BASE)\Profiler\FastSemihosting.cpp">
+      <Filter>Source files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="$(EFP_BASE)\Profiler\SamplingProfiler.cpp">
+      <Filter>Source files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="$(EFP_BASE)\Profiler\InstrumentingProfiler.cpp">
+      <Filter>Source files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="$(EFP_BASE)\Profiler\ProfilerRTOS_FreeRTOS.c">
+      <Filter>Source files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\TinyEmbeddedTest.cpp">
+      <Filter>Source files\Device-specific files\Test Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\SysprogsTestHooks.cpp">
+      <Filter>Source files\Device-specific files\Test Framework</Filter>
+    </ClCompile>
+    <ClInclude Include="$(EFP_BASE)\Profiler\SysprogsProfiler.h">
+      <Filter>Header files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(EFP_BASE)\Profiler\SmallNumberCoder.h">
+      <Filter>Header files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(EFP_BASE)\Profiler\SysprogsProfilerInterface.h">
+      <Filter>Header files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(EFP_BASE)\Profiler\ProfilerFreeRTOSHooks.h">
+      <Filter>Header files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(EFP_BASE)\Profiler\CustomRealTimeWatches.h">
+      <Filter>Header files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(EFP_BASE)\Profiler\DebuggerChecker.h">
+      <Filter>Header files\Device-specific files\Semihosting/Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\TinyEmbeddedTest.h">
+      <Filter>Header files\Device-specific files\Test Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="$(TESTFW_BASE_LOCAL)\com.sysprogs.unittest.tinyembtest\SysprogsTestHooks.h">
+      <Filter>Header files\Device-specific files\Test Framework</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_crc.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_exception.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_logging.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_threading.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\chimera.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\crc.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\dma.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\exception.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\gpio.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\logging.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\memory.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\power.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\preprocessor.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\serial.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\spi.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\system.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\threading.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\utilities.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\watchdog.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_memory_device.cpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\modules\memory\blockDevice.hpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\modules\memory\device.hpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\crc_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\dma_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\gpio_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\macro.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\memory_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\power_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\serial_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\spi_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\system_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\watchdog_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\common_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\crc_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\dma_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\gpio_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\memory_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\power_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\serial_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\spi_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\system_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\types\watchdog_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\croutine.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\event_groups.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\list.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\queue.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\stream_buffer.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\tasks.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\timers.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\croutine.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\deprecated_definitions.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\event_groups.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\FreeRTOS.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\list.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\message_buffer.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\mpu_prototypes.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\mpu_wrappers.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\portable.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\projdefs.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\queue.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\semphr.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\StackMacros.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\stack_macros.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\stream_buffer.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\task.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\include\timers.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\portable\GCC\ARM_CM4F\port.c">
+      <Filter>FreeRTOS\portable\GCC\ARM_CM4F</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\lib\FreeRTOS\portable\GCC\ARM_CM4F\portmacro.h">
+      <Filter>FreeRTOS\portable\GCC\ARM_CM4F</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\lib\FreeRTOS\portable\MemMang\heap_4.c">
+      <Filter>FreeRTOS\portable\MemMang</Filter>
+    </ClCompile>
+    <None Include="EthernetDriverF4-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="EthernetDriverF4-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\cmsis\core\include\cmsis_compiler.h">
+      <Filter>stm32f4\Device\cmsis\core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\cmsis\core\include\cmsis_gcc.h">
+      <Filter>stm32f4\Device\cmsis\core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\cmsis\core\include\cmsis_version.h">
+      <Filter>stm32f4\Device\cmsis\core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\cmsis\core\include\core_cm4.h">
+      <Filter>stm32f4\Device\cmsis\core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\cmsis\core\include\mpu_armv7.h">
+      <Filter>stm32f4\Device\cmsis\core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\conf\stm32f4xx_hal_conf.h">
+      <Filter>stm32f4\Device\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f401xc.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f401xe.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f405xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f407xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f410cx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f410rx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f410tx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f411xe.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f412cx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f412rx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f412vx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f412zx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f413xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f415xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f417xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f423xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f427xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f429xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f437xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f439xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f446xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f469xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f479xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\include\stm32f4xx.h">
+      <Filter>stm32f4\Device\include</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\startup\startup_stm32f446xx.c">
+      <Filter>stm32f4\Device\startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\sys\system_stm32f4xx.c">
+      <Filter>stm32f4\Device\sys</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\Device\sys\system_stm32f4xx.h">
+      <Filter>stm32f4\Device\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cec.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_crc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cryp.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cryp_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dfsdm.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dsi.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_eth.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_fmpi2c.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_fmpi2c_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hash.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hash_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_irda.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_iwdg.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_lptim.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_mmc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nand.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nor.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pccard.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_qspi.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rng.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sd.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_smartcard.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spdifrx.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sram.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_usart.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_wwdg.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_adc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_bus.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_cortex.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_crc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_dac.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_dma.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_dma2d.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_exti.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fsmc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_gpio.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_i2c.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_iwdg.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_lptim.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_pwr.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_rcc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_rng.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_rtc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_sdmmc.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_spi.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_system.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_tim.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usart.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_utils.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_wwdg.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\Legacy\stm32f4xx_hal_can_legacy.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc\Legacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Inc\Legacy</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dfsdm.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma2d.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dsi.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hcd.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_irda.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_iwdg.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_lptim.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_mmc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nand.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pccard.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_qspi.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rng.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sd.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sdram.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smartcard.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spdifrx.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sram.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_usart.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_wwdg.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_adc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_crc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dac.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_dma2d.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_exti.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fsmc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_gpio.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_i2c.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_lptim.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_pwr.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rcc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rng.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_rtc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_spi.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_tim.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usart.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\lib\stm32hal_f4\stm32f4\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_utils.c">
+      <Filter>stm32f4\STM32F4xx_HAL_Driver\Src</Filter>
+    </ClCompile>
+    <None Include="..\..\..\..\..\Thor\Thor\drivers\Ethernet.hpp">
+      <Filter>Thor\drivers</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks.cpp">
+      <Filter>Chimera\modules\freertos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\sram.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_boost_stub.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_core.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_crc.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_dma.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_exceptions.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_exti.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_flash.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_gpio.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_power.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_print.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_serial.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_spi.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_sram.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_system.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_uart.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_usart.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\thor_watchdog.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\config\freertos\freertos_hooks_prj.cpp">
+      <Filter>Thor\config\freertos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\defaults\serial_defaults.cpp">
+      <Filter>Thor\defaults</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\defaults\spi_defaults.cpp">
+      <Filter>Thor\defaults</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\thor_ethernet_stm32f4.cpp">
+      <Filter>Thor\drivers\f4</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks.hpp">
+      <Filter>Chimera\modules\freertos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\boostStub.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\config.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\core.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\crc.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\dma.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\exceptions.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\exti.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\flash.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\gpio.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\headers.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\macro.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\nucleo.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\power.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\preprocessor.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\print.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\serial.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\spi.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\sram.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\system.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\thor.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\uart.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\usart.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\watchdog.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\config\chimera\chimeraPort.hpp">
+      <Filter>Thor\config\chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h">
+      <Filter>Thor\config\freertos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\defaults\serial_defaults.hpp">
+      <Filter>Thor\defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\defaults\spi_defaults.hpp">
+      <Filter>Thor\defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions\dma_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions\interrupt_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions\serial_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions\spi_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions\system_checks.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions\uart_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\clock_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\dma_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\gpio_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\interrupt_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\serial_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\spi_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\uart_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\types\usart_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\ethernet.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\lib\Chimera\Chimera\interface\ethernet_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
