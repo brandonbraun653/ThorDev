@@ -34,10 +34,7 @@ explicit_alias TARGET_OPTIONS : : : : <use>/THOR//CORE_PUB ;
 
 project Thor
     : requirements
-        <architecture>arm
-        <toolset>gcc
+        <toolset>gcc_arm_none_eabi
         <link>static
-        <cxxflags>--std=gnu++14
-        <Chimera>enabled
-        <ChimeraBackend>Thor
+        <cxxflags>--std=gnu++17
     ;
