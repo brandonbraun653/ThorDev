@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_UART_F767ZI", "Test_UART_F767ZI\Test_UART_F767ZI.vcxproj", "{CEC347D3-DA8B-4EA5-ACDA-D53F3128213F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|VisualGDB = Debug|VisualGDB
+		Release|VisualGDB = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEC347D3-DA8B-4EA5-ACDA-D53F3128213F}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{CEC347D3-DA8B-4EA5-ACDA-D53F3128213F}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{CEC347D3-DA8B-4EA5-ACDA-D53F3128213F}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{CEC347D3-DA8B-4EA5-ACDA-D53F3128213F}.Release|VisualGDB.Build.0 = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39CC8A1D-9DA8-4563-A09E-C5F3FBAF094F}
+	EndGlobalSection
+EndGlobal
