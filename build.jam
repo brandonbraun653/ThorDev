@@ -1,0 +1,21 @@
+import lib/CommonTools/boost-build/features/thor ;
+import lib/CommonTools/boost-build/features/chimera ;
+import lib/CommonTools/boost-build/features/freertos ;
+
+alias ThorTest 
+    :   /THOR//CORE
+    
+    :   <use>/PRJ//CHIMERA_PORT
+
+    :   <Thor>enabled
+        <Thor-family>F4
+        <Thor-chip>F446
+        <Thor-variant>RE
+        <Chimera>enabled
+        <Chimera-backend>Thor
+        <FreeRTOS>enabled
+        <FreeRTOS-port>CortexM
+        <FreeRTOS-heap>heap4
+    ;
+explicit ThorTest ;
+    

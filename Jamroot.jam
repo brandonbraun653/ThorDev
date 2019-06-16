@@ -29,8 +29,8 @@ path-constant artifacts_dir : $(TOP)/artifacts ;
 # ------------------------------------------
 explicit_alias BOOST : : : : <include>$(boost_inc_dir) ;
 explicit_alias CHIMERA_PORT : : : : <use>/THOR//CHIMERA_PORT ;
-explicit_alias FreeRTOS_CFG : : : : <include>Thor/Thor/config/freertos ;
-explicit_alias TARGET_OPTIONS : : : : <use>/THOR//CORE_PUB ;
+explicit_alias FREERTOS_CFG : : : : <include>Thor/Thor/config/freertos ;
+explicit_alias TARGET_OPTIONS : : : : <use>/THOR//TARGET_PROPAGATED_OPTIONS ;
 
 project Thor
     : requirements
