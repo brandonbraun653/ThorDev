@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{11fcdaae-be83-4d4a-a2c6-231996a6d152}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{c82601a9-8e75-4425-a0c3-930ec85d50ba}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{1b6cd734-c4fe-4e5c-a748-86cde780a348}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{a0048154-da5e-4470-83f2-0244aab9bb7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{d9fa6b77-3e8e-47ba-9c49-9fe0e69369b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{dd724b6e-04c8-4233-b9a2-f8977096c06f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor">
+      <UniqueIdentifier>{640a28b0-8968-4222-8a0e-d0a2044648d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\config">
+      <UniqueIdentifier>{c41be07f-cb82-4270-a619-5c51fdf5b1bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\config\chimera">
+      <UniqueIdentifier>{a433cecc-c0dc-49dd-aeec-1a6af8d87f8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\config\freertos">
+      <UniqueIdentifier>{fb8803fb-3b0c-47e7-911d-b7b86a673e71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\defaults">
+      <UniqueIdentifier>{08fa704a-eecd-4af3-be03-07f555a96797}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\definitions">
+      <UniqueIdentifier>{7c1d44e9-c898-4a3e-acfb-ee026f5097e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers">
+      <UniqueIdentifier>{198a30a6-4137-4255-b4cd-58e3ccceb876}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\common">
+      <UniqueIdentifier>{58fc8ca2-cb64-4ec0-8c9a-ad947966986f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\common\interrupts">
+      <UniqueIdentifier>{e8754778-fadb-4e8c-ba0a-e224cf18546a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\common\types">
+      <UniqueIdentifier>{ebcacc81-928a-4820-8b88-f900eaa5c061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4">
+      <UniqueIdentifier>{1f683902-9992-4789-bd6d-b481baded754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4\common">
+      <UniqueIdentifier>{35a8c9ef-ac84-4715-a9fc-41e82ea6d035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4\system">
+      <UniqueIdentifier>{31a35757-053c-41f8-9ff6-a72ad19d2698}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4\uart">
+      <UniqueIdentifier>{3f344c06-9502-4d62-8e53-97a51a4e6e61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4\usart">
+      <UniqueIdentifier>{dd371d29-9b57-4764-82f2-9b52f4b217d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\model">
+      <UniqueIdentifier>{f9419e34-5bd9-4005-9722-4553783dd98c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\types">
+      <UniqueIdentifier>{2c98a459-c313-4ee6-8d4e-ed4d9c8d5290}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS">
+      <UniqueIdentifier>{e177ee51-b318-4b87-8b09-3d44ed15270a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\include">
+      <UniqueIdentifier>{34e95601-b958-4048-b61d-5994edb37abf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable">
+      <UniqueIdentifier>{8e181491-c7b6-4813-8c25-cf2afe88e81a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable\GCC">
+      <UniqueIdentifier>{31491854-a32d-421a-bfed-52dacc4904c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable\GCC\ARM_CM4F">
+      <UniqueIdentifier>{32192e94-577a-4ca2-b322-19a7e863bb88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FreeRTOS\portable\MemMang">
+      <UniqueIdentifier>{0e4a1106-f01d-4098-8d41-2415ae045b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera">
+      <UniqueIdentifier>{f4342dbe-5fb6-4b0e-9837-60fe33c10205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\constants">
+      <UniqueIdentifier>{c8fd4ef6-ce76-4e07-a5de-bbccb7cbe1e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\extensions">
+      <UniqueIdentifier>{aa670b50-523c-4966-83f4-b6bde2104176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\interface">
+      <UniqueIdentifier>{9fddb2e3-8076-4cf6-9ed8-1cd5c5b620a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules">
+      <UniqueIdentifier>{8f3d724b-20b6-4061-9a2b-308af4710fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules\freertos">
+      <UniqueIdentifier>{235f1e41-ecc2-441b-ac0a-5efbf656cc51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules\memory">
+      <UniqueIdentifier>{a6b80168-233c-434c-99ca-e7ad6a36450b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules\sensors">
+      <UniqueIdentifier>{9eaea5a3-de01-48b8-8f11-b073e80ff233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\modules\sensors\imu">
+      <UniqueIdentifier>{5cd79e4b-4718-4a71-98f7-80008397c21f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chimera\types">
+      <UniqueIdentifier>{6937f2b6-1bab-421f-8937-5295228f63e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4\startup">
+      <UniqueIdentifier>{e84882ce-ce31-49b4-9c89-b1e6c9f263d1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="stm32.props">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+    <None Include="Development-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="Development-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\boostStub.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\config.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\core.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\preprocessor.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\system.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\thor.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\usart.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\config\chimera\chimeraPort.hpp">
+      <Filter>Thor\config\chimera</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\config\freertos\freertos_hooks_prj.cpp">
+      <Filter>Thor\config\freertos</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h">
+      <Filter>Thor\config\freertos</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\defaults\serial_defaults.cpp">
+      <Filter>Thor\defaults</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\defaults\spi_defaults.cpp">
+      <Filter>Thor\defaults</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\defaults\serial_defaults.hpp">
+      <Filter>Thor\defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\defaults\spi_defaults.hpp">
+      <Filter>Thor\defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\dma_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\interrupt_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\serial_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\spi_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\system_checks.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\uart_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp">
+      <Filter>Thor\definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Ethernet.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Uart.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Usart.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\usart_interrupt_vectors.hpp">
+      <Filter>Thor\drivers\common\interrupts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\callback_types.hpp">
+      <Filter>Thor\drivers\common\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\interrupt_types.hpp">
+      <Filter>Thor\drivers\common\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\serial_types.hpp">
+      <Filter>Thor\drivers\common\types</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\thor_ethernet_stm32f4.cpp">
+      <Filter>Thor\drivers\f4</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\common\definitions.hpp">
+      <Filter>Thor\drivers\f4\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\common\types.hpp">
+      <Filter>Thor\drivers\f4\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_memory_map_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_driver.hpp">
+      <Filter>Thor\drivers\f4\uart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_prj.hpp">
+      <Filter>Thor\drivers\f4\uart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_register_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\uart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_stubs.hpp">
+      <Filter>Thor\drivers\f4\uart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_types.hpp">
+      <Filter>Thor\drivers\f4\uart</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_driver_stm32f4.cpp">
+      <Filter>Thor\drivers\f4\usart</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_driver.hpp">
+      <Filter>Thor\drivers\f4\usart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_prj.hpp">
+      <Filter>Thor\drivers\f4\usart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_register_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\usart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_types.hpp">
+      <Filter>Thor\drivers\f4\usart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\callback_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\interrupt_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\serial_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\clock_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\dma_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\gpio_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\interrupt_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\serial_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\spi_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\uart_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\types\usart_types.hpp">
+      <Filter>Thor\types</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\croutine.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\event_groups.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\list.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\queue.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\stream_buffer.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\tasks.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\timers.c">
+      <Filter>FreeRTOS</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\croutine.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\deprecated_definitions.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\event_groups.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\FreeRTOS.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\list.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\message_buffer.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\mpu_prototypes.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\mpu_wrappers.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\portable.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\projdefs.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\queue.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\semphr.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\StackMacros.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\stack_macros.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\stream_buffer.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\task.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\include\timers.h">
+      <Filter>FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\portable\GCC\ARM_CM4F\port.c">
+      <Filter>FreeRTOS\portable\GCC\ARM_CM4F</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\portable\GCC\ARM_CM4F\portmacro.h">
+      <Filter>FreeRTOS\portable\GCC\ARM_CM4F</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\FreeRTOS\portable\MemMang\heap_4.c">
+      <Filter>FreeRTOS\portable\MemMang</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_allocator.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_buffer.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_crc.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_exception.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_logging.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_threading.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_watchdog.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\allocator.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\buffer.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\crc.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\dma.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\exception.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\gpio.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\logging.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\memory.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\power.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\preprocessor.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\serial.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\spi.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\system.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\threading.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\utilities.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\watchdog.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\constants\common.hpp">
+      <Filter>Chimera\constants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\constants\physics.hpp">
+      <Filter>Chimera\constants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\constants\units.hpp">
+      <Filter>Chimera\constants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\extensions\common.hpp">
+      <Filter>Chimera\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\extensions\spi_ext.hpp">
+      <Filter>Chimera\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\buffer_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\crc_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\dma_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\ethernet_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\event_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\gpio_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\macro.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\memory_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\power_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\serial_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\spi_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\system_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\threading_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\watchdog_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks.cpp">
+      <Filter>Chimera\modules\freertos</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks.hpp">
+      <Filter>Chimera\modules\freertos</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\memory\chimera_memory_device.cpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\memory\blockDevice.hpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\memory\device.hpp">
+      <Filter>Chimera\modules\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\sensors\imu\imu_intf.hpp">
+      <Filter>Chimera\modules\sensors\imu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\sensors\imu\imu_types.hpp">
+      <Filter>Chimera\modules\sensors\imu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\common_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\crc_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\dma_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\event_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\gpio_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\memory_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\power_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\serial_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\spi_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\system_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\watchdog_types.hpp">
+      <Filter>Chimera\types</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\startup\startup_stm32f446xx.c">
+      <Filter>Thor\drivers\f4\startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_common_init.cpp">
+      <Filter>Thor\drivers\f4\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\startup\startup_common_init.cpp">
+      <Filter>Thor\drivers\f4\startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_common_exit.cpp">
+      <Filter>Thor\drivers\f4\system</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\power_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
