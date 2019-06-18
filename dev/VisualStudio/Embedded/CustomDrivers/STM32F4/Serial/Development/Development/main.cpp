@@ -9,16 +9,19 @@
 *   2019 | Brandon Braun | brandonbraun653@gmail.com
 ********************************************************************************/
 
-/* Thor Includes */
-#include <Thor/thor.hpp>
+/* Chimera Includes */
+#include <Chimera/gpio.hpp>
 
+using namespace Chimera::GPIO;
 int main()
 {
+  // Do an led thing
+  uint32_t counter = 0;
 
   while (1) 
   {
-    
-
+    counter++;
+    counter--;
   }
   return 0;
 }

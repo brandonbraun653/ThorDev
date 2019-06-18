@@ -124,6 +124,15 @@
     <Filter Include="Thor\drivers\f4\startup">
       <UniqueIdentifier>{e84882ce-ce31-49b4-9c89-b1e6c9f263d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thor\drivers\f4\rcc">
+      <UniqueIdentifier>{b488c9ee-d4f8-464a-a40b-c6ef51948a3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4\interrupt">
+      <UniqueIdentifier>{d433feba-ccbd-418b-bd4e-968aa4e5b442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\drivers\f4\gpio">
+      <UniqueIdentifier>{a005e9e3-944d-4dbc-a267-730f6e7aecc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="stm32.props">
@@ -584,6 +593,12 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_common_exit.cpp">
       <Filter>Thor\drivers\f4\system</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver_stm32f4.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver_stm32f4.cpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">
@@ -591,6 +606,39 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\power_model.hpp">
       <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="thor_config_prj.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver.hpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_prj.hpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_register_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_types.hpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\interrupt\hw_it_prj.hpp">
+      <Filter>Thor\drivers\f4\interrupt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\interrupt\hw_it_register_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\interrupt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver.hpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_prj.hpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_register_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_types.hpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
