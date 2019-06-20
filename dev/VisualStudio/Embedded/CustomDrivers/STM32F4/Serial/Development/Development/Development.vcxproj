@@ -72,6 +72,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_common_exit.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_common_init.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m4\utilities.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_register_stm32f446xx.hpp" />
@@ -82,6 +83,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_register_stm32f446xx.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_types.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp" />
     <ClInclude Include="thor_config_prj.hpp" />
     <None Include="stm32.props" />
     <None Include="Development-Debug.vgdbsettings" />

@@ -133,6 +133,9 @@
     <Filter Include="Thor\drivers\f4\gpio">
       <UniqueIdentifier>{a005e9e3-944d-4dbc-a267-730f6e7aecc5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thor\drivers\common\cortex-m4">
+      <UniqueIdentifier>{5913cbab-b239-49c1-8b97-a68e6496ba37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="stm32.props">
@@ -639,6 +642,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_types.hpp">
       <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m4\utilities.hpp">
+      <Filter>Thor\drivers\common\cortex-m4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
