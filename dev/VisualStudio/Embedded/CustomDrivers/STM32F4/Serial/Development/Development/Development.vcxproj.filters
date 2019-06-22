@@ -237,9 +237,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\serial_types.hpp">
       <Filter>Thor\drivers\common\types</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\thor_ethernet_stm32f4.cpp">
-      <Filter>Thor\drivers\f4</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\common\definitions.hpp">
       <Filter>Thor\drivers\f4\common</Filter>
     </ClInclude>
@@ -602,6 +599,12 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver_stm32f4.cpp">
       <Filter>Thor\drivers\f4\gpio</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_gpio.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_usart.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">
@@ -648,6 +651,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp">
       <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\gpio_types.hpp">
+      <Filter>Thor\drivers\common\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\GPIO.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\threading_types.hpp">
+      <Filter>Chimera\types</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
