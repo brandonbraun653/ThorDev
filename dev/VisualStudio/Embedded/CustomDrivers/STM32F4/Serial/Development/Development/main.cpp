@@ -12,11 +12,18 @@
 /* Chimera Includes */
 #include <Chimera/gpio.hpp>
 
+#include <Thor/drivers/GPIO.hpp>
+
 using namespace Chimera::GPIO;
+using namespace Thor::Driver::GPIO;
 int main()
 {
   // Do an led thing
   uint32_t counter = 0;
+
+  DriverBare gpio;
+
+  gpio.attach( GPIOA_PERIPH );
 
   while (1) 
   {

@@ -661,5 +661,8 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\threading_types.hpp">
       <Filter>Chimera\types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\assert.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
