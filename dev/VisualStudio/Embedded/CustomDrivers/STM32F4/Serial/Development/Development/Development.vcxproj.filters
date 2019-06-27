@@ -664,5 +664,19 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\assert.hpp">
       <Filter>Chimera</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_mapping.hpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping.hpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_memory_map_prj.hpp">
+      <Filter>Thor\drivers\f4\system</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <LinkerScript Include="STM32F446RE_flash.lds">
+      <Filter>Source files</Filter>
+    </LinkerScript>
   </ItemGroup>
 </Project>
