@@ -14,7 +14,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{CD25D1EC-E5E5-46A8-95B7-CED2DB1B130C}</ProjectGuid>
     <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
-    <BSP_VERSION>2018.12R2</BSP_VERSION>
+    <BSP_VERSION>2019.06</BSP_VERSION>
     <InPlaceBSPSubdir />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -100,6 +100,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\gpio.hpp" />
     <ClInclude Include="thor_config_prj.hpp" />
     <None Include="stm32.props" />
     <None Include="Development-Debug.vgdbsettings" />

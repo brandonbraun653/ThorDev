@@ -685,6 +685,9 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.hpp">
       <Filter>Thor\drivers\common\mapping</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\gpio.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <LinkerScript Include="STM32F446RE_flash.lds">

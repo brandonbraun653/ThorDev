@@ -12,13 +12,11 @@
 /* Chimera Includes */
 #include <Chimera/gpio.hpp>
 
-#include <Thor/drivers/GPIO.hpp>
+//#include <Thor/drivers/GPIO.hpp>
 #include <Thor/drivers/RCC.hpp>
 
 using namespace Chimera::GPIO;
-using namespace Thor::Driver::GPIO;
 
-static constexpr uint8_t pin = 5;
 int main()
 {
   Thor::Driver::RCC::init();
@@ -27,19 +25,21 @@ int main()
   // Do an led thing
   uint32_t counter = 0;
 
-  DriverBare gpio;
+  GPIOClass gpio;
+  PinInit init;
 
-  gpio.attach( GPIOA_PERIPH );
-  gpio.driveSet( pin, Chimera::GPIO::Drive::OUTPUT_PUSH_PULL );
-  gpio.pullSet( pin, Chimera::GPIO::Pull::NO_PULL );
-  gpio.speedSet( pin, Thor::Driver::GPIO::Speed::FAST );
-  gpio.alternateFunctionSet( pin, AF_NONE );
+  init.drive = Drive::OUTPUT_PUSH_PULL;
+  init.pin   = 5;
+  init.port  = Port::PORTA;
+  init.pull  = Pull::NO_PULL;
+  init.state = State::LOW;
 
+  gpio.init( init );
 
   while ( 1 )
   {
-    gpio.write( pin, State::HIGH );
-    gpio.write( pin, State::LOW );
+    gpio.setState( State::HIGH );
+    gpio.setState( State::LOW );
 
     counter++;
     counter--;
