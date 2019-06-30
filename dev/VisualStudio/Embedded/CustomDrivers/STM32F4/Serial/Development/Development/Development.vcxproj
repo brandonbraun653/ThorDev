@@ -81,6 +81,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\assert.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\threading_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m4\utilities.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\gpio_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_mapping.hpp" />
@@ -97,6 +98,8 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_memory_map_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\GPIO.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp" />
     <ClInclude Include="thor_config_prj.hpp" />
     <None Include="stm32.props" />
     <None Include="Development-Debug.vgdbsettings" />

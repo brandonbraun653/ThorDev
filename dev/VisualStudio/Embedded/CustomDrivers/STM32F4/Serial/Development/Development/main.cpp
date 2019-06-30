@@ -13,6 +13,7 @@
 #include <Chimera/gpio.hpp>
 
 #include <Thor/drivers/GPIO.hpp>
+#include <Thor/drivers/RCC.hpp>
 
 using namespace Chimera::GPIO;
 using namespace Thor::Driver::GPIO;
@@ -20,6 +21,9 @@ using namespace Thor::Driver::GPIO;
 static constexpr uint8_t pin = 5;
 int main()
 {
+  Thor::Driver::RCC::init();
+
+
   // Do an led thing
   uint32_t counter = 0;
 

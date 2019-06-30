@@ -136,6 +136,9 @@
     <Filter Include="Thor\drivers\common\cortex-m4">
       <UniqueIdentifier>{5913cbab-b239-49c1-8b97-a68e6496ba37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thor\drivers\common\mapping">
+      <UniqueIdentifier>{a3a64b26-5ff9-43da-adda-9d96bb6ff431}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="stm32.props">
@@ -672,6 +675,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_memory_map_prj.hpp">
       <Filter>Thor\drivers\f4\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.hpp">
+      <Filter>Thor\drivers\common\mapping</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
