@@ -608,6 +608,9 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_usart.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">
@@ -687,6 +690,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\gpio.hpp">
       <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

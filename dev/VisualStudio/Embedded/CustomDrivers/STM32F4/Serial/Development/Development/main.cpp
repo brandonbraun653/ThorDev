@@ -11,38 +11,50 @@
 
 /* Chimera Includes */
 #include <Chimera/gpio.hpp>
+#include <Chimera/threading.hpp>
 
 //#include <Thor/drivers/GPIO.hpp>
 #include <Thor/drivers/RCC.hpp>
 
 using namespace Chimera::GPIO;
+using namespace Chimera::Threading;
+
+void testThread( void *argument );
 
 int main()
 {
   Thor::Driver::RCC::init();
 
+  addThread( testThread, "testThread", 500, nullptr, 2, nullptr );
 
-  // Do an led thing
-  uint32_t counter = 0;
+  startScheduler();
 
+  while ( 1 ) {}
+  return 0;
+}
+
+void testThread( void *argument )
+{
   GPIOClass gpio;
   PinInit init;
 
-  init.drive = Drive::OUTPUT_PUSH_PULL;
-  init.pin   = 5;
-  init.port  = Port::PORTA;
-  init.pull  = Pull::NO_PULL;
-  init.state = State::LOW;
+  init.drive      = Drive::OUTPUT_PUSH_PULL;
+  init.pin        = 5;
+  init.port       = Port::PORTA;
+  init.pull       = Pull::NO_PULL;
+  init.state      = State::LOW;
+  init.accessMode = Chimera::Hardware::AccessMode::THREADED;
 
   gpio.init( init );
+
+  signalSetupComplete();
 
   while ( 1 )
   {
     gpio.setState( State::HIGH );
+    Chimera::delayMilliseconds( 500 );
+    
     gpio.setState( State::LOW );
-
-    counter++;
-    counter--;
+    Chimera::delayMilliseconds( 500 );
   }
-  return 0;
 }
