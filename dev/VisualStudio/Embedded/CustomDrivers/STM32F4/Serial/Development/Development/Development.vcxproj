@@ -71,6 +71,7 @@
   </ImportGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver_stm32f4.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\startup\startup_common_init.cpp" />
@@ -93,8 +94,14 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\interrupt\hw_it_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\interrupt\hw_it_register_stm32f446xx.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_driver.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_mapping.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_prj.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_register_stm32f446xx.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver_prv.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_register_stm32f446xx.hpp" />

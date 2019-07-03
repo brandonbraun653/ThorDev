@@ -139,6 +139,9 @@
     <Filter Include="Thor\drivers\common\mapping">
       <UniqueIdentifier>{a3a64b26-5ff9-43da-adda-9d96bb6ff431}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thor\drivers\f4\power">
+      <UniqueIdentifier>{12ca7051-c5d6-47b6-b942-c3cc306bada1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="stm32.props">
@@ -611,6 +614,9 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.cpp">
       <Filter>Thor\drivers\f4\rcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_driver_stm32f4.cpp">
+      <Filter>Thor\drivers\f4\power</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">
@@ -696,6 +702,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\compiler_intf.hpp">
       <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver_prv.hpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_driver.hpp">
+      <Filter>Thor\drivers\f4\power</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_mapping.hpp">
+      <Filter>Thor\drivers\f4\power</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_prj.hpp">
+      <Filter>Thor\drivers\f4\power</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_register_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\power</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_types.hpp">
+      <Filter>Thor\drivers\f4\power</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
