@@ -694,6 +694,9 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.hpp">
       <Filter>Thor\drivers\f4\rcc</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\compiler_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <LinkerScript Include="STM32F446RE_flash.lds">

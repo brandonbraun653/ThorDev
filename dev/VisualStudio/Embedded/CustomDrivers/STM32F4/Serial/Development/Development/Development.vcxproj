@@ -81,6 +81,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_usart.cpp" />
     <ClCompile Include="main.cpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\assert.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\compiler_intf.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\threading_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m4\utilities.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.hpp" />
