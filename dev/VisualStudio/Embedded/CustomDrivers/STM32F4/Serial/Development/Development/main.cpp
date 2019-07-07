@@ -28,6 +28,7 @@ int main()
   sys->setCoreClockSource( Thor::Clock::Source::HSE );
   sys->setCoreClock( 160000000 );
 
+  volatile auto tmp = sys->getCoreClock();
 
   addThread( testThread, "testThread", 500, nullptr, 2, nullptr );
 
