@@ -25,8 +25,7 @@ int main()
 {
   Thor::Driver::RCC::init();
   auto sys = Thor::Driver::RCC::SystemClock::get();
-  sys->setCoreClockSource( Thor::Clock::Source::HSE );
-  sys->setCoreClock( 160000000 );
+  sys->configureProjectClocks();
 
   volatile auto tmp = sys->getCoreClock();
 

@@ -123,11 +123,14 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_register_stm32f446xx.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_memory_map_prj.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_mapping.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\GPIO.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\gpio.hpp" />
+    <ClInclude Include="thorDriverConfig.hpp" />
     <ClInclude Include="thor_config_prj.hpp" />
     <None Include="stm32.props" />
     <None Include="Development-Debug.vgdbsettings" />

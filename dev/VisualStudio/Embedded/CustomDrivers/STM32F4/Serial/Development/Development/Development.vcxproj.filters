@@ -784,6 +784,15 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cmsis\configuration.hpp">
       <Filter>Thor\drivers\common\cmsis</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_mapping.hpp">
+      <Filter>Thor\drivers\f4\uart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.hpp">
+      <Filter>Thor\drivers\f4\usart</Filter>
+    </ClInclude>
+    <ClInclude Include="thorDriverConfig.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <LinkerScript Include="STM32F446RE_flash.lds">
