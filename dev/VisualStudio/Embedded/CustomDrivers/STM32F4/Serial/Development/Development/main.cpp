@@ -10,11 +10,9 @@
  ********************************************************************************/
 
 /* Chimera Includes */
+#include <Chimera/system.hpp>
 #include <Chimera/gpio.hpp>
 #include <Chimera/threading.hpp>
-
-//#include <Thor/drivers/GPIO.hpp>
-#include <Thor/drivers/RCC.hpp>
 
 using namespace Chimera::GPIO;
 using namespace Chimera::Threading;
@@ -23,11 +21,7 @@ void testThread( void *argument );
 
 int main()
 {
-  Thor::Driver::RCC::init();
-  auto sys = Thor::Driver::RCC::SystemClock::get();
-  sys->configureProjectClocks();
-
-  volatile auto tmp = sys->getCoreClock();
+  Chimera::System::initialize();
 
   addThread( testThread, "testThread", 500, nullptr, 2, nullptr );
 
