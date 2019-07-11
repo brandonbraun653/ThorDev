@@ -13,17 +13,21 @@
 #include <Chimera/system.hpp>
 #include <Chimera/gpio.hpp>
 #include <Chimera/threading.hpp>
+#include <Chimera/serial.hpp>
 
 using namespace Chimera::GPIO;
+using namespace Chimera::Serial;
 using namespace Chimera::Threading;
 
-void testThread( void *argument );
+void blinkyThread( void *argument );
+void serialThread( void *argument );
 
 int main()
 {
   Chimera::System::initialize();
 
-  addThread( testThread, "testThread", 500, nullptr, 2, nullptr );
+  addThread( blinkyThread, "blinky", 500, nullptr, 2, nullptr );
+  addThread( serialThread, "serial", 500, nullptr, 2, nullptr );
 
   startScheduler();
 
@@ -31,7 +35,7 @@ int main()
   return 0;
 }
 
-void testThread( void *argument )
+void blinkyThread( void *argument )
 {
   GPIOClass gpio;
   PinInit init;
@@ -51,8 +55,31 @@ void testThread( void *argument )
   {
     gpio.setState( State::HIGH );
     Chimera::delayMilliseconds( 500 );
-    
+
     gpio.setState( State::LOW );
     Chimera::delayMilliseconds( 500 );
+  }
+}
+
+void serialThread( void *argument )
+{
+  SerialClass serial;
+  IOPins serialPins;
+  COMConfig config;
+
+  std::array<uint8_t, 10> data;
+
+  data.fill( 0 );
+
+  
+  serial.assignHW( 4, serialPins );
+  serial.configure( config );
+  serial.begin( Chimera::Hardware::SubPeripheralMode::BLOCKING, Chimera::Hardware::SubPeripheralMode::BLOCKING );
+
+  while ( 1 )
+  {
+    serial.write( data.cbegin(), data.size() );
+
+    Chimera::delayMilliseconds( 100 );
   }
 }

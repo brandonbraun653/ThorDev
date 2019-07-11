@@ -659,6 +659,27 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_stm32hal_usart.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_gpio.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_uart.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_usart.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_mapping.cpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_types.cpp">
+      <Filter>Thor\drivers\f4\gpio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_mapping.cpp">
+      <Filter>Thor\drivers\f4\uart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.cpp">
+      <Filter>Thor\drivers\f4\usart</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">

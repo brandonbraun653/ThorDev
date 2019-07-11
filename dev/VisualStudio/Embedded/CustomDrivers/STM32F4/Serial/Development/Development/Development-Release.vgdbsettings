@@ -18,7 +18,11 @@
       </Version>
     </ToolchainID>
     <ProjectFile>Development.vcxproj</ProjectFile>
-    <ParallelJobCount>0</ParallelJobCount>
+    <RemoteBuildEnvironment>
+      <Records />
+      <EnvironmentSetupFiles />
+    </RemoteBuildEnvironment>
+    <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
   </Build>
   <CustomBuild>
@@ -39,19 +43,29 @@
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
   <UserDefinedVariables />
+  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>
       <HideErrorsInSystemHeaders>true</HideErrorsInSystemHeaders>
       <SupportLightweightReferenceAnalysis>true</SupportLightweightReferenceAnalysis>
+      <DiscoverySettings>
+        <Mode>Enabled</Mode>
+        <SearchInProjectDir>true</SearchInProjectDir>
+        <SearchInSourceDirs>true</SearchInSourceDirs>
+        <SearchInIncludeSubdirs>true</SearchInIncludeSubdirs>
+      </DiscoverySettings>
       <CheckForClangFormatFiles>true</CheckForClangFormatFiles>
-      <FormattingEngine xsi:nil="true" />
+      <ExplicitClangFormatFile>..\..\..\..\..\..\..\..\Thor\.clang-format</ExplicitClangFormatFile>
+      <FormattingEngine>ClangFormat</FormattingEngine>
     </ExtraSettings>
     <CodeAnalyzerSettings>
       <Enabled>false</Enabled>
     </CodeAnalyzerSettings>
   </CodeSense>
   <BuildContextDirectory>VisualGDB\VisualGDBCache</BuildContextDirectory>
+  <Configurations />
+  <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.embedded">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>
@@ -115,7 +129,36 @@
     <ValidateEndOfStackAddress>true</ValidateEndOfStackAddress>
     <StopAtEntryPoint>false</StopAtEntryPoint>
     <EnableVirtualHalts>false</EnableVirtualHalts>
-    <DynamicAnalysisSettings />
+    <DynamicAnalysisSettings>
+      <StackVerifier>
+        <VerifyStackBounds>false</VerifyStackBounds>
+        <AutoStepOutOfHook>true</AutoStepOutOfHook>
+        <StackLimitControlledByUser>false</StackLimitControlledByUser>
+        <ExplicitSizeLimit>0</ExplicitSizeLimit>
+        <ExplicitStackBase>0</ExplicitStackBase>
+        <Mode>Auto</Mode>
+      </StackVerifier>
+      <RealTimeWatch>
+        <SupportRTOSAnalysis>false</SupportRTOSAnalysis>
+        <SupportFunctionInstrumentation>false</SupportFunctionInstrumentation>
+        <MeasureOverhead>true</MeasureOverhead>
+      </RealTimeWatch>
+      <InstrumentedFunctions>
+        <InstrumentNewFunctions>true</InstrumentNewFunctions>
+        <ExplicitEndOfFLASH>0</ExplicitEndOfFLASH>
+        <ExplicitEndOfRAM>0</ExplicitEndOfRAM>
+      </InstrumentedFunctions>
+      <RTOSFeatures>
+        <RTOSFeatureSetting>
+          <FeatureID>com.sysprogs.analysis.thread.timing</FeatureID>
+          <Enabled>true</Enabled>
+        </RTOSFeatureSetting>
+        <RTOSFeatureSetting>
+          <FeatureID>com.sysprogs.analysis.freertos.queues</FeatureID>
+          <Enabled>true</Enabled>
+        </RTOSFeatureSetting>
+      </RTOSFeatures>
+    </DynamicAnalysisSettings>
     <EndOfStackSymbol>_estack</EndOfStackSymbol>
     <TimestampProviderTicksPerSecond>0</TimestampProviderTicksPerSecond>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
