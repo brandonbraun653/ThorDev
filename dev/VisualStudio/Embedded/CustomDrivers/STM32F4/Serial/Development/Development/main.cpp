@@ -61,24 +61,27 @@ void blinkyThread( void *argument )
   }
 }
 
+#include <Thor/drivers/f4/usart/hw_usart_driver.hpp>
+#include <Thor/drivers/common/types/serial_types.hpp>
+#include <Thor/drivers/f4/rcc/hw_rcc_driver.hpp>
+
 void serialThread( void *argument )
 {
-  SerialClass serial;
-  IOPins serialPins;
-  COMConfig config;
+  using namespace Thor::Driver::USART;
+  using namespace Thor::Driver::Serial;
+  using namespace Thor::Driver::RCC;
 
-  std::array<uint8_t, 10> data;
+  Config cfg;
+  cfg.BaudRate = 115200;
 
-  data.fill( 0 );
 
-  
-  serial.assignHW( 4, serialPins );
-  serial.configure( config );
-  serial.begin( Chimera::Hardware::SubPeripheralMode::BLOCKING, Chimera::Hardware::SubPeripheralMode::BLOCKING );
+  Driver usart( USART3_PERIPH, USARTPeriph::get() );
+
+  usart.init( cfg );
 
   while ( 1 )
   {
-    serial.write( data.cbegin(), data.size() );
+    
 
     Chimera::delayMilliseconds( 100 );
   }
