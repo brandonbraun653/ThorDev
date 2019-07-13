@@ -71,16 +71,19 @@ void serialThread( void *argument )
   using namespace Thor::Driver::Serial;
   using namespace Thor::Driver::RCC;
 
+  signalSetupComplete();
+
   Config cfg;
-  cfg.BaudRate = 115200;
+  cfg.BaudRate   = 115200;
+  cfg.Mode       = Configuration::Modes::TX_RX;
+  cfg.Parity     = Configuration::Parity::NONE;
+  cfg.StopBits   = Configuration::Stop::BIT_1;
+  cfg.WordLength = Configuration::WordLength::LEN_8BIT;
 
 
   Driver usart( USART3_PERIPH );
 
   usart.init( cfg );
-
-
-  signalSetupComplete();
 
   while ( 1 )
   {
