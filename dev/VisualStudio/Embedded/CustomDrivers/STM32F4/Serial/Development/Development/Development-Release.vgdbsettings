@@ -160,7 +160,8 @@
       </RTOSFeatures>
     </DynamicAnalysisSettings>
     <EndOfStackSymbol>_estack</EndOfStackSymbol>
-    <TimestampProviderTicksPerSecond>0</TimestampProviderTicksPerSecond>
+    <TimestampProvider>com.sysprogs.arm.dwt</TimestampProvider>
+    <TimestampProviderTicksPerSecond>128000000</TimestampProviderTicksPerSecond>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
     <CheckInterfaceDrivers>true</CheckInterfaceDrivers>
   </Debug>

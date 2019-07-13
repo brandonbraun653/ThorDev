@@ -75,9 +75,12 @@ void serialThread( void *argument )
   cfg.BaudRate = 115200;
 
 
-  Driver usart( USART3_PERIPH, USARTPeriph::get() );
+  Driver usart( USART3_PERIPH );
 
   usart.init( cfg );
+
+
+  signalSetupComplete();
 
   while ( 1 )
   {
