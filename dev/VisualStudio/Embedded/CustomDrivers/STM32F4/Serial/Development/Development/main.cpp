@@ -61,34 +61,58 @@ void blinkyThread( void *argument )
   }
 }
 
-#include <Thor/drivers/f4/usart/hw_usart_driver.hpp>
 #include <Thor/drivers/common/types/serial_types.hpp>
 #include <Thor/drivers/f4/rcc/hw_rcc_driver.hpp>
+#include <Thor/drivers/f4/usart/hw_usart_driver.hpp>
 
 void serialThread( void *argument )
 {
-  using namespace Thor::Driver::USART;
+  using namespace Thor::Driver;
   using namespace Thor::Driver::Serial;
   using namespace Thor::Driver::RCC;
 
   signalSetupComplete();
 
+  GPIOClass rxPin;
+  PinInit rxInit;
+
+  rxInit.alternate = GPIO::AF7_USART3;
+  rxInit.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  rxInit.pin       = 11;
+  rxInit.port      = Chimera::GPIO::Port::PORTC;
+  rxInit.pull      = Chimera::GPIO::Pull::NO_PULL;
+
+  rxPin.init( rxInit );
+
+  GPIOClass txPin;
+  PinInit txInit;
+
+  txInit.alternate = GPIO::AF7_USART3;
+  txInit.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  txInit.pin       = 10;
+  txInit.port      = Chimera::GPIO::Port::PORTC;
+  txInit.pull      = Chimera::GPIO::Pull::NO_PULL;
+
+  txPin.init( txInit );
+
   Config cfg;
   cfg.BaudRate   = 115200;
-  cfg.Mode       = Configuration::Modes::TX_RX;
-  cfg.Parity     = Configuration::Parity::NONE;
-  cfg.StopBits   = Configuration::Stop::BIT_1;
-  cfg.WordLength = Configuration::WordLength::LEN_8BIT;
+  cfg.Mode       = USART::Configuration::Modes::TX_RX;
+  cfg.Parity     = USART::Configuration::Parity::NONE;
+  cfg.StopBits   = USART::Configuration::Stop::BIT_1;
+  cfg.WordLength = USART::Configuration::WordLength::LEN_8BIT;
 
 
-  Driver usart( USART3_PERIPH );
+  USART::Driver usart( USART::USART3_PERIPH );
 
   usart.init( cfg );
 
+
+  std::array<uint8_t, 5> str = { 'a', 'b', 'c', '\r', '\n' };
+
   while ( 1 )
   {
-    
-
+    usart.transmit( str.data(), str.size(), 100 );
     Chimera::delayMilliseconds( 100 );
   }
 }
