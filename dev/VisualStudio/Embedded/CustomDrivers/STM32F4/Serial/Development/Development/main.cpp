@@ -106,13 +106,13 @@ void serialThread( void *argument )
   USART::Driver usart( USART::USART3_PERIPH );
 
   usart.init( cfg );
-
+  usart.enableIT( Chimera::Hardware::SubPeripheral::TX );
 
   std::array<uint8_t, 5> str = { 'a', 'b', 'c', '\r', '\n' };
 
   while ( 1 )
   {
-    usart.transmit( str.data(), str.size(), 100 );
+    usart.transmitIT( str.data(), str.size(), 100 );
     Chimera::delayMilliseconds( 100 );
   }
 }
