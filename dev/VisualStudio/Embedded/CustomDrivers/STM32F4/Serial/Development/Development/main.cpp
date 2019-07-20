@@ -108,11 +108,39 @@ void serialThread( void *argument )
   usart.init( cfg );
   usart.enableIT( Chimera::Hardware::SubPeripheral::TX );
 
-  std::array<uint8_t, 5> str = { 'a', 'b', 'c', '\r', '\n' };
+  std::array<uint8_t, 5> readArray;
+  readArray.fill( 0 );
+
+  std::string startupString = "Hello! Feed me some bytes please :) \r\n";
+  std::string allBytes      = "I got all the bytes!\r\n";
+  std::string someBytes     = "I got some bytes, but aborted...\r\n";
+
+  usart.transmitIT( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
+  usart.receiveIT( readArray.data(), readArray.size(), 100 );
 
   while ( 1 )
   {
-    usart.transmitIT( str.data(), str.size(), 100 );
+    
+    if ( usart.rxTransferStatus() == Chimera::Serial::Status::RX_COMPLETE )
+    {
+      usart.killReceive();
+      usart.transmitIT( reinterpret_cast<const uint8_t *>( allBytes.c_str() ), allBytes.size(), 100 );
+
+      while ( usart.txTransferStatus() != Chimera::Serial::Status::TX_COMPLETE )
+      {
+        Chimera::delayMilliseconds( 5 );
+      }
+
+      usart.transmitIT( readArray.data(), readArray.size(), 100 );
+    }
+
+    if ( usart.rxTransferStatus() == Chimera::Serial::Status::RX_ABORTED )
+    {
+      usart.transmitIT( reinterpret_cast<const uint8_t *>( someBytes.c_str() ), someBytes.size(), 100 );
+
+      usart.killReceive();
+    }
+
     Chimera::delayMilliseconds( 100 );
   }
 }
