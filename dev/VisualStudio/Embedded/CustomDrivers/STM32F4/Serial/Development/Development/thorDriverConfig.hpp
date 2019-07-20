@@ -15,6 +15,7 @@
 /*------------------------------------------------
 Enable/Disable peripheral drivers here to save memory
 ------------------------------------------------*/
+#define THOR_DRIVER_DMA   1
 #define THOR_DRIVER_FLASH 1
 #define THOR_DRIVER_GPIO  1
 #define THOR_DRIVER_NVIC  1

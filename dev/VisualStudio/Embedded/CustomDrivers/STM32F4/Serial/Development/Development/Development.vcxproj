@@ -71,6 +71,8 @@
   </ImportGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_system.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver_stm32f4.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_mapping.cpp" />
@@ -89,9 +91,11 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_driver.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\resources\thor_dma_resources.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_boost_stub.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_gpio.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_usart.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_dma.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_exceptions.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_serial.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_stm32hal_uart.cpp" />
@@ -101,6 +105,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\assert.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\compiler_intf.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\threading_types.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\dma.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cmsis\configuration.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cmsis\core\include\cmsis_compiler.h" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cmsis\core\include\cmsis_gcc.h" />
@@ -110,9 +115,15 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m4\register.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m4\utilities.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m7\register.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\dma_interrupt_vectors.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\gpio_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\peripheral_event_types.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_prj.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_register_stm32f446xx.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_driver.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_register_stm32f446xx.hpp" />
@@ -144,6 +155,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\GPIO.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\dma_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\event_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp" />
@@ -151,6 +163,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\exceptions.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\gpio.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\headers.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\resources\dma_resources.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\serial.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\uart.hpp" />
     <ClInclude Include="thorDriverConfig.hpp" />

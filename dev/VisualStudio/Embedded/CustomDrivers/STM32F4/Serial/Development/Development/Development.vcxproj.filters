@@ -160,6 +160,12 @@
     <Filter Include="Thor\drivers\common\cortex-m7">
       <UniqueIdentifier>{07a3ed0c-beed-45c9-b7d7-df7630b95da2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thor\drivers\f4\dma">
+      <UniqueIdentifier>{153a35b3-ecba-48cc-955b-238916a53e12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thor\resources">
+      <UniqueIdentifier>{d01b8b4f-176e-4db7-960b-1c26efba4a08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="stm32.props">
@@ -686,6 +692,18 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_boost_stub.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver_stm32f4.cpp">
+      <Filter>Thor\drivers\f4\dma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.cpp">
+      <Filter>Thor\drivers\f4\dma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_dma.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\resources\thor_dma_resources.cpp">
+      <Filter>Thor\resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">
@@ -864,6 +882,33 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\peripheral_event_types.hpp">
       <Filter>Thor\drivers\common\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_prj.hpp">
+      <Filter>Thor\drivers\f4\dma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_register_stm32f446xx.hpp">
+      <Filter>Thor\drivers\f4\dma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_types.hpp">
+      <Filter>Thor\drivers\f4\dma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver.hpp">
+      <Filter>Thor\drivers\f4\dma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.hpp">
+      <Filter>Thor\drivers\f4\dma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\dma_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\dma_interrupt_vectors.hpp">
+      <Filter>Thor\drivers\common\interrupts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\dma.hpp">
+      <Filter>Thor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\resources\dma_resources.hpp">
+      <Filter>Thor\resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
