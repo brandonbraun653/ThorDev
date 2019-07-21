@@ -9,11 +9,17 @@
  *   2019 | Brandon Braun | brandonbraun653@gmail.com
  ********************************************************************************/
 
+ /* C++ Includes */
+ #include <functional>
+
+
 /* Chimera Includes */
 #include <Chimera/system.hpp>
 #include <Chimera/gpio.hpp>
 #include <Chimera/threading.hpp>
 #include <Chimera/serial.hpp>
+
+#include <Chimera/types/callback_types.hpp>
 
 using namespace Chimera::GPIO;
 using namespace Chimera::Serial;
@@ -21,13 +27,14 @@ using namespace Chimera::Threading;
 
 void blinkyThread( void *argument );
 void serialThread( void *argument );
+void testCallback( void *handle, size_t data );
 
 int main()
 {
   Chimera::System::initialize();
 
   addThread( blinkyThread, "blinky", 500, nullptr, 2, nullptr );
-  addThread( serialThread, "serial", 500, nullptr, 2, nullptr );
+  addThread( serialThread, "serial", 1500, nullptr, 2, nullptr );
 
   startScheduler();
 
@@ -73,6 +80,8 @@ void serialThread( void *argument )
 
   signalSetupComplete();
 
+
+
   GPIOClass rxPin;
   PinInit rxInit;
 
@@ -102,11 +111,15 @@ void serialThread( void *argument )
   cfg.StopBits   = USART::Configuration::Stop::BIT_1;
   cfg.WordLength = USART::Configuration::WordLength::LEN_8BIT;
 
+  Chimera::Callback::ISRCallback cbHandle;
+  cbHandle.func = std::bind( testCallback, std::placeholders::_1, std::placeholders::_2 );
 
+  
   USART::Driver usart( USART::USART3_PERIPH );
 
   usart.init( cfg );
   usart.enableIT( Chimera::Hardware::SubPeripheral::TX );
+  usart.attachCallback( Chimera::Event::Trigger::WRITE_COMPLETE, cbHandle );
 
   std::array<uint8_t, 5> readArray;
   readArray.fill( 0 );
@@ -117,6 +130,8 @@ void serialThread( void *argument )
 
   usart.transmitIT( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
   usart.receiveIT( readArray.data(), readArray.size(), 100 );
+
+
 
   while ( 1 )
   {
@@ -143,4 +158,10 @@ void serialThread( void *argument )
 
     Chimera::delayMilliseconds( 100 );
   }
+}
+
+
+void testCallback( void *handle, size_t data )
+{
+  // Do nothing for now...just checking the bind
 }

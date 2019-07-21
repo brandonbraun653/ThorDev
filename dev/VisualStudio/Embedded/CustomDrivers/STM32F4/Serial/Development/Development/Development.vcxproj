@@ -53,6 +53,7 @@
       <LinkerScript>STM32F446RE_flash.lds</LinkerScript>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>blinky.map</MapFileName>
+      <ProduceRelocationRecords>true</ProduceRelocationRecords>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
@@ -93,9 +94,10 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\resources\thor_dma_resources.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_boost_stub.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_dma.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_gpio.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_uart.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_usart.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_dma.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_exceptions.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_serial.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_stm32hal_uart.cpp" />
@@ -103,7 +105,9 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_system.cpp" />
     <ClCompile Include="main.cpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\assert.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\callback_intf.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\compiler_intf.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\callback_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\threading_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\dma.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cmsis\configuration.hpp" />

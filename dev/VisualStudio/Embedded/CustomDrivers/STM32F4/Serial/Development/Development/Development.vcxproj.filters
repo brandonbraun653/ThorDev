@@ -698,11 +698,14 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.cpp">
       <Filter>Thor\drivers\f4\dma</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_dma.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\resources\thor_dma_resources.cpp">
       <Filter>Thor\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_dma.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_uart.cpp">
+      <Filter>Thor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -909,6 +912,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\resources\dma_resources.hpp">
       <Filter>Thor\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\callback_intf.hpp">
+      <Filter>Chimera\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\callback_types.hpp">
+      <Filter>Chimera\types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
