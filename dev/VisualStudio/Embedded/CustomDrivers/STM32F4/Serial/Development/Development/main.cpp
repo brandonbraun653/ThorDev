@@ -19,15 +19,18 @@
 #include <Chimera/threading.hpp>
 #include <Chimera/serial.hpp>
 
-#include <Chimera/types/callback_types.hpp>
+#include <Chimera/types/event_types.hpp>
 
 using namespace Chimera::GPIO;
 using namespace Chimera::Serial;
 using namespace Chimera::Threading;
 
+static uint32_t testValue = 0;
+static bool callbackExecuted = false;
+
 void blinkyThread( void *argument );
 void serialThread( void *argument );
-void testCallback( void *handle, size_t data );
+void testCallback( void *const handle, const size_t size );
 
 int main()
 {
@@ -80,8 +83,19 @@ void serialThread( void *argument )
 
   signalSetupComplete();
 
+  /*------------------------------------------------
+  Callback Initialization
+  ------------------------------------------------*/
+  size_t callbackId = 700;
+  Chimera::Event::Actionable callback;
 
+  callback.element = std::bind( testCallback, std::placeholders::_1, std::placeholders::_2 );
+  callback.trigger = Chimera::Event::Trigger::READ_COMPLETE;
+  callback.type    = Chimera::Event::ElementType::CALLBACK;
 
+  /*------------------------------------------------
+  GPIO Initialization
+  ------------------------------------------------*/
   GPIOClass rxPin;
   PinInit rxInit;
 
@@ -104,6 +118,9 @@ void serialThread( void *argument )
 
   txPin.init( txInit );
 
+  /*------------------------------------------------
+  USART Initialization
+  ------------------------------------------------*/
   Config cfg;
   cfg.BaudRate   = 115200;
   cfg.Mode       = USART::Configuration::Modes::TX_RX;
@@ -111,27 +128,25 @@ void serialThread( void *argument )
   cfg.StopBits   = USART::Configuration::Stop::BIT_1;
   cfg.WordLength = USART::Configuration::WordLength::LEN_8BIT;
 
-  Chimera::Callback::ISRCallback cbHandle;
-  cbHandle.func = std::bind( testCallback, std::placeholders::_1, std::placeholders::_2 );
-
-  
   USART::Driver usart( USART::USART3_PERIPH );
 
   usart.init( cfg );
   usart.enableIT( Chimera::Hardware::SubPeripheral::TX );
-  usart.attachCallback( Chimera::Event::Trigger::WRITE_COMPLETE, cbHandle );
+  usart.registerListener( callback, 100, callbackId );
 
+  /*------------------------------------------------
+  Test code
+  ------------------------------------------------*/
   std::array<uint8_t, 5> readArray;
   readArray.fill( 0 );
 
   std::string startupString = "Hello! Feed me some bytes please :) \r\n";
   std::string allBytes      = "I got all the bytes!\r\n";
   std::string someBytes     = "I got some bytes, but aborted...\r\n";
+  std::string callbackStr   = "Callback executed!\r\n";
 
   usart.transmitIT( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
   usart.receiveIT( readArray.data(), readArray.size(), 100 );
-
-
 
   while ( 1 )
   {
@@ -156,12 +171,19 @@ void serialThread( void *argument )
       usart.killReceive();
     }
 
+    if ( callbackExecuted )
+    {
+      callbackExecuted = false;
+      usart.transmitIT( reinterpret_cast<const uint8_t *>( callbackStr.c_str() ), callbackStr.size(), 100 );
+    }
+
     Chimera::delayMilliseconds( 100 );
   }
 }
 
 
-void testCallback( void *handle, size_t data )
+void testCallback( void *const handle, const size_t size )
 {
-  // Do nothing for now...just checking the bind
+  testValue++;
+  callbackExecuted = true;
 }

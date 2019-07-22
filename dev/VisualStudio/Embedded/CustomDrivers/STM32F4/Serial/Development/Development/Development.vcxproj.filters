@@ -707,14 +707,11 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_uart.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_event.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\clock_model.hpp">
-      <Filter>Thor\drivers\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\power_model.hpp">
-      <Filter>Thor\drivers\model</Filter>
-    </ClInclude>
     <ClInclude Include="thor_config_prj.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -880,12 +877,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\uart.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\event_model.hpp">
-      <Filter>Thor\drivers\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\peripheral_event_types.hpp">
-      <Filter>Thor\drivers\common\types</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_prj.hpp">
       <Filter>Thor\drivers\f4\dma</Filter>
     </ClInclude>
@@ -918,6 +909,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\callback_types.hpp">
       <Filter>Chimera\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\event.hpp">
+      <Filter>Thor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
