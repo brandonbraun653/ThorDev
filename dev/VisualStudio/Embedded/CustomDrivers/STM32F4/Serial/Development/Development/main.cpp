@@ -71,15 +71,14 @@ void blinkyThread( void *argument )
   }
 }
 
-#include <Thor/drivers/common/types/serial_types.hpp>
-#include <Thor/drivers/f4/rcc/hw_rcc_driver.hpp>
-#include <Thor/drivers/f4/usart/hw_usart_driver.hpp>
+
+#include <Thor/usart.hpp>
+#include <Thor/gpio.hpp>
 
 void serialThread( void *argument )
 {
-  using namespace Thor::Driver;
-  using namespace Thor::Driver::Serial;
-  using namespace Thor::Driver::RCC;
+  using namespace Chimera::Serial;
+  using namespace Thor::USART;
 
   signalSetupComplete();
 
@@ -96,42 +95,27 @@ void serialThread( void *argument )
   /*------------------------------------------------
   GPIO Initialization
   ------------------------------------------------*/
-  GPIOClass rxPin;
-  PinInit rxInit;
+  Chimera::Serial::IOPins serialPins;
 
-  rxInit.alternate = GPIO::AF7_USART3;
-  rxInit.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  rxInit.pin       = 11;
-  rxInit.port      = Chimera::GPIO::Port::PORTC;
-  rxInit.pull      = Chimera::GPIO::Pull::NO_PULL;
+  serialPins.rx.alternate = Thor::Driver::GPIO::AF7_USART3;
+  serialPins.rx.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  serialPins.rx.pin       = 11;
+  serialPins.rx.port      = Chimera::GPIO::Port::PORTC;
+  serialPins.rx.pull      = Chimera::GPIO::Pull::NO_PULL;
 
-  rxPin.init( rxInit );
-
-  GPIOClass txPin;
-  PinInit txInit;
-
-  txInit.alternate = GPIO::AF7_USART3;
-  txInit.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  txInit.pin       = 10;
-  txInit.port      = Chimera::GPIO::Port::PORTC;
-  txInit.pull      = Chimera::GPIO::Pull::NO_PULL;
-
-  txPin.init( txInit );
+  serialPins.tx.alternate = Thor::Driver::GPIO::AF7_USART3;
+  serialPins.tx.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  serialPins.tx.pin       = 10;
+  serialPins.tx.port      = Chimera::GPIO::Port::PORTC;
+  serialPins.tx.pull      = Chimera::GPIO::Pull::NO_PULL;
 
   /*------------------------------------------------
   USART Initialization
   ------------------------------------------------*/
-  Config cfg;
-  cfg.BaudRate   = 115200;
-  cfg.Mode       = USART::Configuration::Modes::TX_RX;
-  cfg.Parity     = USART::Configuration::Parity::NONE;
-  cfg.StopBits   = USART::Configuration::Stop::BIT_1;
-  cfg.WordLength = USART::Configuration::WordLength::LEN_8BIT;
+  Thor::USART::USARTClass usart;
 
-  USART::Driver usart( USART::USART3_PERIPH );
+  usart.assignHW( 3, serialPins );
 
-  usart.init( cfg );
-  usart.enableIT( Chimera::Hardware::SubPeripheral::TX );
   usart.registerListener( callback, 100, callbackId );
 
   /*------------------------------------------------
@@ -145,37 +129,37 @@ void serialThread( void *argument )
   std::string someBytes     = "I got some bytes, but aborted...\r\n";
   std::string callbackStr   = "Callback executed!\r\n";
 
-  usart.transmitIT( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
-  usart.receiveIT( readArray.data(), readArray.size(), 100 );
+//  usart.transmitIT( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
+//  usart.receiveIT( readArray.data(), readArray.size(), 100 );
 
   while ( 1 )
   {
     
-    if ( usart.rxTransferStatus() == Chimera::Serial::Status::RX_COMPLETE )
-    {
-      usart.killReceive();
-      usart.transmitIT( reinterpret_cast<const uint8_t *>( allBytes.c_str() ), allBytes.size(), 100 );
-
-      while ( usart.txTransferStatus() != Chimera::Serial::Status::TX_COMPLETE )
-      {
-        Chimera::delayMilliseconds( 5 );
-      }
-
-      usart.transmitIT( readArray.data(), readArray.size(), 100 );
-    }
-
-    if ( usart.rxTransferStatus() == Chimera::Serial::Status::RX_ABORTED )
-    {
-      usart.transmitIT( reinterpret_cast<const uint8_t *>( someBytes.c_str() ), someBytes.size(), 100 );
-
-      usart.killReceive();
-    }
-
-    if ( callbackExecuted )
-    {
-      callbackExecuted = false;
-      usart.transmitIT( reinterpret_cast<const uint8_t *>( callbackStr.c_str() ), callbackStr.size(), 100 );
-    }
+//    if ( usart.rxTransferStatus() == Chimera::Serial::Status::RX_COMPLETE )
+//    {
+//      usart.killReceive();
+//      usart.transmitIT( reinterpret_cast<const uint8_t *>( allBytes.c_str() ), allBytes.size(), 100 );
+//
+//      while ( usart.txTransferStatus() != Chimera::Serial::Status::TX_COMPLETE )
+//      {
+//        Chimera::delayMilliseconds( 5 );
+//      }
+//
+//      usart.transmitIT( readArray.data(), readArray.size(), 100 );
+//    }
+//
+//    if ( usart.rxTransferStatus() == Chimera::Serial::Status::RX_ABORTED )
+//    {
+//      usart.transmitIT( reinterpret_cast<const uint8_t *>( someBytes.c_str() ), someBytes.size(), 100 );
+//
+//      usart.killReceive();
+//    }
+//
+//    if ( callbackExecuted )
+//    {
+//      callbackExecuted = false;
+//      usart.transmitIT( reinterpret_cast<const uint8_t *>( callbackStr.c_str() ), callbackStr.size(), 100 );
+//    }
 
     Chimera::delayMilliseconds( 100 );
   }
