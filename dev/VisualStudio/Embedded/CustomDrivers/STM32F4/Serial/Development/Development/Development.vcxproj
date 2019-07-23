@@ -162,6 +162,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\dma_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\NVIC.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\event.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\exceptions.hpp" />

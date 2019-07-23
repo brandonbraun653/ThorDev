@@ -77,6 +77,7 @@ void blinkyThread( void *argument )
 
 void serialThread( void *argument )
 {
+  using namespace Chimera::Hardware;
   using namespace Chimera::Serial;
   using namespace Thor::USART;
 
@@ -89,8 +90,16 @@ void serialThread( void *argument )
   Chimera::Event::Actionable callback;
 
   callback.element = std::bind( testCallback, std::placeholders::_1, std::placeholders::_2 );
-  callback.trigger = Chimera::Event::Trigger::READ_COMPLETE;
+  callback.trigger = Chimera::Event::Trigger::WRITE_COMPLETE;
   callback.type    = Chimera::Event::ElementType::CALLBACK;
+
+  size_t callbackID1       = 750;
+  SemaphoreHandle_t wakeup = xSemaphoreCreateBinary();
+
+  Chimera::Event::Actionable callback1;
+  callback1.element = wakeup;
+  callback1.trigger = Chimera::Event::Trigger::WRITE_COMPLETE;
+  callback1.type    = Chimera::Event::ElementType::THREAD_NOTIFIER;
 
   /*------------------------------------------------
   GPIO Initialization
@@ -113,10 +122,14 @@ void serialThread( void *argument )
   USART Initialization
   ------------------------------------------------*/
   Thor::USART::USARTClass usart;
+  Chimera::Serial::Config usartConfig;
 
   usart.assignHW( 3, serialPins );
+  usart.configure( usartConfig );
+  usart.begin( SubPeripheralMode::INTERRUPT, SubPeripheralMode::INTERRUPT );
 
   usart.registerListener( callback, 100, callbackId );
+  usart.registerListener( callback1, 100, callbackID1 );
 
   /*------------------------------------------------
   Test code
@@ -129,7 +142,8 @@ void serialThread( void *argument )
   std::string someBytes     = "I got some bytes, but aborted...\r\n";
   std::string callbackStr   = "Callback executed!\r\n";
 
-//  usart.transmitIT( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
+  usart.write( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
+
 //  usart.receiveIT( readArray.data(), readArray.size(), 100 );
 
   while ( 1 )
@@ -155,12 +169,12 @@ void serialThread( void *argument )
 //      usart.killReceive();
 //    }
 //
-//    if ( callbackExecuted )
-//    {
-//      callbackExecuted = false;
-//      usart.transmitIT( reinterpret_cast<const uint8_t *>( callbackStr.c_str() ), callbackStr.size(), 100 );
-//    }
-
+    if ( ( xSemaphoreTake( wakeup, portMAX_DELAY ) == pdPASS ) && ( testValue == 1 ) )
+    {
+      callbackExecuted = false;
+      usart.write( reinterpret_cast<const uint8_t *>( callbackStr.c_str() ), callbackStr.size(), 100 );
+    }
+    
     Chimera::delayMilliseconds( 100 );
   }
 }
