@@ -12,6 +12,8 @@
  /* C++ Includes */
  #include <functional>
 
+/* Boost Includes */
+#include <boost/circular_buffer.hpp>
 
 /* Chimera Includes */
 #include <Chimera/system.hpp>
@@ -27,6 +29,15 @@ using namespace Chimera::Threading;
 
 static uint32_t testValue = 0;
 static bool callbackExecuted = false;
+
+static constexpr size_t CIRCULAR_BUFFER_SIZE = 100;
+static constexpr size_t ARRAY_SIZE           = 100;
+
+static boost::circular_buffer<uint8_t> txCircularBuffer;
+static boost::circular_buffer<uint8_t> rxCircularBuffer;
+
+static std::array<uint8_t, ARRAY_SIZE> txHardwareBuffer;
+static std::array<uint8_t, ARRAY_SIZE> rxHardwareBuffer;
 
 void blinkyThread( void *argument );
 void serialThread( void *argument );
@@ -84,6 +95,15 @@ void serialThread( void *argument )
   signalSetupComplete();
 
   /*------------------------------------------------
+  Memory Initialization
+  ------------------------------------------------*/
+  txCircularBuffer.resize( CIRCULAR_BUFFER_SIZE );
+  rxCircularBuffer.resize( CIRCULAR_BUFFER_SIZE );
+
+  txHardwareBuffer.fill( 0 );
+  rxHardwareBuffer.fill( 0 );
+
+  /*------------------------------------------------
   Callback Initialization
   ------------------------------------------------*/
   size_t callbackId = 700;
@@ -124,9 +144,18 @@ void serialThread( void *argument )
   Thor::USART::USARTClass usart;
   Chimera::Serial::Config usartConfig;
 
+  usartConfig.baud = 115200;
+  usartConfig.flow = FlowControl::FCTRL_NONE;
+  usartConfig.parity = Parity::PAR_NONE;
+  usartConfig.stopBits = StopBits::SBITS_ONE;
+  usartConfig.width    = CharWid::CW_8BIT;
+
+
   usart.assignHW( 3, serialPins );
   usart.configure( usartConfig );
   usart.begin( SubPeripheralMode::INTERRUPT, SubPeripheralMode::INTERRUPT );
+
+  usart.enableBuffering( SubPeripheral::TX, &txCircularBuffer, txHardwareBuffer.data(), txHardwareBuffer.size() );
 
   usart.registerListener( callback, 100, callbackId );
   usart.registerListener( callback1, 100, callbackID1 );
@@ -141,8 +170,14 @@ void serialThread( void *argument )
   std::string allBytes      = "I got all the bytes!\r\n";
   std::string someBytes     = "I got some bytes, but aborted...\r\n";
   std::string callbackStr   = "Callback executed!\r\n";
+  std::string bufferedStr   = "This is the queued string!\r\n";
+  std::string bufferedStr2  = "Hey there person! :)\r\n";
+  std::string bufferedStr3  = "Hey there person part 2! :)\r\n";
 
   usart.write( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
+  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr.c_str() ), bufferedStr.size(), 100 );
+  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr2.c_str() ), bufferedStr2.size(), 100 );
+  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr3.c_str() ), bufferedStr3.size(), 100 );
 
 //  usart.receiveIT( readArray.data(), readArray.size(), 100 );
 
