@@ -111,7 +111,7 @@ void serialThread( void *argument )
 
   callback.element = std::bind( testCallback, std::placeholders::_1, std::placeholders::_2 );
   callback.trigger = Chimera::Event::Trigger::WRITE_COMPLETE;
-  callback.type    = Chimera::Event::ElementType::CALLBACK;
+  callback.type    = Chimera::Event::ElementType::CALLBACK_T;
 
   size_t callbackID1       = 750;
   SemaphoreHandle_t wakeup = xSemaphoreCreateBinary();
@@ -119,7 +119,7 @@ void serialThread( void *argument )
   Chimera::Event::Actionable callback1;
   callback1.element = wakeup;
   callback1.trigger = Chimera::Event::Trigger::WRITE_COMPLETE;
-  callback1.type    = Chimera::Event::ElementType::THREAD_NOTIFIER;
+  callback1.type    = Chimera::Event::ElementType::THREAD_NOTIFIER_T;
 
   /*------------------------------------------------
   GPIO Initialization
