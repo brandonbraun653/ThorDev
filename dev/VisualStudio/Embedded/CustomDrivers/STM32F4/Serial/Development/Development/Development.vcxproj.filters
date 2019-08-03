@@ -246,15 +246,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp">
       <Filter>Thor\definitions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Ethernet.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Uart.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Usart.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\usart_interrupt_vectors.hpp">
       <Filter>Thor\drivers\common\interrupts</Filter>
     </ClInclude>
@@ -754,9 +745,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\gpio_types.hpp">
       <Filter>Thor\drivers\common\types</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\GPIO.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\threading_types.hpp">
       <Filter>Chimera\types</Filter>
     </ClInclude>
@@ -774,9 +762,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp">
       <Filter>Thor\drivers\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp">
-      <Filter>Thor\drivers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.hpp">
       <Filter>Thor\drivers\common\mapping</Filter>
@@ -913,8 +898,26 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\event.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\NVIC.hpp">
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\dma.hpp">
       <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\gpio.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\nvic.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\rcc.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\uart.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\usart.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\dma_types.hpp">
+      <Filter>Thor\drivers\common\types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

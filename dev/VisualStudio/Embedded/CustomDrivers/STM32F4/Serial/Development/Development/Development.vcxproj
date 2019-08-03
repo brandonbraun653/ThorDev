@@ -122,7 +122,9 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cortex-m7\register.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\dma_interrupt_vectors.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\dma_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\gpio_types.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\dma.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_prj.hpp" />
@@ -158,12 +160,14 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_memory_map_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\uart\hw_uart_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\GPIO.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\gpio.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\dma_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\gpio_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\rcc_model.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\NVIC.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\nvic.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\rcc.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\uart.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\usart.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\event.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\exceptions.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\gpio.hpp" />
@@ -199,9 +203,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\system_checks.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\uart_definitions.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Ethernet.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Uart.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Usart.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\usart_interrupt_vectors.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\callback_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\interrupt_types.hpp" />
