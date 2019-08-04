@@ -919,6 +919,9 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\dma_types.hpp">
       <Filter>Thor\drivers\common\types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\interrupt.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <LinkerScript Include="STM32F446RE_flash.lds">

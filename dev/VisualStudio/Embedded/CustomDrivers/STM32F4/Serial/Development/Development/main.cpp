@@ -153,7 +153,7 @@ void serialThread( void *argument )
 
   usart.assignHW( 3, serialPins );
   usart.configure( usartConfig );
-  usart.begin( SubPeripheralMode::INTERRUPT, SubPeripheralMode::INTERRUPT );
+  usart.begin( SubPeripheralMode::DMA, SubPeripheralMode::DMA );
 
   usart.enableBuffering( SubPeripheral::TX, &txCircularBuffer, txHardwareBuffer.data(), txHardwareBuffer.size() );
 
