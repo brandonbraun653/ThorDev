@@ -701,6 +701,9 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_event.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_dma.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thor_config_prj.hpp">

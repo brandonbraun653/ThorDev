@@ -175,9 +175,9 @@ void serialThread( void *argument )
   std::string bufferedStr3  = "Hey there person part 2! :)\r\n";
 
   usart.write( reinterpret_cast<const uint8_t*>( startupString.c_str() ), startupString.size(), 100 );
-  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr.c_str() ), bufferedStr.size(), 100 );
-  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr2.c_str() ), bufferedStr2.size(), 100 );
-  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr3.c_str() ), bufferedStr3.size(), 100 );
+//  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr.c_str() ), bufferedStr.size(), 100 );
+//  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr2.c_str() ), bufferedStr2.size(), 100 );
+//  usart.write( reinterpret_cast<const uint8_t*>( bufferedStr3.c_str() ), bufferedStr3.size(), 100 );
 
 //  usart.receiveIT( readArray.data(), readArray.size(), 100 );
 
@@ -204,11 +204,11 @@ void serialThread( void *argument )
 //      usart.killReceive();
 //    }
 //
-    if ( ( xSemaphoreTake( wakeup, portMAX_DELAY ) == pdPASS ) && ( testValue == 1 ) )
-    {
-      callbackExecuted = false;
-      usart.write( reinterpret_cast<const uint8_t *>( callbackStr.c_str() ), callbackStr.size(), 100 );
-    }
+//    if ( ( xSemaphoreTake( wakeup, portMAX_DELAY ) == pdPASS ) && ( testValue == 1 ) )
+//    {
+//      callbackExecuted = false;
+//      usart.write( reinterpret_cast<const uint8_t *>( callbackStr.c_str() ), callbackStr.size(), 100 );
+//    }
     
     Chimera::delayMilliseconds( 100 );
   }
