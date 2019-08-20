@@ -71,7 +71,9 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_container.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_system.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_driver_stm32f4.cpp" />
@@ -107,6 +109,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_system.cpp" />
     <ClCompile Include="main.cpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\assert.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\container.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\callback_intf.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\compiler_intf.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\types\callback_types.hpp" />

@@ -704,6 +704,12 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_dma.cpp">
       <Filter>Thor\drivers\f4\rcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\chimera_container.cpp">
+      <Filter>Chimera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.cpp">
+      <Filter>Thor\drivers\common\mapping</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thor_config_prj.hpp">
@@ -924,6 +930,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\interrupt.hpp">
       <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\container.hpp">
+      <Filter>Chimera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
