@@ -48,7 +48,7 @@ int main()
   Chimera::System::initialize();
 
   addThread( blinkyThread, "blinky", 500, nullptr, 2, nullptr );
-  addThread( serialThread, "serial", 1500, nullptr, 2, nullptr );
+  addThread( serialThread, "serial", 2500, nullptr, 2, nullptr );
 
   startScheduler();
 
