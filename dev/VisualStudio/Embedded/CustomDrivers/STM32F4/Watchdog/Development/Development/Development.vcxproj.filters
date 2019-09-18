@@ -1039,5 +1039,8 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_types.hpp">
       <Filter>Thor\drivers\f4\wwdg</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\watchdog_model.hpp">
+      <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

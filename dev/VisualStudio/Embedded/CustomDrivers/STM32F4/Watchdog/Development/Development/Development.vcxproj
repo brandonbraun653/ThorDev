@@ -213,6 +213,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_register_stm32f446xx.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_types.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\watchdog_model.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\ethernet.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\event.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\exceptions.hpp" />
