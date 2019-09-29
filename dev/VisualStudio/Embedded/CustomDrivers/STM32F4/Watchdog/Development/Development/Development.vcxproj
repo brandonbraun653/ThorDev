@@ -73,9 +73,11 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_types.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_wwdg.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_types.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_watchdog.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="stm32.props" />
     <None Include="Development-Debug.vgdbsettings" />
@@ -197,7 +199,6 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_stm32hal_uart.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_stm32hal_usart.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_system.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_watchdog.cpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\boostStub.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\config.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\core.hpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_register_stm32f446xx.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\watchdog_model.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\watchdog.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\ethernet.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\event.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\exceptions.hpp" />

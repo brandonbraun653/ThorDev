@@ -522,9 +522,6 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_system.cpp">
       <Filter>Thor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_watchdog.cpp">
-      <Filter>Thor</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\boostStub.hpp">
       <Filter>Thor</Filter>
     </ClInclude>
@@ -1004,6 +1001,12 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_types.cpp">
       <Filter>Thor\drivers\f4\wwdg</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_watchdog.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_wwdg.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\modules\freertos\freertos_hooks.hpp">
@@ -1041,6 +1044,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\watchdog_model.hpp">
       <Filter>Thor\drivers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\watchdog.hpp">
+      <Filter>Thor\drivers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

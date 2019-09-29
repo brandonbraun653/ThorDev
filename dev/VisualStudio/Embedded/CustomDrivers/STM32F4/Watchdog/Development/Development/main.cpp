@@ -9,11 +9,14 @@
  ********************************************************************************/
 
 /* Chimera Includes */
+#include <Chimera/gpio.hpp>
 #include <Chimera/system.hpp>
 #include <Chimera/threading.hpp>
 #include <Chimera/watchdog.hpp>
 
 void test_thread( void *arguments );
+
+void startup_sequence( Chimera::GPIO::GPIOClass *const led );
 
 int main( void )
 {
@@ -28,6 +31,19 @@ void test_thread( void *arguments )
 {
   Chimera::Threading::signalSetupComplete();
 
+  Chimera::GPIO::PinInit ledInit;
+  ledInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  ledInit.drive      = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
+  ledInit.port       = Chimera::GPIO::Port::PORTA;
+  ledInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  ledInit.pin        = 5;
+
+  auto led = Chimera::GPIO::GPIOClass();
+  led.init( ledInit );
+  led.setState( Chimera::GPIO::State::HIGH );
+
+  startup_sequence( &led );
+
   auto watchdog = Chimera::Watchdog::WatchdogClass();
   watchdog.initialize( 500, 100 );
   watchdog.start();
@@ -35,6 +51,24 @@ void test_thread( void *arguments )
   while ( 1 )
   {
     watchdog.kick();
-    Chimera::delayMilliseconds( 100 );
+    led.setState( Chimera::GPIO::State::HIGH );
+    Chimera::delayMilliseconds( 150 );
+    led.setState( Chimera::GPIO::State::LOW );
+    Chimera::delayMilliseconds( 50 );
+
+    Chimera::delayMilliseconds( 2000 );
   }
+}
+
+void startup_sequence( Chimera::GPIO::GPIOClass *const led )
+{
+  for ( uint8_t i = 0; i < 5; i++ )
+  {
+    led->setState( Chimera::GPIO::State::HIGH );
+    Chimera::delayMilliseconds( 65 );
+    led->setState( Chimera::GPIO::State::LOW );
+    Chimera::delayMilliseconds( 25 );
+  }
+
+  Chimera::delayMilliseconds( 350 );
 }
