@@ -36,18 +36,15 @@
   </MCUProperties>
   <BSPSourceFolderName>Device-specific files</BSPSourceFolderName>
   <MCUMakFile>stm32.mak</MCUMakFile>
-  <ReferencedFrameworks>
-    <string>com.sysprogs.arm.stm32.hal</string>
-    <string>com.sysprogs.arm.stm32.ll</string>
-  </ReferencedFrameworks>
+  <ReferencedFrameworks />
   <FrameworkProperties>
     <Entries>
       <KeyValue>
-        <Key>com.sysprogs.stm32.legacy_hal_src</Key>
+        <Key>com.sysprogs.bspoptions.stm32.ll_driver</Key>
         <Value />
       </KeyValue>
       <KeyValue>
-        <Key>com.sysprogs.bspoptions.stm32.ll_driver</Key>
+        <Key>com.sysprogs.stm32.legacy_hal_src</Key>
         <Value />
       </KeyValue>
     </Entries>
