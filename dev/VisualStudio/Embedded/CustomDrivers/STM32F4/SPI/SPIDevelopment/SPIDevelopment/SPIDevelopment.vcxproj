@@ -62,6 +62,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\config\freertos\freertos_hooks_prj.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_mapping.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_register_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_types.cpp" />
     <ClCompile Include="main.cpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h" />
