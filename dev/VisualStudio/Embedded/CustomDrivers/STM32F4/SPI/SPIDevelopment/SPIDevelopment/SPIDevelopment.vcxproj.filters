@@ -1085,6 +1085,9 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_register_stm32f446xx.cpp">
       <Filter>Thor\drivers\f4\spi</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_spi.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thor_config_prj.hpp">

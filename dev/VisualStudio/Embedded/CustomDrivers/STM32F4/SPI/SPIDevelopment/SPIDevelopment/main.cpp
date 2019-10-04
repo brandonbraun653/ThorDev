@@ -10,65 +10,83 @@
 
 /* Chimera Includes */
 #include <Chimera/gpio.hpp>
+#include <Chimera/spi.hpp>
 #include <Chimera/system.hpp>
 #include <Chimera/threading.hpp>
 #include <Chimera/watchdog.hpp>
 
-void test_thread(void *arguments);
+#include <Thor/drivers/f4/spi/hw_spi_driver.hpp>
 
-void startup_sequence(Chimera::GPIO::GPIOClass *const led);
+void test_thread( void *arguments );
+void spi_thread( void *arguments );
 
-int main(void)
+void startup_sequence( Chimera::GPIO::GPIOClass *const led );
+
+int main( void )
 {
   Chimera::System::initialize();
 
-  Chimera::Threading::addThread(test_thread, "wd_thread", 1000, nullptr, 3, nullptr);
+  Chimera::Threading::addThread( test_thread, "wd_thread", 1000, nullptr, 3, nullptr );
+  Chimera::Threading::addThread( spi_thread, "spi_thread", 1000, nullptr, 3, nullptr );
   Chimera::Threading::startScheduler();
   return 0;
 }
 
-void test_thread(void *arguments)
+void test_thread( void *arguments )
 {
   Chimera::Threading::signalSetupComplete();
 
   Chimera::GPIO::PinInit ledInit;
   ledInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  ledInit.drive = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
-  ledInit.port = Chimera::GPIO::Port::PORTA;
-  ledInit.pull = Chimera::GPIO::Pull::NO_PULL;
-  ledInit.pin = 5;
+  ledInit.drive      = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
+  ledInit.port       = Chimera::GPIO::Port::PORTA;
+  ledInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  ledInit.pin        = 5;
 
   auto led = Chimera::GPIO::GPIOClass();
-  led.init(ledInit);
-  led.setState(Chimera::GPIO::State::HIGH);
+  led.init( ledInit );
+  led.setState( Chimera::GPIO::State::HIGH );
 
-  startup_sequence(&led);
+  startup_sequence( &led );
 
   auto watchdog = Chimera::Watchdog::WatchdogClass();
-  watchdog.initialize(500, 100);
+  watchdog.initialize( 500, 100 );
   watchdog.start();
 
-  while (1)
+  while ( 1 )
   {
     watchdog.kick();
-    led.setState(Chimera::GPIO::State::HIGH);
-    Chimera::delayMilliseconds(150);
-    led.setState(Chimera::GPIO::State::LOW);
-    Chimera::delayMilliseconds(50);
+    led.setState( Chimera::GPIO::State::HIGH );
+    Chimera::delayMilliseconds( 150 );
+    led.setState( Chimera::GPIO::State::LOW );
+    Chimera::delayMilliseconds( 50 );
 
-    Chimera::delayMilliseconds(2000);
+    Chimera::delayMilliseconds( 2000 );
   }
 }
 
-void startup_sequence(Chimera::GPIO::GPIOClass *const led)
+void spi_thread( void *arguments )
 {
-  for (uint8_t i = 0; i < 5; i++)
+  Chimera::Threading::signalSetupComplete();
+
+  auto spi = Thor::Driver::SPI::Driver();
+
+
+  while ( 1 )
   {
-    led->setState(Chimera::GPIO::State::HIGH);
-    Chimera::delayMilliseconds(65);
-    led->setState(Chimera::GPIO::State::LOW);
-    Chimera::delayMilliseconds(25);
+    Chimera::delayMilliseconds( 100 );
+  }
+}
+
+void startup_sequence( Chimera::GPIO::GPIOClass *const led )
+{
+  for ( uint8_t i = 0; i < 5; i++ )
+  {
+    led->setState( Chimera::GPIO::State::HIGH );
+    Chimera::delayMilliseconds( 65 );
+    led->setState( Chimera::GPIO::State::LOW );
+    Chimera::delayMilliseconds( 25 );
   }
 
-  Chimera::delayMilliseconds(350);
+  Chimera::delayMilliseconds( 350 );
 }
