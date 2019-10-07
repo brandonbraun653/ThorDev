@@ -23,8 +23,8 @@ Enable/Disable peripheral drivers here to save memory
 #define THOR_DRIVER_PWR         1
 #define THOR_DRIVER_RCC         1
 #define THOR_DRIVER_SPI         1
-#define THOR_DRIVER_UART        0
-#define THOR_DRIVER_USART       0
+#define THOR_DRIVER_UART        1
+#define THOR_DRIVER_USART       1
 #define THOR_DRIVER_WWDG        1
 
 #endif /* !THOR_DRIVER_CONFIGURATION_HPP */

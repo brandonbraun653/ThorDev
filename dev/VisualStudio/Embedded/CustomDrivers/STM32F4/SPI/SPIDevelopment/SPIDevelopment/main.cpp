@@ -60,8 +60,6 @@ void test_thread( void *arguments )
     Chimera::delayMilliseconds( 150 );
     led.setState( Chimera::GPIO::State::LOW );
     Chimera::delayMilliseconds( 50 );
-
-    Chimera::delayMilliseconds( 2000 );
   }
 }
 
