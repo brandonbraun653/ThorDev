@@ -70,7 +70,12 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_register_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_types.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\event_base.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\serial_base.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\threading_base.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\event.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\spi_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_driver.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_prj.hpp" />

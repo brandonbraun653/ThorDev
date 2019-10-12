@@ -178,6 +178,9 @@
     <Filter Include="Thor\drivers\f4\spi">
       <UniqueIdentifier>{e0cf8f80-ceb5-400b-8773-42871b8d2b99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chimera\base">
+      <UniqueIdentifier>{dd1200aa-78b1-4924-8c03-3e90af82eb0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="stm32.props">
@@ -1119,6 +1122,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_types.hpp">
       <Filter>Thor\drivers\f4\spi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\spi_types.hpp">
+      <Filter>Thor\drivers\common\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\event.hpp">
+      <Filter>Chimera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\serial_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\event_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\threading_base.hpp">
+      <Filter>Chimera\base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
