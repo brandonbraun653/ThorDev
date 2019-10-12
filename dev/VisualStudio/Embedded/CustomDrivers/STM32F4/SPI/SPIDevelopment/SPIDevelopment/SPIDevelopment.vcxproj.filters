@@ -378,30 +378,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\definitions\usart_definitions.hpp">
       <Filter>Thor\definitions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\dma.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\GPIO.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\interrupt.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\NVIC.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\RCC.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Uart.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\Usart.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\watchdog.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\cmsis\configuration.hpp">
       <Filter>Thor\drivers\common\cmsis</Filter>
     </ClInclude>
@@ -975,9 +951,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\gpio_intf.hpp">
       <Filter>Chimera\interface</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\macro.hpp">
-      <Filter>Chimera\interface</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\interface\memory_intf.hpp">
       <Filter>Chimera\interface</Filter>
     </ClInclude>
@@ -1105,9 +1078,6 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\model\spi_model.hpp">
       <Filter>Thor\drivers\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\spi.hpp">
-      <Filter>Thor\drivers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_driver.hpp">
       <Filter>Thor\drivers\f4\spi</Filter>
     </ClInclude>
@@ -1136,6 +1106,51 @@
       <Filter>Chimera\base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\threading_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\dma.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\gpio.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\interrupt.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\nvic.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\rcc.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\spi.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\uart.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\usart.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\watchdog.hpp">
+      <Filter>Thor\drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\buffer_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\crc_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\dma_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\gpio_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\spi_base.hpp">
+      <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\watchdog_base.hpp">
       <Filter>Chimera\base</Filter>
     </ClInclude>
   </ItemGroup>

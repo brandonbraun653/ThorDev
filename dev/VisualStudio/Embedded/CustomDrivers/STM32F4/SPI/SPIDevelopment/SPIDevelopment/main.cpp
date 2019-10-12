@@ -3,7 +3,7 @@
  *    main.cpp
  *
  *   Description:
- *    Watchdog development project entry
+ *    SPI development project entry
  *
  *   2019 | Brandon Braun | brandonbraun653@gmail.com
  ********************************************************************************/
@@ -59,7 +59,7 @@ void test_thread( void *arguments )
     led.setState( Chimera::GPIO::State::HIGH );
     Chimera::delayMilliseconds( 150 );
     led.setState( Chimera::GPIO::State::LOW );
-    Chimera::delayMilliseconds( 50 );
+    Chimera::delayMilliseconds( 150 );
   }
 }
 
