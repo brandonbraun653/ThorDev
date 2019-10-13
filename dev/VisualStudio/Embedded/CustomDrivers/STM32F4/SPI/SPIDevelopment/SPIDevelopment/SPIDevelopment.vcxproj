@@ -44,6 +44,7 @@
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir);$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../../../Thor/;$(ProjectDir)../../../../../../../../Thor/Thor/config/chimera;$(ProjectDir)../../../../../../../../Thor/Thor/config/freertos;$(ProjectDir)../../../../../../../../lib/Chimera;$(ProjectDir)../../../../../../../../lib/FreeRTOS;$(ProjectDir)../../../../../../../../lib/FreeRTOS/include;$(ProjectDir)../../../../../../../../lib/FreeRTOS/portable/GCC/ARM_CM4F;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(ClCompile.PreprocessorDefinitions);STM32F446xx;USING_FREERTOS;USE_FREERTOS;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;THOR_CUSTOM_DRIVERS=1;DEBUG=1</PreprocessorDefinitions>
+      <Optimization>Og</Optimization>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
@@ -69,6 +70,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_register_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_types.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_spi.cpp" />
     <ClCompile Include="main.cpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\buffer_base.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\crc_base.hpp" />
@@ -81,6 +83,7 @@
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\watchdog_base.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\event.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\config\freertos\FreeRTOSConfig.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\spi_interrupt_vectors.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\types\spi_types.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\dma.hpp" />
     <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_driver.hpp" />

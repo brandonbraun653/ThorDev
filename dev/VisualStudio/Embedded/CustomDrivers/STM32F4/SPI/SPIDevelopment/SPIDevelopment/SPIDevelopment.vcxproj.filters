@@ -1064,6 +1064,9 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_spi.cpp">
       <Filter>Thor\drivers\f4\rcc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\Thor\Thor\thor_custom_spi.cpp">
+      <Filter>Thor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thor_config_prj.hpp">
@@ -1152,6 +1155,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\watchdog_base.hpp">
       <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\Thor\Thor\drivers\common\interrupts\spi_interrupt_vectors.hpp">
+      <Filter>Thor\drivers\common\interrupts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
