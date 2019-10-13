@@ -1,9 +1,11 @@
-import lib/CommonTools/boost-build/features/thor ;
-import lib/CommonTools/boost-build/features/chimera ;
-import lib/CommonTools/boost-build/features/freertos ;
 
-alias ThorTest 
+# ------------------------------------------
+# Builds the STM32F446RE driver with FreeRTOS support
+# ------------------------------------------
+alias F4DriverTest
     :   /THOR//CORE
+        /STM32F4//LIB
+        /FREERTOS//CORE
     
     :   <use>/PRJ//CHIMERA_PORT
 
@@ -17,5 +19,5 @@ alias ThorTest
         <FreeRTOS-port>CortexM
         <FreeRTOS-heap>heap4
     ;
-explicit ThorTest ;
+explicit F4DriverTest ;
     

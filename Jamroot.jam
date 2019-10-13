@@ -1,5 +1,9 @@
 import os ;
 import feature ;
+import lib/CommonTools/boost-build/features/chimera ;
+import lib/CommonTools/boost-build/features/freertos ;
+import lib/CommonTools/boost-build/features/thor ;
+import lib/CommonTools/boost-build/features/coverage ;
 
 rule explicit_alias ( name : sources * : requirements * : default-build * : usage-requirements * )
     {
@@ -15,13 +19,12 @@ using gcc ;
 use-project /PRJ : . ;
 use-project /CHIMERA : lib/Chimera ;
 use-project /FREERTOS : lib/FreeRTOS ;
-use-project /STM32F4 : lib/stm32hal_f4 ;
-use-project /STM32F7 : lib/stm32hal_f7 ;
 use-project /THOR : Thor ;
+use-project /STM32F4 : Thor/Thor/drivers/f4 ;
 
 
 local boost_install_dir = [ os.environ BOOST_ROOT ] ;
-path-constant boost_inc_dir : $(boost_install_dir)/boost_1_68_0 ;
+path-constant boost_inc_dir : $(boost_install_dir)/boost_1_70_0 ;
 path-constant artifacts_dir : $(TOP)/artifacts ;
 
 # ------------------------------------------
@@ -31,10 +34,12 @@ explicit_alias BOOST : : : : <include>$(boost_inc_dir) ;
 explicit_alias CHIMERA_PORT : : : : <use>/THOR//CHIMERA_PORT ;
 explicit_alias FREERTOS_CFG : : : : <include>Thor/Thor/config/freertos ;
 explicit_alias TARGET_OPTIONS : : : : <use>/THOR//TARGET_PROPAGATED_OPTIONS ;
+explicit_alias THOR_PRJ_PUB : : : : <include>dev/resources/compilation ;
 
 project Thor
     : requirements
         <toolset>gcc_arm_none_eabi
         <link>static
         <cxxflags>--std=gnu++17
+        <define>BOOST_NO_EXCEPTIONS
     ;
