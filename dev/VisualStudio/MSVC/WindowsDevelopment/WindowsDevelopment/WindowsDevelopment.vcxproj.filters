@@ -884,11 +884,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Thor\Thor\readme.md">
-      <Filter>Thor</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\sram.cpp">
       <Filter>Thor</Filter>
     </ClCompile>

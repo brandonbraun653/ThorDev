@@ -384,9 +384,6 @@
     <ClInclude Include="thor_config_prj.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Thor\Thor\readme.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera.cpp" />
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_allocator.cpp" />
     <ClCompile Include="..\..\..\..\..\lib\Chimera\Chimera\chimera_buffer.cpp" />
