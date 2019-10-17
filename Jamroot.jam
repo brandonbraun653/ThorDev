@@ -42,4 +42,5 @@ project Thor
         <link>static
         <cxxflags>--std=gnu++17
         <define>BOOST_NO_EXCEPTIONS
+        <define>_EMBEDDED
     ;

@@ -80,9 +80,11 @@
       <PreprocessorDefinitions>_SIM;NOMINMAX;STM32F446xx;USING_FREERTOS;USE_FREERTOS;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;THOR_CUSTOM_DRIVERS=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings);28521;6388;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_70_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -95,9 +97,11 @@
       <PreprocessorDefinitions>_SIM;NOMINMAX;STM32F446xx;USING_FREERTOS;USE_FREERTOS;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;THOR_CUSTOM_DRIVERS=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings);28521;6388;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)/boost_1_70_0/stage/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -112,6 +116,7 @@
       <PreprocessorDefinitions>_SIM;NOMINMAX;STM32F446xx;USING_FREERTOS;USE_FREERTOS;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;THOR_CUSTOM_DRIVERS=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>;C28521;C6388;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,6 +136,7 @@
       <PreprocessorDefinitions>_SIM;NOMINMAX;STM32F446xx;USING_FREERTOS;USE_FREERTOS;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;THOR_CUSTOM_DRIVERS=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>;C28521;C6388;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -274,6 +280,7 @@
     <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_register_stm32f446xx.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_types.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_driver.hpp" />
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_mapping.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_prj.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_register_stm32f446xx.hpp" />
     <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_types.hpp" />
@@ -408,14 +415,14 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_driver_stm32f4.cpp" />
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_mapping.cpp" />
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_types.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_mapping.cpp" />
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_types.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\nvic\hw_nvic_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_driver_stm32f4.cpp" />
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_dma.cpp" />
@@ -424,10 +431,10 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_uart.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_usart.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_wwdg.cpp" />
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_types.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_register_stm32f446xx.cpp" />
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_types.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\startup\startup_common_init.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\startup\startup_stm32f446xx.c" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\system\sys_common_exit.cpp" />
@@ -438,7 +445,6 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_mapping.cpp" />
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_types.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\resources\thor_dma_resources.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\sram.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\thor.cpp" />

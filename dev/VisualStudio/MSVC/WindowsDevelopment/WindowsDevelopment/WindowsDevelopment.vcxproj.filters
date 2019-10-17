@@ -879,6 +879,9 @@
     <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\common\cmsis\core\include\cmsis_windows.h">
       <Filter>Thor\drivers\common\cmsis\core\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_mapping.hpp">
+      <Filter>Thor\drivers\f4\flash</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\Thor\Thor\readme.md">
@@ -988,25 +991,16 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_mapping.cpp">
       <Filter>Thor\drivers\f4\gpio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_types.cpp">
-      <Filter>Thor\drivers\f4\gpio</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_driver_stm32f4.cpp">
       <Filter>Thor\drivers\f4\iwdg</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_mapping.cpp">
       <Filter>Thor\drivers\f4\iwdg</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_types.cpp">
-      <Filter>Thor\drivers\f4\iwdg</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_driver_stm32f4.cpp">
       <Filter>Thor\drivers\f4\wwdg</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_mapping.cpp">
-      <Filter>Thor\drivers\f4\wwdg</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_types.cpp">
       <Filter>Thor\drivers\f4\wwdg</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\usart\hw_usart_driver_stm32f4.cpp">
@@ -1040,9 +1034,6 @@
       <Filter>Thor\drivers\f4\spi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_register_stm32f446xx.cpp">
-      <Filter>Thor\drivers\f4\spi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\spi\hw_spi_types.cpp">
       <Filter>Thor\drivers\f4\spi</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.cpp">
@@ -1140,6 +1131,15 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_types.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_mapping.cpp">
+      <Filter>Thor\drivers\f4\power</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_mapping.cpp">
+      <Filter>Thor\drivers\f4\flash</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
