@@ -1127,14 +1127,17 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_types.cpp">
-      <Filter>Thor\drivers\f4\rcc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_mapping.cpp">
       <Filter>Thor\drivers\f4\power</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_mapping.cpp">
       <Filter>Thor\drivers\f4\flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_register_stm32f446xx.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping.cpp">
+      <Filter>Thor\drivers\f4\rcc</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
