@@ -68,47 +68,47 @@ void spi_thread( void *arguments )
   std::string_view data = "Hello World!\r\n";
 
 
-  Chimera::SPI::DriverConfig cfg;
-  cfg.CSInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  cfg.CSInit.alternate  = Thor::Driver::GPIO::AF_NONE;
-  cfg.CSInit.drive      = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
-  cfg.CSInit.pin        = 2;
-  cfg.CSInit.port       = Chimera::GPIO::Port::PORTD;
-  cfg.CSInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  //Chimera::SPI::DriverConfig cfg;
+  //cfg.CSInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  //cfg.CSInit.alternate  = Thor::Driver::GPIO::AF_NONE;
+  //cfg.CSInit.drive      = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
+  //cfg.CSInit.pin        = 2;
+  //cfg.CSInit.port       = Chimera::GPIO::Port::PORTD;
+  //cfg.CSInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  cfg.SCKInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  cfg.SCKInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
-  cfg.SCKInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  cfg.SCKInit.pin        = 10;
-  cfg.SCKInit.port       = Chimera::GPIO::Port::PORTC;
-  cfg.SCKInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  //cfg.SCKInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  //cfg.SCKInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  //cfg.SCKInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  //cfg.SCKInit.pin        = 10;
+  //cfg.SCKInit.port       = Chimera::GPIO::Port::PORTC;
+  //cfg.SCKInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  cfg.MISOInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  cfg.MISOInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
-  cfg.MISOInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  cfg.MISOInit.pin        = 11;
-  cfg.MISOInit.port       = Chimera::GPIO::Port::PORTC;
-  cfg.MISOInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  //cfg.MISOInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  //cfg.MISOInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  //cfg.MISOInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  //cfg.MISOInit.pin        = 11;
+  //cfg.MISOInit.port       = Chimera::GPIO::Port::PORTC;
+  //cfg.MISOInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  cfg.MOSIInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  cfg.MOSIInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
-  cfg.MOSIInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  cfg.MOSIInit.pin        = 12;
-  cfg.MOSIInit.port       = Chimera::GPIO::Port::PORTC;
-  cfg.MOSIInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  //cfg.MOSIInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  //cfg.MOSIInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  //cfg.MOSIInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  //cfg.MOSIInit.pin        = 12;
+  //cfg.MOSIInit.port       = Chimera::GPIO::Port::PORTC;
+  //cfg.MOSIInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  auto spi = Chimera::SPI::SPIClass();
+  //auto spi = Chimera::SPI::SPIClass();
 
-  if ( spi.init( cfg ) != Chimera::CommonStatusCodes::OK )
-  {
-    Chimera::Watchdog::invokeTimeout();
-  }
+  //if ( spi.init( cfg ) != Chimera::CommonStatusCodes::OK )
+  //{
+  //  Chimera::Watchdog::invokeTimeout();
+  //}
 
 
   while ( 1 )
   {
-    spi.writeBytes( data.data(), data.length(), 100 );
-    spi.await( Chimera::Event::Trigger::TRANSFER_COMPLETE, 100 );
+    //spi.writeBytes( data.data(), data.length(), 100 );
+    //spi.await( Chimera::Event::Trigger::TRANSFER_COMPLETE, 100 );
 
     Chimera::delayMilliseconds( 100 );
   }

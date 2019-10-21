@@ -411,6 +411,7 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\common\mapping\peripheral_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_mapping.cpp" />
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\dma\hw_dma_register_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\flash\hw_flash_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\gpio\hw_gpio_driver_stm32f4.cpp" />
@@ -423,7 +424,6 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_config_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping.cpp" />
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_dma.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_gpio.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_spi.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_uart.cpp" />
