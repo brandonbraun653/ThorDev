@@ -1037,15 +1037,6 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_driver_stm32f4.cpp">
       <Filter>Thor\drivers\f4\rcc</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_spi.cpp">
-      <Filter>Thor\drivers\f4\rcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_uart.cpp">
-      <Filter>Thor\drivers\f4\rcc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\rcc\hw_rcc_mapping_usart.cpp">
-      <Filter>Thor\drivers\f4\rcc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\power\hw_power_driver_stm32f4.cpp">
       <Filter>Thor\drivers\f4\power</Filter>
     </ClCompile>
@@ -1144,6 +1135,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\wwdg\hw_wwdg_register_stm32f446xx.cpp">
       <Filter>Thor\drivers\f4\wwdg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\drivers\f4\iwdg\hw_iwdg_register_stm32f446xx.cpp">
+      <Filter>Thor\drivers\f4\iwdg</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
