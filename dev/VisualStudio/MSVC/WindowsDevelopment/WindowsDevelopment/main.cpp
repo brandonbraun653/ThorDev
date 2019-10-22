@@ -8,6 +8,9 @@
  *   2019 | Brandon Braun | brandonbraun653@gmail.com
  ********************************************************************************/
 
+/* C/C++ Includes */
+#include <iostream>
+
 /* Chimera Includes */
 #include <Chimera/gpio.hpp>
 #include <Chimera/spi.hpp>
@@ -17,6 +20,7 @@
 
 void test_thread( void *arguments );
 void spi_thread( void *arguments );
+void sim_thread( void *arguments );
 
 void startup_sequence( Chimera::GPIO::GPIOClass *const led );
 
@@ -26,6 +30,7 @@ int main( void )
 
   Chimera::Threading::addThread( test_thread, "wd_thread", 1000, nullptr, 3, nullptr );
   Chimera::Threading::addThread( spi_thread, "spi_thread", 1000, nullptr, 3, nullptr );
+  Chimera::Threading::addThread( sim_thread, "sim_thread", 1000, nullptr, 3, nullptr );
   Chimera::Threading::startScheduler();
   return 0;
 }
@@ -58,6 +63,11 @@ void test_thread( void *arguments )
     Chimera::delayMilliseconds( 150 );
     led.setState( Chimera::GPIO::State::LOW );
     Chimera::delayMilliseconds( 150 );
+
+#if defined( _SIM )
+    std::cout << "gpio thread" << std::endl;
+    Chimera::delayMilliseconds(750);
+#endif 
   }
 }
 
@@ -111,7 +121,33 @@ void spi_thread( void *arguments )
     //spi.await( Chimera::Event::Trigger::TRANSFER_COMPLETE, 100 );
 
     Chimera::delayMilliseconds( 100 );
+
+#if defined( _SIM )
+    std::cout << "spi thread" << std::endl;
+    Chimera::delayMilliseconds(500);
+#endif 
   }
+}
+
+void sim_thread(void* arguments)
+{
+  Chimera::Threading::signalSetupComplete();
+
+
+#if defined( _SIM )
+  while (1)
+  {
+    std::cout << "hello world" << std::endl;
+    Chimera::delayMilliseconds(1000);
+  }
+
+
+#else
+  while (1)
+  {
+    Chimera::delayMilliseconds(1000);
+  }
+#endif 
 }
 
 void startup_sequence( Chimera::GPIO::GPIOClass *const led )
