@@ -66,8 +66,8 @@ void test_thread( void *arguments )
 
 #if defined( _SIM )
     std::cout << "gpio thread" << std::endl;
-    Chimera::delayMilliseconds(750);
-#endif 
+    Chimera::delayMilliseconds( 750 );
+#endif
   }
 }
 
@@ -78,76 +78,98 @@ void spi_thread( void *arguments )
   std::string_view data = "Hello World!\r\n";
 
 
-  //Chimera::SPI::DriverConfig cfg;
-  //cfg.CSInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  //cfg.CSInit.alternate  = Thor::Driver::GPIO::AF_NONE;
-  //cfg.CSInit.drive      = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
-  //cfg.CSInit.pin        = 2;
-  //cfg.CSInit.port       = Chimera::GPIO::Port::PORTD;
-  //cfg.CSInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  Chimera::SPI::DriverConfig cfg;
 
-  //cfg.SCKInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  //cfg.SCKInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
-  //cfg.SCKInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  //cfg.SCKInit.pin        = 10;
-  //cfg.SCKInit.port       = Chimera::GPIO::Port::PORTC;
-  //cfg.SCKInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  /*------------------------------------------------
+  GPIO Initialization
+  ------------------------------------------------*/
+  cfg.CSInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  cfg.CSInit.alternate  = Thor::Driver::GPIO::AF_NONE;
+  cfg.CSInit.drive      = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
+  cfg.CSInit.pin        = 2;
+  cfg.CSInit.port       = Chimera::GPIO::Port::PORTD;
+  cfg.CSInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  //cfg.MISOInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  //cfg.MISOInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
-  //cfg.MISOInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  //cfg.MISOInit.pin        = 11;
-  //cfg.MISOInit.port       = Chimera::GPIO::Port::PORTC;
-  //cfg.MISOInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  cfg.SCKInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  cfg.SCKInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  cfg.SCKInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  cfg.SCKInit.pin        = 10;
+  cfg.SCKInit.port       = Chimera::GPIO::Port::PORTC;
+  cfg.SCKInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  //cfg.MOSIInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  //cfg.MOSIInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
-  //cfg.MOSIInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
-  //cfg.MOSIInit.pin        = 12;
-  //cfg.MOSIInit.port       = Chimera::GPIO::Port::PORTC;
-  //cfg.MOSIInit.pull       = Chimera::GPIO::Pull::NO_PULL;
+  cfg.MISOInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  cfg.MISOInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  cfg.MISOInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  cfg.MISOInit.pin        = 11;
+  cfg.MISOInit.port       = Chimera::GPIO::Port::PORTC;
+  cfg.MISOInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  //auto spi = Chimera::SPI::SPIClass();
+  cfg.MOSIInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
+  cfg.MOSIInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  cfg.MOSIInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  cfg.MOSIInit.pin        = 12;
+  cfg.MOSIInit.port       = Chimera::GPIO::Port::PORTC;
+  cfg.MOSIInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
-  //if ( spi.init( cfg ) != Chimera::CommonStatusCodes::OK )
-  //{
-  //  Chimera::Watchdog::invokeTimeout();
-  //}
+  /*------------------------------------------------
+  SPI Parameter Initialization
+  ------------------------------------------------*/
+  cfg.HWInit.bitOrder    = Chimera::SPI::BitOrder::LSB_FIRST;
+  cfg.HWInit.clockFreq   = 1000000;
+  cfg.HWInit.clockMode   = Chimera::SPI::ClockMode::MODE0;
+  cfg.HWInit.controlMode = Chimera::SPI::ControlMode::MASTER;
+  cfg.HWInit.csMode      = Chimera::SPI::CSMode::MANUAL;
+  cfg.HWInit.dataSize    = Chimera::SPI::DataSize::SZ_8BIT;
+  cfg.HWInit.hwChannel   = 1;
+  cfg.HWInit.txfrMode    = Chimera::SPI::TransferMode::BLOCKING;
+  cfg.validity           = true;
 
+  /*------------------------------------------------
+  SPI Driver Initialization
+  ------------------------------------------------*/
+  auto spi = Chimera::SPI::SPIClass();
 
+  if ( spi.init( cfg ) != Chimera::CommonStatusCodes::OK )
+  {
+    Chimera::Watchdog::invokeTimeout();
+  }
+
+  /*------------------------------------------------
+  Test Loop
+  ------------------------------------------------*/
   while ( 1 )
   {
-    //spi.writeBytes( data.data(), data.length(), 100 );
-    //spi.await( Chimera::Event::Trigger::TRANSFER_COMPLETE, 100 );
+    spi.writeBytes( data.data(), data.length(), 100 );
+    spi.await( Chimera::Event::Trigger::TRANSFER_COMPLETE, 100 );
 
     Chimera::delayMilliseconds( 100 );
 
 #if defined( _SIM )
     std::cout << "spi thread" << std::endl;
-    Chimera::delayMilliseconds(500);
-#endif 
+    Chimera::delayMilliseconds( 500 );
+#endif
   }
 }
 
-void sim_thread(void* arguments)
+void sim_thread( void *arguments )
 {
   Chimera::Threading::signalSetupComplete();
 
 
 #if defined( _SIM )
-  while (1)
+  while ( 1 )
   {
     std::cout << "hello world" << std::endl;
-    Chimera::delayMilliseconds(1000);
+    Chimera::delayMilliseconds( 1000 );
   }
 
 
 #else
-  while (1)
+  while ( 1 )
   {
-    Chimera::delayMilliseconds(1000);
+    Chimera::delayMilliseconds( 1000 );
   }
-#endif 
+#endif
 }
 
 void startup_sequence( Chimera::GPIO::GPIOClass *const led )

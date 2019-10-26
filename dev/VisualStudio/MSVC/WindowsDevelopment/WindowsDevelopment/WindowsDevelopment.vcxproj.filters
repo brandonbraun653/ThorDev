@@ -1140,4 +1140,7 @@
       <Filter>Thor\drivers\f4\iwdg</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Thor\.clang-format" />
+  </ItemGroup>
 </Project>
