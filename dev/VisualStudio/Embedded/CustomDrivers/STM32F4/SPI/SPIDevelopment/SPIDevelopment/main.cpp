@@ -69,6 +69,10 @@ void spi_thread( void *arguments )
 
 
   Chimera::SPI::DriverConfig cfg;
+
+  /*------------------------------------------------
+  GPIO Initialization
+  ------------------------------------------------*/
   cfg.CSInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
   cfg.CSInit.alternate  = Thor::Driver::GPIO::AF_NONE;
   cfg.CSInit.drive      = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
@@ -97,6 +101,22 @@ void spi_thread( void *arguments )
   cfg.MOSIInit.port       = Chimera::GPIO::Port::PORTC;
   cfg.MOSIInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
+  /*------------------------------------------------
+  SPI Parameter Initialization
+  ------------------------------------------------*/
+  cfg.HWInit.bitOrder    = Chimera::SPI::BitOrder::LSB_FIRST;
+  cfg.HWInit.clockFreq   = 1000000;
+  cfg.HWInit.clockMode   = Chimera::SPI::ClockMode::MODE0;
+  cfg.HWInit.controlMode = Chimera::SPI::ControlMode::MASTER;
+  cfg.HWInit.csMode      = Chimera::SPI::CSMode::MANUAL;
+  cfg.HWInit.dataSize    = Chimera::SPI::DataSize::SZ_8BIT;
+  cfg.HWInit.hwChannel   = 1;
+  cfg.HWInit.txfrMode    = Chimera::SPI::TransferMode::BLOCKING;
+  cfg.validity           = true;
+
+  /*------------------------------------------------
+  SPI Driver Initialization
+  ------------------------------------------------*/
   auto spi = Chimera::SPI::SPIClass();
 
   if ( spi.init( cfg ) != Chimera::CommonStatusCodes::OK )
