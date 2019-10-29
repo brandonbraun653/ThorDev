@@ -81,21 +81,21 @@ void spi_thread( void *arguments )
   cfg.CSInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
   cfg.SCKInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  cfg.SCKInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  cfg.SCKInit.alternate  = Thor::Driver::GPIO::AF6_SPI3;
   cfg.SCKInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
   cfg.SCKInit.pin        = 10;
   cfg.SCKInit.port       = Chimera::GPIO::Port::PORTC;
   cfg.SCKInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
   cfg.MISOInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  cfg.MISOInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  cfg.MISOInit.alternate  = Thor::Driver::GPIO::AF6_SPI3;
   cfg.MISOInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
   cfg.MISOInit.pin        = 11;
   cfg.MISOInit.port       = Chimera::GPIO::Port::PORTC;
   cfg.MISOInit.pull       = Chimera::GPIO::Pull::NO_PULL;
 
   cfg.MOSIInit.accessMode = Chimera::Hardware::AccessMode::THREADED;
-  cfg.MOSIInit.alternate  = Thor::Driver::GPIO::AF7_SPI3;
+  cfg.MOSIInit.alternate  = Thor::Driver::GPIO::AF6_SPI3;
   cfg.MOSIInit.drive      = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
   cfg.MOSIInit.pin        = 12;
   cfg.MOSIInit.port       = Chimera::GPIO::Port::PORTC;
@@ -108,9 +108,9 @@ void spi_thread( void *arguments )
   cfg.HWInit.clockFreq   = 1000000;
   cfg.HWInit.clockMode   = Chimera::SPI::ClockMode::MODE0;
   cfg.HWInit.controlMode = Chimera::SPI::ControlMode::MASTER;
-  cfg.HWInit.csMode      = Chimera::SPI::CSMode::MANUAL;
+  cfg.HWInit.csMode      = Chimera::SPI::CSMode::AUTO_AFTER_TRANSFER;
   cfg.HWInit.dataSize    = Chimera::SPI::DataSize::SZ_8BIT;
-  cfg.HWInit.hwChannel   = 1;
+  cfg.HWInit.hwChannel   = 3;
   cfg.HWInit.txfrMode    = Chimera::SPI::TransferMode::BLOCKING;
   cfg.validity           = true;
 
