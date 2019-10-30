@@ -104,14 +104,14 @@ void spi_thread( void *arguments )
   /*------------------------------------------------
   SPI Parameter Initialization
   ------------------------------------------------*/
-  cfg.HWInit.bitOrder    = Chimera::SPI::BitOrder::LSB_FIRST;
+  cfg.HWInit.bitOrder    = Chimera::SPI::BitOrder::MSB_FIRST;
   cfg.HWInit.clockFreq   = 1000000;
   cfg.HWInit.clockMode   = Chimera::SPI::ClockMode::MODE0;
   cfg.HWInit.controlMode = Chimera::SPI::ControlMode::MASTER;
   cfg.HWInit.csMode      = Chimera::SPI::CSMode::AUTO_AFTER_TRANSFER;
   cfg.HWInit.dataSize    = Chimera::SPI::DataSize::SZ_8BIT;
   cfg.HWInit.hwChannel   = 3;
-  cfg.HWInit.txfrMode    = Chimera::SPI::TransferMode::BLOCKING;
+  cfg.HWInit.txfrMode    = Chimera::SPI::TransferMode::INTERRUPT;
   cfg.validity           = true;
 
   /*------------------------------------------------
