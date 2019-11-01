@@ -15,6 +15,9 @@
 #include <Chimera/threading.hpp>
 #include <Chimera/watchdog.hpp>
 
+/* Flash Memory Includes */
+#include <mb85rs64v.hpp>
+
 void test_thread( void *arguments );
 void spi_thread( void *arguments );
 
@@ -117,19 +120,23 @@ void spi_thread( void *arguments )
   /*------------------------------------------------
   SPI Driver Initialization
   ------------------------------------------------*/
-  auto spi = Chimera::SPI::SPIClass();
+  auto spi = std::make_shared<Chimera::SPI::SPIClass>();
 
-  if ( spi.init( cfg ) != Chimera::CommonStatusCodes::OK )
+  if ( spi->init( cfg ) != Chimera::CommonStatusCodes::OK )
   {
     Chimera::Watchdog::invokeTimeout();
   }
 
+  /*------------------------------------------------
+  FRAM Initialization
+  ------------------------------------------------*/
+  auto fram = FRAM::Fujitsu::MB85RS64V();
+  fram.attachSPI( spi );
+  fram.initialize( &cfg );
 
   while ( 1 )
   {
-    spi.writeBytes( data.data(), data.length(), 100 );
-    spi.await( Chimera::Event::Trigger::TRANSFER_COMPLETE, 100 );
-
+    fram.readID();
     Chimera::delayMilliseconds( 100 );
   }
 }

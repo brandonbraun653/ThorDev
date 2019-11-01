@@ -181,6 +181,9 @@
     <Filter Include="Thor\types">
       <UniqueIdentifier>{baef70f5-e8ad-49eb-a3e6-337cbb3b812c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MB85RS64V">
+      <UniqueIdentifier>{02af5a11-e8c9-4fb9-90e1-d19bb81e8ec4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="stm32.props">
@@ -1127,6 +1130,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\..\lib\MB85RS64V\mb85rs64v.cpp">
+      <Filter>MB85RS64V</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="thor_config_prj.hpp">
@@ -1164,6 +1170,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\..\lib\Chimera\Chimera\base\watchdog_base.hpp">
       <Filter>Chimera\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\lib\MB85RS64V\mb85rs64v.hpp">
+      <Filter>MB85RS64V</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
