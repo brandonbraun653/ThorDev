@@ -14,6 +14,7 @@
                 "UNICODE",
                 "_UNICODE",
                 "THOR_CUSTOM_DRIVERS=1",
+                "THOR_DRIVER_GPIO=1",
                 "USING_FREERTOS"
             ],
             "windowsSdkVersion": "10.0.17763.0",
