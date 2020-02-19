@@ -17,6 +17,7 @@ path-constant COMMON_FEATURES : lib/CommonTools/boost-build/features ;
 using gcc ;
 
 use-project /PRJ : . ;
+use-project /AURORA : lib/Aurora ;
 use-project /CHIMERA : lib/Aurora/Chimera ;
 use-project /THOR : Thor ;
 use-project /FREERTOS : lib/FreeRTOS ;
