@@ -17,11 +17,9 @@ path-constant COMMON_FEATURES : lib/CommonTools/boost-build/features ;
 using gcc ;
 
 use-project /PRJ : . ;
-use-project /CHIMERA : lib/Chimera ;
-use-project /FREERTOS : lib/FreeRTOS ;
+use-project /CHIMERA : lib/Aurora/Chimera ;
 use-project /THOR : Thor ;
-use-project /STM32F4 : Thor/Thor/drivers/f4 ;
-
+use-project /FREERTOS : lib/FreeRTOS ;
 
 local boost_install_dir = [ os.environ BOOST_ROOT ] ;
 path-constant boost_inc_dir : $(boost_install_dir)/boost_1_70_0 ;
@@ -31,16 +29,16 @@ path-constant artifacts_dir : $(TOP)/artifacts ;
 # /PRJ//XXXX Aliases
 # ------------------------------------------
 explicit_alias BOOST : : : : <include>$(boost_inc_dir) ;
-explicit_alias CHIMERA_PORT : : : : <use>/THOR//CHIMERA_PORT ;
-explicit_alias FREERTOS_CFG : : : : <include>Thor/Thor/config/freertos ;
+explicit_alias CHIMERA_PORT : : : : ;
+explicit_alias CHIMERA_CFG : : : : <include>lib/Aurora/Chimera/Chimera/sim/config/chimera ;
+explicit_alias CHIMERA_DEFS : : : : <define>CHIMERA_LITTLE_ENDIAN <define>USE_FREERTOS_THREADS ;
+explicit_alias FREERTOS_CFG : : : : <include>lib/Aurora/Chimera/Chimera/sim/config/freertos ;
 explicit_alias TARGET_OPTIONS : : : : <use>/THOR//TARGET_PROPAGATED_OPTIONS ;
-explicit_alias THOR_PRJ_PUB : : : : <include>dev/resources/compilation ;
 
 project Thor
     : requirements
         <toolset>gcc_arm_none_eabi
+        # <toolset>gcc
         <link>static
-        <cxxflags>--std=gnu++17
-        <define>BOOST_NO_EXCEPTIONS
-        <define>_EMBEDDED
+        <cxxflags>--std=gnu++2a
     ;
