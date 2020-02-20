@@ -14,11 +14,10 @@ rule explicit_alias ( name : sources * : requirements * : default-build * : usag
 path-constant TOP : . ;
 path-constant COMMON_FEATURES : lib/CommonTools/boost-build/features ;
 
-using gcc ;
-
 use-project /PRJ : . ;
 use-project /AURORA : lib/Aurora ;
 use-project /CHIMERA : lib/Aurora/Chimera ;
+use-project /GOOGLE : lib/CommonTools/googletest ;
 use-project /THOR : Thor ;
 use-project /FREERTOS : lib/FreeRTOS ;
 
@@ -32,13 +31,13 @@ path-constant artifacts_dir : $(TOP)/artifacts ;
 explicit_alias BOOST : : : : <include>$(boost_inc_dir) ;
 explicit_alias CHIMERA_PORT : : : : ;
 explicit_alias CHIMERA_CFG : : : : <include>lib/Aurora/Chimera/Chimera/sim/config/chimera ;
-explicit_alias CHIMERA_DEFS : : : : <define>CHIMERA_LITTLE_ENDIAN <define>USE_FREERTOS_THREADS ;
+explicit_alias CHIMERA_DEFS : : : : <define>CHIMERA_LITTLE_ENDIAN ;
 explicit_alias FREERTOS_CFG : : : : <include>lib/Aurora/Chimera/Chimera/sim/config/freertos ;
 explicit_alias TARGET_OPTIONS : : : : <use>/THOR//TARGET_PROPAGATED_OPTIONS ;
 
 project Thor
     : requirements
-        <toolset>gcc_arm_none_eabi
+        #<toolset>gcc_arm_none_eabi
         # <toolset>gcc
         <link>static
         <cxxflags>--std=gnu++2a
