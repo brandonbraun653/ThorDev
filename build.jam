@@ -10,14 +10,21 @@ local rule explicit_alias ( name : sources * : requirements * : default-build * 
 
 # ====================================================
 # Targets
+# Must supply command line arguments to specify which STM32 variant to build.
 # ====================================================
-# Builds the supported drivers
+# Builds the supported high level drivers
 explicit_alias build_hld
   : /THOR/GPIO//LIB
     /THOR/SYSTEM//LIB
     /THOR/TIMER//LIB
   ;
 
+# Builds the high level driver tests 
+explicit_alias build_hld_test
+  : /THOR/GPIO//INSTALL_TEST
+  ;  
+
+# Builds the STM32F4 low level driver
 explicit_alias build_lld_stm32f4
   : /STM32F4/FLASH//LIB
     /STM32F4/GPIO//LIB
@@ -27,6 +34,7 @@ explicit_alias build_lld_stm32f4
     /STM32F4/RCC//DEVICE_TARGET
   ;
 
+# Builds the STM32F4 low level driver tests
 explicit_alias build_lld_stm32f4_test 
   : /STM32F4/GPIO//INSTALL_TEST
   ;
