@@ -13,6 +13,7 @@ rule explicit_alias ( name : sources * : requirements * : default-build * : usag
 
 path-constant TOP : . ;
 path-constant COMMON_FEATURES : lib/CommonTools/boost-build/features ;
+path-constant ARTIFACTS_DIR : $(TOP)/artifacts ;
 
 use-project /PRJ : . ;
 use-project /AURORA : lib/Aurora ;
