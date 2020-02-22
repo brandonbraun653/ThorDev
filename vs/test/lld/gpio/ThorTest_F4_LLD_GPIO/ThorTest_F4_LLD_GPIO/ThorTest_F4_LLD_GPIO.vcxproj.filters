@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_driver_stm32f4.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_mapping.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\variant\hw_gpio_register_stm32f446xx.cpp">
+      <Filter>source\variant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\test\test_entry.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\test\test_lld_gpio_driver.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\hw_rcc_mapping.cpp">
+      <Filter>dependencies\Thor\lld_rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\hw_rcc_driver_stm32f4.cpp">
+      <Filter>dependencies\Thor\lld_rcc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\variant\hw_rcc_register_stm32f446xx.cpp">
+      <Filter>dependencies\Thor\lld_rcc\variant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\config\hw_rcc_config_stm32f446xx.cpp">
+      <Filter>dependencies\Thor\lld_rcc\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\flash\hw_flash_mapping.cpp">
+      <Filter>dependencies\Thor\lld_flash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\power\hw_power_mapping.cpp">
+      <Filter>dependencies\Thor\lld_pwr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\hld\timer\hld_timer_chimera.cpp">
+      <Filter>dependencies\Thor\lld_timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\common\chimera.cpp">
+      <Filter>dependencies\Chimera\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\peripherals\timer\chimera_timer.cpp">
+      <Filter>dependencies\Chimera\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\sim\sim_chimera_system.cpp">
+      <Filter>dependencies\Chimera\sim</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_driver.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_mapping.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_prj.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_types.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\variant\hw_gpio_register_stm32f446xx.hpp">
+      <Filter>source\variant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\variant\hw_rcc_register_stm32f446xx.hpp">
+      <Filter>dependencies\Thor\lld_rcc\variant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\config\hw_rcc_config_stm32f446xx.hpp">
+      <Filter>dependencies\Thor\lld_rcc\config</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{dcacd934-ed6c-4445-a4cd-62622510f042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\variant">
+      <UniqueIdentifier>{98a76811-0a7a-42af-9c7b-92276088cd61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="driver">
+      <UniqueIdentifier>{336a7a34-0018-4332-ba67-19aaca9bd738}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies">
+      <UniqueIdentifier>{91ddb691-0269-4187-9fee-8e2ad0d73102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Thor">
+      <UniqueIdentifier>{80b53cbc-ce65-4f39-9dfc-fadc0ed34a88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Thor\lld_rcc">
+      <UniqueIdentifier>{566226c5-4e98-4bec-86a1-874d38e78c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Thor\lld_rcc\variant">
+      <UniqueIdentifier>{a81455be-2685-4593-a770-2d69bfeb85b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Thor\lld_rcc\config">
+      <UniqueIdentifier>{8d605a6d-16ae-4d20-87d8-3e04426fbb66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Chimera">
+      <UniqueIdentifier>{c1adac8b-9bf4-4869-8cee-3fc98a4e3b3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Thor\lld_pwr">
+      <UniqueIdentifier>{e70d8a37-2424-4a28-9ec3-7e9cd56d1749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Thor\lld_flash">
+      <UniqueIdentifier>{eb9d8c97-d0c6-415a-af39-ccd2dd62c719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Thor\lld_timer">
+      <UniqueIdentifier>{b283f2b0-9999-4ec2-81ee-967b9eb8c02a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Chimera\src">
+      <UniqueIdentifier>{972ce761-9ccd-41ea-99a9-59b858d08109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dependencies\Chimera\sim">
+      <UniqueIdentifier>{ad9d0d3c-5f3b-4db7-ad43-2fc5dd533aca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
