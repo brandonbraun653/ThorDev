@@ -36,7 +36,7 @@ explicit_alias CHIMERA_DEFS : : : : <define>CHIMERA_LITTLE_ENDIAN ;
 explicit_alias FREERTOS_CFG : : : : <include>lib/Aurora/Chimera/Chimera/sim/config/freertos ;
 explicit_alias TARGET_OPTIONS : : : : <use>/THOR//TARGET_PROPAGATED_OPTIONS ;
 
-project Thor
+project ThorDevelopment
     : requirements
         #<toolset>gcc_arm_none_eabi
         # <toolset>gcc
