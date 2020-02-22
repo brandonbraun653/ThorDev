@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{91180838-6386-4599-a90d-e42df8c64b10}</ProjectGuid>
+    <ProjectGuid>{6595160a-607f-45dc-a44d-85020f14a601}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <ConfigurationType>Application</ConfigurationType>
@@ -33,24 +33,26 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_driver.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_mapping.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_prj.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_types.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\variant\hw_gpio_register_stm32f446xx.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\config\hw_rcc_config_stm32f446xx.hpp" />
-    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\variant\hw_rcc_register_stm32f446xx.hpp" />
+    <None Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\build.jam" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\sim\sim_chimera_system.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\common\chimera.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\common\compiler_intf.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\peripherals\gpio\chimera_gpio.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\peripherals\timer\chimera_timer.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\system\chimera_system.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\Aurora\Chimera\Chimera\src\threading\stl\stl_threading_implementation.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_chimera.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_driver.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\test\test_entry.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\test\test_hld_gpio_chimera.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\hld\timer\hld_timer_chimera.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\flash\hw_flash_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\flash\hw_flash_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_driver_stm32f4.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\hw_gpio_mapping.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\test\test_entry.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\test\test_lld_gpio_driver.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\variant\hw_gpio_register_stm32f446xx.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\power\hw_power_mapping.cpp" />
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\config\hw_rcc_config_stm32f446xx.cpp" />
@@ -59,8 +61,10 @@
     <ClCompile Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\rcc\variant\hw_rcc_register_stm32f446xx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\build.jam" />
-    <None Include="packages.config" />
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_chimera.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_driver.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_intf.hpp" />
+    <ClInclude Include="..\..\..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_types.hpp" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -72,12 +76,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;CHIMERA_SIMULATOR;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;_WIN32_WINNT=0x0A00;;CHIMERA_SIMULATOR;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;;THOR_HLD_GPIO;CHIMERA_SIMULATOR</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../Thor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../lib/Aurora;$(ProjectDir)../../../../../../Thor;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -89,12 +94,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN64;X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;_WIN32_WINNT=0x0A00;WIN32_LEAN_AND_MEAN;CHIMERA_SIMULATOR;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;;THOR_HLD_GPIO;CHIMERA_SIMULATOR</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../Thor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../lib/Aurora;$(ProjectDir)../../../../../../Thor;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -105,12 +111,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;_WIN32_WINNT=0x0A00;;CHIMERA_SIMULATOR;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;;THOR_HLD_GPIO;CHIMERA_SIMULATOR</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../Thor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../lib/Aurora;$(ProjectDir)../../../../../../Thor;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -123,12 +130,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PreprocessorDefinitions>WIN64;X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;_WIN32_WINNT=0x0A00;WIN32_LEAN_AND_MEAN;CHIMERA_SIMULATOR;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;TARGET_STM32F4;STM32F446xx;THOR_LLD_FLASH;THOR_LLD_GPIO;THOR_LLD_NVIC;THOR_LLD_PWR;THOR_LLD_RCC;USING_STL_THREADS;_SIM;;THOR_HLD_GPIO;CHIMERA_SIMULATOR</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../Thor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT)/boost_1_70_0;$(ProjectDir)../../../../../../lib/Aurora/Chimera/Chimera/sim/config/chimera;$(ProjectDir)../../../../../../lib/Aurora/Chimera;$(ProjectDir)../../../../../../lib/Aurora;$(ProjectDir)../../../../../../Thor;$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

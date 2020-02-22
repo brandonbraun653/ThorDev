@@ -114,4 +114,10 @@
       <UniqueIdentifier>{ad9d0d3c-5f3b-4db7-ad43-2fc5dd533aca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="..\..\..\..\..\..\Thor\Thor\lld\stm32f4x\gpio\build.jam">
+      <Filter>source</Filter>
+    </None>
+  </ItemGroup>
 </Project>
