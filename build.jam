@@ -13,7 +13,7 @@ local rule explicit_alias ( name : sources * : requirements * : default-build * 
 # Must supply command line arguments to specify which STM32 variant to build.
 # ====================================================
 explicit_alias INSTALL_LIB : /THOR/HLD//INSTALL_ALL_LIB ;
-explicit_alias INSTALL_TEST : /THOR/HLD//INSTALL_ALL_TST ;
+explicit_alias INSTALL_TST : /THOR/HLD//INSTALL_ALL_TST ;
 
 explicit_alias INSTALL_LIB_F4 : /THOR/LLD/STM32F4//INSTALL_ALL_LIB : <Thor>enabled-F4 ;
 explicit_alias INSTALL_TST_F4 : /THOR/LLD/STM32F4//INSTALL_ALL_TST : <Thor>enabled-F4 ;
