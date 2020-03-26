@@ -21,6 +21,11 @@
   <ItemGroup>
     <ClCompile Include="entry.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Thor\vs\ThorStaticLibrary\ThorStaticLibrary\ThorStaticLibrary.vcxproj">
+      <Project>{d04a89da-cd1b-41ec-9acd-f31b0e675f14}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{BD69A551-F4E9-4CFE-8A6D-23CA60F11060}</ProjectGuid>
