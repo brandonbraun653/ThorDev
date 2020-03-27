@@ -8,13 +8,13 @@
  *   2020 | Brandon Braun | brandonbraun653@gmail.com
  ********************************************************************************/
 
-///* C++ Includes */
-//#include <string>
-//
-///* Chimera Includes */
+/* C++ Includes */
+#include <string>
+
+/* Chimera Includes */
 //#include <Chimera/gpio>
 //#include <Chimera/spi>
-//#include <Chimera/system>
+#include <Chimera/system>
 //#include <Chimera/thread>
 //#include <Chimera/watchdog>
 //
@@ -38,11 +38,11 @@
 
 int main( void )
 {
-  //  /*------------------------------------------------
-  //  Boot up the device hardware
-  //  ------------------------------------------------*/
-  //  ChimeraInit();
-  //
+    /*------------------------------------------------
+    Boot up the device hardware
+    ------------------------------------------------*/
+    ChimeraInit();
+  
   //  /*------------------------------------------------
   //  Initialize the profiler
   //  ------------------------------------------------*/
