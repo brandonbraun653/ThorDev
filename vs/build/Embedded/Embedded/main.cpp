@@ -38,11 +38,15 @@
 
 int main( void )
 {
-    /*------------------------------------------------
-    Boot up the device hardware
-    ------------------------------------------------*/
-    ChimeraInit();
-  
+  /*------------------------------------------------
+  Boot up the device hardware
+  ------------------------------------------------*/
+  ChimeraInit();
+
+  Chimera::System::Information *sysInfo = nullptr;
+  Chimera::System::getSystemInformation( sysInfo );
+
+
   //  /*------------------------------------------------
   //  Initialize the profiler
   //  ------------------------------------------------*/
