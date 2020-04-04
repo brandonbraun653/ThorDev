@@ -2,3 +2,6 @@ bin/*
 artifacts/*
 .vscode/ipch/*
 .vscode/*
+**__pycache__
+**.idea
+**.map
