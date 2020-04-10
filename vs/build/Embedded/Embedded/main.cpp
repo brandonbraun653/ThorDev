@@ -12,6 +12,7 @@
 #include <string>
 
 /* Chimera Includes */
+#include <Chimera/clock>
 #include <Chimera/gpio>
 //#include <Chimera/spi>
 #include <Chimera/system>
@@ -30,7 +31,7 @@
 ///* Visual GDB Includes */
 //#include "SysprogsProfiler.h"
 
-
+using namespace Chimera::Clock;
 using namespace Chimera::Threading;
 
 static void background_thread( void *arg );
@@ -45,6 +46,11 @@ int main( void )
 
   Chimera::System::Information *sysInfo = nullptr;
   Chimera::System::getSystemInformation( sysInfo );
+
+  volatile size_t sysclk = Chimera::Clock::getFrequency( Bus::MSI );
+
+  volatile size_t pclk1Freq = Chimera::Clock::getFrequency( Bus::PCLK1 );
+  volatile size_t pclk2Freq = Chimera::Clock::getFrequency( Bus::PCLK2 );
 
 
   /*------------------------------------------------
