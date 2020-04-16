@@ -71,7 +71,9 @@ class LLDVariantTemplate(BaseAttributes):
 #define {include_guard}
 
 /* C++ Includes */
+#include <array>
 #include <cstdint>
+#include <cstddef>
 
 /* Driver Includes */
 #include <Thor/lld/{family_lc}x/system/variant/sys_memory_map_{device_lc}.hpp>
@@ -79,7 +81,7 @@ class LLDVariantTemplate(BaseAttributes):
 /*-------------------------------------------------
 Peripheral Availability
 -------------------------------------------------*/
-// #define STM32_{periph_uc}x_PERIPH_AVAILABLE
+// #define STM32_{periph_uc}_PERIPH_AVAILABLE
 // ...
 
 namespace Thor::LLD::{periph_uc}
@@ -94,18 +96,18 @@ namespace Thor::LLD::{periph_uc}
   /*-------------------------------------------------
   Peripheral Instance Memory Map Base
   -------------------------------------------------*/
-  // static constexpr Reg32_t {periph_uc}x_BASE_ADDR = Thor::System::MemoryMap::AHB1PERIPH_BASE_ADDR + 0x0000U;
+  // static constexpr uint32_t {periph_uc}_BASE_ADDR = Thor::System::MemoryMap::{periph_uc}_PERIPH_START_ADDRESS;
 
   /*-------------------------------------------------
   Peripheral Resource Lookup Indices
   -------------------------------------------------*/
-  // static constexpr uint32_t {periph_uc}x_RESOURCE_INDEX = 0u;
+  // static constexpr uint32_t {periph_uc}_RESOURCE_INDEX = 0u;
 
   /*-------------------------------------------------
   Lookup addresses
   -------------------------------------------------*/
   // static constexpr size_t NUM_{periph_uc}_PERIPHS = 8;
-  // static constexpr std::array<Reg32_t, NUM_{periph_uc}_PERIPHS> periphAddressList = {{ ... }};
+  // static constexpr std::array<uint32_t, NUM_{periph_uc}_PERIPHS> periphAddressList = {{ ... }};
 
   /*-------------------------------------------------
   Peripheral Register Definitions
@@ -144,7 +146,7 @@ namespace Thor::LLD::{periph_uc}
   /*-------------------------------------------------
   Memory Mapped Structs to Peripherals
   -------------------------------------------------*/
-  // RegisterMap *GPIOA_PERIPH = reinterpret_cast<RegisterMap *>( GPIOA_BASE_ADDR );
+  // RegisterMap *{periph_uc}_PERIPH = reinterpret_cast<RegisterMap *>( {periph_uc}_BASE_ADDR );
 
   /*-------------------------------------------------
   Lookup Tables Defintions
@@ -155,16 +157,12 @@ namespace Thor::LLD::{periph_uc}
   /*-------------------------------------------------
   Memory Mapped Structs to Virtual Peripherals
   -------------------------------------------------*/
-  // RegisterMap *GPIOA_PERIPH = nullptr;
-  // ...
+  // RegisterMap *{periph_uc}_PERIPH = nullptr;
 
   /*-------------------------------------------------
   Lookup Tables Definitions
   -------------------------------------------------*/
-  // Chimera::Container::LightFlatMap<std::uintptr_t, size_t> InstanceToResourceIndex{{
-  //   {{ reinterpret_cast<std::uintptr_t>( GPIOA_PERIPH ), GPIOA_RESOURCE_INDEX }},
-  //   ...
-  // }};
+  // Chimera::Container::LightFlatMap<std::uintptr_t, size_t> InstanceToResourceIndex;
 #endif
 
   void initializeRegisters()
@@ -173,24 +171,21 @@ namespace Thor::LLD::{periph_uc}
     /*------------------------------------------------
     Allocate some memory to simulate the register blocks
     ------------------------------------------------*/
-    // GPIOA_PERIPH = new RegisterMap;
-    // ...
+    // {periph_uc}_PERIPH = new RegisterMap;
 
     /*------------------------------------------------
     Update the memory listing
     ------------------------------------------------*/
-    // PeripheralList[ GPIOA_RESOURCE_INDEX ] = GPIOA_PERIPH;
-    // ...
+    // PeripheralList[ {periph_uc}_RESOURCE_INDEX ] = {periph_uc}_PERIPH;
 
     /*------------------------------------------------
     Update the resource indexer now that the registers actually exist
     ------------------------------------------------*/
-    // InstanceToResourceIndex.append( reinterpret_cast<std::uintptr_t>( GPIOA_PERIPH ), GPIOA_RESOURCE_INDEX );
-    // ...
+    // InstanceToResourceIndex.append( reinterpret_cast<std::uintptr_t>( {periph_uc}_PERIPH ), {periph_uc}_RESOURCE_INDEX );
 
 #endif
   }}
-}}    // namespace Thor::LLD::GPIO
+}}    // namespace Thor::LLD::{periph_uc}
 
 namespace Thor::LLD::RCC::LookupTables
 {{
@@ -201,7 +196,7 @@ namespace Thor::LLD::RCC::LookupTables
   RegisterConfig {periph_uc}_ClockConfig[ {periph_lc}TableSize ];
   RegisterConfig {periph_uc}_ClockConfigLP[ {periph_lc}TableSize ];
   RegisterConfig {periph_uc}_ResetConfig[ {periph_lc}TableSize ];
-  ClockType_t {periph_uc}_SourceClock[ {periph_lc}TableSize ];
+  Chimera::Clock::Bus {periph_uc}_SourceClock[ {periph_lc}TableSize ];
 
   const PCC {periph_uc}Lookup = {{
     {periph_uc}_ClockConfig, {periph_uc}_ClockConfigLP, {periph_uc}_ResetConfig, {periph_uc}_SourceClock, &Thor::LLD::{periph_uc}::InstanceToResourceIndex,
@@ -215,25 +210,25 @@ namespace Thor::LLD::RCC::LookupTables
     /*------------------------------------------------
     {periph_uc} clock enable register access lookup table
     ------------------------------------------------*/
-    // GPIO_ClockConfig[ GPIOA_RESOURCE_INDEX ].mask = AHB1ENR_GPIOAEN;
-    // GPIO_ClockConfig[ GPIOA_RESOURCE_INDEX ].reg  = &RCC1_PERIPH->AHB1ENR;
+    // {periph_uc}_ClockConfig[ {periph_uc}_RESOURCE_INDEX ].mask = AHB1ENR_{periph_uc}EN;
+    // {periph_uc}_ClockConfig[ {periph_uc}_RESOURCE_INDEX ].reg  = &RCC1_PERIPH->AHB1ENR;
 
     /*------------------------------------------------
     {periph_uc} low power clock enable register access lookup table
     ------------------------------------------------*/
-    // GPIO_ClockConfigLP[ GPIOA_RESOURCE_INDEX ].mask = AHB1LPENR_GPIOALPEN;
-    // GPIO_ClockConfigLP[ GPIOA_RESOURCE_INDEX ].reg  = &RCC1_PERIPH->AHB1LPENR;
+    // {periph_uc}_ClockConfigLP[ {periph_uc}_RESOURCE_INDEX ].mask = AHB1LPENR_{periph_uc}LPEN;
+    // {periph_uc}_ClockConfigLP[ {periph_uc}_RESOURCE_INDEX ].reg  = &RCC1_PERIPH->AHB1LPENR;
 
     /*------------------------------------------------
     {periph_uc} reset register access lookup table
     ------------------------------------------------*/
-    // GPIO_ResetConfig[ GPIOA_RESOURCE_INDEX ].mask = AHB1RSTR_GPIOARST;
-    // GPIO_ResetConfig[ GPIOA_RESOURCE_INDEX ].reg  = &RCC1_PERIPH->AHB1RSTR;
+    // {periph_uc}_ResetConfig[ {periph_uc}_RESOURCE_INDEX ].mask = AHB1RSTR_{periph_uc}RST;
+    // {periph_uc}_ResetConfig[ {periph_uc}_RESOURCE_INDEX ].reg  = &RCC1_PERIPH->AHB1RSTR;
 
     /*------------------------------------------------
     {periph_uc} clocking bus source identifier
     ------------------------------------------------*/
-    // GPIO_SourceClock[ GPIOA_RESOURCE_INDEX ] = Configuration::ClockType::PCLK1;
+    // {periph_uc}_SourceClock[ {periph_uc}_RESOURCE_INDEX ] = Chimera::Clock::Bus::PCLK1;
   }};
 
 }}    // namespace Thor::LLD::RCC::LookupTables

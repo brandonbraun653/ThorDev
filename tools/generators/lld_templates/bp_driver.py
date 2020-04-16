@@ -75,7 +75,7 @@ class LLDDriverTemplate(BaseAttributes):
 #include <Thor/lld/{family_lc}x/{periph_lc}/hw_{periph_lc}_types.hpp>
 #include <Thor/lld/{family_lc}x/{periph_lc}/hw_{periph_lc}_mapping.hpp>
 #include <Thor/lld/interface/{periph_lc}/{periph_lc}_intf.hpp>
-#include <Thor/lld/interface/interrupt/interrupt_model.hpp>
+#include <Thor/lld/interface/interrupt/interrupt_intf.hpp>
 
 namespace Thor::LLD::{periph_uc}
 {{
