@@ -14,7 +14,7 @@
 /* Chimera Includes */
 #include <Chimera/clock>
 #include <Chimera/gpio>
-//#include <Chimera/spi>
+#include <Chimera/spi>
 #include <Chimera/system>
 #include <Chimera/thread>
 //#include <Chimera/watchdog>
@@ -36,6 +36,8 @@ using namespace Chimera::Threading;
 
 static void background_thread( void *arg );
 static void startup_blinky_sequence( const Chimera::GPIO::GPIO_sPtr &led );
+
+static void spi_thread( void *arg );
 
 int main( void )
 {
@@ -81,6 +83,10 @@ int main( void )
   blinkyThread.initialize( background_thread, nullptr, Priority::LEVEL_3, 500, "blinky" );
   blinkyThread.start();
 
+  Thread spiThread;
+  spiThread.initialize( spi_thread, nullptr, Priority::LEVEL_4, 2048, "spi" );
+  spiThread.start();
+
   startScheduler();
 }
 
@@ -122,5 +128,70 @@ void background_thread( void *arguments )
     Chimera::delayMilliseconds( 150 );
     led->setState( Chimera::GPIO::State::LOW, 100 );
     Chimera::delayMilliseconds( 150 );
+  }
+}
+
+
+void spi_thread( void *arg )
+{
+  /*------------------------------------------------
+  Initialize the SPI driver
+  ------------------------------------------------*/
+  Chimera::SPI::DriverConfig init;
+
+  /* Chip select setup */
+  init.externalCS = false;
+  init.validity   = true;
+
+  init.CSInit.alternate = Chimera::GPIO::Alternate::NONE;
+  init.CSInit.drive     = Chimera::GPIO::Drive::OUTPUT_PUSH_PULL;
+  init.CSInit.pin       = 4;
+  init.CSInit.port      = Chimera::GPIO::Port::PORTA;
+  init.CSInit.pull      = Chimera::GPIO::Pull::NO_PULL;
+  init.CSInit.state     = Chimera::GPIO::State::HIGH;
+  init.CSInit.threaded  = false;
+  init.CSInit.validity  = true;
+
+  init.SCKInit.alternate = Chimera::GPIO::Alternate::SPI1_SCK;
+  init.SCKInit.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  init.SCKInit.pin       = 5;
+  init.SCKInit.port      = Chimera::GPIO::Port::PORTA;
+  init.SCKInit.threaded  = false;
+  init.SCKInit.validity  = true;
+
+  init.MISOInit.alternate = Chimera::GPIO::Alternate::SPI1_MISO;
+  init.MISOInit.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  init.MISOInit.pin       = 6;
+  init.MISOInit.port      = Chimera::GPIO::Port::PORTA;
+  init.MISOInit.threaded  = false;
+  init.MISOInit.validity  = true;
+
+  init.MOSIInit.alternate = Chimera::GPIO::Alternate::SPI1_MOSI;
+  init.MOSIInit.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  init.MOSIInit.pin       = 7;
+  init.MOSIInit.port      = Chimera::GPIO::Port::PORTA;
+  init.MOSIInit.threaded  = false;
+  init.MOSIInit.validity  = true;
+
+  init.HWInit.bitOrder    = Chimera::SPI::BitOrder::MSB_FIRST;
+  init.HWInit.clockFreq   = 1000000;
+  init.HWInit.clockMode   = Chimera::SPI::ClockMode::MODE0;
+  init.HWInit.controlMode = Chimera::SPI::ControlMode::MASTER;
+  init.HWInit.csMode      = Chimera::SPI::CSMode::AUTO_AFTER_TRANSFER;
+  init.HWInit.dataSize    = Chimera::SPI::DataSize::SZ_8BIT;
+  init.HWInit.hwChannel   = Chimera::SPI::Channel::SPI1;
+  init.HWInit.txfrMode    = Chimera::Hardware::PeripheralMode::INTERRUPT;
+  init.HWInit.validity    = true;
+
+  auto spi = Chimera::SPI::create_shared_ptr();
+
+  volatile auto result = spi->init( init );
+
+  std::string_view test = "Hello World\r\n";
+
+  while ( 1 )
+  {
+    spi->writeBytes( test.cbegin(), test.length(), Chimera::Threading::TIMEOUT_DONT_WAIT );
+    Chimera::delayMilliseconds( 100 );
   }
 }
