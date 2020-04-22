@@ -14,15 +14,12 @@
 /* Chimera Includes */
 #include <Chimera/clock>
 #include <Chimera/gpio>
+#include <Chimera/pwm>
 #include <Chimera/spi>
 #include <Chimera/system>
 #include <Chimera/thread>
 //#include <Chimera/watchdog>
-//
-///* Thor Includes */
-//#include <Thor/gpio>
-//#include <Thor/lld/stm32f4x/gpio/hw_gpio_types.hpp>
-//
+
 ///* Logger Includes */
 //#include <uLog/ulog.hpp>
 //#include <uLog/sinks/sink_cout.hpp>
@@ -38,6 +35,7 @@ static void background_thread( void *arg );
 static void startup_blinky_sequence( const Chimera::GPIO::GPIO_sPtr &led );
 
 static void spi_thread( void *arg );
+static void pwm_thread( void *arg );
 
 int main( void )
 {
@@ -86,6 +84,10 @@ int main( void )
   Thread spiThread;
   spiThread.initialize( spi_thread, nullptr, Priority::LEVEL_4, 2048, "spi" );
   spiThread.start();
+
+  Thread pwmThread;
+  pwmThread.initialize( pwm_thread, nullptr, Priority::LEVEL_4, 2048, "pwm" );
+  pwmThread.start();
 
   startScheduler();
 }
@@ -193,5 +195,32 @@ void spi_thread( void *arg )
   {
     spi->writeBytes( test.cbegin(), test.length(), Chimera::Threading::TIMEOUT_DONT_WAIT );
     Chimera::delayMilliseconds( 100 );
+  }
+}
+
+void pwm_thread( void *arg )
+{
+  /*------------------------------------------------
+  Initialize the PWM driver
+  ------------------------------------------------*/
+  Chimera::PWM::DriverConfig init;
+
+  init.validity  = true;
+  init.channel   = 15;
+  init.dutyCycle = 50;
+  init.frequency = 1000;
+  init.idle      = Chimera::PWM::IdleState::LOW;
+
+  init.outputPin.pin  = 5;
+  init.outputPin.port = Chimera::GPIO::Port::PORTA;
+
+
+  auto pwm = Chimera::PWM::create_shared_ptr();
+  pwm->init( init );
+  pwm->enableOutput();
+
+  while ( 1 )
+  {
+    Chimera::delayMilliseconds( 250 );
   }
 }
