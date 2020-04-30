@@ -109,6 +109,11 @@ namespace Thor::LLD::{periph_uc}
   // static constexpr size_t NUM_{periph_uc}_PERIPHS = 8;
   // static constexpr std::array<uint32_t, NUM_{periph_uc}_PERIPHS> periphAddressList = {{ ... }};
 
+  /*------------------------------------------------
+  Supported Hardware Channels
+  ------------------------------------------------*/
+  extern const std::array<Chimera::{periph_uc}::Channel, NUM_{periph_uc}_PERIPHS> supportedChannels;
+
   /*-------------------------------------------------
   Peripheral Register Definitions
   -------------------------------------------------*/

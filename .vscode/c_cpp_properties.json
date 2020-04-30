@@ -15,14 +15,13 @@
                 "UNICODE",
                 "_UNICODE",
                 "_SIM",
-                "TARGET_STM32F4",
-                "STM32F446xx",
+                "TARGET_STM32L4",
+                "STM32L432xx",
                 "USING_STL_THREADS"
             ],
-            "compilerPath": "D:/ProgramFiles/gcc/arm-none-eabi/bin",
             "cppStandard": "c++20",
             "cStandard": "c11",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "msvc-x64"
         }
     ],
     "version": 4

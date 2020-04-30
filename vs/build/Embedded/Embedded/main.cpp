@@ -18,7 +18,12 @@
 #include <Chimera/spi>
 #include <Chimera/system>
 #include <Chimera/thread>
+#include <Chimera/timer>
 //#include <Chimera/watchdog>
+
+/* Thor Includes */
+#include <Thor/timer>
+#include <Thor/hld/timer/hld_timer_conversion.hpp>
 
 ///* Logger Includes */
 //#include <uLog/ulog.hpp>
@@ -133,7 +138,6 @@ void background_thread( void *arguments )
   }
 }
 
-
 void spi_thread( void *arg )
 {
   /*------------------------------------------------
@@ -205,19 +209,35 @@ void pwm_thread( void *arg )
   ------------------------------------------------*/
   Chimera::PWM::DriverConfig init;
 
-  init.validity  = true;
-  init.channel   = 15;
-  init.dutyCycle = 50;
-  init.frequency = 1000;
-  init.idle      = Chimera::PWM::IdleState::LOW;
 
-  init.outputPin.pin  = 5;
-  init.outputPin.port = Chimera::GPIO::Port::PORTA;
+  init.timer.countDirection = Chimera::Timer::Direction::COUNT_UP;
+  init.timer.overwrite      = true;
+  init.timer.peripheral     = Chimera::Timer::Peripheral::TIMER2;
+  init.timer.reloadValue    = std::numeric_limits<uint32_t>::max() / 2;
+  init.timer.validity       = true;
 
+  init.pwm.outputChannel = Chimera::Timer::Channel::CHANNEL_1;
+  init.pwm.dutyCycle     = 50;
+  init.pwm.frequency     = 1000;
+  init.pwm.polarity      = Chimera::Timer::PWM::Polarity::ACTIVE_HIGH;
+  init.pwm.validity      = true;
+
+  init.outputPin.pin       = 0;
+  init.outputPin.port      = Chimera::GPIO::Port::PORTA;
+  init.outputPin.alternate = Chimera::GPIO::Alternate::TIM2_CH1;
+  init.outputPin.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  init.outputPin.threaded  = false;
+  init.outputPin.validity  = true;
+  
+  init.validity = true;
 
   auto pwm = Chimera::PWM::create_shared_ptr();
   pwm->init( init );
   pwm->enableOutput();
+
+
+  Chimera::Timer::ITimerPWM_sPtr timer = Chimera::Timer::getTimerAsPWM( Chimera::Timer::Peripheral::TIMER2 );
+
 
   while ( 1 )
   {
