@@ -23,7 +23,6 @@
 
 /* Thor Includes */
 #include <Thor/timer>
-#include <Thor/hld/timer/hld_timer_conversion.hpp>
 
 ///* Logger Includes */
 //#include <uLog/ulog.hpp>
@@ -204,22 +203,27 @@ void spi_thread( void *arg )
 
 void pwm_thread( void *arg )
 {
-  /*------------------------------------------------
-  Initialize the PWM driver
-  ------------------------------------------------*/
+  
+  auto red = Chimera::PWM::create_shared_ptr();
+  auto green = Chimera::PWM::create_shared_ptr();
+  auto blue = Chimera::PWM::create_shared_ptr();
+  
   Chimera::PWM::DriverConfig init;
 
-
+  /*------------------------------------------------
+  Initialize the Red LED Channel
+  ------------------------------------------------*/
   init.timer.countDirection = Chimera::Timer::Direction::COUNT_UP;
   init.timer.overwrite      = true;
   init.timer.peripheral     = Chimera::Timer::Peripheral::TIMER2;
-  init.timer.reloadValue    = std::numeric_limits<uint32_t>::max() / 2;
+  init.timer.reloadValue    = 1000;
+  init.timer.prescaler      = 80;
   init.timer.validity       = true;
 
   init.pwm.outputChannel = Chimera::Timer::Channel::CHANNEL_1;
-  init.pwm.dutyCycle     = 50;
-  init.pwm.frequency     = 1000;
+  init.pwm.compareMatch  = 100;
   init.pwm.polarity      = Chimera::Timer::PWM::Polarity::ACTIVE_HIGH;
+  init.pwm.mode          = Chimera::Timer::PWM::Mode::EDGE_ALIGNED;
   init.pwm.validity      = true;
 
   init.outputPin.pin       = 0;
@@ -231,13 +235,64 @@ void pwm_thread( void *arg )
   
   init.validity = true;
 
-  auto pwm = Chimera::PWM::create_shared_ptr();
-  pwm->init( init );
-  pwm->enableOutput();
+  red->init( init );
+  red->enableOutput();
 
+  /*------------------------------------------------
+  Initialize the Green LED Channel
+  ------------------------------------------------*/
+  init.timer.countDirection = Chimera::Timer::Direction::COUNT_UP;
+  init.timer.overwrite      = true;
+  init.timer.peripheral     = Chimera::Timer::Peripheral::TIMER2;
+  init.timer.reloadValue    = 1000;
+  init.timer.prescaler      = 80;
+  init.timer.validity       = true;
 
-  Chimera::Timer::ITimerPWM_sPtr timer = Chimera::Timer::getTimerAsPWM( Chimera::Timer::Peripheral::TIMER2 );
+  init.pwm.outputChannel = Chimera::Timer::Channel::CHANNEL_2;
+  init.pwm.compareMatch  = 100;
+  init.pwm.polarity      = Chimera::Timer::PWM::Polarity::ACTIVE_HIGH;
+  init.pwm.mode          = Chimera::Timer::PWM::Mode::EDGE_ALIGNED;
+  init.pwm.validity      = true;
 
+  init.outputPin.pin       = 1;
+  init.outputPin.port      = Chimera::GPIO::Port::PORTA;
+  init.outputPin.alternate = Chimera::GPIO::Alternate::TIM2_CH2;
+  init.outputPin.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  init.outputPin.threaded  = false;
+  init.outputPin.validity  = true;
+  
+  init.validity = true;
+
+  green->init( init );
+  green->enableOutput();
+
+  /*------------------------------------------------
+  Initialize the Blue LED Channel
+  ------------------------------------------------*/
+  init.timer.countDirection = Chimera::Timer::Direction::COUNT_UP;
+  init.timer.overwrite      = true;
+  init.timer.peripheral     = Chimera::Timer::Peripheral::TIMER2;
+  init.timer.reloadValue    = 1000;
+  init.timer.prescaler      = 80;
+  init.timer.validity       = true;
+
+  init.pwm.outputChannel = Chimera::Timer::Channel::CHANNEL_4;
+  init.pwm.compareMatch  = 750;
+  init.pwm.polarity      = Chimera::Timer::PWM::Polarity::ACTIVE_HIGH;
+  init.pwm.mode          = Chimera::Timer::PWM::Mode::EDGE_ALIGNED;
+  init.pwm.validity      = true;
+
+  init.outputPin.pin       = 3;
+  init.outputPin.port      = Chimera::GPIO::Port::PORTA;
+  init.outputPin.alternate = Chimera::GPIO::Alternate::TIM2_CH4;
+  init.outputPin.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  init.outputPin.threaded  = false;
+  init.outputPin.validity  = true;
+  
+  init.validity = true;
+
+  blue->init( init );
+  blue->enableOutput();
 
   while ( 1 )
   {

@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <AuroraIncDir>$(SolutionDir)../../../lib/Aurora</AuroraIncDir>
+    <AuroraIncDir>$(SolutionDir)../../../lib/Aurora;$(SolutionDir)../../../lib/Aurora/lib/type_safe/include;</AuroraIncDir>
     <BoostIncDir>$(BOOST_ROOT)/boost_1_70_0</BoostIncDir>
     <BoostCompilerDefines>BOOST_NO_EXCEPTIONS;</BoostCompilerDefines>
     <CommonCompilerDefinesx64>WIN64</CommonCompilerDefinesx64>
