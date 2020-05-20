@@ -236,7 +236,7 @@ void pwm_thread( void *arg )
   init.validity = true;
 
   red->init( init );
-  red->enableOutput();
+  red->toggleOutput( false );
 
   /*------------------------------------------------
   Initialize the Green LED Channel
@@ -264,7 +264,7 @@ void pwm_thread( void *arg )
   init.validity = true;
 
   green->init( init );
-  green->enableOutput();
+  green->toggleOutput( false );
 
   /*------------------------------------------------
   Initialize the Blue LED Channel
@@ -292,10 +292,18 @@ void pwm_thread( void *arg )
   init.validity = true;
 
   blue->init( init );
-  blue->enableOutput();
+  blue->toggleOutput( false );
 
   while ( 1 )
   {
-    Chimera::delayMilliseconds( 250 );
+    red->toggleOutput( true );
+    green->toggleOutput( true );
+    blue->toggleOutput( true );
+    Chimera::delayMilliseconds( 1000 );
+    red->toggleOutput( false );
+    green->toggleOutput( false );
+    blue->toggleOutput( false );
+    Chimera::delayMilliseconds( 1000 );
+
   }
 }
