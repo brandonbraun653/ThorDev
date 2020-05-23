@@ -11,10 +11,14 @@
 /* C++ Includes */
 #include <string>
 
+/* Boost Includes */
+#include <boost/circular_buffer.hpp>
+
 /* Chimera Includes */
 #include <Chimera/clock>
 #include <Chimera/gpio>
 #include <Chimera/pwm>
+#include <Chimera/serial>
 #include <Chimera/spi>
 #include <Chimera/system>
 #include <Chimera/thread>
@@ -40,6 +44,7 @@ static void startup_blinky_sequence( const Chimera::GPIO::GPIO_sPtr &led );
 
 static void spi_thread( void *arg );
 static void pwm_thread( void *arg );
+static void serial_thread( void *arg );
 
 int main( void )
 {
@@ -92,6 +97,10 @@ int main( void )
   Thread pwmThread;
   pwmThread.initialize( pwm_thread, nullptr, Priority::LEVEL_4, 2048, "pwm" );
   pwmThread.start();
+
+  Thread serialThread;
+  serialThread.initialize( serial_thread, nullptr, Priority::LEVEL_2, 2048, "serial" );
+  serialThread.start();
 
   startScheduler();
 }
@@ -305,5 +314,71 @@ void pwm_thread( void *arg )
     blue->toggleOutput( false );
     Chimera::delayMilliseconds( 1000 );
 
+  }
+}
+
+void serial_thread( void *arg )
+{
+  using namespace Chimera::Serial;
+  using namespace Chimera::Hardware;
+
+  /*------------------------------------------------
+  Memory for asynchronous operation
+  ------------------------------------------------*/
+  std::array<uint8_t, 50> txBuffer;
+  std::array<uint8_t, 50> rxBuffer;
+
+  boost::circular_buffer<uint8_t> txCircBuf( 50 );
+  boost::circular_buffer<uint8_t> rxCircBuf( 50 );
+
+  /*------------------------------------------------
+  Configuration info for the serial object
+  ------------------------------------------------*/
+  IOPins pins;
+  pins.tx.alternate = Chimera::GPIO::Alternate::USART1_TX;
+  pins.tx.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  pins.tx.pin       = 9;
+  pins.tx.port      = Chimera::GPIO::Port::PORTA;
+  pins.tx.pull      = Chimera::GPIO::Pull::NO_PULL;
+  pins.tx.threaded  = true;
+  pins.tx.validity  = true;
+
+  pins.rx.alternate = Chimera::GPIO::Alternate::USART1_RX;
+  pins.rx.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  pins.rx.pin       = 10;
+  pins.rx.port      = Chimera::GPIO::Port::PORTA;
+  pins.rx.pull      = Chimera::GPIO::Pull::NO_PULL;
+  pins.rx.threaded  = true;
+  pins.rx.validity  = true;
+
+
+  Config cfg;
+  cfg.baud     = 115200;
+  cfg.flow     = FlowControl::FCTRL_NONE;
+  cfg.parity   = Parity::PAR_NONE;
+  cfg.stopBits = StopBits::SBITS_ONE;
+  cfg.width    = CharWid::CW_8BIT;
+
+  /*------------------------------------------------
+  Create the serial object and initialize it
+  ------------------------------------------------*/
+  auto result        = Chimera::CommonStatusCodes::OK;
+  Serial_sPtr serial = create_shared_ptr( Channel::SERIAL1 );
+
+  result |= serial->assignHW( Channel::SERIAL1, pins );
+  result |= serial->configure( cfg );
+  result |= serial->enableBuffering( SubPeripheral::TX, &txCircBuf, txBuffer.data(), txBuffer.size() );
+  result |= serial->enableBuffering( SubPeripheral::RX, &rxCircBuf, rxBuffer.data(), rxBuffer.size() );
+  result |= serial->begin( PeripheralMode::INTERRUPT, PeripheralMode::INTERRUPT );
+
+  /*------------------------------------------------
+  Test string to transmit
+  ------------------------------------------------*/
+  std::string_view hello = "hello\r\n";
+
+  while ( true )
+  {
+    serial->write( reinterpret_cast<const uint8_t *>( hello.data() ), hello.size() );
+    Chimera::delayMilliseconds( 100 );
   }
 }
