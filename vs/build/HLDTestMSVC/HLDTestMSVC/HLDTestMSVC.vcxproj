@@ -31,77 +31,60 @@
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="ProjectProperties.props" />
+    <Import Project="CommonProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="ProjectProperties.props" />
+    <Import Project="CommonProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="ProjectProperties.props" />
+    <Import Project="CommonProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="ProjectProperties.props" />
+    <Import Project="CommonProperties.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>true</Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>true</Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>true</Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>true</Microsoft-googletest-v140-windesktop-msvcstl-static-rt-dyn-Disable-gtest_main>
+  </PropertyGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\config.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\simulator\thor_gtest_config.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\simulator\thor_sim_config.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_chimera.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_driver.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_intf.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_types.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_fixture_gpio.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\callback_model.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\callback_types.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\dma\dma_intf.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\dma\dma_types.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\dma\mock\dma_mock.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\flash\flash.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\gpio_detail.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\gpio_intf.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\gpio_types.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\interrupt.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\interrupt_model.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\interrupt_types.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\mock\interrupt_mock.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\nvic\nvic.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\power\power.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock_variant.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\rcc\mock\rcc_mock.hpp" />
+    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\rcc\rcc_detail.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\rcc\rcc_types.hpp" />
     <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\rcc\rcc_intf.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\serial\serial_model.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\serial\serial_types.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\mock\spi_mock.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\spi.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\spi_model.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\spi_types.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\startup\startup.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\timer\timer.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\uart\uart.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\usart\usart.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\watchdog\watchdog.hpp" />
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\watchdog\watchdog_model.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_chimera.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_driver.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_entry_gpio.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_fixture_gpio.cpp" />
-    <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_hld_gpio_chimera.cpp" />
-    <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_hld_gpio_driver.cpp" />
-    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\dma\mock\dma_mock.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock.cpp" />
-    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\mock\interrupt_mock.cpp" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock_variant.cpp" />
     <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\rcc\mock\rcc_mock.cpp" />
-    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\spi\mock\spi_mock.cpp" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets" Condition="Exists('..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" />
-    <Import Project="..\..\..\test\hld\gpio\ThorTest_F4_HLD_GPIO\packages\gmock.v1.8.1.8.1\build\native\gmock.v1.8.targets" Condition="Exists('..\..\..\test\hld\gpio\ThorTest_F4_HLD_GPIO\packages\gmock.v1.8.1.8.1\build\native\gmock.v1.8.targets')" />
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -111,8 +94,8 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(GTestIncDir);$(GMockIncDir);$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -129,8 +112,8 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(GTestIncDir);$(GMockIncDir);$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -146,8 +129,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(GTestIncDir);$(GMockIncDir);$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -165,8 +148,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(GTestIncDir);$(GMockIncDir);$(FreeRTOSIncDir);$(BoostIncDir);$(AuroraIncDir);$(ThorIncDir);$(ChimeraIncDir);$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <DisableSpecificWarnings>4250</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -176,11 +159,4 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
   </ItemDefinitionGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets'))" />
-    <Error Condition="!Exists('..\..\..\test\hld\gpio\ThorTest_F4_HLD_GPIO\packages\gmock.v1.8.1.8.1\build\native\gmock.v1.8.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\test\hld\gpio\ThorTest_F4_HLD_GPIO\packages\gmock.v1.8.1.8.1\build\native\gmock.v1.8.targets'))" />
-  </Target>
 </Project>

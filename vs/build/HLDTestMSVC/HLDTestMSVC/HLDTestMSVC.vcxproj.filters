@@ -34,87 +34,18 @@
     <Filter Include="lld\interface\gpio\mock">
       <UniqueIdentifier>{010d7cf7-d312-43cb-a757-d340c775a7b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{39004d0d-55ee-4af9-ab07-e80121dd30db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\simulator">
+      <UniqueIdentifier>{b82b48bd-13c7-453d-9e43-bd115b70a1e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\watchdog\watchdog_model.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\callback_model.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\callback_types.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\dma\dma_intf.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\dma\mock\dma_mock.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\dma\dma_types.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\flash\flash.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\interrupt.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\mock\interrupt_mock.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\interrupt_model.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\interrupt_types.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\nvic\nvic.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\power\power.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\serial\serial_model.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\serial\serial_types.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\spi.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\mock\spi_mock.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\spi_model.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\spi\spi_types.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\startup\startup.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\timer\timer.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\uart\uart.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\usart\usart.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\watchdog\watchdog.hpp">
-      <Filter>lld\interface</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_chimera.hpp">
       <Filter>hld\gpio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_driver.hpp">
-      <Filter>hld\gpio</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_intf.hpp">
       <Filter>hld\gpio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_types.hpp">
@@ -141,28 +72,31 @@
     <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock.hpp">
       <Filter>lld\interface\gpio\mock</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\gpio_detail.hpp">
+      <Filter>lld\interface\gpio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\rcc\rcc_detail.hpp">
+      <Filter>lld\interface\rcc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\simulator\thor_gtest_config.hpp">
+      <Filter>config\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\simulator\thor_sim_config.hpp">
+      <Filter>config\simulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\config\config.hpp">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock_variant.hpp">
+      <Filter>lld\interface\gpio\mock</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\dma\mock\dma_mock.cpp">
-      <Filter>lld\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\interrupt\mock\interrupt_mock.cpp">
-      <Filter>lld\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\spi\mock\spi_mock.cpp">
-      <Filter>lld\interface</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_chimera.cpp">
       <Filter>hld\gpio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\hld_gpio_driver.cpp">
       <Filter>hld\gpio</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_hld_gpio_chimera.cpp">
-      <Filter>hld\gpio\test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_hld_gpio_driver.cpp">
-      <Filter>hld\gpio\test</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Thor\Thor\hld\gpio\test\test_entry_gpio.cpp">
       <Filter>hld\gpio\test</Filter>
@@ -176,8 +110,8 @@
     <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock.cpp">
       <Filter>lld\interface\gpio\mock</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="..\..\..\..\Thor\Thor\lld\interface\gpio\mock\gpio_mock_variant.cpp">
+      <Filter>lld\interface\gpio\mock</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

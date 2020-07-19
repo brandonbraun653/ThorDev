@@ -5,22 +5,15 @@
     <AuroraIncDir>$(SolutionDir)../../../../lib/Aurora</AuroraIncDir>
     <BoostIncDir>$(BOOST_ROOT)/boost_1_70_0</BoostIncDir>
     <BoostCompilerDefines>BOOST_NO_EXCEPTIONS;</BoostCompilerDefines>
-    <CommonCompilerDefinesx64>WIN64</CommonCompilerDefinesx64>
-    <CommonCompilerDefinesx86>WIN32</CommonCompilerDefinesx86>
     <CRCIncDir>$(SolutionDir)../../../../lib/Aurora/lib/CRCpp/inc</CRCIncDir>
     <ChimeraIncDir>$(SolutionDir)../../../../lib/Aurora/Chimera;</ChimeraIncDir>
-    <ChimeraPortDir>$(SolutionDir)../../../../lib/Thor/Thor/config/chimera</ChimeraPortDir>
+    <ChimeraPortDir>$(SolutionDir)../../../../Thor/Thor/config/chimera</ChimeraPortDir>
     <ChimeraCfgDir>$(SolutionDir)</ChimeraCfgDir>
-    <ChimeraBackendIncDirs>$(SolutionDir)../../../../lib/FreeRTOS/include;$(SolutionDir)../../../../lib/Thor/Thor/config/freertos;$(SolutionDir)../../../../lib/FreeRTOS/portable/GCC/ARM_CM4F;$(SolutionDir)../../../../lib/Thor;$(BOOST_ROOT)/boost_1_70_0;</ChimeraBackendIncDirs>
-    <ChimeraCompilerDefines>CHIMERA_LITTLE_ENDIAN;USING_FREERTOS_THREADS;</ChimeraCompilerDefines>
-    <ChimeraBackendCompilerDefines>FREERTOS_CFG_MEM_MANG_HEAP4=1;FREERTOS_CFG_PORT_ARM_CM4F=1;</ChimeraBackendCompilerDefines>
-    <FreeRTOSIncDir>$(SolutionDir)../../../../lib/FreeRTOS/include</FreeRTOSIncDir>
-    <FreeRTOSCfgDir>$(SolutionDir)../../../../lib/Thor/Thor/config/freertos</FreeRTOSCfgDir>
-    <FreeRTOSPortDir>$(SolutionDir)../../../../lib/FreeRTOS/portable/GCC/ARM_CM4F</FreeRTOSPortDir>
-    <FreeRTOSCompilerDefines>FREERTOS_CFG_MEM_MANG_HEAP4=1;FREERTOS_CFG_PORT_ARM_CM4F=1;</FreeRTOSCompilerDefines>
-    <ProjectCompilerDefines>USING_VISUAL_GDB;USING_FREERTOS;_EMBEDDED;STM32F446xx;THOR_CUSTOM_DRIVERS=1;BOOST_NO_EXCEPTIONS;FREERTOS_CFG_MEM_MANG_HEAP4=1;FREERTOS_CFG_PORT_ARM_CM4F=1;</ProjectCompilerDefines>
-    <RF24NodeIncDir>$(SolutionDir)../../../../</RF24NodeIncDir>
-    <ThorIncDir>$(SolutionDir)../../../../lib/Thor</ThorIncDir>
+    <ChimeraCompilerDefines>CHIMERA_SIMULATOR;CHIMERA_LITTLE_ENDIAN;USING_STL_THREADS;_SIM;</ChimeraCompilerDefines>
+    <GMockIncDir>$(SolutionDir)../../../../lib/CommonTools/googletest/googletest/googlemock/include</GMockIncDir>
+    <GTestIncDir>$(SolutionDir)../../../../lib/CommonTools/googletest/googletest/googletest/include</GTestIncDir>
+    <ProjectCompilerDefines>THOR_HLD_TEST_GPIO;TARGET_LLD_MOCK;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;USING_STL_THREADS;_SIM;</ProjectCompilerDefines>
+    <ThorIncDir>$(SolutionDir)../../../../Thor</ThorIncDir>
     <uLogIncDir>$(SolutionDir)../../../../lib/Aurora/lib/uLog</uLogIncDir>
   </PropertyGroup>
   <PropertyGroup />
@@ -50,22 +43,6 @@
       <Value>$(ChimeraBackendCompilerDefines)</Value>
       <EnvironmentVariable>true</EnvironmentVariable>
     </BuildMacro>
-    <BuildMacro Include="FreeRTOSIncDir">
-      <Value>$(FreeRTOSIncDir)</Value>
-      <EnvironmentVariable>true</EnvironmentVariable>
-    </BuildMacro>
-    <BuildMacro Include="FreeRTOSCfgDir">
-      <Value>$(FreeRTOSCfgDir)</Value>
-      <EnvironmentVariable>true</EnvironmentVariable>
-    </BuildMacro>
-    <BuildMacro Include="FreeRTOSPortDir">
-      <Value>$(FreeRTOSPortDir)</Value>
-      <EnvironmentVariable>true</EnvironmentVariable>
-    </BuildMacro>
-    <BuildMacro Include="FreeRTOSCompilerDefines">
-      <Value>$(FreeRTOSCompilerDefines)</Value>
-      <EnvironmentVariable>true</EnvironmentVariable>
-    </BuildMacro>
     <BuildMacro Include="BoostIncDir">
       <Value>$(BoostIncDir)</Value>
       <EnvironmentVariable>true</EnvironmentVariable>
@@ -80,10 +57,6 @@
     </BuildMacro>
     <BuildMacro Include="CommonCompilerDefinesx86">
       <Value>$(CommonCompilerDefinesx86)</Value>
-      <EnvironmentVariable>true</EnvironmentVariable>
-    </BuildMacro>
-    <BuildMacro Include="RF24NodeIncDir">
-      <Value>$(RF24NodeIncDir)</Value>
       <EnvironmentVariable>true</EnvironmentVariable>
     </BuildMacro>
   </ItemGroup>
