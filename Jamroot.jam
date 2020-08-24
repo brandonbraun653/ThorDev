@@ -16,7 +16,7 @@ path-constant COMMON_FEATURES : lib/CommonTools/boost-build/features ;
 path-constant ARTIFACTS_DIR : $(TOP)/artifacts ;
 
 use-project /PRJ : . ;
-use-project /AURORA : lib/Aurora ;
+use-project /AURORA : lib/Aurora/Aurora ;
 use-project /CHIMERA : lib/Aurora/Chimera ;
 use-project /GOOGLE : lib/CommonTools/googletest ;
 use-project /THOR : Thor ;
