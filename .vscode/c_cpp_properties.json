@@ -16,8 +16,7 @@
                 "UNICODE",
                 "_UNICODE",
                 "_SIM",
-                "TARGET_STM32L4",
-                "STM32L432xx",
+                "TARGET_LLD_MOCK",
                 "USING_STL_THREADS"
             ],
             "cppStandard": "c++20",

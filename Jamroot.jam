@@ -11,6 +11,8 @@ rule explicit_alias ( name : sources * : requirements * : default-build * : usag
     explicit $(name) ;
     }
 
+using gcc ;
+
 path-constant TOP : . ;
 path-constant COMMON_FEATURES : lib/CommonTools/boost-build/features ;
 path-constant ARTIFACTS_DIR : $(TOP)/artifacts ;
@@ -38,8 +40,16 @@ explicit_alias TARGET_OPTIONS : : : : <use>/THOR//TARGET_PROPAGATED_OPTIONS ;
 
 project ThorDevelopment
     : requirements
-        #<toolset>gcc_arm_none_eabi
-        # <toolset>gcc
         <link>static
+
+    : default-build
+        <toolset>gcc
         <cxxflags>--std=gnu++2a
+        <FreeRTOS>disabled
+        <Chimera>enabled
+        <Thor>enabled
+
+    : build-dir
+        artifacts/last_build
     ;
+
