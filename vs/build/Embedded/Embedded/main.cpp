@@ -212,11 +212,11 @@ void spi_thread( void *arg )
 
 void pwm_thread( void *arg )
 {
-  
+
   auto red = Chimera::PWM::create_shared_ptr();
   auto green = Chimera::PWM::create_shared_ptr();
   auto blue = Chimera::PWM::create_shared_ptr();
-  
+
   Chimera::PWM::DriverConfig init;
 
   /*------------------------------------------------
@@ -241,7 +241,7 @@ void pwm_thread( void *arg )
   init.outputPin.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
   init.outputPin.threaded  = false;
   init.outputPin.validity  = true;
-  
+
   init.validity = true;
 
   red->init( init );
@@ -269,7 +269,7 @@ void pwm_thread( void *arg )
   init.outputPin.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
   init.outputPin.threaded  = false;
   init.outputPin.validity  = true;
-  
+
   init.validity = true;
 
   green->init( init );
@@ -297,7 +297,7 @@ void pwm_thread( void *arg )
   init.outputPin.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
   init.outputPin.threaded  = false;
   init.outputPin.validity  = true;
-  
+
   init.validity = true;
 
   blue->init( init );
@@ -362,7 +362,7 @@ void serial_thread( void *arg )
   /*------------------------------------------------
   Create the serial object and initialize it
   ------------------------------------------------*/
-  auto result        = Chimera::CommonStatusCodes::OK;
+  auto result        = Chimera::Status::OK;
   Serial_sPtr serial = create_shared_ptr( Channel::SERIAL1 );
 
   result |= serial->assignHW( Channel::SERIAL1, pins );
