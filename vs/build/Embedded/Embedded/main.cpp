@@ -40,7 +40,7 @@ using namespace Chimera::Clock;
 using namespace Chimera::Threading;
 
 static void background_thread( void *arg );
-static void startup_blinky_sequence( const Chimera::GPIO::GPIO_sPtr &led );
+static void startup_blinky_sequence( const Chimera::GPIO::IGPIO_sPtr &led );
 
 static void spi_thread( void *arg );
 static void pwm_thread( void *arg );
@@ -105,13 +105,13 @@ int main( void )
   startScheduler();
 }
 
-void startup_blinky_sequence( const Chimera::GPIO::GPIO_sPtr &led )
+void startup_blinky_sequence( const Chimera::GPIO::IGPIO_sPtr &led )
 {
   for ( uint8_t i = 0; i < 5; i++ )
   {
-    led->setState( Chimera::GPIO::State::HIGH, 100 );
+    led->setState( Chimera::GPIO::State::HIGH );
     Chimera::delayMilliseconds( 65 );
-    led->setState( Chimera::GPIO::State::LOW, 100 );
+    led->setState( Chimera::GPIO::State::LOW );
     Chimera::delayMilliseconds( 25 );
   }
 
@@ -131,17 +131,17 @@ void background_thread( void *arguments )
   ledInit.pull     = Chimera::GPIO::Pull::NO_PULL;
   ledInit.pin      = 3;
 
-  auto led = Chimera::GPIO::create_shared_ptr();
-  led->init( ledInit, TIMEOUT_DONT_WAIT );
-  led->setState( Chimera::GPIO::State::HIGH, TIMEOUT_DONT_WAIT );
+  auto led = Chimera::GPIO::getDriver( ledInit.port );
+  led->init( ledInit );
+  led->setState( Chimera::GPIO::State::HIGH );
 
   startup_blinky_sequence( led );
 
   while ( 1 )
   {
-    led->setState( Chimera::GPIO::State::HIGH, 100 );
+    led->setState( Chimera::GPIO::State::HIGH );
     Chimera::delayMilliseconds( 150 );
-    led->setState( Chimera::GPIO::State::LOW, 100 );
+    led->setState( Chimera::GPIO::State::LOW );
     Chimera::delayMilliseconds( 150 );
   }
 }
@@ -197,7 +197,7 @@ void spi_thread( void *arg )
   init.HWInit.txfrMode    = Chimera::Hardware::PeripheralMode::INTERRUPT;
   init.HWInit.validity    = true;
 
-  auto spi = Chimera::SPI::create_shared_ptr();
+  auto spi = Chimera::SPI::getDriver( init.HWInit.hwChannel );
 
   volatile auto result = spi->init( init );
 
@@ -205,7 +205,7 @@ void spi_thread( void *arg )
 
   while ( 1 )
   {
-    spi->writeBytes( test.cbegin(), test.length(), Chimera::Threading::TIMEOUT_DONT_WAIT );
+    spi->writeBytes( test.cbegin(), test.length() );
     Chimera::delayMilliseconds( 100 );
   }
 }
@@ -213,9 +213,9 @@ void spi_thread( void *arg )
 void pwm_thread( void *arg )
 {
 
-  auto red = Chimera::PWM::create_shared_ptr();
-  auto green = Chimera::PWM::create_shared_ptr();
-  auto blue = Chimera::PWM::create_shared_ptr();
+  auto red = Chimera::PWM::getDriver( 0 );
+  auto green = Chimera::PWM::getDriver( 1 );
+  auto blue = Chimera::PWM::getDriver( 2 );
 
   Chimera::PWM::DriverConfig init;
 
@@ -362,8 +362,8 @@ void serial_thread( void *arg )
   /*------------------------------------------------
   Create the serial object and initialize it
   ------------------------------------------------*/
-  auto result        = Chimera::Status::OK;
-  Serial_sPtr serial = create_shared_ptr( Channel::SERIAL1 );
+  auto result = Chimera::Status::OK;
+  auto serial = Chimera::Serial::getDriver( Channel::SERIAL1 );
 
   result |= serial->assignHW( Channel::SERIAL1, pins );
   result |= serial->configure( cfg );

@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{94568FCF-D923-46F0-8740-5F14F178D208}</ProjectGuid>
     <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
-    <BSP_VERSION>2020.01</BSP_VERSION>
+    <BSP_VERSION>2020.06</BSP_VERSION>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|STM32L432KC'" Label="Configuration" />
@@ -50,23 +50,23 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|STM32L432KC'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>9.2.1/8.3.0/r1</ToolchainVersion>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|STM32F446RE'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>9.2.1/8.3.0/r1</ToolchainVersion>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|STM32L432KC'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>9.2.1/8.3.0/r1</ToolchainVersion>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|STM32F446RE'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>9.2.1/8.3.0/r1</ToolchainVersion>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
     <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|STM32L432KC'">
@@ -75,7 +75,7 @@
       <AdditionalIncludeDirectories>$(AuroraIncDir);$(uLogIncDir);$(RF24NodeIncDir);$(BoostIncDir);$(ThorIncDir);$(ChimeraIncDir);$(ChimeraPortDir);$(ChimeraCfgDir);$(FreeRTOSCfgDir);$(FreeRTOSPortDir);$(FreeRTOSIncDir)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>TARGET_STM32L4;STM32L432xx;$(ChimeraCompilerDefines);$(ProjectCompilerDefines);%(ClCompile.PreprocessorDefinitions);DEBUG=1</PreprocessorDefinitions>
       <CLanguageStandard>C2x</CLanguageStandard>
-      <Optimization>O0</Optimization>
+      <Optimization>Os</Optimization>
     </ClCompile>
     <Link>
       <GenerateMapFile>true</GenerateMapFile>
