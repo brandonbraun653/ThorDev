@@ -152,5 +152,6 @@
     <ClInclude Include="$(EFP_BASE)\Profiler\ProfilerFreeRTOSHooks.h" />
     <ClInclude Include="$(EFP_BASE)\Profiler\CustomRealTimeWatches.h" />
     <ClInclude Include="$(EFP_BASE)\Profiler\DebuggerChecker.h" />
+    <ClCompile Include="$(EFP_BASE)\Profiler\TestResourceManager.cpp" />
   </ItemGroup>
 </Project>
