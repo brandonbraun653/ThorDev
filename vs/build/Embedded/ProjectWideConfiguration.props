@@ -20,7 +20,7 @@
     <FreeRTOSCompilerDefines>FREERTOS_CFG_MEM_MANG_HEAP4=1;FREERTOS_CFG_PORT_ARM_CM4F=1;</FreeRTOSCompilerDefines>
     <ProjectCompilerDefines>USING_VISUAL_GDB;USING_FREERTOS;EMBEDDED;BOOST_NO_EXCEPTIONS;FREERTOS_CFG_MEM_MANG_HEAP4=1;FREERTOS_CFG_PORT_ARM_CM4F=1;</ProjectCompilerDefines>
     <RF24NodeIncDir>$(SolutionDir)../../../</RF24NodeIncDir>
-    <ThorIncDir>$(SolutionDir)../../../Thor</ThorIncDir>
+    <ThorIncDir>$(SolutionDir)../../../Thor;$(SolutionDir)../../../Thor/Thor/config/etl;$(SolutionDir)../../../lib/Aurora/lib/embedded_template_library/etl/include;</ThorIncDir>
     <uLogIncDir>$(SolutionDir)../../../lib/Aurora/lib/uLog</uLogIncDir>
   </PropertyGroup>
   <PropertyGroup />
