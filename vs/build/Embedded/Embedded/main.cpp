@@ -40,7 +40,7 @@ using namespace Chimera::Clock;
 using namespace Chimera::Threading;
 
 static void background_thread( void *arg );
-static void startup_blinky_sequence( const Chimera::GPIO::IGPIO_sPtr &led );
+static void startup_blinky_sequence( const Chimera::GPIO::Driver_sPtr &led );
 
 static void spi_thread( void *arg );
 static void pwm_thread( void *arg );
@@ -105,7 +105,7 @@ int main( void )
   startScheduler();
 }
 
-void startup_blinky_sequence( const Chimera::GPIO::IGPIO_sPtr &led )
+void startup_blinky_sequence( const Chimera::GPIO::Driver_sPtr &led )
 {
   for ( uint8_t i = 0; i < 5; i++ )
   {
@@ -131,7 +131,7 @@ void background_thread( void *arguments )
   ledInit.pull     = Chimera::GPIO::Pull::NO_PULL;
   ledInit.pin      = 14;
 
-  auto led = Chimera::GPIO::getDriver( ledInit.port );
+  auto led = Chimera::GPIO::getDriver( ledInit.port, ledInit.pin );
   led->init( ledInit );
   led->setState( Chimera::GPIO::State::HIGH );
 
