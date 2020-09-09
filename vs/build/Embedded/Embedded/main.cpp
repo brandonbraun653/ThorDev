@@ -97,10 +97,10 @@ int main( void )
 //  Thread pwmThread;
 //  pwmThread.initialize( pwm_thread, nullptr, Priority::LEVEL_4, 2048, "pwm" );
   //pwmThread.start();
-
-  Thread serialThread;
-  serialThread.initialize( serial_thread, nullptr, Priority::LEVEL_2, 2048, "serial" );
-  serialThread.start();
+//
+//  Thread serialThread;
+//  serialThread.initialize( serial_thread, nullptr, Priority::LEVEL_2, 2048, "serial" );
+//  serialThread.start();
 
   startScheduler();
 }
