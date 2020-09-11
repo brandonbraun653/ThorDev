@@ -7,22 +7,20 @@
     <Filter Include="common">
       <UniqueIdentifier>{7f00e4aa-5297-4234-b7d6-5383409956e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="spi">
+      <UniqueIdentifier>{d95d36d1-42be-4205-9b66-893b74fb9d13}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\gpio\test\test_gpio_intf.cpp">
-      <Filter>gpio</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\gpio\test\test_gpio_variant.cpp">
       <Filter>gpio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\internal\test_entry_lld_intf.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\common\test\test_peripheral_interface.cpp">
       <Filter>common</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Thor\Thor\lld\interface\gpio\test\test_gpio_variant.hpp">
-      <Filter>gpio</Filter>
-    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\spi\test\test_spi_intf.cpp">
+      <Filter>spi</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
