@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\gpio\test\test_gpio_intf.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\internal\test_entry_lld_intf.cpp" />
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\spi\test\test_spi_intf.cpp" />
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\usart\test\test_usart_intf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\lib\Aurora\Chimera\vs\ChimeraStaticLibraryMSVC\ChimeraStaticLibraryMSVC\ChimeraStaticLibraryMSVC.vcxproj">

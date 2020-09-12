@@ -10,6 +10,9 @@
     <Filter Include="spi">
       <UniqueIdentifier>{d95d36d1-42be-4205-9b66-893b74fb9d13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="usart">
+      <UniqueIdentifier>{5b79af45-810c-4e9e-b94b-ce7f12fd1899}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\gpio\test\test_gpio_intf.cpp">
@@ -21,6 +24,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\spi\test\test_spi_intf.cpp">
       <Filter>spi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Thor\Thor\lld\interface\usart\test\test_usart_intf.cpp">
+      <Filter>usart</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
