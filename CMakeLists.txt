@@ -11,6 +11,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_subdirectory("lib/CommonTools/cmake/device/stm32l4")
 
 # ====================================================
+# Add Boost
+# ====================================================
+find_package(Boost 1.70.0 EXACT REQUIRED)
+
+# ====================================================
 # Import and Configure FreeRTOS
 # ====================================================
 include("lib/CommonTools/cmake/options/freertos.cmake")
@@ -59,3 +64,6 @@ add_subdirectory("Thor")
 #   freertos_heap
 #   prj_device_target
 # )
+
+add_library(testing STATIC dummy.cpp)
+target_link_libraries(testing PRIVATE thor_lld_stm32l4)
