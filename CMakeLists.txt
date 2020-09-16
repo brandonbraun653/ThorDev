@@ -6,9 +6,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # ====================================================
+# Override the linker command
+# ====================================================
+include("lib/CommonTools/cmake/toolchains/linker_whole_archive.cmake")
+
+# ====================================================
 # Select which device is being targeted
 # ====================================================
-add_subdirectory("lib/CommonTools/cmake/device/stm32l4")
+set(LINKER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/CommonTools/linker_scripts/stm32l4x")
+add_subdirectory("lib/CommonTools/cmake/device/stm32l4x")
 
 # ====================================================
 # Add Boost
@@ -39,7 +45,7 @@ export(TARGETS freertos_heap FILE "${PROJECT_BINARY_DIR}/ProjectConfig/freertos-
 # ====================================================
 # Import and Configure Chimera
 # ====================================================
-add_subdirectory("lib/Aurora/Chimera")
+add_subdirectory("lib/Chimera")
 
 # ====================================================
 # Import and Configure Aurora
@@ -55,15 +61,31 @@ add_subdirectory("Thor")
 # ====================================================
 # Project Primary Target
 # ====================================================
-# add_library(FreeRTOSDev STATIC FreeRTOSDev.cpp)
-# target_link_libraries(FreeRTOSDev PRIVATE
-#   freertos_inc
-#   freertos_core
-#   freertos_cfg
-#   freertos_port
-#   freertos_heap
-#   prj_device_target
-# )
+set(PRJ embedded)
+add_executable(${PRJ}.elf vs/build/Embedded/Embedded/main.cpp)
+target_link_libraries(${PRJ}.elf PRIVATE
+  # Public Includes
+  aurora_inc
+  Boost::boost
+  chimera_inc
+  freertos_inc
+  thor_inc
+  type_safe_inc
 
-add_library(testing STATIC dummy.cpp)
-target_link_libraries(testing PRIVATE thor_lld_stm32l4)
+  # Static Libraries
+  chimera_src
+  freertos_cfg
+  freertos_core
+  freertos_heap
+  freertos_port
+  thor_cfg_freertos
+  thor_cmn_cm4
+  thor_hld
+  thor_lld_intf
+  thor_lld_stm32l4
+
+  # Target Properties
+  prj_device_target
+)
+
+# $(OBJCOPY) -O binary --gap-fill 0xFF -S $(>) $(<)
