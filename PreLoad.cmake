@@ -6,11 +6,11 @@
 #   it before anything else. This is useful when you want to build using the
 #   command line and expect a default configuration to simply work.
 # =============================================================================
-# Configure the output generator type
-set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
-
-# Configure which toolchain file to use
-set(CMAKE_TOOLCHAIN_FILE "lib/CommonTools/cmake/toolchains/gcc_arm_none_eabi.cmake" CACHE INTERNAL "" FORCE)
+if(ARM_NONE_EABI)
+  # Configure the output generator & toolchain
+  set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
+  set(CMAKE_TOOLCHAIN_FILE "lib/CommonTools/cmake/toolchains/gcc_arm_none_eabi.cmake" CACHE INTERNAL "" FORCE)
+endif()
 
 # Where to install things
 set(PRJ_INSTALL_PREFIX "build" CACHE INTERNAL "" FORCE)

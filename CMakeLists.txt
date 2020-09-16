@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(ThorDev VERSION 0.1.0)
 
-set(CMAKE_CXX_STANDARD 20)
+enable_testing()
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -17,9 +19,14 @@ set(LINKER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/CommonTools/linker_scripts/stm32
 add_subdirectory("lib/CommonTools/cmake/device/stm32l4x")
 
 # ====================================================
-# Add Boost
+# Import Boost
 # ====================================================
 find_package(Boost 1.70.0 EXACT REQUIRED)
+
+# ====================================================
+# Import GTest
+# ====================================================
+add_subdirectory("lib/CommonTools/googletest")
 
 # ====================================================
 # Import and Configure FreeRTOS
@@ -89,3 +96,19 @@ target_link_libraries(${PRJ}.elf PRIVATE
 )
 
 # $(OBJCOPY) -O binary --gap-fill 0xFF -S $(>) $(<)
+
+
+add_executable(lld_test.exe Thor/Thor/lld/interface/gpio/test/test_gpio_intf.cpp)
+target_link_libraries(lld_test.exe PRIVATE
+  # Public Includes
+  gtest_inc
+  chimera_inc
+  aurora_inc
+  Boost::boost
+  type_safe_inc
+
+  # Static Libraries
+  gtest
+  chimera_src
+  thor_lld_intf
+)
