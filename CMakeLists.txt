@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10.0)
 project(ThorDev VERSION 0.1.0)
 enable_testing()
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
@@ -26,12 +26,12 @@ else()
     -fmessage-length=0
     -fno-common
     -fno-exceptions
+    -m64
     $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
   )
 
   target_link_options(${TARGET_CHIP} INTERFACE
     -Wl,--gc-sections
-    -Wl,--print-memory-usage
   )
 
   target_compile_definitions(${TARGET_CHIP} INTERFACE
@@ -44,12 +44,17 @@ endif()
 # ====================================================
 # Import Boost
 # ====================================================
-find_package(Boost 1.70.0 EXACT REQUIRED)
+find_package(Boost REQUIRED)
 
 # ====================================================
 # Import GTest
 # ====================================================
 add_subdirectory("lib/CommonTools/googletest")
+################################
+# GTest
+################################
+# enable_testing()
+# include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # ====================================================
 # Import and Configure FreeRTOS
@@ -137,18 +142,19 @@ if(NOT Toolchain::HAS_GCC_ARM_NONE_EABI)
     prj_device_target
 
     # Static Libraries
-    mingw_stdthreads
     gtest
     chimera_src
     thor_lld_intf
     thor_lld_sim
+
+    # Linux?
+    stdc++
+    pthread
   )
 
   target_compile_definitions(prj_device_target INTERFACE
     CHIMERA_LITTLE_ENDIAN
     TARGET_LLD_TEST
-    NOWINBASEINTERLOCK
-    WIN32_LEAN_AND_MEAN
   )
   target_compile_options(prj_device_target INTERFACE "-m32")
   target_include_directories(prj_device_target INTERFACE "D:/git/Microcontrollers/ThorDev/build/lib/CommonTools/mingw-std-threads-master/cmake_stdheaders_generator/cmake_stdheaders_generator")

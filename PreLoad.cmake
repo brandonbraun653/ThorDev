@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.10.0)
 # ====================================================
 set(COMMON_TOOL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/lib/CommonTools")
 set(ARM_NONE_EABI_ROOT "")
-set(GCC_BIN_ROOT "D:/ProgramFiles/TDM-GCC-64/bin")
+set(GCC_BIN_ROOT "")
 
 include("lib/CommonTools/cmake/options/common.cmake")
 include("lib/CommonTools/cmake/options/toolchain.cmake")
