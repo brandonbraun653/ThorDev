@@ -17,7 +17,7 @@
                 "_UNICODE",
                 "_SIM",
                 "TARGET_LLD_MOCK",
-                "USING_STL_THREADS",
+                "USING_NATIVE_THREADS",
                 "THOR_HLD_TEST"
             ],
             "cppStandard": "c++20",

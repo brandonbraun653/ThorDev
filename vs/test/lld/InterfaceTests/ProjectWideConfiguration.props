@@ -9,10 +9,10 @@
     <ChimeraIncDir>$(SolutionDir)../../../../lib/Aurora/Chimera;</ChimeraIncDir>
     <ChimeraPortDir>$(SolutionDir)../../../../Thor/Thor/config/chimera</ChimeraPortDir>
     <ChimeraCfgDir>$(SolutionDir)</ChimeraCfgDir>
-    <ChimeraCompilerDefines>CHIMERA_SIMULATOR;CHIMERA_LITTLE_ENDIAN;USING_STL_THREADS;_SIM;</ChimeraCompilerDefines>
+    <ChimeraCompilerDefines>CHIMERA_SIMULATOR;CHIMERA_LITTLE_ENDIAN;USING_NATIVE_THREADS;_SIM;</ChimeraCompilerDefines>
     <GMockIncDir>$(SolutionDir)../../../../lib/CommonTools/googletest/googletest/googlemock/include</GMockIncDir>
     <GTestIncDir>$(SolutionDir)../../../../lib/CommonTools/googletest/googletest/googletest/include</GTestIncDir>
-    <ProjectCompilerDefines>THOR_LLD_TEST_GPIO_INTF;TARGET_LLD_TEST;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;USING_STL_THREADS;_SIM;</ProjectCompilerDefines>
+    <ProjectCompilerDefines>THOR_LLD_TEST_GPIO_INTF;TARGET_LLD_TEST;BOOST_NO_EXCEPTIONS;CHIMERA_LITTLE_ENDIAN;USING_NATIVE_THREADS;_SIM;</ProjectCompilerDefines>
     <ThorIncDir>$(SolutionDir)../../../../Thor</ThorIncDir>
     <uLogIncDir>$(SolutionDir)../../../../lib/Aurora/lib/uLog</uLogIncDir>
   </PropertyGroup>
