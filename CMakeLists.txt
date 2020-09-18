@@ -54,7 +54,7 @@ add_subdirectory("lib/CommonTools/googletest")
 # ====================================================
 # Import and Configure FreeRTOS
 # ====================================================
-if(Toolchain::REQUIRES_THREADING_FREERTOS)
+if(Toolchain::REQUIRES_THREAD_FREERTOS)
   include("lib/CommonTools/cmake/options/freertos.cmake")
   add_subdirectory("lib/FreeRTOS")
 
@@ -121,6 +121,7 @@ if(Toolchain::HAS_GCC_ARM_NONE_EABI)
     prj_device_target
   )
 endif()
+# cmake -DTOOLCHAIN=arm_none_eabi -DFREERTOS=ON -DFREERTOS_HEAP=heap4 -DFREERTOS_PORT=CortexM4F -DTHOR_FAMILY=L4 -DTHOR_CHIP=L432 -DTHOR_VARIANT=KB --configure ../
 
 # $(OBJCOPY) -O binary --gap-fill 0xFF -S $(>) $(<)
 
@@ -153,3 +154,4 @@ if(NOT Toolchain::HAS_GCC_ARM_NONE_EABI)
     TARGET_LLD_TEST
   )
 endif()
+# cmake -DTEST_BUILD=ON -DGTEST=ON -DHAS_THREADS=ON -DTHREAD_NATIVE=ON --configure ../
