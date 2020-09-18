@@ -50,11 +50,6 @@ find_package(Boost REQUIRED)
 # Import GTest
 # ====================================================
 add_subdirectory("lib/CommonTools/googletest")
-################################
-# GTest
-################################
-# enable_testing()
-# include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # ====================================================
 # Import and Configure FreeRTOS
@@ -142,7 +137,8 @@ if(NOT Toolchain::HAS_GCC_ARM_NONE_EABI)
     prj_device_target
 
     # Static Libraries
-    gtest
+    gtest_src
+    gtest_main
     chimera_src
     thor_lld_intf
     thor_lld_sim
@@ -156,6 +152,4 @@ if(NOT Toolchain::HAS_GCC_ARM_NONE_EABI)
     CHIMERA_LITTLE_ENDIAN
     TARGET_LLD_TEST
   )
-  target_compile_options(prj_device_target INTERFACE "-m32")
-  target_include_directories(prj_device_target INTERFACE "D:/git/Microcontrollers/ThorDev/build/lib/CommonTools/mingw-std-threads-master/cmake_stdheaders_generator/cmake_stdheaders_generator")
 endif()
