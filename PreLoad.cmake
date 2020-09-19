@@ -1,16 +1,8 @@
 cmake_minimum_required(VERSION 3.10.0)
 
-
-# Configure the output generator type
-#set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
-
 # ====================================================
-# Configure the available toolchains
+# Override the toolchain used. This must be done here
+# else CMake won't allow the override.
 # ====================================================
-set(COMMON_TOOL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/lib/CommonTools")
-set(ARM_NONE_EABI_ROOT "")
-set(GCC_BIN_ROOT "")
-
-include("lib/CommonTools/cmake/options/common.cmake")
+set(COMMON_TOOL_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/lib/CommonTools" CACHE STRING "")
 include("lib/CommonTools/cmake/options/toolchain.cmake")
-include("lib/CommonTools/cmake/options/validator.cmake")

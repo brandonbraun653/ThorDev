@@ -2,17 +2,27 @@
   "version":"0.2.0",
   "configurations": [
     {
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/artifacts/bin/embedded.elf",
+      "name": "STM32L432KB Debug (JLink)",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "jlink",
+      "device": "STM32L432KB",
+      "svdFile": "./lib/CommonTools/svd/STM32L4x2.svd",
+    },
+    {
       "type": "cortex-debug",
       "request": "launch",
       "name": "STM32L432KB Debug (OpenOCD)",
       "servertype": "openocd",
       "cwd": "${workspaceRoot}",
       "runToMain": true,
-      "executable": "./build/build/bin/embedded.elf",
+      "executable": "./build/artifacts/bin/embedded.elf",
       "device": "STM32L432KB",
       "svdFile": "./lib/CommonTools/svd/STM32L4x2.svd",
       "configFiles": [
-        "./lib/CommonTools/openocd/scripts/interface/stlink-v2-1.cfg",
+        "./lib/CommonTools/openocd/scripts/interface/stlink.cfg",
         "./lib/CommonTools/openocd/scripts/target/stm32l4x.cfg"
       ],
       "swoConfig": {
