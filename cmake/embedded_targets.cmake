@@ -1,5 +1,5 @@
 set(PRJ embedded)
-add_executable(${PRJ} ../vs/build/Embedded/Embedded/main.cpp)
+add_executable(${PRJ} "${PROJECT_ROOT}/vs/build/Embedded/Embedded/main.cpp")
 target_link_libraries(${PRJ} PRIVATE
   # Public Includes
   aurora_inc
