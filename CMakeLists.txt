@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.10.0)
+cmake_minimum_required(VERSION 3.18.0)
 project(ThorDev VERSION 0.1.0)
 enable_testing()
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
@@ -23,6 +23,7 @@ add_subdirectory("lib/CommonTools/googletest")
 add_subdirectory("lib/Aurora")
 add_subdirectory("lib/Chimera")
 add_subdirectory("lib/FreeRTOS")
+add_subdirectory("lib/FlashMemory")
 add_subdirectory("Thor")
 
 # ====================================================
