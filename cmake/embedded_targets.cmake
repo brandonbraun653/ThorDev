@@ -26,7 +26,7 @@ target_link_libraries(${PRJ} PRIVATE
 )
 
 # $(OBJCOPY) -O binary --gap-fill 0xFF -S $(>) $(<)
-# cmake -DTOOLCHAIN=arm_none_eabi -DFREERTOS_THREADS=ON -DDEVICE_TARGET=stm32l432kb --configure ../
+# cmake -DTOOLCHAIN=arm_none_eabi -DFREERTOS_THREADS=ON -DDEVICE_TARGET=stm32l432kb -DCMAKE_BUILD_TYPE=Debug --configure ../
 
 
 set(TEST_LFS test_little_fs)

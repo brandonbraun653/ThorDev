@@ -12,6 +12,9 @@
  *  2020 | Brandon Braun | brandonbraun653@gmail.com
  *******************************************************************************/
 
+/* STL Includes */
+#include <array>
+
 /* Chimera Includes */
 #include <Chimera/common>
 #include <Chimera/gpio>
@@ -32,6 +35,8 @@
 static constexpr Chimera::SPI::Channel spiChannel = Chimera::SPI::Channel::SPI1;
 
 static void test_thread( void *arg );
+
+static std::array<uint8_t, 500> buffer;
 
 int main()
 {
@@ -112,6 +117,11 @@ static void test_thread( void *arg )
   auto mem = Adesto::AT25::Driver();
   mem.configure( spiChannel );
   mem.readDeviceInfo( info );
+
+  // Test a read
+  buffer.fill( 0 );
+  mem.read( 0, buffer.data(), buffer.size() );
+
 
   /*-------------------------------------------------
   Break into the debugger
