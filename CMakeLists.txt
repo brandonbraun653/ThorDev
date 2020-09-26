@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
+set(CPP_PLATFORM "freertos")
+
 # ====================================================
 # Perform very high level configuration
 # ====================================================
@@ -20,6 +22,7 @@ include("lib/CommonTools/cmake/toolchains/linker_whole_archive.cmake")
 # ====================================================
 find_package(Boost REQUIRED)
 add_subdirectory("lib/CommonTools/googletest")
+add_subdirectory("lib/CommonTools/cpputest")
 add_subdirectory("lib/Aurora")
 add_subdirectory("lib/Chimera")
 add_subdirectory("lib/FreeRTOS")

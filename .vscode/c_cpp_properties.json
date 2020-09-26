@@ -4,6 +4,7 @@
             "name": "Embedded",
             "includePath": [
                 "${workspaceFolder}/lib/CommonTools/googletest/**",
+                "${workspaceFolder}/lib/CommonTools/cpputest/include",
                 "${workspaceFolder}/lib/Aurora",
                 "${workspaceFolder}/lib/Chimera",
                 "${workspaceFolder}/lib/FlashMemory",

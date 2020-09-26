@@ -43,8 +43,10 @@ target_link_libraries(${TEST_LFS} PRIVATE
   type_safe_inc
 
   # Static Libraries
+  adesto_core
   lib_adesto_at25
   chimera_src
+  CppUTest
   freertos_cfg
   freertos_core
   freertos_heap

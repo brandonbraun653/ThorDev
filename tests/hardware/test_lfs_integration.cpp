@@ -31,6 +31,7 @@
 #include <Adesto/at25/at25_driver.hpp>
 
 /* Test Framework Includes */
+#include <CppUTest/CommandLineTestRunner.h>
 
 static constexpr Chimera::SPI::Channel spiChannel = Chimera::SPI::Channel::SPI1;
 
@@ -53,6 +54,8 @@ int main()
 
 static void test_thread( void *arg )
 {
+  const char * av_override[] = { "exe", "-v" }; //turn on verbose mode
+
   /*-------------------------------------------------
   Initialize the SPI driver
   -------------------------------------------------*/
@@ -126,6 +129,7 @@ static void test_thread( void *arg )
   /*-------------------------------------------------
   Break into the debugger
   -------------------------------------------------*/
+  auto rcode = CommandLineTestRunner::RunAllTests( 2, av_override );
   while ( 1 )
   {
     Chimera::insert_debug_breakpoint();
