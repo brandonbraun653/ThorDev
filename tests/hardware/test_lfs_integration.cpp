@@ -14,48 +14,126 @@
 
 /* STL Includes */
 #include <array>
+#include <cstring>
+#include <memory>
+
+/* Boost Includes */
+#include <boost/circular_buffer.hpp>
 
 /* Chimera Includes */
 #include <Chimera/common>
 #include <Chimera/gpio>
+#include <Chimera/serial>
 #include <Chimera/spi>
 #include <Chimera/thread>
 
 /* Aurora Includes */
 #include <Aurora/memory>
+#include <Aurora/src/memory/flash/littlefs/lfs_hooks.hpp>
 
 /* Little FS Includes */
 #include "lfs.h"
 
 /* Memory Driver Includes */
 #include <Adesto/at25/at25_driver.hpp>
+#include <Adesto/at25/at25_constants.hpp>
 
-/* Test Framework Includes */
-#include <CppUTest/CommandLineTestRunner.h>
+/*-------------------------------------------------------------------------------
+Constants
+-------------------------------------------------------------------------------*/
+static constexpr Chimera::SPI::Channel spiChannel       = Chimera::SPI::Channel::SPI1;
+static constexpr Chimera::Serial::Channel serialChannel = Chimera::Serial::Channel::SERIAL1;
 
-static constexpr Chimera::SPI::Channel spiChannel = Chimera::SPI::Channel::SPI1;
-
+/*-------------------------------------------------------------------------------
+Forward Declarations
+-------------------------------------------------------------------------------*/
 static void test_thread( void *arg );
+static void initializeSPI();
+static void initializeSerial();
 
-static std::array<uint8_t, 500> buffer;
+/*-------------------------------------------------------------------------------
+Public Data
+-------------------------------------------------------------------------------*/
+std::shared_ptr<Adesto::AT25::Driver> DeviceDriver;
 
+/*-------------------------------------------------------------------------------
+Static Data
+-------------------------------------------------------------------------------*/
+/*-------------------------------------------------
+Serial Driver Configuration
+-------------------------------------------------*/
+// Length of the hardware buffer for transceiving a Serial message
+static constexpr size_t HWBufferSize = 128;
+
+// Length of the user buffer for queueing multiple messages
+static constexpr size_t CircularBufferSize = 2 * HWBufferSize;
+
+// Serial Transmit Buffers
+static std::array<uint8_t, HWBufferSize> sTXHWBuffer;
+static boost::circular_buffer<uint8_t> sTXCircularBuffer( CircularBufferSize );
+
+// Serial Recieve Buffers
+static std::array<uint8_t, HWBufferSize> sRXHWBuffer;
+static boost::circular_buffer<uint8_t> sRXCircularBuffer( CircularBufferSize );
+
+/*-------------------------------------------------
+LFS Data
+-------------------------------------------------*/
+static lfs_t lfs;
+static lfs_file_t file;
+
+lfs_config cfg = {
+  .context = nullptr,
+
+  // Block device operations
+  .read = lfs_safe_read,
+  .prog = lfs_safe_prog,
+  .erase = lfs_safe_erase,
+  .sync = lfs_safe_sync,
+
+  // Block device configuration
+  .read_size = Adesto::AT25::PAGE_SIZE,
+  .prog_size = Adesto::AT25::PAGE_SIZE,
+  .block_size = Adesto::AT25::BLOCK_SIZE,
+  .block_count = 256,
+  .block_cycles = 200,
+  .cache_size = Adesto::AT25::PAGE_SIZE,
+  .lookahead_size = 128
+};
+
+/*-------------------------------------------------
+Buffers
+-------------------------------------------------*/
+static std::array<char, 100> printBuffer;
+
+/*-------------------------------------------------------------------------------
+Public Functions
+-------------------------------------------------------------------------------*/
+/**
+ *  Entry point to the tests. Initializes hardware, starts the test.
+ *  Will never exit.
+ *
+ *  @return int
+ */
 int main()
 {
   using namespace Chimera::Threading;
   ChimeraInit();
 
   Thread testing;
-  testing.initialize( test_thread, nullptr, Priority::LEVEL_3, 5000, "test" );
+  testing.initialize( test_thread, nullptr, Priority::LEVEL_3, STACK_KILOBYTES( 10 ), "test" );
   testing.start();
 
   startScheduler();
   return 0;
 }
 
-static void test_thread( void *arg )
-{
-  const char * av_override[] = { "exe", "-v" }; //turn on verbose mode
 
+/*-------------------------------------------------------------------------------
+Static Functions
+-------------------------------------------------------------------------------*/
+static void initializeSPI()
+{
   /*-------------------------------------------------
   Initialize the SPI driver
   -------------------------------------------------*/
@@ -110,29 +188,127 @@ static void test_thread( void *arg )
 
   auto spi = Chimera::SPI::getDriver( spiChannel );
   spi->init( cfg );
+}
+
+static void initializeSerial()
+{
+  using namespace Chimera::Serial;
+  using namespace Chimera::Hardware;
+
+  /*------------------------------------------------
+  Configuration info for the serial object
+  ------------------------------------------------*/
+  IOPins pins;
+  pins.tx.alternate = Chimera::GPIO::Alternate::USART1_TX;
+  pins.tx.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  pins.tx.pin       = 9;
+  pins.tx.port      = Chimera::GPIO::Port::PORTA;
+  pins.tx.pull      = Chimera::GPIO::Pull::NO_PULL;
+  pins.tx.threaded  = true;
+  pins.tx.validity  = true;
+
+  pins.rx.alternate = Chimera::GPIO::Alternate::USART1_RX;
+  pins.rx.drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL;
+  pins.rx.pin       = 10;
+  pins.rx.port      = Chimera::GPIO::Port::PORTA;
+  pins.rx.pull      = Chimera::GPIO::Pull::NO_PULL;
+  pins.rx.threaded  = true;
+  pins.rx.validity  = true;
+
+
+  Config cfg;
+  cfg.baud     = 115200;
+  cfg.flow     = FlowControl::FCTRL_NONE;
+  cfg.parity   = Parity::PAR_NONE;
+  cfg.stopBits = StopBits::SBITS_ONE;
+  cfg.width    = CharWid::CW_8BIT;
+
+  /*------------------------------------------------
+  Create the serial object and initialize it
+  ------------------------------------------------*/
+  auto result = Chimera::Status::OK;
+  auto Serial = Chimera::Serial::getDriver( serialChannel );
+
+  if ( !Serial )
+  {
+    Chimera::insert_debug_breakpoint();
+  }
+
+  result |= Serial->assignHW( serialChannel, pins );
+  result |= Serial->configure( cfg );
+  result |= Serial->enableBuffering( SubPeripheral::TX, &sTXCircularBuffer, sTXHWBuffer.data(), sTXHWBuffer.size() );
+  result |= Serial->enableBuffering( SubPeripheral::RX, &sRXCircularBuffer, sRXHWBuffer.data(), sRXHWBuffer.size() );
+  result |= Serial->begin( PeripheralMode::INTERRUPT, PeripheralMode::INTERRUPT );
+}
+
+/**
+ *  Primary thread for intializing test resources and then executing tests.
+ *  Will never exit.
+ *
+ *  @param[in]  arg     Unused
+ *  @return void
+ */
+static void test_thread( void *arg )
+{
+  /*-------------------------------------------------
+  Initialize HW Resources
+  -------------------------------------------------*/
+  initializeSPI();
+  initializeSerial();
 
   /*-------------------------------------------------
-  Initialize the Adesto Driver
+  Allocate the device drivers
   -------------------------------------------------*/
-  Adesto::AT25::DeviceInfo info;
-  memset( &info, 0, sizeof( info ) );
+  auto serial = Chimera::Serial::getDriver( serialChannel );
 
-  auto mem = Adesto::AT25::Driver();
-  mem.configure( spiChannel );
-  mem.readDeviceInfo( info );
-
-  // Test a read
-  buffer.fill( 0 );
-  mem.read( 0, buffer.data(), buffer.size() );
-
+  DeviceDriver = std::make_shared<Adesto::AT25::Driver>();
+  DeviceDriver->configure( spiChannel );
 
   /*-------------------------------------------------
-  Break into the debugger
+  Setup LFS
   -------------------------------------------------*/
-  auto rcode = CommandLineTestRunner::RunAllTests( 2, av_override );
+  Aurora::Memory::LFS::attachDevice( DeviceDriver, cfg );
+
+  // mount the filesystem
+  int err = lfs_mount( &lfs, &cfg );
+
+  // reformat if we can't mount the filesystem
+  // this should only happen on the first boot
+  if ( err )
+  {
+    err = lfs_format( &lfs, &cfg );
+    err = lfs_mount( &lfs, &cfg );
+  }
+
+  // read current count
+  uint32_t boot_count = 0;
+  err = lfs_file_open( &lfs, &file, "boot_count", LFS_O_RDWR | LFS_O_CREAT );
+  err = lfs_file_read( &lfs, &file, &boot_count, sizeof( boot_count ) );
+
+  // update boot count
+  boot_count += 1;
+  err = lfs_file_rewind( &lfs, &file );
+  err = lfs_file_write( &lfs, &file, &boot_count, sizeof( boot_count ) );
+
+  // remember the storage is not updated until the file is closed successfully
+  lfs_file_close( &lfs, &file );
+
+  // release any resources we were using
+  lfs_unmount( &lfs );
+
+  // print the boot count
+  snprintf( printBuffer.data(), printBuffer.size(), "boot_count: %d\n", boot_count );
+  serial->lock();
+  serial->write( printBuffer.data(), strlen( printBuffer.data() ) );
+  serial->await( Chimera::Event::Trigger::TRIGGER_WRITE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );
+  serial->unlock();
+
+  /*-------------------------------------------------
+  Run the tests then break
+  -------------------------------------------------*/
+
   while ( 1 )
   {
     Chimera::insert_debug_breakpoint();
-    info.density = Adesto::DENSITY_32MBIT;
   }
 }

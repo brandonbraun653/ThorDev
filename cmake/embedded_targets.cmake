@@ -43,14 +43,17 @@ target_link_libraries(${TEST_LFS} PRIVATE
   type_safe_inc
 
   # Static Libraries
-  adesto_core
-  lib_adesto_at25
-  chimera_src
   CppUTest
+  adesto_core
+  aurora_memory_generic
+  chimera_src
   freertos_cfg
   freertos_core
   freertos_heap
   freertos_port
+  lib_adesto_at25
+  lfs_core
+  memory_flash_littlefs
   thor_cfg_freertos
   thor_cmn_cm4
   thor_hld
