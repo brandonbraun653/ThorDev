@@ -63,3 +63,5 @@ target_link_libraries(${TEST_LFS} PRIVATE
   # Target Properties
   prj_device_target
 )
+
+target_compile_definitions(lfs_core PUBLIC LFS_NO_DEBUG LFS_NO_WARN LFS_NO_ERROR LFS_NO_ASSERT)

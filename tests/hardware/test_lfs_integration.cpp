@@ -79,7 +79,7 @@ static boost::circular_buffer<uint8_t> sRXCircularBuffer( CircularBufferSize );
 /*-------------------------------------------------
 LFS Data
 -------------------------------------------------*/
-static lfs_t lfs;
+lfs_t lfs;
 static lfs_file_t file;
 
 lfs_config cfg = {
@@ -92,13 +92,13 @@ lfs_config cfg = {
   .sync = lfs_safe_sync,
 
   // Block device configuration
-  .read_size = Adesto::AT25::PAGE_SIZE,
-  .prog_size = Adesto::AT25::PAGE_SIZE,
-  .block_size = Adesto::AT25::BLOCK_SIZE,
+  .read_size = 16,
+  .prog_size = 16,
+  .block_size = 4096,
   .block_count = 256,
-  .block_cycles = 200,
-  .cache_size = Adesto::AT25::PAGE_SIZE,
-  .lookahead_size = 128
+  .block_cycles = 500,
+  .cache_size = 16,
+  .lookahead_size = 16
 };
 
 /*-------------------------------------------------
@@ -121,7 +121,7 @@ int main()
   ChimeraInit();
 
   Thread testing;
-  testing.initialize( test_thread, nullptr, Priority::LEVEL_3, STACK_KILOBYTES( 10 ), "test" );
+  testing.initialize( test_thread, nullptr, Priority::LEVEL_3, STACK_KILOBYTES( 15 ), "test" );
   testing.start();
 
   startScheduler();
@@ -142,7 +142,7 @@ static void initializeSPI()
   cfg.validity = true;
 
   cfg.HWInit.bitOrder    = Chimera::SPI::BitOrder::MSB_FIRST;
-  cfg.HWInit.clockFreq   = 8000000;
+  cfg.HWInit.clockFreq   = 32000000;
   cfg.HWInit.clockMode   = Chimera::SPI::ClockMode::MODE0;
   cfg.HWInit.dataSize    = Chimera::SPI::DataSize::SZ_8BIT;
   cfg.HWInit.hwChannel   = spiChannel;
@@ -263,45 +263,50 @@ static void test_thread( void *arg )
 
   DeviceDriver = std::make_shared<Adesto::AT25::Driver>();
   DeviceDriver->configure( spiChannel );
+  DeviceDriver->eraseChip();
+  DeviceDriver->pendEvent( Aurora::Memory::Event::MEM_ERASE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );
 
   /*-------------------------------------------------
   Setup LFS
   -------------------------------------------------*/
   Aurora::Memory::LFS::attachDevice( DeviceDriver, cfg );
 
-  // mount the filesystem
-  int err = lfs_mount( &lfs, &cfg );
-
-  // reformat if we can't mount the filesystem
-  // this should only happen on the first boot
-  if ( err )
+  for( auto x = 0; x < 500; x ++)
   {
-    err = lfs_format( &lfs, &cfg );
-    err = lfs_mount( &lfs, &cfg );
+    // mount the filesystem
+    int err = lfs_mount( &lfs, &cfg );
+
+    // reformat if we can't mount the filesystem
+    // this should only happen on the first boot
+    if ( err )
+    {
+      err = lfs_format( &lfs, &cfg );
+      err = lfs_mount( &lfs, &cfg );
+    }
+
+    // read current count
+    uint32_t boot_count = 0;
+    err = lfs_file_open( &lfs, &file, "boot_count", LFS_O_RDWR | LFS_O_CREAT );
+    err = lfs_file_read( &lfs, &file, &boot_count, sizeof( boot_count ) );
+
+    // update boot count
+    boot_count += 1;
+    err = lfs_file_rewind( &lfs, &file );
+    err = lfs_file_write( &lfs, &file, &boot_count, sizeof( boot_count ) );
+
+    // remember the storage is not updated until the file is closed successfully
+    err = lfs_file_close( &lfs, &file );
+
+    // release any resources we were using
+    err = lfs_unmount( &lfs );
+
+    // print the boot count
+    snprintf( printBuffer.data(), printBuffer.size(), "boot_count: %d\n", boot_count );
+    serial->lock();
+    serial->write( printBuffer.data(), strlen( printBuffer.data() ) );
+    serial->await( Chimera::Event::Trigger::TRIGGER_WRITE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );
+    serial->unlock();
   }
-
-  // read current count
-  uint32_t boot_count = 0;
-  err = lfs_file_open( &lfs, &file, "boot_count", LFS_O_RDWR | LFS_O_CREAT );
-  err = lfs_file_read( &lfs, &file, &boot_count, sizeof( boot_count ) );
-
-  // update boot count
-  boot_count += 1;
-  err = lfs_file_rewind( &lfs, &file );
-  err = lfs_file_write( &lfs, &file, &boot_count, sizeof( boot_count ) );
-
-  // remember the storage is not updated until the file is closed successfully
-  lfs_file_close( &lfs, &file );
-
-  // release any resources we were using
-  lfs_unmount( &lfs );
-
-  // print the boot count
-  snprintf( printBuffer.data(), printBuffer.size(), "boot_count: %d\n", boot_count );
-  serial->lock();
-  serial->write( printBuffer.data(), strlen( printBuffer.data() ) );
-  serial->await( Chimera::Event::Trigger::TRIGGER_WRITE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );
-  serial->unlock();
 
   /*-------------------------------------------------
   Run the tests then break
