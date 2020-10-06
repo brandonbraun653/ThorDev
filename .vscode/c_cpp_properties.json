@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Embedded",
+            "name": "Desktop",
             "includePath": [
                 "${workspaceFolder}/lib/CommonTools/googletest/**",
                 "${workspaceFolder}/lib/CommonTools/cpputest/include",
@@ -27,7 +27,35 @@
             "cStandard": "c11",
             "intelliSenseMode": "msvc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "Embedded",
+            "includePath": [
+                "${workspaceFolder}/lib/CommonTools/googletest/**",
+                "${workspaceFolder}/lib/CommonTools/cpputest/include",
+                "${workspaceFolder}/lib/Aurora",
+                "${workspaceFolder}/lib/Chimera",
+                "${workspaceFolder}/lib/FlashMemory",
+                "${workspaceFolder}/lib/Aurora/lib/type_safe/include",
+                "${workspaceFolder}/lib/Aurora/lib/littlefs/lfs",
+                "${workspaceFolder}/lib/FreeRTOS",
+                "${workspaceFolder}/Thor",
+                "${BOOST_ROOT}/boost_1_70_0"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "TARGET_STM32L4",
+                "USING_FREERTOS_THREADS",
+                "STM32L432xx"
+            ],
+            "cppStandard": "c++20",
+            "cStandard": "c11",
+            "intelliSenseMode": "msvc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
+
     ],
     "version": 4
 }
