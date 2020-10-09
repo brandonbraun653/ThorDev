@@ -31,7 +31,7 @@
         {
             "name": "Embedded STM32L432",
             "includePath": [
-                "${workspaceFolder}/lib/CommonTools/googletest/**",
+                "${workspaceFolder}/lib/CommonTools/googletest",
                 "${workspaceFolder}/lib/CommonTools/cpputest/include",
                 "${workspaceFolder}/lib/Aurora",
                 "${workspaceFolder}/lib/Chimera",
@@ -52,9 +52,9 @@
                 "USING_FREERTOS_THREADS",
                 "STM32L432xx"
             ],
-            "cppStandard": "c++20",
+            "cppStandard": "c++17",
             "cStandard": "c11",
-            "intelliSenseMode": "${default}",
+            "intelliSenseMode": "msvc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
         }
 
