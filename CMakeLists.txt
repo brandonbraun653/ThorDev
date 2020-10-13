@@ -39,3 +39,8 @@ if(Toolchain::HAS_GCC_ARM_NONE_EABI)
 else()
   include("cmake/generic_targets.cmake")
 endif()
+
+# ====================================================
+# Import test targets
+# ====================================================
+add_subdirectory("tests/hardware/peripherals")

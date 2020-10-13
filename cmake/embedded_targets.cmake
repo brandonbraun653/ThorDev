@@ -23,6 +23,7 @@ target_link_libraries(${PRJ} PRIVATE
 
   # Target Properties
   prj_device_target
+  prj_build_target
 )
 
 # $(OBJCOPY) -O binary --gap-fill 0xFF -S $(>) $(<)
@@ -62,37 +63,7 @@ target_link_libraries(${TEST_LFS} PRIVATE
 
   # Target Properties
   prj_device_target
+  prj_build_target
 )
 target_compile_definitions(lfs_core PUBLIC LFS_NO_DEBUG LFS_NO_WARN LFS_NO_ERROR LFS_NO_ASSERT)
 
-# -----------------------------------------------------------------------------
-# Test Suite: STM32L4 LLD CAN
-# -----------------------------------------------------------------------------
-add_executable(test_stm32l4_lld_can "${PROJECT_ROOT}/tests/hardware/peripherals/stm32l4/test_stm32l4_lld_can.cpp")
-target_link_libraries(test_stm32l4_lld_can PRIVATE
-  # Public Includes
-  aurora_inc
-  Boost::boost
-  chimera_inc
-  freertos_inc
-  thor_inc
-  type_safe_inc
-
-  # Static Libraries
-  CppUTest
-  aurora_core
-  chimera_src
-  freertos_cfg
-  freertos_core
-  freertos_heap
-  freertos_port
-  thor_cfg_freertos
-  thor_cmn_cm4
-  thor_hld
-  thor_lld_intf
-  thor_lld_stm32l4
-
-  # Target Properties
-  prj_device_target
-)
-target_include_directories(test_stm32l4_lld_can PRIVATE ${PROJECT_ROOT})

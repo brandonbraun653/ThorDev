@@ -1,6 +1,6 @@
 /********************************************************************************
  *  File Name:
- *    test_stm32l4_lld_can.cpp
+ *    test_entry.cpp
  *
  *  Description:
  *    Tests the LLD CAN bus driver for the STM32L4 port
@@ -25,9 +25,8 @@
 /* Thor Includes */
 #include <Thor/lld/interface/can/can_intf.hpp>
 
-/* CppUTest Includes  */
+/* CppUTest Includes */
 #include <CppUTest/CommandLineTestRunner.h>
-#include <CppUTest/TestHarness.h>
 
 /*-------------------------------------------------------------------------------
 Constants
@@ -77,6 +76,7 @@ int main()
   startScheduler();
   return 0;
 }
+
 
 static void initializeSerial()
 {
@@ -152,7 +152,7 @@ static void test_thread( void *argument )
   /*-------------------------------------------------
   Run the tests then break
   -------------------------------------------------*/
-  snprintf(printBuffer.data(), printBuffer.size(), "Starting STM32L4 LLD CAN Bus Tests\n" );
+  snprintf( printBuffer.data(), printBuffer.size(), "Starting STM32L4 LLD CAN Bus Tests\n" );
   serial->lock();
   serial->write( printBuffer.data(), strlen( printBuffer.data() ) );
   serial->await( Chimera::Event::Trigger::TRIGGER_WRITE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );
@@ -160,7 +160,7 @@ static void test_thread( void *argument )
 
   int rcode = CommandLineTestRunner::RunAllTests( 2, av_override );
 
-  snprintf(printBuffer.data(), printBuffer.size(), "Test exit with code: %d\n", rcode );
+  snprintf( printBuffer.data(), printBuffer.size(), "Test exit with code: %d\n", rcode );
   serial->lock();
   serial->write( printBuffer.data(), strlen( printBuffer.data() ) );
   serial->await( Chimera::Event::Trigger::TRIGGER_WRITE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );
@@ -170,14 +170,4 @@ static void test_thread( void *argument )
   {
     Chimera::insert_debug_breakpoint();
   }
-}
-
-/*-------------------------------------------------------------------------------
-Testing Functions
--------------------------------------------------------------------------------*/
-TEST_GROUP( STM32L4_LLD_CAN ){};
-
-TEST( STM32L4_LLD_CAN, Open )
-{
-  CHECK_EQUAL( 1, 1 );
 }

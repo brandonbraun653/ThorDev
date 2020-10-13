@@ -48,6 +48,7 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
+                "EMBEDDED",
                 "TARGET_STM32L4",
                 "USING_FREERTOS_THREADS",
                 "STM32L432xx"

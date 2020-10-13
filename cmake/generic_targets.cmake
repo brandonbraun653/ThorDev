@@ -1,4 +1,5 @@
-set(TARGET_CHIP prj_device_target)
+set(TARGET_CHIP prj_device_target
+  prj_build_target)
 add_library(${TARGET_CHIP} INTERFACE)
 target_compile_options(${TARGET_CHIP} INTERFACE
   -fdata-sections
@@ -31,6 +32,7 @@ target_link_libraries(lld_test PRIVATE
   Boost::boost
   type_safe_inc
   prj_device_target
+  prj_build_target
 
   # Static Libraries
   gtest_src
@@ -44,7 +46,8 @@ target_link_libraries(lld_test PRIVATE
   pthread
 )
 
-target_compile_definitions(prj_device_target INTERFACE
+target_compile_definitions(prj_device_target
+  prj_build_target INTERFACE
   CHIMERA_LITTLE_ENDIAN
   TARGET_LLD_TEST
 )
