@@ -48,6 +48,7 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
+                "__GNUC__",
                 "EMBEDDED",
                 "TARGET_STM32L4",
                 "USING_FREERTOS_THREADS",
