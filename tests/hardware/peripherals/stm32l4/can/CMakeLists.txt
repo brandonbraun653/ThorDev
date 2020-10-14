@@ -4,6 +4,7 @@
 add_executable(test_stm32l4_lld_can
   test_entry.cpp
   test_driver_interface.cpp
+  test_driver_implementation.cpp
 )
 target_link_libraries(test_stm32l4_lld_can PRIVATE
   # Public Includes
@@ -33,3 +34,6 @@ target_link_libraries(test_stm32l4_lld_can PRIVATE
   prj_build_target
 )
 target_include_directories(test_stm32l4_lld_can PRIVATE ${PROJECT_ROOT})
+add_custom_command(TARGET test_stm32l4_lld_can POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:test_stm32l4_lld_can> ${LAST_BUILT_VERSION_DIRECTORY}/test_image
+)
