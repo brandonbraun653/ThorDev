@@ -48,6 +48,17 @@ static std::array<Chimera::CAN::BasicFrame, 5> s_rx_buffer;
 static void reset_test()
 {
   CAN::prv_reset( CAN::CAN1_PERIPH );
+
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( CAN::CAN1_PERIPH );
+  can->enableClock();
+
+  for ( auto idx = 0; idx < static_cast<size_t>( Chimera::CAN::InterruptType::NUM_OPTIONS ); idx++ )
+  {
+    auto signal = static_cast<Chimera::CAN::InterruptType>( idx );
+    can->disableISRSignal( signal );
+    can->setISRHandled( signal );
+  }
 }
 
 static Chimera::CAN::DriverConfig getValidConfig()
@@ -301,7 +312,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, ISRSignalEnableDisable )
 
   // Disable
   can->disableISRSignal( Chimera::CAN::InterruptType::ERROR_CODE_EVENT );
-  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE ); // Should not be able to disable
+  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE );    // Should not be able to disable
   CHECK( CAN::LECIE::get( periph ) == 0 );
 
   /*-------------------------------------------------
@@ -314,7 +325,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, ISRSignalEnableDisable )
 
   // Disable
   can->disableISRSignal( Chimera::CAN::InterruptType::ERROR_BUS_OFF_EVENT );
-  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE ); // Should not be able to disable
+  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE );    // Should not be able to disable
   CHECK( CAN::BOFIE::get( periph ) == 0 );
 
   /*-------------------------------------------------
@@ -327,7 +338,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, ISRSignalEnableDisable )
 
   // Disable
   can->disableISRSignal( Chimera::CAN::InterruptType::ERROR_PASSIVE_EVENT );
-  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE ); // Should not be able to disable
+  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE );    // Should not be able to disable
   CHECK( CAN::EPVIE::get( periph ) == 0 );
 
   /*-------------------------------------------------
@@ -340,7 +351,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, ISRSignalEnableDisable )
 
   // Disable
   can->disableISRSignal( Chimera::CAN::InterruptType::ERROR_WARNING_EVENT );
-  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE ); // Should not be able to disable
+  CHECK( CAN::ERRIE::get( periph ) == CAN::IER_ERRIE );    // Should not be able to disable
   CHECK( CAN::EWGIE::get( periph ) == 0 );
 }
 
@@ -491,7 +502,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitAvailability )
   // Queue up three transfers, validate no mailbox is free
 }
 
-TEST( STM32L4_LLD_CAN_DRIVER, Transmit)
+TEST( STM32L4_LLD_CAN_DRIVER, Transmit )
 {
   /*-------------------------------------------------
   Initialize Peripheral Hardware
@@ -545,7 +556,7 @@ Verifies receive functionality
 /*-------------------------------------------------------------------------------
 Verifies Error Handling Functionality
 -------------------------------------------------------------------------------*/
-TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Warning)
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Warning )
 {
   /*-------------------------------------------------
   Test Constants
@@ -610,6 +621,229 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Warning)
 
   CHECK( isrContext != nullptr );
   CHECK( isrContext->isrPending & warningISRBit );
-  CHECK( ( isrContext->isrPending & passiveISRBit ) == 0 );
   CHECK( isrContext->details.errEvent.warning == true );
+}
+
+
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Passive )
+{
+  /*-------------------------------------------------
+  Test Constants
+  -------------------------------------------------*/
+  auto warningSignal = Chimera::CAN::InterruptType::ERROR_WARNING_EVENT;
+  auto passiveSignal = Chimera::CAN::InterruptType::ERROR_PASSIVE_EVENT;
+
+  uint16_t warningISRBit = ( 1u << static_cast<uint16_t>( warningSignal ) );
+  uint16_t passiveISRBit = ( 1u << static_cast<uint16_t>( passiveSignal ) );
+
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  /*-------------------------------------------------
+  Make sure the only ISR enabled is the Warning Error.
+  Technically the Passive Error will fire in this test
+  as well and we don't want to test the wrong thing.
+  -------------------------------------------------*/
+  can->disableISRSignal( warningSignal );
+  can->enableISRSignal( passiveSignal );
+  auto errorSignal = can->getISRSignal( passiveSignal );
+  CHECK( errorSignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Make sure we aren't in debug mode. This test only
+  works if the CAN transceiver isn't connected to
+  anything AND isn't in debug mode. The CAN bus is
+  looking for an ACK response bit and won't get it in
+  this configuration.
+  -------------------------------------------------*/
+  can->exitDebugMode();
+
+  /*-------------------------------------------------
+  Transmit the data then block on the wakeup signal
+  -------------------------------------------------*/
+  can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+  CHECK( errorSignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  /*-------------------------------------------------
+  Verify the transmit event error-ed out
+  -------------------------------------------------*/
+  auto isrContext = can->getISRContext( passiveSignal );
+
+  CHECK( isrContext != nullptr );
+  CHECK( isrContext->isrPending & passiveISRBit );
+  CHECK( isrContext->details.errEvent.passive == true );
+  CHECK( ( isrContext->isrPending & warningISRBit ) == 0 );
+}
+
+
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_BusOff )
+{
+  /*-------------------------------------------------
+  Test Constants
+  -------------------------------------------------*/
+  auto warningSignal = Chimera::CAN::InterruptType::ERROR_WARNING_EVENT;
+  auto passiveSignal = Chimera::CAN::InterruptType::ERROR_PASSIVE_EVENT;
+  auto busOffSignal  = Chimera::CAN::InterruptType::ERROR_BUS_OFF_EVENT;
+
+  uint16_t warningISRBit = ( 1u << static_cast<uint16_t>( warningSignal ) );
+  uint16_t passiveISRBit = ( 1u << static_cast<uint16_t>( passiveSignal ) );
+  uint16_t busOffISRBit  = ( 1u << static_cast<uint16_t>( busOffSignal ) );
+
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  /*-------------------------------------------------
+  Make sure the only ISR enabled is the Warning Error.
+  Technically the Passive Error will fire in this test
+  as well and we don't want to test the wrong thing.
+  -------------------------------------------------*/
+  can->disableISRSignal( warningSignal );
+  can->disableISRSignal( passiveSignal );
+
+  can->enableISRSignal( busOffSignal );
+  auto errorSignal = can->getISRSignal( busOffSignal );
+  CHECK( errorSignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Make sure we aren't in debug mode. This test only
+  works if the CAN transceiver isn't connected to
+  anything AND isn't in debug mode. The CAN bus is
+  looking for an ACK response bit and won't get it in
+  this configuration.
+  -------------------------------------------------*/
+  can->exitDebugMode();
+
+  /*-------------------------------------------------
+  Transmit the data then block on the wakeup signal
+  -------------------------------------------------*/
+  can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+  CHECK( errorSignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  /*-------------------------------------------------
+  Verify the transmit event error-ed out
+  -------------------------------------------------*/
+  auto isrContext = can->getISRContext( busOffSignal );
+
+  CHECK( isrContext != nullptr );
+  CHECK( isrContext->isrPending & busOffISRBit );
+  CHECK( isrContext->details.errEvent.busOff == true );
+  CHECK( ( isrContext->isrPending & passiveISRBit ) == 0 );
+  CHECK( ( isrContext->isrPending & warningISRBit ) == 0 );
+}
+
+
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_LastErrorCode )
+{
+  /*-------------------------------------------------
+  Test Constants
+  -------------------------------------------------*/
+  auto warningSignal = Chimera::CAN::InterruptType::ERROR_WARNING_EVENT;
+  auto passiveSignal = Chimera::CAN::InterruptType::ERROR_PASSIVE_EVENT;
+  auto busOffSignal  = Chimera::CAN::InterruptType::ERROR_BUS_OFF_EVENT;
+  auto lastErrSignal = Chimera::CAN::InterruptType::ERROR_CODE_EVENT;
+
+  uint16_t warningISRBit = ( 1u << static_cast<uint16_t>( warningSignal ) );
+  uint16_t passiveISRBit = ( 1u << static_cast<uint16_t>( passiveSignal ) );
+  uint16_t busOffISRBit  = ( 1u << static_cast<uint16_t>( busOffSignal ) );
+  uint16_t lastErrISRBit = ( 1u << static_cast<uint16_t>( lastErrSignal ) );
+
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  /*-------------------------------------------------
+  Make sure the only ISR enabled is the Warning Error.
+  Technically the Passive Error will fire in this test
+  as well and we don't want to test the wrong thing.
+  -------------------------------------------------*/
+  can->disableISRSignal( warningSignal );
+  can->disableISRSignal( passiveSignal );
+  can->disableISRSignal( busOffSignal );
+
+  can->enableISRSignal( lastErrSignal );
+  auto errorSignal = can->getISRSignal( lastErrSignal );
+  CHECK( errorSignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Make sure we aren't in debug mode. This test only
+  works if the CAN transceiver isn't connected to
+  anything AND isn't in debug mode. The CAN bus is
+  looking for an ACK response bit and won't get it in
+  this configuration.
+  -------------------------------------------------*/
+  can->exitDebugMode();
+
+  /*-------------------------------------------------
+  Transmit the data then block on the wakeup signal
+  -------------------------------------------------*/
+  can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+  CHECK( errorSignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  /*-------------------------------------------------
+  Verify the transmit event error-ed out
+  -------------------------------------------------*/
+  auto isrContext = can->getISRContext( lastErrSignal );
+
+  CHECK( isrContext != nullptr );
+  CHECK( isrContext->isrPending & lastErrISRBit );
+  CHECK( isrContext->details.errEvent.lastErrorCode == CAN::ErrorCode::BIT_DOMINANT_ERROR );
+  CHECK( ( isrContext->isrPending & passiveISRBit ) == 0 );
+  CHECK( ( isrContext->isrPending & warningISRBit ) == 0 );
+  CHECK( ( isrContext->isrPending & busOffISRBit ) == 0 );
 }
