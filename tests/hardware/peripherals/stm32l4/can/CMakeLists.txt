@@ -37,3 +37,6 @@ target_include_directories(test_stm32l4_lld_can PRIVATE ${PROJECT_ROOT})
 add_custom_command(TARGET test_stm32l4_lld_can POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:test_stm32l4_lld_can> ${LAST_BUILT_VERSION_DIRECTORY}/test_image
 )
+
+# Last known working configuration command:
+# cmake -DTOOLCHAIN=arm_none_eabi -DFREERTOS_THREADS=ON -DDEVICE_TARGET=stm32l432kb -DCMAKE_BUILD_TYPE=RelWithDebInfo --configure ../

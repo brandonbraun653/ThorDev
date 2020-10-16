@@ -8,7 +8,6 @@
  *  2020 | Brandon Braun | brandonbraun653@gmail.com
  *******************************************************************************/
 
-
 /* STL Includes */
 #include <limits>
 
@@ -101,7 +100,54 @@ Testing Functions
 TEST_GROUP( STM32L4_LLD_CAN_DRIVER ){};
 
 /*-------------------------------------------------------------------------------
-Driver Testing
+Verify that the peripheral clock can be enabled/disabled
+-------------------------------------------------------------------------------*/
+TEST( STM32L4_LLD_CAN_DRIVER, PeripheralClock )
+{
+  /*-------------------------------------------------
+  Initialize
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+
+  /*-------------------------------------------------
+  No one knows what state DBF starts out in, so force
+  it to some value. This is half a test because it
+  has value only when the initial state of DBF == 0.
+  -------------------------------------------------*/
+  can->enableClock();
+  CAN::DBF::clear( periph, CAN::MCR_DBF );
+  CHECK( CAN::DBF::get( periph ) == 0 );
+
+  /*-------------------------------------------------
+  Disable the clock and make sure we can't write
+  -------------------------------------------------*/
+  can->disableClock();
+  CAN::DBF::set( periph, CAN::MCR_DBF );
+  CHECK( CAN::DBF::get( periph ) == 0 );
+
+  /*-------------------------------------------------
+  Enable the clock and validate the write occurs
+  -------------------------------------------------*/
+  can->enableClock();
+  CAN::DBF::set( periph, CAN::MCR_DBF );
+  CHECK( CAN::DBF::get( periph ) == CAN::MCR_DBF );
+
+  /*-------------------------------------------------
+  Disable the clock one more time and make sure the
+  value doesn't change on trying to clear the bit.
+  -------------------------------------------------*/
+  can->disableClock();
+  CAN::DBF::clear( periph, CAN::MCR_DBF );
+  CHECK( CAN::DBF::get( periph ) == CAN::MCR_DBF );
+}
+
+
+/*-------------------------------------------------------------------------------
+Verifies that each ISR signal can properly be enabled/disabled
 -------------------------------------------------------------------------------*/
 TEST( STM32L4_LLD_CAN_DRIVER, ISRSignalEnableDisable )
 {
@@ -299,6 +345,9 @@ TEST( STM32L4_LLD_CAN_DRIVER, ISRSignalEnableDisable )
 }
 
 
+/*-------------------------------------------------------------------------------
+Verifies that supported mode transistions occur correctly
+-------------------------------------------------------------------------------*/
 TEST( STM32L4_LLD_CAN_DRIVER, DebugModeConfig )
 {
   /*-------------------------------------------------
@@ -349,7 +398,218 @@ TEST( STM32L4_LLD_CAN_DRIVER, DebugModeConfig )
 }
 
 
+/*-------------------------------------------------------------------------------
+Verifies that the hardware configuration works correctly
+-------------------------------------------------------------------------------*/
 TEST( STM32L4_LLD_CAN_DRIVER, CoreConfiguration )
 {
   CHECK( 1 == 1 );
+  // Eventually verify that a clock frequency range can be configured. This is pretty
+  // dependent upon the peripheral clock, so the tester needs to be able to
+  // set that dynamically first rather than relying on whatever the current
+  // configuration is. Otherwise that will lead to inconsistent/non-portable tests.
+}
+
+
+/*-------------------------------------------------------------------------------
+Verifies transmit functionality
+-------------------------------------------------------------------------------*/
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitParameterChecks )
+{
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+
+  /*-------------------------------------------------
+  Verify that bad frames are rejected
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame badFrame;
+
+  // Invalid data length
+  badFrame.clear();
+  badFrame.dataLength = 0;
+  badFrame.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  badFrame.frameType  = Chimera::CAN::FrameType::DATA;
+
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::TX_MAILBOX_1, badFrame ) );
+
+
+  // Invalid ID mode
+  badFrame.clear();
+  badFrame.dataLength = 3;
+  badFrame.idMode     = Chimera::CAN::IdentifierMode::NUM_OPTIONS;
+  badFrame.frameType  = Chimera::CAN::FrameType::DATA;
+
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::TX_MAILBOX_1, badFrame ) );
+
+
+  // Invalid frame type
+  badFrame.clear();
+  badFrame.dataLength = 3;
+  badFrame.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  badFrame.frameType  = Chimera::CAN::FrameType::NUM_OPTIONS;
+
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::TX_MAILBOX_1, badFrame ) );
+
+  /*-------------------------------------------------
+  Verify that bad mailboxes are rejected
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame goodFrame;
+  goodFrame.clear();
+  goodFrame.dataLength = 1;
+  goodFrame.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  goodFrame.frameType  = Chimera::CAN::FrameType::DATA;
+
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::RX_MAILBOX_1, goodFrame ) );
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::RX_MAILBOX_2, goodFrame ) );
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::NUM_OPTIONS, goodFrame ) );
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::UNKNOWN, goodFrame ) );
+}
+
+
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitMailboxNotReady )
+{
+  // This one will be a little tricky. Need to send data while monitoring the status of
+  // the mailbox flags. Once it moves to the pending state, I need to try and send more
+  // data, then verify I can't and correctly receive the "NOT_READY" flag.
+}
+
+
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitAvailability )
+{
+  // Queue up a transfer, validate the mailbox reads as unavailable, validate the next
+  // mailbox is free, validate the first mailbox becomes free again upon successful TX.
+
+  // Queue up two transfers, validate the last mailbox is free.
+
+  // Queue up three transfers, validate no mailbox is free
+}
+
+TEST( STM32L4_LLD_CAN_DRIVER, Transmit)
+{
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  can->enableISRSignal( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY );
+  auto boxEmptySignal = can->getISRSignal( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY );
+  CHECK( boxEmptySignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Transmit the data then block on the wakeup signal
+  -------------------------------------------------*/
+  can->enterDebugMode( Chimera::CAN::DebugMode::LOOPBACK_AND_SILENT );
+  can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+  CHECK( boxEmptySignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  /*-------------------------------------------------
+  Verify the transmit event happened
+  -------------------------------------------------*/
+  auto isrContext = can->getISRContext( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY );
+
+  CHECK( isrContext != nullptr );
+  CHECK( isrContext->isrPending == ( 1u << static_cast<size_t>( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY ) ) );
+  CHECK( isrContext->details.txEvent.mailbox0.txOk );
+}
+
+
+/*-------------------------------------------------------------------------------
+Verifies receive functionality
+-------------------------------------------------------------------------------*/
+
+
+/*-------------------------------------------------------------------------------
+Verifies Error Handling Functionality
+-------------------------------------------------------------------------------*/
+TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Warning)
+{
+  /*-------------------------------------------------
+  Test Constants
+  -------------------------------------------------*/
+  auto warningSignal = Chimera::CAN::InterruptType::ERROR_WARNING_EVENT;
+  auto passiveSignal = Chimera::CAN::InterruptType::ERROR_PASSIVE_EVENT;
+
+  uint16_t warningISRBit = ( 1u << static_cast<uint16_t>( warningSignal ) );
+  uint16_t passiveISRBit = ( 1u << static_cast<uint16_t>( passiveSignal ) );
+
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  /*-------------------------------------------------
+  Make sure the only ISR enabled is the Warning Error.
+  Technically the Passive Error will fire in this test
+  as well and we don't want to test the wrong thing.
+  -------------------------------------------------*/
+  can->disableISRSignal( passiveSignal );
+  can->enableISRSignal( warningSignal );
+  auto errorSignal = can->getISRSignal( warningSignal );
+  CHECK( errorSignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Make sure we aren't in debug mode. This test only
+  works if the CAN transceiver isn't connected to
+  anything AND isn't in debug mode. The CAN bus is
+  looking for an ACK response bit and won't get it in
+  this configuration.
+  -------------------------------------------------*/
+  can->exitDebugMode();
+
+  /*-------------------------------------------------
+  Transmit the data then block on the wakeup signal
+  -------------------------------------------------*/
+  can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+  CHECK( errorSignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  /*-------------------------------------------------
+  Verify the transmit event error-ed out
+  -------------------------------------------------*/
+  auto isrContext = can->getISRContext( warningSignal );
+
+  CHECK( isrContext != nullptr );
+  CHECK( isrContext->isrPending & warningISRBit );
+  CHECK( ( isrContext->isrPending & passiveISRBit ) == 0 );
+  CHECK( isrContext->details.errEvent.warning == true );
 }
