@@ -5,7 +5,11 @@ add_executable(test_stm32l4_lld_can
   test_entry.cpp
   test_driver_interface.cpp
   test_driver_implementation.cpp
+  test_resources.cpp
 )
+
+target_include_directories(test_stm32l4_lld_can PRIVATE "." )
+
 target_link_libraries(test_stm32l4_lld_can PRIVATE
   # Public Includes
   aurora_inc

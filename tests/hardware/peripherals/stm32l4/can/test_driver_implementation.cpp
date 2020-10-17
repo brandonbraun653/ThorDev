@@ -16,18 +16,18 @@
 
 /* Thor Includes */
 #include <Thor/hld/interrupt/hld_interrupt_definitions.hpp>
-
 #include <Thor/lld/common/cortex-m4/interrupts.hpp>
 #include <Thor/lld/common/types.hpp>
-
 #include <Thor/lld/interface/can/can_detail.hpp>
 #include <Thor/lld/interface/can/can_intf.hpp>
 #include <Thor/lld/interface/can/can_prv_data.hpp>
 #include <Thor/lld/interface/can/can_types.hpp>
-
 #include <Thor/lld/stm32l4x/can/hw_can_prj.hpp>
 #include <Thor/lld/stm32l4x/can/hw_can_prv_driver.hpp>
 #include <Thor/lld/stm32l4x/can/hw_can_types.hpp>
+
+/* Test Driver Includes */
+#include "test_resources.hpp"
 
 /* CppUTest Includes */
 #include <CppUTest/TestHarness.h>
@@ -91,8 +91,6 @@ static Chimera::CAN::DriverConfig getValidConfig()
   -------------------------------------------------*/
   cfg.HWInit.baudRate           = 100000;
   cfg.HWInit.channel            = Chimera::CAN::Channel::CAN0;
-  cfg.HWInit.filterMode         = Chimera::CAN::FilterMode::ID_LIST;
-  cfg.HWInit.filterWidth        = Chimera::CAN::FilterWidth::WIDTH_32BIT;
   cfg.HWInit.maxBaudError       = 0.05f;
   cfg.HWInit.resyncJumpWidth    = 1;
   cfg.HWInit.samplePointPercent = 0.85f;
@@ -422,6 +420,28 @@ TEST( STM32L4_LLD_CAN_DRIVER, CoreConfiguration )
 }
 
 
+TEST( STM32L4_LLD_CAN_DRIVER, FilterConfiguration )
+{
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  /*-------------------------------------------------
+  Get a valid filter and ensure it can be applied
+  -------------------------------------------------*/
+  auto filters = CAN::cfgMsgFilterList( CAN::FilterConfig::BASIC_VALID_FILTER );
+  CHECK( can->applyFilters( filters, CAN::NUM_CAN_FILTER_BANKS ) == Chimera::Status::OK );
+
+  // Validate the hardware registers too.
+}
+
 /*-------------------------------------------------------------------------------
 Verifies transmit functionality
 -------------------------------------------------------------------------------*/
@@ -486,23 +506,162 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitParameterChecks )
 
 TEST( STM32L4_LLD_CAN_DRIVER, TransmitMailboxNotReady )
 {
-  // This one will be a little tricky. Need to send data while monitoring the status of
-  // the mailbox flags. Once it moves to the pending state, I need to try and send more
-  // data, then verify I can't and correctly receive the "NOT_READY" flag.
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  can->enableISRSignal( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY );
+  auto boxEmptySignal = can->getISRSignal( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY );
+  CHECK( boxEmptySignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Transmit the data
+  -------------------------------------------------*/
+  can->enterDebugMode( Chimera::CAN::DebugMode::LOOPBACK_AND_SILENT );
+  can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+
+  /*-------------------------------------------------
+  Wait for the mailbox to go to pending
+  -------------------------------------------------*/
+  while ( CAN::TME0::get( periph ) )
+  {
+    continue;
+  }
+
+  /*-------------------------------------------------
+  Verify the hardware says the mailbox isn't ready
+  -------------------------------------------------*/
+  auto txResult = can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+  CHECK( txResult == Chimera::Status::NOT_READY );
 }
 
 
 TEST( STM32L4_LLD_CAN_DRIVER, TransmitAvailability )
 {
-  // Queue up a transfer, validate the mailbox reads as unavailable, validate the next
-  // mailbox is free, validate the first mailbox becomes free again upon successful TX.
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
 
-  // Queue up two transfers, validate the last mailbox is free.
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
 
-  // Queue up three transfers, validate no mailbox is free
+  can->enableISRSignal( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY );
+  auto boxEmptySignal = can->getISRSignal( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY );
+  CHECK( boxEmptySignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Transmit only Mailbox1 and verify at least one
+  other mailbox is reported as free
+  -------------------------------------------------*/
+  can->enterDebugMode( Chimera::CAN::DebugMode::LOOPBACK_AND_SILENT );
+  CHECK( can->send( CAN::Mailbox::TX_MAILBOX_1, txData ) == Chimera::Status::OK );
+
+  // Wait for the mailbox to go to pending
+  while ( CAN::TME0::get( periph ) )
+  {
+    continue;
+  }
+
+  // Verify the expected events occur
+  CAN::Mailbox availableBox = CAN::Mailbox::UNKNOWN;
+  CHECK( can->txMailboxAvailable( availableBox ) );
+  CHECK( ( availableBox == CAN::Mailbox::TX_MAILBOX_2 ) || ( availableBox == CAN::Mailbox::TX_MAILBOX_3 ) );
+  CHECK( boxEmptySignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  // Wait the mailbox to indicate empty
+  while ( !CAN::TME0::get( periph ) )
+  {
+    continue;
+  }
+  Chimera::delayMilliseconds( 5 );
+
+  /*-------------------------------------------------
+  Transmit mailbox 1 & 2. Verify only mailbox 3 free.
+  -------------------------------------------------*/
+  CHECK( can->send( CAN::Mailbox::TX_MAILBOX_1, txData ) == Chimera::Status::OK );
+  CHECK( can->send( CAN::Mailbox::TX_MAILBOX_2, txData ) == Chimera::Status::OK );
+
+  // Wait for both mailboxes to go to pending
+  while ( CAN::TME0::get( periph ) && CAN::TME1::get( periph ) )
+  {
+    continue;
+  }
+
+  // Verify the expected events occur
+  availableBox = CAN::Mailbox::UNKNOWN;
+  CHECK( can->txMailboxAvailable( availableBox ) );
+  CHECK( availableBox == CAN::Mailbox::TX_MAILBOX_3 );
+  CHECK( boxEmptySignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  // Wait for both mailboxes to indicate empty
+  while ( !CAN::TME0::get( periph ) && !CAN::TME1::get( periph ) )
+  {
+    continue;
+  }
+  Chimera::delayMilliseconds( 5 );
+
+  /*-------------------------------------------------
+  Transmit mailbox 1 & 2. Verify only mailbox 3 free.
+  -------------------------------------------------*/
+  CHECK( can->send( CAN::Mailbox::TX_MAILBOX_1, txData ) == Chimera::Status::OK );
+  CHECK( can->send( CAN::Mailbox::TX_MAILBOX_2, txData ) == Chimera::Status::OK );
+  CHECK( can->send( CAN::Mailbox::TX_MAILBOX_3, txData ) == Chimera::Status::OK );
+
+  // Wait for all mailboxes to go to pending
+  while ( CAN::TME0::get( periph ) && CAN::TME1::get( periph ) && CAN::TME2::get( periph ) )
+  {
+    continue;
+  }
+
+  // Verify the expected events occur
+  availableBox = CAN::Mailbox::RX_MAILBOX_1;
+  CHECK( can->txMailboxAvailable( availableBox ) == false );
+  CHECK( availableBox == CAN::Mailbox::UNKNOWN );
+  CHECK( boxEmptySignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  // Wait for all mailboxes to empty
+  while ( !CAN::TME0::get( periph ) && !CAN::TME1::get( periph ) && !CAN::TME2::get( periph ) )
+  {
+    continue;
+  }
+  Chimera::delayMilliseconds( 5 );
 }
 
-TEST( STM32L4_LLD_CAN_DRIVER, Transmit )
+
+TEST( STM32L4_LLD_CAN_DRIVER, BasicTransmit )
 {
   /*-------------------------------------------------
   Initialize Peripheral Hardware
@@ -544,7 +703,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, Transmit )
 
   CHECK( isrContext != nullptr );
   CHECK( isrContext->isrPending == ( 1u << static_cast<size_t>( Chimera::CAN::InterruptType::TRANSMIT_MAILBOX_EMPTY ) ) );
-  CHECK( isrContext->details.txEvent.mailbox0.txOk );
+  CHECK( isrContext->event.tx[ 0 ].txOk );
 }
 
 
@@ -621,7 +780,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Warning )
 
   CHECK( isrContext != nullptr );
   CHECK( isrContext->isrPending & warningISRBit );
-  CHECK( isrContext->details.errEvent.warning == true );
+  CHECK( isrContext->event.err.warning == true );
 }
 
 
@@ -690,7 +849,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Passive )
 
   CHECK( isrContext != nullptr );
   CHECK( isrContext->isrPending & passiveISRBit );
-  CHECK( isrContext->details.errEvent.passive == true );
+  CHECK( isrContext->event.err.passive == true );
   CHECK( ( isrContext->isrPending & warningISRBit ) == 0 );
 }
 
@@ -764,7 +923,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_BusOff )
 
   CHECK( isrContext != nullptr );
   CHECK( isrContext->isrPending & busOffISRBit );
-  CHECK( isrContext->details.errEvent.busOff == true );
+  CHECK( isrContext->event.err.busOff == true );
   CHECK( ( isrContext->isrPending & passiveISRBit ) == 0 );
   CHECK( ( isrContext->isrPending & warningISRBit ) == 0 );
 }
@@ -842,7 +1001,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_LastErrorCode )
 
   CHECK( isrContext != nullptr );
   CHECK( isrContext->isrPending & lastErrISRBit );
-  CHECK( isrContext->details.errEvent.lastErrorCode == CAN::ErrorCode::BIT_DOMINANT_ERROR );
+  CHECK( isrContext->event.err.lastErrorCode == CAN::ErrorCode::BIT_DOMINANT_ERROR );
   CHECK( ( isrContext->isrPending & passiveISRBit ) == 0 );
   CHECK( ( isrContext->isrPending & warningISRBit ) == 0 );
   CHECK( ( isrContext->isrPending & busOffISRBit ) == 0 );
