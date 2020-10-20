@@ -419,6 +419,8 @@ TEST( STM32L4_LLD_CAN_DRIVER, CoreConfiguration )
   // configuration is. Otherwise that will lead to inconsistent/non-portable tests.
 }
 
+#pragma GCC push_options
+#pragma GCC optimize ("Og")
 
 TEST( STM32L4_LLD_CAN_DRIVER, FilterConfiguration )
 {
@@ -434,13 +436,27 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterConfiguration )
   CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
 
   /*-------------------------------------------------
-  Get a valid filter and ensure it can be applied
+  Verify bad inputs are rejected
   -------------------------------------------------*/
-  auto filters = CAN::cfgMsgFilterList( CAN::FilterConfig::BASIC_VALID_FILTER );
-  CHECK( can->applyFilters( filters, CAN::NUM_CAN_FILTER_BANKS ) == Chimera::Status::OK );
+  CAN::MessageFilter dummyFilter;
 
-  // Validate the hardware registers too.
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->applyFilters( nullptr, 5 ) );
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->applyFilters( nullptr, 0 ) );
+  CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->applyFilters( &dummyFilter, CAN::NUM_CAN_MAX_FILTERS + 1 ) );
+
+  /*-------------------------------------------------
+  Iterate over all the test cases for filtering and
+  make sure they are configured properly.
+  -------------------------------------------------*/
+  for( auto fltrIdx = 0; fltrIdx < static_cast<size_t>( CAN::FilterConfig::NUM_OPTIONS ); fltrIdx++ )
+  {
+    auto filters = CAN::cfgMsgFilterList( static_cast<CAN::FilterConfig>( fltrIdx ) );
+
+    CHECK( can->applyFilters( filters, CAN::NUM_CAN_MAX_FILTERS ) == Chimera::Status::OK );
+    CHECK( CAN::verifyFilterBankMatchesExpected( periph ) );
+  }
 }
+#pragma GCC pop_options
 
 /*-------------------------------------------------------------------------------
 Verifies transmit functionality

@@ -43,6 +43,16 @@ namespace Thor::LLD::CAN
    */
   MessageFilter * cfgMsgFilterList( const FilterConfig cfgType );
 
+  /**
+   *  Validates that the current configuration of the filter
+   *  bank registers match the expected values. The expected values
+   *  are modified based on the input of cfgMsgFilterList()
+   *
+   *  @param[in]  periph        The peripheral instance to check
+   *  @return bool              True if the config matched, false if not
+   */
+  bool verifyFilterBankMatchesExpected( RegisterMap *const periph );
+
 }  // namespace Thor::LLD::CAN
 
 #endif  /* !STM32L4_CAN_LLD_TEST_RESOURCES_HPP */
