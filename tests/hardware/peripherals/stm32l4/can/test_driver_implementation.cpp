@@ -419,8 +419,6 @@ TEST( STM32L4_LLD_CAN_DRIVER, CoreConfiguration )
   // configuration is. Otherwise that will lead to inconsistent/non-portable tests.
 }
 
-#pragma GCC push_options
-#pragma GCC optimize ("Og")
 
 TEST( STM32L4_LLD_CAN_DRIVER, FilterConfiguration )
 {
@@ -448,7 +446,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterConfiguration )
   Iterate over all the test cases for filtering and
   make sure they are configured properly.
   -------------------------------------------------*/
-  for( auto fltrIdx = 0; fltrIdx < static_cast<size_t>( CAN::FilterConfig::NUM_OPTIONS ); fltrIdx++ )
+  for ( auto fltrIdx = 0; fltrIdx < static_cast<size_t>( CAN::FilterConfig::NUM_OPTIONS ); fltrIdx++ )
   {
     auto filters = CAN::cfgMsgFilterList( static_cast<CAN::FilterConfig>( fltrIdx ) );
 
@@ -456,7 +454,6 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterConfiguration )
     CHECK( CAN::verifyFilterBankMatchesExpected( periph ) );
   }
 }
-#pragma GCC pop_options
 
 /*-------------------------------------------------------------------------------
 Verifies transmit functionality
@@ -481,7 +478,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitParameterChecks )
   // Invalid data length
   badFrame.clear();
   badFrame.dataLength = 0;
-  badFrame.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  badFrame.idMode     = Chimera::CAN::IdType::STANDARD;
   badFrame.frameType  = Chimera::CAN::FrameType::DATA;
 
   CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::TX_MAILBOX_1, badFrame ) );
@@ -490,7 +487,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitParameterChecks )
   // Invalid ID mode
   badFrame.clear();
   badFrame.dataLength = 3;
-  badFrame.idMode     = Chimera::CAN::IdentifierMode::NUM_OPTIONS;
+  badFrame.idMode     = Chimera::CAN::IdType::NUM_OPTIONS;
   badFrame.frameType  = Chimera::CAN::FrameType::DATA;
 
   CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::TX_MAILBOX_1, badFrame ) );
@@ -499,7 +496,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitParameterChecks )
   // Invalid frame type
   badFrame.clear();
   badFrame.dataLength = 3;
-  badFrame.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  badFrame.idMode     = Chimera::CAN::IdType::STANDARD;
   badFrame.frameType  = Chimera::CAN::FrameType::NUM_OPTIONS;
 
   CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::TX_MAILBOX_1, badFrame ) );
@@ -510,7 +507,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitParameterChecks )
   Chimera::CAN::BasicFrame goodFrame;
   goodFrame.clear();
   goodFrame.dataLength = 1;
-  goodFrame.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  goodFrame.idMode     = Chimera::CAN::IdType::STANDARD;
   goodFrame.frameType  = Chimera::CAN::FrameType::DATA;
 
   CHECK( Chimera::Status::INVAL_FUNC_PARAM == can->send( CAN::Mailbox::RX_MAILBOX_1, goodFrame ) );
@@ -543,7 +540,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitMailboxNotReady )
   Chimera::CAN::BasicFrame txData;
   txData.clear();
   txData.id         = 0;
-  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
   txData.frameType  = Chimera::CAN::FrameType::DATA;
   txData.dataLength = 8;
   memset( txData.data, 0xAA, txData.dataLength );
@@ -593,7 +590,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitAvailability )
   Chimera::CAN::BasicFrame txData;
   txData.clear();
   txData.id         = 0;
-  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
   txData.frameType  = Chimera::CAN::FrameType::DATA;
   txData.dataLength = 8;
   memset( txData.data, 0xAA, txData.dataLength );
@@ -700,7 +697,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, BasicTransmit )
   Chimera::CAN::BasicFrame txData;
   txData.clear();
   txData.id         = 0;
-  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
   txData.frameType  = Chimera::CAN::FrameType::DATA;
   txData.dataLength = 8;
   memset( txData.data, 0xAA, txData.dataLength );
@@ -726,7 +723,68 @@ TEST( STM32L4_LLD_CAN_DRIVER, BasicTransmit )
 /*-------------------------------------------------------------------------------
 Verifies receive functionality
 -------------------------------------------------------------------------------*/
+TEST( STM32L4_LLD_CAN_DRIVER, BasicReceive )
+{
+  constexpr auto testISRType = Chimera::CAN::InterruptType::RECEIVE_FIFO_NEW_MESSAGE;
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
 
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  can->enableISRSignal( testISRType );
+  auto newMessageSignal = can->getISRSignal( testISRType );
+  CHECK( newMessageSignal != nullptr );
+
+  /*-------------------------------------------------
+  Initialize data to be tx'd
+  -------------------------------------------------*/
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = 0;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+  txData.dataLength = 8;
+  memset( txData.data, 0xAA, txData.dataLength );
+
+  /*-------------------------------------------------
+  Initialize a very simple RX filter
+  -------------------------------------------------*/
+  CAN::MessageFilter simpleFilter;
+  simpleFilter.active     = true;
+  simpleFilter.valid      = true;
+  simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
+  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_32BIT_MASK;
+  simpleFilter.idType     = txData.idMode;
+  simpleFilter.frameType  = txData.frameType;
+  simpleFilter.mask       = 0;
+  simpleFilter.identifier = txData.id;
+
+  CHECK( can->applyFilters( &simpleFilter, 1 ) == Chimera::Status::OK );
+
+  /*-------------------------------------------------
+  Transmit the data then block on the wakeup signal
+  -------------------------------------------------*/
+  can->enterDebugMode( Chimera::CAN::DebugMode::LOOPBACK_AND_SILENT );
+  can->send( CAN::Mailbox::TX_MAILBOX_1, txData );
+
+  Chimera::delayMilliseconds( 5 );
+  CHECK( newMessageSignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  /*-------------------------------------------------
+  Verify the receive event happened
+  -------------------------------------------------*/
+  auto isrContext = can->getISRContext( testISRType );
+
+  CHECK( isrContext != nullptr );
+  CHECK( isrContext->isrPending == ( 1u << static_cast<size_t>( testISRType ) ) );
+  // CHECK( isrContext->event.tx[ 0 ].txOk );
+}
 
 /*-------------------------------------------------------------------------------
 Verifies Error Handling Functionality
@@ -769,7 +827,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Warning )
   Chimera::CAN::BasicFrame txData;
   txData.clear();
   txData.id         = 0;
-  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
   txData.frameType  = Chimera::CAN::FrameType::DATA;
   txData.dataLength = 8;
   memset( txData.data, 0xAA, txData.dataLength );
@@ -838,7 +896,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_Passive )
   Chimera::CAN::BasicFrame txData;
   txData.clear();
   txData.id         = 0;
-  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
   txData.frameType  = Chimera::CAN::FrameType::DATA;
   txData.dataLength = 8;
   memset( txData.data, 0xAA, txData.dataLength );
@@ -912,7 +970,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_BusOff )
   Chimera::CAN::BasicFrame txData;
   txData.clear();
   txData.id         = 0;
-  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
   txData.frameType  = Chimera::CAN::FrameType::DATA;
   txData.dataLength = 8;
   memset( txData.data, 0xAA, txData.dataLength );
@@ -990,7 +1048,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_LastErrorCode )
   Chimera::CAN::BasicFrame txData;
   txData.clear();
   txData.id         = 0;
-  txData.idMode     = Chimera::CAN::IdentifierMode::STANDARD;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
   txData.frameType  = Chimera::CAN::FrameType::DATA;
   txData.dataLength = 8;
   memset( txData.data, 0xAA, txData.dataLength );

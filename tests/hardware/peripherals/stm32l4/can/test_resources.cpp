@@ -47,9 +47,9 @@ namespace Thor::LLD::CAN
   /*-------------------------------------------------------------------------------
   Public Functions
   -------------------------------------------------------------------------------*/
-  MessageFilter * cfgMsgFilterList( const FilterConfig cfgType )
+  MessageFilter *cfgMsgFilterList( const FilterConfig cfgType )
   {
-    switch( cfgType )
+    switch ( cfgType )
     {
       case FilterConfig::BASIC_VALID_FILTER:
         assignList_BasicValidFilter();
@@ -62,8 +62,7 @@ namespace Thor::LLD::CAN
     };
   }
 
-#pragma GCC push_options
-#pragma GCC optimize ("Og")
+
   bool verifyFilterBankMatchesExpected( RegisterMap *const periph )
   {
     using namespace Chimera::CAN;
@@ -71,21 +70,21 @@ namespace Thor::LLD::CAN
     /*-------------------------------------------------
     Rebuild the entire filter list from scratch
     -------------------------------------------------*/
-    size_t bankIdx          = 0;
-    size_t bankFltrIdx      = 0;
-    size_t fltrIdx          = 0;
-    uint32_t cachedFR1      = 0;
-    uint32_t cachedFR2      = 0;
-    FilterMode cachedMode   = FilterMode::UNKNOWN;
-    Mailbox cachedFIFO      = Mailbox::UNKNOWN;
+    size_t bankIdx        = 0;
+    size_t bankFltrIdx    = 0;
+    size_t fltrIdx        = 0;
+    uint32_t cachedFR1    = 0;
+    uint32_t cachedFR2    = 0;
+    FilterType cachedMode = FilterType::UNKNOWN;
+    Mailbox cachedFIFO    = Mailbox::UNKNOWN;
 
-    uint8_t fifo0FMI_current = 0;
+    uint8_t fifo0FMI_current  = 0;
     uint8_t fifo0FMI_toAssign = 0;
-    uint8_t fifo1FMI_current = 0;
+    uint8_t fifo1FMI_current  = 0;
     uint8_t fifo1FMI_toAssign = 0;
-    uint8_t *fifoCurrentPtr = nullptr;
-    uint8_t *fifoAssignPtr = nullptr;
-    bool bank_parsed = false;
+    uint8_t *fifoCurrentPtr   = nullptr;
+    uint8_t *fifoAssignPtr    = nullptr;
+    bool bank_parsed          = false;
 
     do
     {
@@ -105,40 +104,40 @@ namespace Thor::LLD::CAN
       Parse the FIFO configuration
       -------------------------------------------------*/
       cachedFIFO = prv_get_filter_bank_fifo( periph, bankIdx );
-      if( cachedFIFO == Mailbox::RX_MAILBOX_1 )
+      if ( cachedFIFO == Mailbox::RX_MAILBOX_1 )
       {
         fifoCurrentPtr = &fifo0FMI_current;
-        fifoAssignPtr = &fifo0FMI_toAssign;
+        fifoAssignPtr  = &fifo0FMI_toAssign;
       }
       else
       {
         fifoCurrentPtr = &fifo1FMI_current;
-        fifoAssignPtr = &fifo1FMI_toAssign;
+        fifoAssignPtr  = &fifo1FMI_toAssign;
       }
 
       /*-------------------------------------------------
       Reset the assignment data based on bank mode
       -------------------------------------------------*/
-      if( !bank_parsed )
+      if ( !bank_parsed )
       {
-        switch (cachedMode)
+        switch ( cachedMode )
         {
-        case FilterMode::MODE_32BIT_MASK:
-          *fifoAssignPtr = 1;
-          break;
+          case FilterType::MODE_32BIT_MASK:
+            *fifoAssignPtr = 1;
+            break;
 
-        case FilterMode::MODE_32BIT_LIST:
-        case FilterMode::MODE_16BIT_MASK:
-          *fifoAssignPtr = 2;
-          break;
+          case FilterType::MODE_32BIT_LIST:
+          case FilterType::MODE_16BIT_MASK:
+            *fifoAssignPtr = 2;
+            break;
 
-        case FilterMode::MODE_16BIT_LIST:
-          *fifoAssignPtr = 4;
-          break;
+          case FilterType::MODE_16BIT_LIST:
+            *fifoAssignPtr = 4;
+            break;
 
-        default:
-          return false;
-          break;
+          default:
+            return false;
+            break;
         }
       }
 
@@ -152,12 +151,12 @@ namespace Thor::LLD::CAN
       Now the ugly bit. Parse the filter bank based on
       the four mode configuration possibilities.
       -------------------------------------------------*/
-      if ( cachedMode == FilterMode::MODE_32BIT_MASK )
+      if ( cachedMode == FilterType::MODE_32BIT_MASK )
       {
         /*-------------------------------------------------
         Only a single filter can exist in this mode setup
         -------------------------------------------------*/
-        if( ( cachedFR1 == FLTR_RST_1 ) || ( cachedFR2 == FLTR_RST_2 ) )
+        if ( ( cachedFR1 == FLTR_RST_1 ) || ( cachedFR2 == FLTR_RST_2 ) )
         {
           // Data is in the reset state. No filter here!
           *fifoCurrentPtr++;
@@ -173,13 +172,13 @@ namespace Thor::LLD::CAN
           actFilterList[ fltrIdx ].mask       = cachedFR2;
         }
       }
-      else if ( cachedMode == FilterMode::MODE_32BIT_LIST  )
+      else if ( cachedMode == FilterType::MODE_32BIT_LIST )
       {
         /*-------------------------------------------------
         Update the tracking metrics for which filter inside
         this bank the algorithm is currently on.
         -------------------------------------------------*/
-        if( bankFltrIdx >= 2 )
+        if ( bankFltrIdx >= 2 )
         {
           // Max filter hit. Need to go to the next bank.
           bankFltrIdx = 0;
@@ -191,18 +190,18 @@ namespace Thor::LLD::CAN
         /*-------------------------------------------------
         Check the validity of the bank data
         -------------------------------------------------*/
-        bool validFilter = false;
+        bool validFilter    = false;
         uint32_t validValue = 0;
 
-        switch( bankFltrIdx )
+        switch ( bankFltrIdx )
         {
           case 0:
-            validValue = cachedFR1;
+            validValue  = cachedFR1;
             validFilter = ( cachedFR1 != FLTR_RST_1 );
             break;
 
           case 1:
-            validValue = cachedFR2;
+            validValue  = cachedFR2;
             validFilter = ( cachedFR2 != FLTR_RST_2 );
             break;
 
@@ -217,23 +216,23 @@ namespace Thor::LLD::CAN
         Assuming the filter has good data, save off the id
         and mask, then go parse the rest of the data.
         -------------------------------------------------*/
-        if( validFilter )
+        if ( validFilter )
         {
           actFilterList[ fltrIdx ].identifier = validValue;
-          actFilterList[ fltrIdx ].mask = 0;
+          actFilterList[ fltrIdx ].mask       = 0;
         }
         else
         {
           *fifoCurrentPtr++;
-          continue; // Move on and try the next filter location
+          continue;    // Move on and try the next filter location
         }
       }
-      else if ( cachedMode == FilterMode::MODE_16BIT_MASK )
+      else if ( cachedMode == FilterType::MODE_16BIT_MASK )
       {
         /*-------------------------------------------------
         Update bank filter slot tracking
         -------------------------------------------------*/
-        if( bankFltrIdx >= 2 )
+        if ( bankFltrIdx >= 2 )
         {
           *fifoCurrentPtr++;
           bankIdx++;
@@ -245,11 +244,11 @@ namespace Thor::LLD::CAN
         /*-------------------------------------------------
         Check the validity of the bank data
         -------------------------------------------------*/
-        bool validFilter = false;
-        uint32_t validID = 0;
+        bool validFilter   = false;
+        uint32_t validID   = 0;
         uint32_t validMask = 0;
 
-        switch( bankFltrIdx )
+        switch ( bankFltrIdx )
         {
           case 0:
             validID   = ( cachedFR1 & 0x0000FFFF );
@@ -282,7 +281,7 @@ namespace Thor::LLD::CAN
         Assuming the filter has good data, save off the id
         and mask, then go parse the rest of the data.
         -------------------------------------------------*/
-        if( validFilter )
+        if ( validFilter )
         {
           actFilterList[ fltrIdx ].identifier = validID;
           actFilterList[ fltrIdx ].mask       = validMask >> 16;
@@ -290,15 +289,15 @@ namespace Thor::LLD::CAN
         else
         {
           *fifoCurrentPtr++;
-          continue; // Move on and try the next filter location
+          continue;    // Move on and try the next filter location
         }
       }
-      else if ( cachedMode == FilterMode::MODE_16BIT_LIST )
+      else if ( cachedMode == FilterType::MODE_16BIT_LIST )
       {
         /*-------------------------------------------------
         Update bank filter slot tracking
         -------------------------------------------------*/
-        if( bankFltrIdx >= 4 )
+        if ( bankFltrIdx >= 4 )
         {
           *fifoCurrentPtr++;
           bankIdx++;
@@ -313,7 +312,7 @@ namespace Thor::LLD::CAN
         bool validFilter = false;
         uint32_t validID = 0;
 
-        switch( bankFltrIdx )
+        switch ( bankFltrIdx )
         {
           case 0:
             validID     = ( cachedFR1 & 0x0000FFFF );
@@ -346,7 +345,7 @@ namespace Thor::LLD::CAN
         Assuming the filter has good data, save off the id
         and mask, then go parse the rest of the data.
         -------------------------------------------------*/
-        if( validFilter )
+        if ( validFilter )
         {
           actFilterList[ fltrIdx ].identifier = validID;
           actFilterList[ fltrIdx ].mask       = 0;
@@ -354,7 +353,7 @@ namespace Thor::LLD::CAN
         else
         {
           *fifoCurrentPtr++;
-          continue; // Move on and try the next filter location
+          continue;    // Move on and try the next filter location
         }
       }
 
@@ -365,9 +364,9 @@ namespace Thor::LLD::CAN
       /*-------------------------------------------------
       Save off the cached data. No need to look these up.
       -------------------------------------------------*/
-      actFilterList[ fltrIdx ].valid = true;
-      actFilterList[ fltrIdx ].mode  = cachedMode;
-      actFilterList[ fltrIdx ].assignedFMI = *fifoCurrentPtr;
+      actFilterList[ fltrIdx ].valid      = true;
+      actFilterList[ fltrIdx ].filterType = cachedMode;
+      actFilterList[ fltrIdx ].hwFMI      = *fifoCurrentPtr;
 
       *fifoCurrentPtr++;
       *fifoAssignPtr--;
@@ -375,7 +374,7 @@ namespace Thor::LLD::CAN
       /*-------------------------------------------------
       Parse the FIFO assignment register
       -------------------------------------------------*/
-      if( periph->FFA1R & ( 1u << bankIdx ) )
+      if ( periph->FFA1R & ( 1u << bankIdx ) )
       {
         actFilterList[ fltrIdx ].fifoBank = CAN::Mailbox::RX_MAILBOX_2;
       }
@@ -428,8 +427,6 @@ namespace Thor::LLD::CAN
     return compareResult;
   }
 
-#pragma GCC pop_options
-
   /*-------------------------------------------------------------------------------
   Static Function Definitions
   -------------------------------------------------------------------------------*/
@@ -444,23 +441,23 @@ namespace Thor::LLD::CAN
     Default test filter configuration
     -------------------------------------------------*/
     CLEAR_ARRAY( expFilterList );
-    for( auto x = 0; x < ARRAY_COUNT( expFilterList ); x++ )
+    for ( auto x = 0; x < ARRAY_COUNT( expFilterList ); x++ )
     {
-      expFilterList[ x ].valid       = true;
-      expFilterList[ x ].active      = false;
-      expFilterList[ x ].mode        = FilterMode::MODE_16BIT_MASK;
-      expFilterList[ x ].fifoBank    = CAN::Mailbox::RX_MAILBOX_1;
-      expFilterList[ x ].assignedFMI = 0;
-      expFilterList[ x ].identifier  = 0;
-      expFilterList[ x ].mask        = 0;
+      expFilterList[ x ].valid      = true;
+      expFilterList[ x ].active     = false;
+      expFilterList[ x ].filterType = FilterType::MODE_16BIT_MASK;
+      expFilterList[ x ].fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
+      expFilterList[ x ].hwFMI      = 0;
+      expFilterList[ x ].identifier = 0;
+      expFilterList[ x ].mask       = 0;
 
-      actFilterList[ x ].valid       = false;
-      actFilterList[ x ].active      = false;
-      actFilterList[ x ].mode        = FilterMode::UNKNOWN;
-      actFilterList[ x ].fifoBank    = CAN::Mailbox::UNKNOWN;
-      actFilterList[ x ].assignedFMI = 0;
-      actFilterList[ x ].identifier  = 0;
-      actFilterList[ x ].mask        = 0;
+      actFilterList[ x ].valid      = false;
+      actFilterList[ x ].active     = false;
+      actFilterList[ x ].filterType = FilterType::UNKNOWN;
+      actFilterList[ x ].fifoBank   = CAN::Mailbox::UNKNOWN;
+      actFilterList[ x ].hwFMI      = 0;
+      actFilterList[ x ].identifier = 0;
+      actFilterList[ x ].mask       = 0;
     }
   }
 
@@ -481,13 +478,13 @@ namespace Thor::LLD::CAN
     using namespace Chimera::CAN;
 
     // Configure the input filter's parameters for the test
-    asnFilterList[ asnPos ].valid       = true;
-    asnFilterList[ asnPos ].active      = true;
-    asnFilterList[ asnPos ].fifoBank    = Mailbox::RX_MAILBOX_1;
-    asnFilterList[ asnPos ].mode        = FilterMode::MODE_32BIT_LIST;
-    asnFilterList[ asnPos ].identifier  = 0;
-    asnFilterList[ asnPos ].mask        = 0;
-    asnFilterList[ asnPos ].assignedFMI = expFMI;
+    asnFilterList[ asnPos ].valid      = true;
+    asnFilterList[ asnPos ].active     = true;
+    asnFilterList[ asnPos ].fifoBank   = Mailbox::RX_MAILBOX_1;
+    asnFilterList[ asnPos ].filterType = FilterType::MODE_32BIT_LIST;
+    asnFilterList[ asnPos ].identifier = 0;
+    asnFilterList[ asnPos ].mask       = 0;
+    asnFilterList[ asnPos ].hwFMI      = expFMI;
 
     // Copy the input data to the expected output location
     expFilterList[ expPos ] = asnFilterList[ asnPos ];
@@ -499,16 +496,16 @@ namespace Thor::LLD::CAN
     using namespace Chimera::CAN;
 
     // Configure the input filter's parameters for the test
-    asnFilterList[ asnPos ].valid       = true;
-    asnFilterList[ asnPos ].active      = true;
-    asnFilterList[ asnPos ].fifoBank    = Mailbox::RX_MAILBOX_2;
-    asnFilterList[ asnPos ].mode        = FilterMode::MODE_16BIT_MASK;
-    asnFilterList[ asnPos ].identifier  = 0x00001567;
-    asnFilterList[ asnPos ].mask        = 0x0000FFFF;
-    asnFilterList[ asnPos ].assignedFMI = expFMI;
+    asnFilterList[ asnPos ].valid      = true;
+    asnFilterList[ asnPos ].active     = true;
+    asnFilterList[ asnPos ].fifoBank   = Mailbox::RX_MAILBOX_2;
+    asnFilterList[ asnPos ].filterType = FilterType::MODE_16BIT_MASK;
+    asnFilterList[ asnPos ].identifier = 0x00001567;
+    asnFilterList[ asnPos ].mask       = 0x0000FFFF;
+    asnFilterList[ asnPos ].hwFMI      = expFMI;
 
     // Copy the input data to the expected output location
     expFilterList[ expPos ] = asnFilterList[ asnPos ];
   }
 
-}  // namespace Thor::LLD::CAN
+}    // namespace Thor::LLD::CAN
