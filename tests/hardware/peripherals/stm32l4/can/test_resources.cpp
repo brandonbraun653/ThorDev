@@ -254,6 +254,9 @@ namespace Thor::LLD::CAN
         switch ( bankFltrIdx )
         {
           case 0:
+            /*-------------------------------------------------
+            Check for the magic reset values
+            -------------------------------------------------*/
             validID   = ( cachedFR1 & 0x0000FFFF );
             validMask = ( cachedFR1 & 0xFFFF0000 );
 
@@ -286,8 +289,14 @@ namespace Thor::LLD::CAN
         -------------------------------------------------*/
         if ( validFilter )
         {
+          /*-------------------------------------------------
+          Pull out the actual ID and Mask
+          -------------------------------------------------*/
+          validID   = ( validID & 0xFFE0 ) >> 5;
+          validMask = ( validMask & ( 0xFFE0 << 16 ) );
+
           actFilterList[ fltrIdx ].identifier = validID;
-          actFilterList[ fltrIdx ].mask       = validMask >> 16;
+          actFilterList[ fltrIdx ].mask       = validMask >> 21;
         }
         else
         {
@@ -350,7 +359,7 @@ namespace Thor::LLD::CAN
         -------------------------------------------------*/
         if ( validFilter )
         {
-          actFilterList[ fltrIdx ].identifier = validID;
+          actFilterList[ fltrIdx ].identifier = ( validID & 0xFFE0 ) >> 5;
           actFilterList[ fltrIdx ].mask       = 0;
         }
         else
@@ -536,8 +545,8 @@ namespace Thor::LLD::CAN
     asnFilterList[ asnPos ].active     = true;
     asnFilterList[ asnPos ].fifoBank   = Mailbox::RX_MAILBOX_2;
     asnFilterList[ asnPos ].filterType = FilterType::MODE_16BIT_MASK;
-    asnFilterList[ asnPos ].identifier = 0x00001567;
-    asnFilterList[ asnPos ].mask       = 0x0000FFFF;
+    asnFilterList[ asnPos ].identifier = 0x00000567;
+    asnFilterList[ asnPos ].mask       = 0x000003FF;
     asnFilterList[ asnPos ].hwFMI      = expFMI;
 
     // Copy the input data to the expected output location

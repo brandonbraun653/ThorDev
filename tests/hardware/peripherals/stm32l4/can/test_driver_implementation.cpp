@@ -993,7 +993,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, TransmitFault_LastErrorCode )
 /*-------------------------------------------------------------------------------
 Verifies Filtering Mechanisms
 -------------------------------------------------------------------------------*/
-TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_32StdMask_AllBitsMatter )
+TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_32BitStd_Mask )
 {
   constexpr auto testISRType = Chimera::CAN::InterruptType::RECEIVE_FIFO_NEW_MESSAGE;
 
@@ -1066,7 +1066,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_32StdMask_AllBitsMatter )
 }
 
 
-TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_32StdList )
+TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_32BitStd_List )
 {
   constexpr auto testISRType = Chimera::CAN::InterruptType::RECEIVE_FIFO_NEW_MESSAGE;
 
@@ -1211,7 +1211,75 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_16BitStd_Mask )
 }
 
 
-TEST( STM32L4_LLD_CAN_DRIVER, Filter16BitList )
+TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_16BitStd_List )
 {
-  CHECK( 0 == 0 );
+  constexpr auto testISRType = Chimera::CAN::InterruptType::RECEIVE_FIFO_NEW_MESSAGE;
+
+  /*-------------------------------------------------
+  Initialize the test data
+  -------------------------------------------------*/
+  // Receive data
+  Chimera::CAN::BasicFrame rxData;
+  rxData.clear();
+
+  // Transmit data
+  Chimera::CAN::BasicFrame txData;
+  txData.clear();
+  txData.id         = CAN::ID_STD_3;
+  txData.idMode     = Chimera::CAN::IdType::STANDARD;
+  txData.frameType  = Chimera::CAN::FrameType::DATA;
+
+  // Filter configuration
+  CAN::MessageFilter simpleFilter;
+  simpleFilter.active     = true;
+  simpleFilter.valid      = true;
+  simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
+  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_16BIT_LIST;
+  simpleFilter.idType     = txData.idMode;
+  simpleFilter.frameType  = txData.frameType;
+  simpleFilter.mask       = Chimera::CAN::ID_MASK_11_BIT;
+  simpleFilter.identifier = txData.id;
+
+  /*-------------------------------------------------
+  Initialize Peripheral Hardware
+  -------------------------------------------------*/
+  reset_test();
+
+  auto periph          = CAN::CAN1_PERIPH;
+  CAN::Driver_rPtr can = CAN::getDriver( Chimera::CAN::Channel::CAN0 );
+  can->attach( periph );
+  can->enableClock();
+  CHECK( Chimera::Status::OK == can->configure( getValidConfig() ) );
+
+  /*-------------------------------------------------
+  Reset the peripheral to a known state
+  -------------------------------------------------*/
+  // Loopback mode required for self-tests
+  can->enterDebugMode( Chimera::CAN::DebugMode::LOOPBACK_AND_SILENT );
+
+  // Transmit/Receive buffers
+  can->flushRX();
+  can->flushTX();
+
+  // Interrupts
+  can->enableISRSignal( testISRType );
+  auto newMessageSignal = can->getISRSignal( testISRType );
+
+  /*-------------------------------------------------
+  Make sure the filter was configured
+  -------------------------------------------------*/
+  CHECK( can->applyFilters( &simpleFilter, 1 ) == Chimera::Status::OK );
+
+  /*-------------------------------------------------
+  Transmit the data then block on the wakeup signal
+  -------------------------------------------------*/
+  CHECK( can->send( txData ) == Chimera::Status::OK );
+  CHECK( newMessageSignal->try_acquire_for( Chimera::Threading::TIMEOUT_50MS ) );
+
+  /*-------------------------------------------------
+  Verify the frame was received correctly
+  -------------------------------------------------*/
+  CHECK( can->receive( rxData ) == Chimera::Status::OK );
+  CHECK( CAN::verifyFramesMatch( rxData, txData ) );
 }
+
