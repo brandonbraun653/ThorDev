@@ -8,6 +8,9 @@
  *  2020 | Brandon Braun | brandonbraun653@gmail.com
  *******************************************************************************/
 
+/* Chimera Includes */
+#include <Chimera/can>
+
 /* Thor Includes */
 #include <Thor/lld/interface/can/can_detail.hpp>
 #include <Thor/lld/stm32l4x/can/hw_can_prv_driver.hpp>
@@ -425,6 +428,39 @@ namespace Thor::LLD::CAN
     }
 
     return compareResult;
+  }
+
+
+  bool verifyFramesMatch( const Chimera::CAN::BasicFrame &frame1, const Chimera::CAN::BasicFrame &frame2 )
+  {
+    /*-------------------------------------------------
+    Compare everything except the filter match index.
+    That aspect is assigned via hardware and is very
+    dynamic.
+    -------------------------------------------------*/
+    /* clang-format off */
+    auto attributes_equal = (
+      ( frame1.dataLength == frame2.dataLength  ) &&
+      ( frame1.frameType  == frame2.frameType   ) &&
+      ( frame1.id         == frame2.id          ) &&
+      ( frame1.idMode     == frame2.idMode      )
+    );
+    /* clang-format on */
+    if( !attributes_equal )
+    {
+      return false;
+    }
+
+    // Compare the data fields now that we know the lengths are equal
+    for ( auto x = 0; x < frame1.dataLength; x++ )
+    {
+      if ( frame1.data[ x ] != frame2.data[ x ] )
+      {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   /*-------------------------------------------------------------------------------

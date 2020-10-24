@@ -12,11 +12,22 @@
 #ifndef STM32L4_CAN_LLD_TEST_RESOURCES_HPP
 #define STM32L4_CAN_LLD_TEST_RESOURCES_HPP
 
+/* Chimera Includes */
+#include <Chimera/can>
+
 /* Thor Includes */
 #include <Thor/lld/interface/can/can_types.hpp>
 
 namespace Thor::LLD::CAN
 {
+  /*-------------------------------------------------------------------------------
+  Constants
+  -------------------------------------------------------------------------------*/
+  static constexpr size_t ID_STD_0 = 0x1234 & Chimera::CAN::ID_MASK_11_BIT;
+  static constexpr size_t ID_STD_1 = 0xF396 & Chimera::CAN::ID_MASK_11_BIT;
+  static constexpr size_t ID_STD_2 = 0x8319 & Chimera::CAN::ID_MASK_11_BIT;
+  static constexpr size_t ID_STD_3 = 0x7277 & Chimera::CAN::ID_MASK_11_BIT;
+
   /*-------------------------------------------------------------------------------
   Enumerations
   -------------------------------------------------------------------------------*/
@@ -52,6 +63,15 @@ namespace Thor::LLD::CAN
    *  @return bool              True if the config matched, false if not
    */
   bool verifyFilterBankMatchesExpected( RegisterMap *const periph );
+
+  /**
+   *  Ensures that two frames match
+   *
+   *  @param[in]  frame1        First frame to compare
+   *  @param[in]  frame2        Second frame to compare
+   *  @return bool
+   */
+  bool verifyFramesMatch( const Chimera::CAN::BasicFrame &frame1, const Chimera::CAN::BasicFrame &frame2 );
 
 }  // namespace Thor::LLD::CAN
 
