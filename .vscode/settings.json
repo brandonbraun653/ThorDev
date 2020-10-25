@@ -108,7 +108,8 @@
     "xlocmes": "cpp",
     "cfg": "cpp",
     "spi": "cpp",
-    "can": "cpp"
+    "can": "cpp",
+    "container": "cpp"
   },
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#7295b1",

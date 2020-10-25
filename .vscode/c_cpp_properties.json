@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Desktop",
+            "name": "Thor HLD Testing",
             "includePath": [
                 "${workspaceFolder}/lib/CommonTools/googletest/**",
                 "${workspaceFolder}/lib/CommonTools/cpputest/include",

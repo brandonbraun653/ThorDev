@@ -30,17 +30,10 @@ add_subdirectory("lib/FlashMemory")
 add_subdirectory("Thor")
 
 # ====================================================
-# Select the group of targets to expose depending on
-# the compiler. Some will be dedicated for on-device
-# execution and some for running on the host PC.
-# ====================================================
-if(Toolchain::HAS_GCC_ARM_NONE_EABI)
-  include("cmake/embedded_targets.cmake")
-else()
-  include("cmake/generic_targets.cmake")
-endif()
-
-# ====================================================
 # Import test targets
 # ====================================================
+# Hardware tests execute on a physical embedded target
 add_subdirectory("tests/hardware/peripherals")
+
+# Software tests run on a PC and are hardware agnostic
+add_subdirectory("tests/software/can")
