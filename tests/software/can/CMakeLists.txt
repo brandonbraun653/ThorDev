@@ -1,35 +1,38 @@
 # -----------------------------------------------------------------------------
 # Test Suite: HLD CAN
 # Configure Command:
+#   cmake -DCMAKE_BUILD_TYPE=Debug -DTOOLCHAIN=gcc -DGTEST=ON -DNATIVE_THREADS=ON -DTHOR_HLD_UNIT_TEST=ON --configure ../
 #   cmake -DCMAKE_BUILD_TYPE=Debug -DTOOLCHAIN=gcc -DGTEST=ON -DNATIVE_THREADS=ON -DCOVERAGE=ON -DTHOR_HLD_UNIT_TEST=ON --configure ../
 #
 # Build Command:
 #   cmake --build . --target test_hld_can -j16
 #   cmake --build . --target test_hld_can_coverage -j16
 # -----------------------------------------------------------------------------
-# Get the coverage setup functions
-include("${PROJECT_ROOT}/lib/CommonTools/cmake/modules/CodeCoverage.cmake")
-
-# Test Name
 set(TEST_NAME test_hld_can)
 
 # ---------------------------------------------------------
 # Coverage Target
 # ---------------------------------------------------------
-setup_target_for_coverage_lcov(
-  NAME ${TEST_NAME}_coverage
-  EXECUTABLE artifacts/bin/${TEST_NAME}
-  DEPENDENCIES ${TEST_NAME}
-  BASE_DIRECTORY "${PROJECT_ROOT}"
-  EXCLUDE "/usr/*" "${PROJECT_ROOT}/tests/*" "${PROJECT_ROOT}/lib/*"
-  NO_DEMANGLE
-)
+if(COVERAGE)
+  include("${PROJECT_ROOT}/lib/CommonTools/cmake/modules/CodeCoverage.cmake")
+  setup_target_for_coverage_lcov(
+    NAME ${TEST_NAME}_coverage
+    EXECUTABLE artifacts/bin/${TEST_NAME}
+    DEPENDENCIES ${TEST_NAME}
+    BASE_DIRECTORY "${PROJECT_ROOT}"
+    EXCLUDE "/usr/*" "${PROJECT_ROOT}/tests/*" "${PROJECT_ROOT}/lib/*" "${PROJECT_ROOT}/Thor/Thor/lld/*"
+    NO_DEMANGLE
+  )
+endif()
 
 # ---------------------------------------------------------
 # Executable Target
 # ---------------------------------------------------------
 add_executable(${TEST_NAME}
-  test_driver.cpp
+  main.cpp
+  test_hld_can_chimera.cpp
+  test_hld_can_driver.cpp
+  test_hld_can_module.cpp
 )
 
 target_include_directories(${TEST_NAME} PRIVATE ${PROJECT_ROOT})
@@ -49,9 +52,9 @@ target_link_libraries(${TEST_NAME} PRIVATE
   # Static Libraries
   gtest_src
   gmock_src
-  gtest_main
   chimera_src
-  thor_lld_mock
+  thor_hld_can
+  thor_lld_mock_can
 
   # Linux?
   stdc++

@@ -111,6 +111,7 @@
     "can": "cpp",
     "container": "cpp"
   },
+  "peacock.color": "#557c9b",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#7295b1",
     "activityBar.activeBorder": "#e8d6e0",
@@ -126,6 +127,5 @@
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#557c9b99",
     "titleBar.inactiveForeground": "#e7e7e799"
-  },
-  "peacock.color": "#557c9b"
+  }
 }
