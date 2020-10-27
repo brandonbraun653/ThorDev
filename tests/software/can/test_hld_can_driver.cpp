@@ -174,4 +174,13 @@ namespace Thor::CAN
     ASSERT_NE( nullptr, driver );
     EXPECT_EQ( Chimera::Status::FAILED_INIT, driver->open( getValidConfig() ) );
   }
+
+
+  /*-------------------------------------------------------------------------------
+  Driver::send()
+  -------------------------------------------------------------------------------*/
+  TEST_F( CANDriverTest, SendFrame )
+  {
+
+  }
 }    // namespace Thor::CAN
