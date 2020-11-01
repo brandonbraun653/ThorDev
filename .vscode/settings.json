@@ -109,7 +109,9 @@
     "cfg": "cpp",
     "spi": "cpp",
     "can": "cpp",
-    "container": "cpp"
+    "container": "cpp",
+    "function": "cpp",
+    "exti": "cpp"
   },
   "peacock.color": "#557c9b",
   "cmake.configureOnOpen": false,

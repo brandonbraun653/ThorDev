@@ -34,6 +34,7 @@ add_subdirectory("Thor")
 # ====================================================
 # Hardware tests execute on a physical embedded target
 add_subdirectory("tests/hardware/peripherals")
+add_subdirectory("tests/hardware/integration")
 
 # Software tests run on a PC and are hardware agnostic
 add_subdirectory("tests/software/can")

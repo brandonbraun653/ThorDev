@@ -581,7 +581,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, BasicReceiveFIFO0 )
   simpleFilter.active     = true;
   simpleFilter.valid      = true;
   simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
-  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_32BIT_MASK;
+  simpleFilter.filterType = Thor::CAN::FilterType::MODE_32BIT_MASK;
   simpleFilter.idType     = txData.idMode;
   simpleFilter.frameType  = txData.frameType;
   simpleFilter.mask       = 0;
@@ -656,7 +656,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, BasicReceiveFIFO1 )
   simpleFilter.active     = true;
   simpleFilter.valid      = true;
   simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_2;
-  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_32BIT_MASK;
+  simpleFilter.filterType = Thor::CAN::FilterType::MODE_32BIT_MASK;
   simpleFilter.idType     = txData.idMode;
   simpleFilter.frameType  = txData.frameType;
   simpleFilter.mask       = 0;
@@ -1016,7 +1016,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_32BitStd_Mask )
   simpleFilter.active     = true;
   simpleFilter.valid      = true;
   simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
-  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_32BIT_MASK;
+  simpleFilter.filterType = Thor::CAN::FilterType::MODE_32BIT_MASK;
   simpleFilter.idType     = txData.idMode;
   simpleFilter.frameType  = txData.frameType;
   simpleFilter.mask       = Chimera::CAN::ID_MASK_11_BIT;
@@ -1089,7 +1089,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_32BitStd_List )
   simpleFilter.active     = true;
   simpleFilter.valid      = true;
   simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
-  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_32BIT_LIST;
+  simpleFilter.filterType = Thor::CAN::FilterType::MODE_32BIT_LIST;
   simpleFilter.idType     = txData.idMode;
   simpleFilter.frameType  = txData.frameType;
   simpleFilter.identifier = txData.id;
@@ -1161,7 +1161,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_16BitStd_Mask )
   simpleFilter.active     = true;
   simpleFilter.valid      = true;
   simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
-  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_16BIT_MASK;
+  simpleFilter.filterType = Thor::CAN::FilterType::MODE_16BIT_MASK;
   simpleFilter.idType     = txData.idMode;
   simpleFilter.frameType  = txData.frameType;
   simpleFilter.mask       = Chimera::CAN::ID_MASK_11_BIT;
@@ -1234,7 +1234,7 @@ TEST( STM32L4_LLD_CAN_DRIVER, FilterSimple_16BitStd_List )
   simpleFilter.active     = true;
   simpleFilter.valid      = true;
   simpleFilter.fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
-  simpleFilter.filterType = Chimera::CAN::FilterType::MODE_16BIT_LIST;
+  simpleFilter.filterType = Thor::CAN::FilterType::MODE_16BIT_LIST;
   simpleFilter.idType     = txData.idMode;
   simpleFilter.frameType  = txData.frameType;
   simpleFilter.mask       = Chimera::CAN::ID_MASK_11_BIT;

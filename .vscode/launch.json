@@ -24,37 +24,31 @@
     {
       "name": "STM32L432KB Debug (JLink)",
       "cwd": "${workspaceRoot}",
-      "executable": "./build/artifacts/bin/test_little_fs",
+      "executable": "./build/artifacts/bin/last_build_version/test_image",
       "request": "launch",
       "type": "cortex-debug",
       "servertype": "jlink",
+      "interface": "swd",
       "device": "STM32L432KB",
-      "svdFile": "./lib/CommonTools/svd/STM32L4x2.svd",
+      "svdFile": "${workspaceRoot}/lib/CommonTools/svd/STM32L4x2.svd",
+      "armToolchainPath": "/home/braunbr/programs/gcc/gcc-arm-none-eabi-9-2020-q2-update/bin",
     },
     {
       "type": "cortex-debug",
       "request": "launch",
-      "name": "STM32L432KB Test Image (OpenOCD)",
-      "servertype": "openocd",
+      "name": "STM32L432KB Test Image (ST-Link)",
+      "servertype": "stutil",
       "cwd": "${workspaceRoot}",
-      "runToMain": true,
       "executable": "./build/artifacts/bin/last_build_version/test_image",
       "device": "STM32L432KB",
       "svdFile": "./lib/CommonTools/svd/STM32L4x2.svd",
+      "armToolchainPath": "/home/braunbr/programs/gcc/gcc-arm-none-eabi-9-2020-q2-update/bin",
       "configFiles": [
-        "./lib/CommonTools/openocd/scripts/interface/stlink.cfg",
-        "./lib/CommonTools/openocd/scripts/target/stm32l4x.cfg"
+        "${workspaceRoot}/lib/CommonTools/openocd/scripts/interface/stlink.cfg",
+        "${workspaceRoot}/lib/CommonTools/openocd/scripts/target/stm32l4x.cfg"
       ],
-      "swoConfig": {
-          "enabled": true,
-          "cpuFrequency": 80000000,
-          "swoFrequency": 2000000,
-          "source": "probe",
-          "decoders": [
-              { "type": "console", "label": "ITM", "port": 0 }
-          ]
-      }
-    },
+      "v1": false
+    }
 
   ]
 }
