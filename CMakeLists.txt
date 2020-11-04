@@ -15,7 +15,9 @@ set(CPP_PLATFORM "freertos")
 include("lib/CommonTools/cmake/options/common.cmake")
 
 # Override the linker command
-include("lib/CommonTools/cmake/toolchains/linker_whole_archive.cmake")
+if(Toolchain::HAS_GCC_ARM_NONE_EABI)
+  include("lib/CommonTools/cmake/toolchains/linker_whole_archive.cmake")
+endif()
 
 # ====================================================
 # Import common packages and projects
