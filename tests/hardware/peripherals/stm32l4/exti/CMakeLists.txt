@@ -2,8 +2,8 @@
 # Test Suite: STM32L4 LLD CAN
 # -----------------------------------------------------------------------------
 add_executable(test_stm32l4_lld_exti
-  test_entry.cpp
-  test_driver_interface.cpp
+  test_exti_entry.cpp
+  test_exti_driver_interface.cpp
 )
 
 target_include_directories(test_stm32l4_lld_exti PRIVATE "." )

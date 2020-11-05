@@ -29,7 +29,7 @@
 
 /* Aurora Includes */
 #include <Aurora/memory>
-#include <Aurora/src/memory/flash/littlefs/lfs_hooks.hpp>
+#include <Aurora/source/memory/flash/littlefs/lfs_hooks.hpp>
 
 /* Little FS Includes */
 #include "lfs.h"

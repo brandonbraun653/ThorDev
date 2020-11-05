@@ -1,6 +1,6 @@
 /********************************************************************************
  *  File Name:
- *    test_driver_interface.cpp
+ *    test_exti_driver_interface.cpp
  *
  *  Description:
  *    Tests the STM32L4 LLD EXTI Interface

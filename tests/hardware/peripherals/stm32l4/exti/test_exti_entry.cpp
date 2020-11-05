@@ -1,6 +1,6 @@
 /********************************************************************************
  *  File Name:
- *    test_entry.cpp
+ *    test_exti_entry.cpp
  *
  *  Description:
  *    Tests the LLD EXTI driver for the STM32L4 port
