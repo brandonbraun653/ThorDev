@@ -148,19 +148,72 @@ namespace Debounced
   static constexpr size_t DebounceTime = 150;
   static constexpr size_t SampleRate   = 25;
   static constexpr size_t NumSamples   = DebounceTime / SampleRate;
+  static constexpr size_t DebounceMsk  = 0x7;
+
+  static constexpr Chimera::GPIO::State ActiveState = Chimera::GPIO::State::HIGH;
+
+  /*-------------------------------------------------
+  Static Functions
+  -------------------------------------------------*/
+  static void gpioTriggerHandler( void *arg );
+  static void debounceHandler( void );
 
   /*-------------------------------------------------
   Variables
   -------------------------------------------------*/
-  static volatile size_t NumPressed = 0;
+  static volatile size_t NumPressed   = 0;
+  static volatile size_t DebounceFltr = 0;
+  static auto cb_Debounce             = etl::delegate<void( void )>::create<debounceHandler>();
+  static auto cb_Trigger              = etl::delegate<void( void * )>::create<gpioTriggerHandler>();
 
 
   static void debounceHandler( void )
   {
-    alskdjf;
-    alksdjf
+    /*-------------------------------------------------
+    Read the current state of the GPIO pin
+    -------------------------------------------------*/
+    Chimera::GPIO::State currentState;
+    auto driver = Chimera::GPIO::getDriver( pinCfg.port, pinCfg.pin );
+    driver->getState( currentState );
+
+    /*-------------------------------------------------
+    Shift the filter because a single sample has passed
+    -------------------------------------------------*/
+    DebounceFltr = DebounceFltr << 1u;
+
+    /*-------------------------------------------------
+    Assuming the state is valid, fill in the spot just
+    created by the shift. Forcefully set the zero as
+    shift hardware technically could be circular and we
+    might run out of bits.
+    -------------------------------------------------*/
+    if ( currentState == ActiveState )
+    {
+      DebounceFltr |= 1u;
+    }
+    else
+    {
+      DebounceFltr &= ~1u;
+    }
+
+    /*-------------------------------------------------
+    Have enough samples been stable to consider this a
+    sufficiently debounced button?
+    -------------------------------------------------*/
+    if ( ( DebounceFltr & DebounceMsk ) == DebounceMsk )
+    {
+      NumPressed++;
+      DebounceFltr = 0;
+      Chimera::Scheduler::LoRes::cancel_this();
+      uLog::log( uLog::Level::LVL_INFO, "Button pressed!\r\n", 18 );
+
+      /*-------------------------------------------------
+      Re-enable the trigger to listen for more presses
+      -------------------------------------------------*/
+      Chimera::EXTI::enable( driver->getInterruptLine() );
+    }
+    // else button not sufficiently debounced
   }
-  static auto cb_Debounce = etl::delegate<void( void )>::create<debounceHandler>();
 
 
   static void gpioTriggerHandler( void *arg )
@@ -179,8 +232,6 @@ namespace Debounced
     -------------------------------------------------*/
     Chimera::Scheduler::LoRes::periodic( cb_Debounce, SampleRate, NumSamples );
   }
-
-  static auto cb_Trigger = etl::delegate<void( void * )>::create<gpioTriggerHandler>();
 
 
   TEST( STM32_HLD_GPIO_EXTI, DebouncedGPIO )
