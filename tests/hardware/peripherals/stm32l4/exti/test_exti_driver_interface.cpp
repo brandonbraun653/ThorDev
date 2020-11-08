@@ -11,8 +11,12 @@
 /* STL Includes */
 #include <limits>
 
+/* ETL Includes */
+#include <etl/delegate.h>
+
 /* Chimera Includes */
 #include <Chimera/exti>
+#include <Chimera/function>
 
 /* Thor Includes */
 #include <Thor/lld/common/types.hpp>
@@ -43,11 +47,6 @@ Static Functions & Data
 -------------------------------------------------------------------------------*/
 static bool sISRFired = false;
 
-static void markIsrFired( void *arg )
-{
-  sISRFired = true;
-}
-
 /*-------------------------------------------------------------------------------
 Testing Functions
 -------------------------------------------------------------------------------*/
@@ -75,52 +74,54 @@ TEST( STM32L4_LLD_EXTI_INTF, OpenCloseOpenClose )
 }
 
 
-// TEST( STM32L4_LLD_EXTI_INTF, SoftwareTriggerISR )
-// {
-//   /*-------------------------------------------------
-//   Initialize the test
-//   -------------------------------------------------*/
-//   LLD::open();
+TEST( STM32L4_LLD_EXTI_INTF, SoftwareTriggerISR )
+{
+  /*-------------------------------------------------
+  Initialize the test
+  -------------------------------------------------*/
+  LLD::open();
 
-//   /*-------------------------------------------------
-//   Exercise every GPIO line that can be triggered with
-//   a software interrupt. Edge triggering doesn't
-//   matter in this test.
-//   -------------------------------------------------*/
-//   for( size_t line = MIN_GPIO_EXTI_LINE; line < MAX_GPIO_EXTI_LINE; line++ )
-//   {
-//     /*-------------------------------------------------
-//     Attach the interrupt callback
-//     -------------------------------------------------*/
-//     sISRFired = false;
-//     CHECK( LLD::attach( line, Chimera::EXTI::EdgeTrigger::RISING_EDGE, markIsrFired ) == Chimera::Status::OK );
+  /*-------------------------------------------------
+  Exercise every GPIO line that can be triggered with
+  a software interrupt. Edge triggering doesn't
+  matter in this test.
+  -------------------------------------------------*/
+  Chimera::Function::vGeneric cb( []( void * ) { sISRFired = true; } );
 
-//     /*-------------------------------------------------
-//     Verify the flag was set to true via the callback
-//     -------------------------------------------------*/
-//     CHECK( LLD::trigger( line ) );
-//     Chimera::delayMilliseconds( 5 );
-//     CHECK( sISRFired == true );
+  for ( size_t line = MIN_GPIO_EXTI_LINE; line < MAX_GPIO_EXTI_LINE; line++ )
+  {
+    /*-------------------------------------------------
+    Attach the interrupt callback
+    -------------------------------------------------*/
+    sISRFired = false;
+    CHECK( LLD::attach( line, Chimera::EXTI::EdgeTrigger::RISING_EDGE, cb ) == Chimera::Status::OK );
 
-//     /*-------------------------------------------------
-//     Detach the interrupt from firing
-//     -------------------------------------------------*/
-//     CHECK( LLD::detach( line ) == Chimera::Status::OK );
+    /*-------------------------------------------------
+    Verify the flag was set to true via the callback
+    -------------------------------------------------*/
+    CHECK( LLD::trigger( line ) );
+    Chimera::delayMilliseconds( 5 );
+    CHECK( sISRFired == true );
 
-//     /*-------------------------------------------------
-//     Verify it cannot fire again
-//     -------------------------------------------------*/
-//     sISRFired = false;
-//     CHECK( LLD::trigger( line ) );
-//     Chimera::delayMilliseconds( 5 );
-//     CHECK( sISRFired == false );
-//   }
+    /*-------------------------------------------------
+    Detach the interrupt from firing
+    -------------------------------------------------*/
+    CHECK( LLD::detach( line ) == Chimera::Status::OK );
 
-//   /*-------------------------------------------------
-//   Destroy the test
-//   -------------------------------------------------*/
-//   LLD::close();
-// }
+    /*-------------------------------------------------
+    Verify it cannot fire again
+    -------------------------------------------------*/
+    sISRFired = false;
+    CHECK( LLD::trigger( line ) );
+    Chimera::delayMilliseconds( 5 );
+    CHECK( sISRFired == false );
+  }
+
+  /*-------------------------------------------------
+  Destroy the test
+  -------------------------------------------------*/
+  LLD::close();
+}
 
 
 TEST( STM32L4_LLD_EXTI_INTF, EnableDisable )
@@ -135,14 +136,16 @@ TEST( STM32L4_LLD_EXTI_INTF, EnableDisable )
   a software interrupt. Edge triggering doesn't
   matter in this test.
   -------------------------------------------------*/
-  for( size_t line = MIN_GPIO_EXTI_LINE; line < MAX_GPIO_EXTI_LINE; line++ )
+  Chimera::Function::vGeneric cb( []( void * ) { sISRFired = true; } );
+
+  for ( size_t line = MIN_GPIO_EXTI_LINE; line < MAX_GPIO_EXTI_LINE; line++ )
   {
     /*-------------------------------------------------
     Attach the interrupt callback and disable (mask)
     the signal from firing.
     -------------------------------------------------*/
     sISRFired = false;
-    CHECK( LLD::attach( line, Chimera::EXTI::EdgeTrigger::RISING_EDGE, markIsrFired ) == Chimera::Status::OK );
+    CHECK( LLD::attach( line, Chimera::EXTI::EdgeTrigger::RISING_EDGE, cb ) == Chimera::Status::OK );
     CHECK( LLD::disable( line ) == Chimera::Status::OK );
 
     /*-------------------------------------------------

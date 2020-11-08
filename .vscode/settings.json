@@ -111,7 +111,9 @@
     "can": "cpp",
     "container": "cpp",
     "function": "cpp",
-    "exti": "cpp"
+    "exti": "cpp",
+    "*.tcc": "cpp",
+    "logging": "cpp"
   },
   "peacock.color": "#557c9b",
   "cmake.configureOnOpen": false,

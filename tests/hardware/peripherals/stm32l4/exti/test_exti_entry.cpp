@@ -149,7 +149,7 @@ static void test_thread( void *argument )
   /*-------------------------------------------------
   Run the tests then break
   -------------------------------------------------*/
-  snprintf( printBuffer.data(), printBuffer.size(), "Starting STM32L4 LLD EXTI Tests\n" );
+  snprintf( printBuffer.data(), printBuffer.size(), "\rStarting STM32L4 LLD EXTI Tests\r\n" );
   serial->lock();
   serial->write( printBuffer.data(), strlen( printBuffer.data() ) );
   serial->await( Chimera::Event::Trigger::TRIGGER_WRITE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );
@@ -157,7 +157,7 @@ static void test_thread( void *argument )
 
   int rcode = CommandLineTestRunner::RunAllTests( 2, av_override );
 
-  snprintf( printBuffer.data(), printBuffer.size(), "Test exit with code: %d\n", rcode );
+  snprintf( printBuffer.data(), printBuffer.size(), "Test exit with code: %d\r\n", rcode );
   serial->lock();
   serial->write( printBuffer.data(), strlen( printBuffer.data() ) );
   serial->await( Chimera::Event::Trigger::TRIGGER_WRITE_COMPLETE, Chimera::Threading::TIMEOUT_BLOCK );

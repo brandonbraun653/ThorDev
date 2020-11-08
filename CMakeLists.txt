@@ -35,8 +35,17 @@ add_subdirectory("Thor")
 # Import test targets
 # ====================================================
 # Hardware tests execute on a physical embedded target
+add_subdirectory("tests/hardware/harness")
 add_subdirectory("tests/hardware/peripherals")
 add_subdirectory("tests/hardware/integration")
 
 # Software tests run on a PC and are hardware agnostic
 add_subdirectory("tests/software/can")
+
+# ====================================================
+# Project Exports
+# ====================================================
+# Public include location
+add_library(project_inc INTERFACE)
+target_include_directories(project_inc INTERFACE "${PROJECT_ROOT}")
+export(TARGETS project_inc FILE "${PROJECT_BINARY_DIR}/Project/project_inc.cmake")
