@@ -21,6 +21,7 @@ target_link_libraries(test_hld_gpio_hw PRIVATE
   CppUTest
   aurora_core
   aurora_logging
+  aurora_hmi
   chimera_src
   freertos_cfg
   freertos_core

@@ -146,96 +146,24 @@ namespace Debounced
   Constants
   -------------------------------------------------*/
   static constexpr size_t DebounceTime = 150;
-  static constexpr size_t SampleRate   = 25;
+  static constexpr size_t SampleRate   = 10;
   static constexpr size_t NumSamples   = DebounceTime / SampleRate;
-  static constexpr size_t DebounceMsk  = 0x7;
-
-  static constexpr Chimera::GPIO::State ActiveState = Chimera::GPIO::State::HIGH;
-
-  /*-------------------------------------------------
-  Static Functions
-  -------------------------------------------------*/
-  static void gpioTriggerHandler( void *arg );
-  static void debounceHandler( void );
 
   /*-------------------------------------------------
   Variables
   -------------------------------------------------*/
-  static volatile size_t NumPressed   = 0;
-  static volatile size_t DebounceFltr = 0;
-  static auto cb_Debounce             = etl::delegate<void( void )>::create<debounceHandler>();
-  static auto cb_Trigger              = etl::delegate<void( void * )>::create<gpioTriggerHandler>();
+  static volatile size_t NumPressed = 0;
 
-
-  static void debounceHandler( void )
+  static void usercallback( Aurora::HMI::Button::ActiveEdge edge )
   {
-    /*-------------------------------------------------
-    Read the current state of the GPIO pin
-    -------------------------------------------------*/
-    Chimera::GPIO::State currentState;
-    auto driver = Chimera::GPIO::getDriver( pinCfg.port, pinCfg.pin );
-    driver->getState( currentState );
-
-    /*-------------------------------------------------
-    Shift the filter because a single sample has passed
-    -------------------------------------------------*/
-    DebounceFltr = DebounceFltr << 1u;
-
-    /*-------------------------------------------------
-    Assuming the state is valid, fill in the spot just
-    created by the shift. Forcefully set the zero as
-    shift hardware technically could be circular and we
-    might run out of bits.
-    -------------------------------------------------*/
-    if ( currentState == ActiveState )
-    {
-      DebounceFltr |= 1u;
-    }
-    else
-    {
-      DebounceFltr &= ~1u;
-    }
-
-    /*-------------------------------------------------
-    Have enough samples been stable to consider this a
-    sufficiently debounced button?
-    -------------------------------------------------*/
-    if ( ( DebounceFltr & DebounceMsk ) == DebounceMsk )
-    {
-      NumPressed++;
-      DebounceFltr = 0;
-      Chimera::Scheduler::LoRes::cancel_this();
-      uLog::log( uLog::Level::LVL_INFO, "Button pressed!\r\n", 18 );
-
-      /*-------------------------------------------------
-      Re-enable the trigger to listen for more presses
-      -------------------------------------------------*/
-      Chimera::EXTI::enable( driver->getInterruptLine() );
-    }
-    // else button not sufficiently debounced
+    NumPressed++;
   }
-
-
-  static void gpioTriggerHandler( void *arg )
-  {
-    /*-------------------------------------------------
-    Disable the interrupt as quickly as possible
-    -------------------------------------------------*/
-    auto driver = Chimera::GPIO::getDriver( pinCfg.port, pinCfg.pin );
-    auto line   = driver->getInterruptLine();
-
-    Chimera::EXTI::disable( line );
-
-    /*-------------------------------------------------
-    Register a periodic function with the scheduler to
-    poll the GPIO state for a bit.
-    -------------------------------------------------*/
-    Chimera::Scheduler::LoRes::periodic( cb_Debounce, SampleRate, NumSamples );
-  }
+  static auto cb_user = Aurora::HMI::Button::EdgeCallback::create<usercallback>();
 
 
   TEST( STM32_HLD_GPIO_EXTI, DebouncedGPIO )
   {
+    using namespace Aurora::HMI;
     constexpr size_t PressCount = 10;
 
     /*-------------------------------------------------
@@ -244,18 +172,20 @@ namespace Debounced
     NumPressed = 0;
 
     /*-------------------------------------------------
-    Initialize the scheduler timer
+    Initialize the debouncing driver
     -------------------------------------------------*/
-    Chimera::Scheduler::LoRes::open();
+    Button::EdgeConfig btnCfg;
+    Button::EdgeTrigger button;
 
-    /*-------------------------------------------------
-    Configure the GPIO input pin for edge triggering.
-    Once the interrupt fires, it will start the timed
-    debouncing process.
-    -------------------------------------------------*/
-    auto driver = Chimera::GPIO::getDriver( pinCfg.port, pinCfg.pin );
-    driver->init( pinCfg );
-    driver->attachInterrupt( cb_Trigger, Chimera::EXTI::EdgeTrigger::RISING_EDGE );
+    btnCfg.gpioConfig    = pinCfg;
+    btnCfg.activeEdge    = Button::ActiveEdge::RISING_EDGE;
+    btnCfg.debounceTime  = DebounceTime;
+    btnCfg.sampleRate    = SampleRate;
+    btnCfg.stableSamples = 3;
+
+    button.initialize( btnCfg );
+    button.onActiveEdge( cb_user );
+    button.enable();
 
     /*-------------------------------------------------
     Execute the test
@@ -273,12 +203,15 @@ namespace Debounced
         uLog::getRootSink()->flog( uLog::Level::LVL_INFO, "%d\r\n", NumPressed );
       }
 
-      Chimera::delayMilliseconds( 100 );
+      Chimera::delayMilliseconds( 5 );
       continue;
     }
 
+    /*-------------------------------------------------
+    Verification and cleanup
+    -------------------------------------------------*/
     uLog::getRootSink()->flog( uLog::Level::LVL_INFO, "Thank you!\r\n" );
     CHECK( NumPressed == PressCount );
-    driver->detachInterrupt();
+    button.reset();
   }
 }    // namespace Debounced
