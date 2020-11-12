@@ -27,13 +27,14 @@
             ],
             "cppStandard": "c++20",
             "cStandard": "c11",
-            "intelliSenseMode": "msvc-x64",
+            "intelliSenseMode": "gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
         },
         {
             "name": "Embedded STM32L432",
             "includePath": [
                 "${workspaceFolder}",
+                "${workspaceFolder}/lib",
                 "${workspaceFolder}/lib/CommonTools/googletest",
                 "${workspaceFolder}/lib/CommonTools/cpputest/include",
                 "${workspaceFolder}/lib/Aurora/lib/embedded_template_library/etl/include",
@@ -64,7 +65,7 @@
             ],
             "cppStandard": "c++20",
             "cStandard": "c11",
-            "intelliSenseMode": "msvc-x64",
+            "intelliSenseMode": "gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
         }
 
