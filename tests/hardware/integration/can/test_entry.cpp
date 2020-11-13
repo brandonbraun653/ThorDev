@@ -61,12 +61,6 @@ int main()
 
 static void test_thread( void *argument )
 {
-  /*-------------------------------------------------
-  Allocate the device drivers
-  -------------------------------------------------*/
-  Thor::Testing::initializeSerial();
-  auto serial = Chimera::Serial::getDriver( Thor::Testing::serialChannel );
-
   /*-------------------------------------------------------------------------------
   Initialize the CAN bus driver
   -------------------------------------------------------------------------------*/
@@ -96,11 +90,11 @@ static void test_thread( void *argument )
   /*-------------------------------------------------
   CAN Parameter Configuration
   -------------------------------------------------*/
-  cfg.HWInit.baudRate           = 100000;
+  cfg.HWInit.baudRate           = 500000;
   cfg.HWInit.channel            = Chimera::CAN::Channel::CAN0;
-  cfg.HWInit.maxBaudError       = 0.05f;
+  cfg.HWInit.maxBaudError       = 5.0f;
   cfg.HWInit.resyncJumpWidth    = 1;
-  cfg.HWInit.samplePointPercent = 0.85f;
+  cfg.HWInit.samplePointPercent = 0.875f;
   cfg.HWInit.timeQuanta         = 16;
   cfg.HWInit.rxBuffer           = s_rx_buffer.data();
   cfg.HWInit.rxElements         = s_rx_buffer.size();
@@ -112,7 +106,7 @@ static void test_thread( void *argument )
   -------------------------------------------------*/
   Chimera::CAN::Filter msgFilter;
   msgFilter.id       = 0x49;
-  msgFilter.mask     = 0xFF;
+  msgFilter.mask     = 0x00;
   msgFilter.extended = false;
 
   /*-------------------------------------------------
@@ -128,6 +122,14 @@ static void test_thread( void *argument )
   Perform the loopback test
   -------------------------------------------------------------------------------*/
   Chimera::CAN::BasicFrame rxFrame;
+  Chimera::CAN::BasicFrame txFrame;
+
+  txFrame.clear();
+  txFrame.id         = 0x50;
+  txFrame.idMode     = Chimera::CAN::IdType::STANDARD;
+  txFrame.frameType  = Chimera::CAN::FrameType::DATA;
+  txFrame.data[ 0 ]  = 0x33;
+  txFrame.dataLength = 1;
 
   while ( 1 )
   {
@@ -136,7 +138,11 @@ static void test_thread( void *argument )
       can->receive( rxFrame );
       Chimera::insert_debug_breakpoint();
     }
+    else
+    {
+      can->send( txFrame );
+    }
 
-    Chimera::delayMilliseconds( 15 );
+    Chimera::delayMilliseconds( 50 );
   }
 }
