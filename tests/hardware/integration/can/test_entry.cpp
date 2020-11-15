@@ -21,8 +21,10 @@
 
 /* Thor Includes */
 #include <Thor/can>
+#include <Thor/lld/interface/can/can_intf.hpp>
 
 /* Testing Includes */
+#include <tests/hardware/harness/blinky.hpp>
 #include <tests/hardware/harness/serial_output.hpp>
 
 /*-------------------------------------------------------------------------------
@@ -50,6 +52,17 @@ int main()
   using namespace Chimera::Threading;
   ChimeraInit();
 
+  /*-------------------------------------------------
+  Create the blinky thread
+  -------------------------------------------------*/
+  Thread blinky;
+  blinky.initialize( Thor::Testing::blinkyThread, nullptr, Priority::LEVEL_1, Thor::Testing::BLINKY_STACK,
+                     Thor::Testing::BLINKY_NAME.cbegin() );
+  blinky.start();
+
+  /*-------------------------------------------------
+  Create the test thread
+  -------------------------------------------------*/
   Thread testing;
   testing.initialize( test_thread, nullptr, Priority::LEVEL_3, STACK_KILOBYTES( 10 ), "test" );
   testing.start();
@@ -131,18 +144,26 @@ static void test_thread( void *argument )
   txFrame.data[ 0 ]  = 0x33;
   txFrame.dataLength = 1;
 
+  /*-------------------------------------------------
+  Testing...
+  -------------------------------------------------*/
+  auto lld_can = Thor::LLD::CAN::getDriver( cfg.HWInit.channel );
+
+  lld_can->enterDebugMode( Chimera::CAN::DebugMode::LOOPBACK );
+
   while ( 1 )
   {
-    if ( ( initErr == Chimera::Status::OK ) && can->available() )
-    {
-      can->receive( rxFrame );
-      Chimera::insert_debug_breakpoint();
-    }
-    else
-    {
-      can->send( txFrame );
-    }
+    // if ( ( initErr == Chimera::Status::OK ) && can->available() )
+    // {
+    //   can->receive( rxFrame );
+    //   Chimera::insert_debug_breakpoint();
+    // }
+    // else
+    // {
+    //   can->send( txFrame );
+    // }
 
-    Chimera::delayMilliseconds( 50 );
+    can->send( txFrame );
+    Chimera::delayMilliseconds( 500 );
   }
 }

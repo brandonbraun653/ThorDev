@@ -73,13 +73,13 @@ namespace Thor::LLD::CAN
     /*-------------------------------------------------
     Rebuild the entire filter list from scratch
     -------------------------------------------------*/
-    size_t bankIdx        = 0;
-    size_t bankFltrIdx    = 0;
-    size_t fltrIdx        = 0;
-    uint32_t cachedFR1    = 0;
-    uint32_t cachedFR2    = 0;
-    FilterType cachedMode = FilterType::UNKNOWN;
-    Mailbox cachedFIFO    = Mailbox::UNKNOWN;
+    size_t bankIdx                   = 0;
+    size_t bankFltrIdx               = 0;
+    size_t fltrIdx                   = 0;
+    uint32_t cachedFR1               = 0;
+    uint32_t cachedFR2               = 0;
+    Thor::CAN::FilterType cachedMode = Thor::CAN::FilterType::UNKNOWN;
+    Mailbox cachedFIFO               = Mailbox::UNKNOWN;
 
     uint8_t fifo0FMI_current  = 0;
     uint8_t fifo0FMI_toAssign = 0;
@@ -125,16 +125,16 @@ namespace Thor::LLD::CAN
       {
         switch ( cachedMode )
         {
-          case FilterType::MODE_32BIT_MASK:
+          case Thor::CAN::FilterType::MODE_32BIT_MASK:
             *fifoAssignPtr = 1;
             break;
 
-          case FilterType::MODE_32BIT_LIST:
-          case FilterType::MODE_16BIT_MASK:
+          case Thor::CAN::FilterType::MODE_32BIT_LIST:
+          case Thor::CAN::FilterType::MODE_16BIT_MASK:
             *fifoAssignPtr = 2;
             break;
 
-          case FilterType::MODE_16BIT_LIST:
+          case Thor::CAN::FilterType::MODE_16BIT_LIST:
             *fifoAssignPtr = 4;
             break;
 
@@ -154,7 +154,7 @@ namespace Thor::LLD::CAN
       Now the ugly bit. Parse the filter bank based on
       the four mode configuration possibilities.
       -------------------------------------------------*/
-      if ( cachedMode == FilterType::MODE_32BIT_MASK )
+      if ( cachedMode == Thor::CAN::FilterType::MODE_32BIT_MASK )
       {
         /*-------------------------------------------------
         Only a single filter can exist in this mode setup
@@ -175,7 +175,7 @@ namespace Thor::LLD::CAN
           actFilterList[ fltrIdx ].mask       = cachedFR2;
         }
       }
-      else if ( cachedMode == FilterType::MODE_32BIT_LIST )
+      else if ( cachedMode == Thor::CAN::FilterType::MODE_32BIT_LIST )
       {
         /*-------------------------------------------------
         Update the tracking metrics for which filter inside
@@ -230,7 +230,7 @@ namespace Thor::LLD::CAN
           continue;    // Move on and try the next filter location
         }
       }
-      else if ( cachedMode == FilterType::MODE_16BIT_MASK )
+      else if ( cachedMode == Thor::CAN::FilterType::MODE_16BIT_MASK )
       {
         /*-------------------------------------------------
         Update bank filter slot tracking
@@ -304,7 +304,7 @@ namespace Thor::LLD::CAN
           continue;    // Move on and try the next filter location
         }
       }
-      else if ( cachedMode == FilterType::MODE_16BIT_LIST )
+      else if ( cachedMode == Thor::CAN::FilterType::MODE_16BIT_LIST )
       {
         /*-------------------------------------------------
         Update bank filter slot tracking
@@ -455,7 +455,7 @@ namespace Thor::LLD::CAN
       ( frame1.idMode     == frame2.idMode      )
     );
     /* clang-format on */
-    if( !attributes_equal )
+    if ( !attributes_equal )
     {
       return false;
     }
@@ -490,7 +490,7 @@ namespace Thor::LLD::CAN
     {
       expFilterList[ x ].valid      = true;
       expFilterList[ x ].active     = false;
-      expFilterList[ x ].filterType = FilterType::MODE_16BIT_MASK;
+      expFilterList[ x ].filterType = Thor::CAN::FilterType::MODE_16BIT_MASK;
       expFilterList[ x ].fifoBank   = CAN::Mailbox::RX_MAILBOX_1;
       expFilterList[ x ].hwFMI      = 0;
       expFilterList[ x ].identifier = 0;
@@ -498,7 +498,7 @@ namespace Thor::LLD::CAN
 
       actFilterList[ x ].valid      = false;
       actFilterList[ x ].active     = false;
-      actFilterList[ x ].filterType = FilterType::UNKNOWN;
+      actFilterList[ x ].filterType = Thor::CAN::FilterType::UNKNOWN;
       actFilterList[ x ].fifoBank   = CAN::Mailbox::UNKNOWN;
       actFilterList[ x ].hwFMI      = 0;
       actFilterList[ x ].identifier = 0;
@@ -526,7 +526,7 @@ namespace Thor::LLD::CAN
     asnFilterList[ asnPos ].valid      = true;
     asnFilterList[ asnPos ].active     = true;
     asnFilterList[ asnPos ].fifoBank   = Mailbox::RX_MAILBOX_1;
-    asnFilterList[ asnPos ].filterType = FilterType::MODE_32BIT_LIST;
+    asnFilterList[ asnPos ].filterType = Thor::CAN::FilterType::MODE_32BIT_LIST;
     asnFilterList[ asnPos ].identifier = 0;
     asnFilterList[ asnPos ].mask       = 0;
     asnFilterList[ asnPos ].hwFMI      = expFMI;
@@ -544,7 +544,7 @@ namespace Thor::LLD::CAN
     asnFilterList[ asnPos ].valid      = true;
     asnFilterList[ asnPos ].active     = true;
     asnFilterList[ asnPos ].fifoBank   = Mailbox::RX_MAILBOX_2;
-    asnFilterList[ asnPos ].filterType = FilterType::MODE_16BIT_MASK;
+    asnFilterList[ asnPos ].filterType = Thor::CAN::FilterType::MODE_16BIT_MASK;
     asnFilterList[ asnPos ].identifier = 0x00000567;
     asnFilterList[ asnPos ].mask       = 0x000003FF;
     asnFilterList[ asnPos ].hwFMI      = expFMI;

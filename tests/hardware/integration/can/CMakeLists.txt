@@ -28,6 +28,7 @@ target_link_libraries(test_hld_can_hw PRIVATE
   thor_hld
   thor_lld_intf
   thor_lld_stm32l4
+  thor_test_harness
 
   # Target Properties
   prj_device_target

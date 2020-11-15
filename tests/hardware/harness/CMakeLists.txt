@@ -15,8 +15,9 @@ set(LINK_LIBS
 # ====================================================
 set(LIB thor_test_harness)
 add_library(${LIB} STATIC
+  blinky.cpp
   logger.cpp
   serial_output.cpp
 )
-target_link_libraries(${LIB} PRIVATE ${LINK_LIBS})
+target_link_libraries(${LIB} PRIVATE ${LINK_LIBS} aurora_logging)
 export(TARGETS ${LIB} FILE "${PROJECT_BINARY_DIR}/Aurora/${LIB}.cmake")
