@@ -2,7 +2,7 @@
 # Test Suite: HLD CAN
 # -----------------------------------------------------------------------------
 add_executable(test_hld_can_hw
-  test_entry.cpp
+  test_hld_can_hw.cpp
 )
 
 target_include_directories(test_hld_can_hw PRIVATE "." )
@@ -18,6 +18,7 @@ target_link_libraries(test_hld_can_hw PRIVATE
 
   # Static Libraries
   aurora_core
+  aurora_logging
   chimera_src
   freertos_cfg
   freertos_core
