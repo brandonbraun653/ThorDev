@@ -113,7 +113,8 @@
     "function": "cpp",
     "exti": "cpp",
     "*.tcc": "cpp",
-    "logging": "cpp"
+    "logging": "cpp",
+    "usb": "cpp"
   },
   "peacock.color": "#557c9b",
   "cmake.configureOnOpen": false,
