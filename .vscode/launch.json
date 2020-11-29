@@ -22,7 +22,7 @@
       ]
     },
     {
-      "name": "STM32L432KB Debug (JLink)",
+      "name": "STM32L432KB Test Image (JLink)",
       "cwd": "${workspaceRoot}",
       "executable": "./build/artifacts/bin/last_build_version/test_image",
       "request": "launch",

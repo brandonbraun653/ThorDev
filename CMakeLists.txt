@@ -42,6 +42,9 @@ add_subdirectory("tests/hardware/integration")
 # Software tests run on a PC and are hardware agnostic
 add_subdirectory("tests/software/can")
 
+# Sandbox "test" environments used to develop drivers
+add_subdirectory("sandbox")
+
 # ====================================================
 # Project Exports
 # ====================================================
