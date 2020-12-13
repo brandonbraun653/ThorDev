@@ -11,6 +11,7 @@
 /* Chimera Includes */
 #include <Chimera/common>
 #include <Chimera/adc>
+#include <Chimera/clock>
 #include <Chimera/gpio>
 #include <Chimera/serial>
 #include <Chimera/thread>
@@ -71,7 +72,8 @@ static void test_thread( void *argument )
   DriverConfig cfg;
   cfg.clear();
 
-  cfg.periph = Converter::ADC_0;
+  cfg.periph      = Converter::ADC_0;
+  cfg.clockSource = Chimera::Clock::Bus::PCLK2;
 
 
   auto adc = getDriver( cfg.periph );
