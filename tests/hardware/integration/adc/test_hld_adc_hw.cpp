@@ -58,6 +58,8 @@ int main()
 
 static void test_thread( void *argument )
 {
+  using namespace Chimera::ADC;
+
   /*-------------------------------------------------
   Initialize the Logger
   -------------------------------------------------*/
@@ -66,7 +68,14 @@ static void test_thread( void *argument )
   /*-------------------------------------------------------------------------------
   Initialize the ADC driver
   -------------------------------------------------------------------------------*/
+  DriverConfig cfg;
+  cfg.clear();
 
+  cfg.periph = Converter::ADC_0;
+
+
+  auto adc = getDriver( cfg.periph );
+  adc->open( cfg );
 
   /*-------------------------------------------------------------------------------
   Idle away into nothing
