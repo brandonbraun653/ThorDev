@@ -27,7 +27,11 @@
 Static Functions & Data
 -------------------------------------------------------------------------------*/
 static void test_thread( void *argument );
+static void task_msg_thread( void *argument );
 
+static Chimera::Threading::ThreadId blinkyId;
+static Chimera::Threading::ThreadId testId;
+static Chimera::Threading::ThreadId taskId;
 
 /*-------------------------------------------------------------------------------
 Public Functions
@@ -43,14 +47,21 @@ int main()
   Thread blinky;
   blinky.initialize( Thor::Testing::blinkyThread, nullptr, Priority::LEVEL_1, Thor::Testing::BLINKY_STACK,
                      Thor::Testing::BLINKY_NAME.cbegin() );
-  blinky.start();
+  blinkyId = blinky.start();
 
   /*-------------------------------------------------
   Create the test thread
   -------------------------------------------------*/
   Thread testing;
   testing.initialize( test_thread, nullptr, Priority::LEVEL_3, STACK_KILOBYTES( 10 ), "test" );
-  testing.start();
+  testId = testing.start();
+
+  /*-------------------------------------------------
+  Create the test thread
+  -------------------------------------------------*/
+  Thread task_msg;
+  task_msg.initialize( task_msg_thread, nullptr, Priority::LEVEL_3, STACK_BYTES( 512 ), "msg" );
+  taskId = task_msg.start();
 
   startScheduler();
   return 0;
@@ -79,11 +90,30 @@ static void test_thread( void *argument )
   auto adc = getDriver( cfg.periph );
   adc->open( cfg );
 
+  Chimera::delayMilliseconds( 100 );
+  Chimera::Threading::sendTaskMsg( taskId, 0xDEADBEEF, Chimera::Threading::TIMEOUT_DONT_WAIT );
+
   /*-------------------------------------------------------------------------------
   Idle away into nothing
   -------------------------------------------------------------------------------*/
   while ( 1 )
   {
     Chimera::delayMilliseconds( 100 );
+  }
+}
+
+static void task_msg_thread( void *argument )
+{
+  using namespace Chimera::Threading;
+
+  ThreadMsg tmp = 0;
+
+
+  while ( 1 )
+  {
+    if ( this_thread::receiveTaskMsg( tmp, TIMEOUT_10MS ) )
+    {
+      Chimera::insert_debug_breakpoint();
+    }
   }
 }
