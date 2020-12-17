@@ -85,6 +85,7 @@ static void test_thread( void *argument )
 
   cfg.periph      = Converter::ADC_0;
   cfg.clockSource = Chimera::Clock::Bus::PCLK2;
+  cfg.resolution  = Resolution::BIT_12;
 
 
   auto adc = getDriver( cfg.periph );
@@ -92,6 +93,11 @@ static void test_thread( void *argument )
 
   Chimera::delayMilliseconds( 100 );
   Chimera::Threading::sendTaskMsg( taskId, 0xDEADBEEF, Chimera::Threading::TIMEOUT_DONT_WAIT );
+
+  adc->setSampleTime( Channel::ADC_CH_0, 650 );
+
+  volatile Sample_t adc_result = adc->sampleSensor( Sensor::TEMP );
+  volatile float temperature   = adc->sampleToJunctionTemperature( adc_result );
 
   /*-------------------------------------------------------------------------------
   Idle away into nothing
