@@ -13,6 +13,3 @@
 	[submodule "lib/Chimera"]
 	path = lib/Chimera
 	url = https://github.com/brandonbraun653/Chimera.git
-[submodule "lib/FlashMemory"]
-	path = lib/FlashMemory
-	url = https://github.com/brandonbraun653/FlashMemory.git
