@@ -1,74 +1,204 @@
 {
+    "env": {
+        "defaultBrowsePaths": [
+            "${workspaceFolder}",
+            "${workspaceFolder}/lib",
+            "${workspaceFolder}/tests",
+            "${workspaceFolder}/Thor"
+        ],
+        "defaultIncludePaths": [
+            "/usr/include",
+            "/usr/include/x86_64-linux-gnu/c++/11",
+            "${workspaceFolder}",
+            "${workspaceFolder}/lib/Aurora/include",
+            "${workspaceFolder}/lib/Aurora/include/../",
+            "${workspaceFolder}/lib/Aurora/lib",
+            "${workspaceFolder}/lib/Aurora/lib/ctre/single-header",
+            "${workspaceFolder}/lib/Aurora/lib/embedded_template_library/etl/include",
+            "${workspaceFolder}/lib/Aurora/lib/littlefs/lfs",
+            "${workspaceFolder}/lib/Aurora/lib/cobs/cobs",
+            "${workspaceFolder}/lib/Aurora/lib/nanoprintf",
+            "${workspaceFolder}/lib/Aurora/lib/nanopb/nanopb",
+            "${workspaceFolder}/lib/Aurora/lib/segger/Config",
+            "${workspaceFolder}/lib/Aurora/lib/segger/SEGGER",
+            "${workspaceFolder}/lib/Aurora/lib/segger/SEGGER/Syscalls",
+            "${workspaceFolder}/lib/Aurora/lib/segger/contrib/cortex_m4_freertos",
+            "${workspaceFolder}/lib/Aurora/lib/spiffs/src",
+            "${workspaceFolder}/lib/Aurora/lib/spiffs/src/default",
+            "${workspaceFolder}/lib/Aurora/lib/type_safe/include",
+            "${workspaceFolder}/lib/Aurora/source/**",
+            "${workspaceFolder}/lib/Chimera/../",
+            "${workspaceFolder}/lib/Chimera/include",
+            "${workspaceFolder}/lib/Chimera/source/**",
+            "${workspaceFolder}/lib/Chimera/source/drivers/common",
+            "${workspaceFolder}/lib/Chimera/source/drivers/peripherals",
+            "${workspaceFolder}/lib/Chimera/source/drivers/peripherals/timer",
+            "${workspaceFolder}/lib/Chimera/source/drivers/peripherals/timer/views",
+            "${workspaceFolder}/lib/FreeRTOS/include",
+            "${workspaceFolder}/lib/FreeRTOS/include/FreeRTOS",
+            "${workspaceFolder}/lib/FreeRTOS/portable/GCC/ARM_CM4F",
+            "${workspaceFolder}/tests/config/freertos",
+            "${workspaceFolder}/tests/config/thor",
+            "${workspaceFolder}/Thor/config/freertos",
+            "${workspaceFolder}/Thor/include"
+        ],
+        "thorIncludePaths_HLD": [
+            "${workspaceFolder}/Thor/hld",
+            "${workspaceFolder}/Thor/hld/adc",
+            "${workspaceFolder}/Thor/hld/can",
+            "${workspaceFolder}/Thor/hld/clock",
+            "${workspaceFolder}/Thor/hld/common",
+            "${workspaceFolder}/Thor/hld/dma",
+            "${workspaceFolder}/Thor/hld/exti",
+            "${workspaceFolder}/Thor/hld/gpio",
+            "${workspaceFolder}/Thor/hld/interrupt",
+            "${workspaceFolder}/Thor/hld/spi",
+            "${workspaceFolder}/Thor/hld/system",
+            "${workspaceFolder}/Thor/hld/timer",
+            "${workspaceFolder}/Thor/hld/uart",
+            "${workspaceFolder}/Thor/hld/usart",
+            "${workspaceFolder}/Thor/hld/watchdog"
+        ],
+        "thorIncludePaths_LLD_Intf": [
+            "${workspaceFolder}/Thor/lld/interface/timer",
+            "${workspaceFolder}/Thor/lld/interface/timer/functions",
+            "${workspaceFolder}/Thor/lld/interface/timer/registers",
+            "${workspaceFolder}/Thor/lld/interface/gpio",
+            "${workspaceFolder}/Thor/lld/interface/sdio"
+        ],
+        "thorIncludePaths_LLD_L4": [
+            "${workspaceFolder}/Thor/lld/stm32l4x/adc",
+            "${workspaceFolder}/Thor/lld/stm32l4x/des",
+            "${workspaceFolder}/Thor/lld/stm32l4x/exti",
+            "${workspaceFolder}/Thor/lld/stm32l4x/flash",
+            "${workspaceFolder}/Thor/lld/stm32l4x/gpio",
+            "${workspaceFolder}/Thor/lld/stm32l4x/interrupt",
+            "${workspaceFolder}/Thor/lld/stm32l4x/iwdg",
+            "${workspaceFolder}/Thor/lld/stm32l4x/power",
+            "${workspaceFolder}/Thor/lld/stm32l4x/rcc",
+            "${workspaceFolder}/Thor/lld/stm32l4x/spi",
+            "${workspaceFolder}/Thor/lld/stm32l4x/startup",
+            "${workspaceFolder}/Thor/lld/stm32l4x/system",
+            "${workspaceFolder}/Thor/lld/stm32l4x/timer",
+            "${workspaceFolder}/Thor/lld/stm32l4x/timer/variant",
+            "${workspaceFolder}/Thor/lld/stm32l4x/usart",
+            "${workspaceFolder}/Thor/lld/stm32l4x/wwdg"
+        ],
+        "thorIncludePaths_LLD_F4": [
+            "${workspaceFolder}/Thor/lld/stm32f4x/adc",
+            "${workspaceFolder}/Thor/lld/stm32f4x/des",
+            "${workspaceFolder}/Thor/lld/stm32f4x/exti",
+            "${workspaceFolder}/Thor/lld/stm32f4x/flash",
+            "${workspaceFolder}/Thor/lld/stm32f4x/gpio",
+            "${workspaceFolder}/Thor/lld/stm32f4x/interrupt",
+            "${workspaceFolder}/Thor/lld/stm32f4x/iwdg",
+            "${workspaceFolder}/Thor/lld/stm32f4x/power",
+            "${workspaceFolder}/Thor/lld/stm32f4x/rcc",
+            "${workspaceFolder}/Thor/lld/stm32f4x/sdio",
+            "${workspaceFolder}/Thor/lld/stm32f4x/spi",
+            "${workspaceFolder}/Thor/lld/stm32f4x/startup",
+            "${workspaceFolder}/Thor/lld/stm32f4x/system",
+            "${workspaceFolder}/Thor/lld/stm32f4x/timer",
+            "${workspaceFolder}/Thor/lld/stm32f4x/timer/variant",
+            "${workspaceFolder}/Thor/lld/stm32f4x/usart",
+            "${workspaceFolder}/Thor/lld/stm32f4x/wwdg"
+        ],
+        "defaultDefines": [
+            "DEBUG",
+            "UNICODE",
+            "_DEBUG",
+            "_UNICODE",
+            "__GNUC__"
+        ],
+        "defaultEmbeddedDefines": [
+            "EMBEDDED",
+            "FREERTOS_CFG_PORT_ARM_CM4F=1",
+            "SEGGER_SYS_VIEW",
+            "USING_FREERTOS_THREADS",
+            "${defaultDefines}"
+        ],
+        "defaultSimDefines": [
+            "SIMULATOR",
+            "CHIMERA_VIRTUAL",
+            "CHIMERA_SIMULATOR",
+            "USING_NATIVE_THREADS",
+            "${defaultDefines}"
+        ],
+        "defaultEmbeddedCStandard": "gnu17",
+        "defaultEmbeddedCppStandard": "gnu++20"
+    },
     "configurations": [
         {
-            "name": "Thor HLD Testing",
+            "name": "STM32L4 Development",
             "includePath": [
-                "${workspaceFolder}/lib/CommonTools/googletest/**",
-                "${workspaceFolder}/lib/CommonTools/cpputest/include",
-                "${workspaceFolder}/lib/Aurora/include",
-                "${workspaceFolder}/lib/Aurora/include/../",
-                "${workspaceFolder}/lib/Chimera/include",
-                "${workspaceFolder}/lib/Chimera/../",
-                "${workspaceFolder}/lib/FlashMemory",
-                "${workspaceFolder}/lib/Aurora/lib/type_safe/include",
-                "${workspaceFolder}/lib/Aurora/lib/littlefs/lfs",
-                "${workspaceFolder}/lib/FreeRTOS",
-                "${workspaceFolder}/Thor",
-                "${BOOST_ROOT}/boost_1_70_0"
+                "${defaultIncludePaths}",
+                "${thorIncludePaths_HLD}",
+                "${thorIncludePaths_LLD_Intf}",
+                "${thorIncludePaths_LLD_L4}",
+                "${workspaceFolder}/lib/Aurora/lib/embedded_template_library/etl/include"
             ],
             "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE",
-                "_SIM",
-                "TARGET_LLD_MOCK",
-                "USING_NATIVE_THREADS",
-                "THOR_HLD_TEST"
+                "${defaultDefines}",
+                "${defaultEmbeddedDefines}",
+                "STM32L432xx",
+                "TARGET_STM32L4",
+                "THOR_USER_CONFIG"
             ],
-            "cppStandard": "c++20",
-            "cStandard": "c11",
-            "intelliSenseMode": "gcc-x64",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++20"
         },
         {
-            "name": "Embedded STM32L432",
+            "name": "STM32F4 Embedded Development",
             "includePath": [
-                "${workspaceFolder}",
-                "${workspaceFolder}/lib",
-                "${workspaceFolder}/lib/CommonTools/googletest",
-                "${workspaceFolder}/lib/CommonTools/cpputest/include",
-                "${workspaceFolder}/lib/Aurora/lib/embedded_template_library/etl/include",
-                "${workspaceFolder}/lib/Aurora/lib/uLog",
-                "${workspaceFolder}/lib/Aurora/include",
-                "${workspaceFolder}/lib/Aurora/include/../",
-                "${workspaceFolder}/lib/Chimera/include",
-                "${workspaceFolder}/lib/Chimera/../",
-                "${workspaceFolder}/lib/FlashMemory",
-                "${workspaceFolder}/lib/Aurora/lib/type_safe/include",
-                "${workspaceFolder}/lib/Aurora/lib/littlefs/lfs",
-                "${workspaceFolder}/lib/FreeRTOS/include",
-                "${workspaceFolder}/lib/FreeRTOS/portable/GCC/ARM_CM4F",
-                "${workspaceFolder}/Thor",
-                "${workspaceFolder}/Thor/Thor/config/freertos",
-                "${BOOST_ROOT}/boost_1_70_0"
+                "${defaultIncludePaths}",
+                "${thorIncludePaths_HLD}",
+                "${thorIncludePaths_LLD_Intf}",
+                "${thorIncludePaths_LLD_F4}",
+                "${workspaceFolder}/lib/Aurora/lib/embedded_template_library/etl/include"
             ],
             "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE",
-                "__GNUC__",
-                "EMBEDDED",
-                "TARGET_STM32L4",
-                "USING_FREERTOS_THREADS",
-                "FREERTOS_CFG_PORT_ARM_CM4F=1",
-                "STM32L432xx"
+                "${defaultDefines}",
+                "${defaultEmbeddedDefines}",
+                "STM32F446xx",
+                "TARGET_STM32F4",
+                "THOR_USER_CONFIG"
             ],
-            "cppStandard": "c++20",
-            "cStandard": "c11",
-            "intelliSenseMode": "gcc-x64",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++20"
+        },
+        {
+            "name": "STM32F4 Simulator Development",
+            "includePath": [
+                "${defaultIncludePaths}",
+                "${thorIncludePaths_HLD}",
+                "${thorIncludePaths_LLD_Intf}",
+                "${thorIncludePaths_LLD_F4}"
+            ],
+            "defines": [
+                "${defaultDefines}",
+                "${defaultEmbeddedDefines}",
+                "STM32F446xx",
+                "TARGET_STM32F4",
+                "THOR_USER_CONFIG"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++20"
+        },
+        {
+            "name": "Simulator Development",
+            "includePath": [
+                "${defaultIncludePaths}"
+            ],
+            "defines": [
+                "${defaultSimDefines}"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++20"
         }
-
     ],
     "version": 4
 }

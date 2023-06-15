@@ -1,0 +1,40 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 18,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "displayName": "Default Config",
+            "description": "Default build using Unix Makefiles generator",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "FIRST_CACHE_VARIABLE": {
+                    "type": "BOOL",
+                    "value": "OFF"
+                },
+                "SECOND_CACHE_VARIABLE": "ON",
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "environment": {
+                "MY_ENVIRONMENT_VARIABLE": "Test"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "configurePreset": "default"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "default",
+            "configurePreset": "default"
+        }
+    ]
+}

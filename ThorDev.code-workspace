@@ -163,10 +163,12 @@
 			"**/Thumbs.db": true,
 			"**/__pycache__": true,
 			"**/.conda": true,
-			"**/build": true,
 			"**/.idea": true,
 		},
 		"git.detectSubmodulesLimit": 45,
-		"cmake.configureOnOpen": false
+		"cmake.configureOnOpen": false,
+		"cmake.useCMakePresets": "always",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 2
 	}
 }

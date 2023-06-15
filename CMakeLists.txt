@@ -11,6 +11,7 @@ set(CPP_PLATFORM "freertos")
 # ====================================================
 # Perform very high level configuration
 # ====================================================
+include(Dart)
 # Set some vars common to both development environments
 include("lib/CommonTools/cmake/options/common.cmake")
 
@@ -22,30 +23,82 @@ endif()
 # ====================================================
 # Import common packages and projects
 # ====================================================
-find_package(Boost REQUIRED)
-add_subdirectory("lib/CommonTools/googletest")
-add_subdirectory("lib/CommonTools/cpputest")
+if(DEFINED ENV{CPPUTEST_HOME})
+    message(STATUS "Using CppUTest home: $ENV{CPPUTEST_HOME}")
+    set(CPPUTEST_INCLUDE_DIRS $ENV{CPPUTEST_HOME}/include)
+    set(CPPUTEST_LIBRARIES $ENV{CPPUTEST_HOME}/lib)
+    set(CPPUTEST_LDFLAGS CppUTest CppUTestExt)
+else()
+    find_package(PkgConfig REQUIRED)
+    pkg_search_module(CPPUTEST REQUIRED cpputest>=3.8)
+    message(STATUS "Found CppUTest version ${CPPUTEST_VERSION}")
+endif()
+
 add_subdirectory("lib/Aurora")
 add_subdirectory("lib/Chimera")
 add_subdirectory("lib/FreeRTOS")
-add_subdirectory("lib/FlashMemory")
 add_subdirectory("Thor")
 
 # ====================================================
 # Import test targets
 # ====================================================
-# Hardware tests execute on a physical embedded target
-add_subdirectory("tests/hardware/harness")
-add_subdirectory("tests/hardware/peripherals")
-add_subdirectory("tests/hardware/integration")
+# This is a bit kludgy, but it works for now. I'll need to figure out a better way to do this
+add_subdirectory("tests/module/hld/sdio")
+add_subdirectory("tests/module/lld/stm32f4x/sdio")
+add_subdirectory("tests/module/lld/interface/sdio")
 
-# Software tests run on a PC and are hardware agnostic
-add_subdirectory("tests/software/can")
+add_subdirectory("Thor/lld/stm32f4x")
 
 # ====================================================
 # Project Exports
 # ====================================================
-# Public include location
-add_library(project_inc INTERFACE)
-target_include_directories(project_inc INTERFACE "${PROJECT_ROOT}")
-export(TARGETS project_inc FILE "${PROJECT_BINARY_DIR}/Project/project_inc.cmake")
+# Project Headers
+gen_intf_lib(
+  TARGET
+    project_intf_inc
+  INTF_DEFINES
+    THOR_USER_CONFIG
+    TARGET_STM32F4
+  INTF_INCLUDES
+    "${PROJECT_ROOT}/tests/config/thor"
+  INTF_LIBRARIES
+    #freertos_intf_inc_all
+  EXPORT_DIR
+    "${PROJECT_BINARY_DIR}/Project"
+)
+
+# # FreeRTOS Configuration
+# gen_intf_lib(
+#   TARGET
+#     freertos_cfg
+#   INTF_DEFINES
+#     #SEGGER_SYS_VIEW
+#   INTF_INCLUDES
+#     "${PROJECT_ROOT}/tests/config/freertos"
+#     "${PROJECT_ROOT}/lib/Aurora/lib/segger/contrib/cortex_m4_freertos"
+#   INTF_LIBRARIES
+#     segger_sys_view_intf
+#     segger_sys_view_cortex_m4_freertos_intf
+#   EXPORT_DIR
+#     "${PROJECT_BINARY_DIR}/Project"
+# )
+
+# gen_intf_lib(
+#   TARGET
+#     freertos_port
+#   INTF_INCLUDES
+#     "${PROJECT_ROOT}/lib/FreeRTOS/portable/GCC/ARM_CM4F"
+#   INTF_DEFINES
+#     FREERTOS_CFG_PORT_ARM_CM4F=1
+#   EXPORT_DIR
+#     "${PROJECT_BINARY_DIR}/Project"
+# )
+
+# gen_intf_lib(
+#   TARGET
+#     freertos_heap
+#   INTF_DEFINES
+#     FREERTOS_CFG_MEM_MANG_HEAP4=1
+#   EXPORT_DIR
+#     "${PROJECT_BINARY_DIR}/Project"
+# )
