@@ -37,6 +37,7 @@
             "${workspaceFolder}/lib/FreeRTOS/include",
             "${workspaceFolder}/lib/FreeRTOS/include/FreeRTOS",
             "${workspaceFolder}/lib/FreeRTOS/portable/GCC/ARM_CM4F",
+            "${workspaceFolder}/tests/config",
             "${workspaceFolder}/tests/config/freertos",
             "${workspaceFolder}/tests/config/thor",
             "${workspaceFolder}/Thor/config/freertos",
