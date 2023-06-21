@@ -168,7 +168,8 @@
 		"git.detectSubmodulesLimit": 45,
 		"cmake.configureOnOpen": false,
 		"cmake.useCMakePresets": "always",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 2
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.detectIndentation": false
 	}
 }

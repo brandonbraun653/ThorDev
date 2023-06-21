@@ -13,12 +13,10 @@
             "generator": "Unix Makefiles",
             "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
-                "FIRST_CACHE_VARIABLE": {
-                    "type": "BOOL",
-                    "value": "OFF"
-                },
-                "SECOND_CACHE_VARIABLE": "ON",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CXX_STANDARD": "20",
+                "CMAKE_VERBOSE_MAKEFILE": "OFF",
+                "NATIVE_THREADS": "ON"
             },
             "environment": {
                 "MY_ENVIRONMENT_VARIABLE": "Test"
