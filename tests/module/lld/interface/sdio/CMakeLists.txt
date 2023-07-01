@@ -10,14 +10,15 @@ target_link_libraries(TestLLD_Intf_${TestDriverName} PRIVATE ${CPPUTEST_LDFLAGS}
 
 target_link_libraries(TestLLD_Intf_${TestDriverName} PRIVATE
   # Public Includes
-#   aurora_intf_inc
-#   chimera_intf_inc
+  aurora_intf_inc
+  chimera_intf_inc
   thor_intf_inc
 
   # Project Libraries
   thor_lld_intf_sdio
+  chimera_common
 
   # Target Properties
-#   prj_device_target
-#   prj_build_target
+  prj_device_target
+  prj_build_target
 )

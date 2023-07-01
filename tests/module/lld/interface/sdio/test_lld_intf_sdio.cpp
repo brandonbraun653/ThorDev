@@ -11,6 +11,8 @@
 /*-----------------------------------------------------------------------------
 Includes
 -----------------------------------------------------------------------------*/
+#include <Thor/lld/interface/inc/sdio>
+
 #include "CppUTest/TestHarness.h"
 #include "CppUTest/CommandLineTestRunner.h"
 
@@ -19,11 +21,17 @@ int main(int ac, char** av)
    return CommandLineTestRunner::RunAllTests(ac, av);
 }
 
-TEST_GROUP(FirstTestGroup)
+/*-----------------------------------------------------------------------------
+Tests
+-----------------------------------------------------------------------------*/
+
+TEST_GROUP(LLD_Interface_SDIO)
 {
 };
 
-TEST(FirstTestGroup, FirstTest)
+TEST(LLD_Interface_SDIO, ResourceIndexMapping)
 {
-   CHECK_EQUAL(1, 1);
+  using namespace Thor::LLD::SDIO;
+  
+  CHECK_EQUAL( 0, getResourceIndex( Thor::LLD::SDIO::SDIO1_BASE_ADDR ) );
 }

@@ -16,7 +16,10 @@
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_CXX_STANDARD": "20",
                 "CMAKE_VERBOSE_MAKEFILE": "OFF",
-                "NATIVE_THREADS": "ON"
+                "NATIVE_THREADS": "ON",
+                "TOOLCHAIN": "gcc",
+                "DEVICE_TARGET": "STM32f446RE",
+                "THOR_IMPL": "SIM"
             },
             "environment": {
                 "MY_ENVIRONMENT_VARIABLE": "Test"
