@@ -20,9 +20,6 @@
                 "TOOLCHAIN": "gcc",
                 "DEVICE_TARGET": "STM32F446RE",
                 "THOR_IMPL": "SIM"
-            },
-            "environment": {
-                "MY_ENVIRONMENT_VARIABLE": "Test"
             }
         }
     ],

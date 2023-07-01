@@ -16,7 +16,6 @@ target_link_libraries(${TestDriverName} PRIVATE
 
   # Project Libraries
   thor_lld_intf_sdio
-  thor_lld_stm32f4_sdio
   chimera_common
 
   # Target Properties
@@ -26,3 +25,7 @@ target_link_libraries(${TestDriverName} PRIVATE
 
 # TODO: Need to figure out how to get the correct LLD for the target
 target_link_libraries(${TestDriverName} PRIVATE thor_lld_stm32f4_sdio)
+
+add_custom_command(TARGET ${TestDriverName} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TestDriverName}> ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_app
+)

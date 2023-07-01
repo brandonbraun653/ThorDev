@@ -2,14 +2,19 @@
   "version":"0.2.0",
   "configurations": [
     {
-      "name": "(gdb) Launch",
+      "name": "CMake Launch Target",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/artifacts/bin/last_build_version/test_image",
+      "program": "${command:cmake.launchTargetPath}",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
-      "environment": [],
+      "environment": [
+        {
+          "name": "PATH",
+          "value": "$PATH:${command:cmake.launchTargetDirectory}"
+        },
+      ],
       "externalConsole": false,
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
@@ -20,35 +25,6 @@
               "ignoreFailures": true
           }
       ]
-    },
-    {
-      "name": "STM32L432KB Debug (JLink)",
-      "cwd": "${workspaceRoot}",
-      "executable": "./build/artifacts/bin/last_build_version/test_image",
-      "request": "launch",
-      "type": "cortex-debug",
-      "servertype": "jlink",
-      "interface": "swd",
-      "device": "STM32L432KB",
-      "svdFile": "${workspaceRoot}/lib/CommonTools/svd/STM32L4x2.svd",
-      "armToolchainPath": "/home/braunbr/programs/gcc/gcc-arm-none-eabi-9-2020-q2-update/bin",
-    },
-    {
-      "type": "cortex-debug",
-      "request": "launch",
-      "name": "STM32L432KB Test Image (ST-Link)",
-      "servertype": "stutil",
-      "cwd": "${workspaceRoot}",
-      "executable": "./build/artifacts/bin/last_build_version/test_image",
-      "device": "STM32L432KB",
-      "svdFile": "./lib/CommonTools/svd/STM32L4x2.svd",
-      "armToolchainPath": "/home/braunbr/programs/gcc/gcc-arm-none-eabi-9-2020-q2-update/bin",
-      "configFiles": [
-        "${workspaceRoot}/lib/CommonTools/openocd/scripts/interface/stlink.cfg",
-        "${workspaceRoot}/lib/CommonTools/openocd/scripts/target/stm32l4x.cfg"
-      ],
-      "v1": false
     }
-
   ]
 }
