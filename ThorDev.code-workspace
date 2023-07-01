@@ -120,7 +120,14 @@
       "exti": "cpp",
       "*.tcc": "cpp",
       "logging": "cpp",
-      "sdio": "cpp"
+      "sdio": "cpp",
+      "charconv": "cpp",
+      "string_view": "cpp",
+      "numbers": "cpp",
+      "semaphore": "cpp",
+      "stop_token": "cpp",
+      "cfenv": "cpp",
+      "cinttypes": "cpp"
     },
 		"peacock.color": "#557c9b",
 		"workbench.colorCustomizations": {

@@ -24,7 +24,6 @@ int main(int ac, char** av)
 /*-----------------------------------------------------------------------------
 Tests
 -----------------------------------------------------------------------------*/
-
 TEST_GROUP(LLD_Interface_SDIO)
 {
 };
@@ -32,6 +31,6 @@ TEST_GROUP(LLD_Interface_SDIO)
 TEST(LLD_Interface_SDIO, ResourceIndexMapping)
 {
   using namespace Thor::LLD::SDIO;
-  
-  CHECK_EQUAL( 0, getResourceIndex( Thor::LLD::SDIO::SDIO1_BASE_ADDR ) );
+  CHECK_EQUAL( 0, getResourceIndex( reinterpret_cast<std::uintptr_t>( SDIO1_PERIPH ) ) );
+  CHECK_EQUAL( 0, SDIO1_PERIPH->ARG );
 }

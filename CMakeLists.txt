@@ -34,10 +34,10 @@ else()
     message(STATUS "Found CppUTest version ${CPPUTEST_VERSION}")
 endif()
 
+add_subdirectory("Thor")
 add_subdirectory("lib/Aurora")
 add_subdirectory("lib/Chimera")
 add_subdirectory("lib/FreeRTOS")
-add_subdirectory("Thor")
 
 # ====================================================
 # Import test targets
@@ -58,7 +58,6 @@ gen_intf_lib(
     project_intf_inc
   INTF_DEFINES
     THOR_USER_CONFIG
-    TARGET_STM32F4
   INTF_INCLUDES
     "${PROJECT_ROOT}/tests/config/thor"
   INTF_LIBRARIES
@@ -66,6 +65,9 @@ gen_intf_lib(
   EXPORT_DIR
     "${PROJECT_BINARY_DIR}/Project"
 )
+
+# Need to figure out how to switch this based on the target
+target_compile_definitions(project_intf_inc INTERFACE STM32F446xx TARGET_STM32F4)
 
 # # FreeRTOS Configuration
 # gen_intf_lib(
