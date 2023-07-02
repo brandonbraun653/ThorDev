@@ -62,11 +62,13 @@ TEST( LLD_Interface_SDIO, ChannelSupport )
   CHECK_EQUAL( false, SDIO::isSupported( Chimera::SDIO::Channel::UNKNOWN ) );
 }
 
+
 TEST( LLD_Interface_SDIO, ResourceIndexMapping )
 {
   CHECK_EQUAL( SDIO::SDIO1_RESOURCE_INDEX, SDIO::getResourceIndex( reinterpret_cast<std::uintptr_t>( SDIO::SDIO1_PERIPH ) ) );
   CHECK_EQUAL( INVALID_RESOURCE_INDEX, SDIO::getResourceIndex( 0xFFFFFFFF ) );
 }
+
 
 TEST( LLD_Interface_SDIO, MapChannelAddressToEnum )
 {
@@ -79,6 +81,7 @@ TEST( LLD_Interface_SDIO, MapChannelAddressToEnum )
 
   CHECK( Chimera::SDIO::Channel::UNKNOWN == SDIO::getChannel( 0xFFFFFFFF ) );
 }
+
 
 TEST( LLD_Interface_SDIO, DriverAttachment )
 {
