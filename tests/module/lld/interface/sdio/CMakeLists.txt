@@ -13,9 +13,11 @@ target_link_libraries(${TestDriverName} PRIVATE
   aurora_intf_inc
   chimera_intf_inc
   thor_intf_inc
+  thor_intf_inc_mock
 
   # Project Libraries
   thor_lld_intf_sdio
+  thor_cmn_cm4_mock
   chimera_common
 
   # Target Properties

@@ -9,6 +9,7 @@
         "defaultIncludePaths": [
             "/usr/include",
             "/usr/include/x86_64-linux-gnu/c++/11",
+            "/usr/local/include",
             "${workspaceFolder}",
             "${workspaceFolder}/lib/Aurora/include",
             "${workspaceFolder}/lib/Aurora/include/../",

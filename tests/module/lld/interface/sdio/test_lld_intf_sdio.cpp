@@ -13,6 +13,7 @@ Includes
 -----------------------------------------------------------------------------*/
 #include <Chimera/sdio>
 #include <Thor/lld/interface/inc/sdio>
+#include <mock/Thor/lld/common/cortex-m4/interrupts_expect.hpp>
 
 #include "CppUTest/TestHarness.h"
 #include "CppUTest/CommandLineTestRunner.h"

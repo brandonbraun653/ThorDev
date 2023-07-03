@@ -48,6 +48,7 @@ add_subdirectory("tests/module/lld/stm32f4x/sdio")
 add_subdirectory("tests/module/lld/interface/sdio")
 
 add_subdirectory("Thor/lld/stm32f4x")
+add_subdirectory("mock")
 
 # ====================================================
 # Project Exports
