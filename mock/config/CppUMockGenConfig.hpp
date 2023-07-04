@@ -23,4 +23,8 @@ Literals
 #define STM32F446xx
 #endif
 
+#ifndef USING_NATIVE_THREADS
+#define USING_NATIVE_THREADS
+#endif
+
 #endif  /* !THOR_CPPUMOCKGEN_CONFIG_HPP */

@@ -12,6 +12,7 @@
 Includes
 -----------------------------------------------------------------------------*/
 #include <Chimera/sdio>
+#include <Thor/lld/interface/inc/interrupt>
 #include <Thor/lld/interface/inc/sdio>
 #include <mock/Thor/lld/common/cortex-m4/interrupts_expect.hpp>
 
@@ -84,22 +85,43 @@ TEST( LLD_Interface_SDIO, MapChannelAddressToEnum )
 }
 
 
-TEST( LLD_Interface_SDIO, DriverAttachment )
+/*-----------------------------------------------------------------------------
+Test Driver Attachment
+-----------------------------------------------------------------------------*/
+TEST_GROUP( DriverAttachment ) {};
+
+TEST( DriverAttachment, InvalidArguments )
 {
+  // Setup
   SDIO::Driver driverList[ SDIO::NUM_SDIO_PERIPHS ];
 
-  /*---------------------------------------------------------------------------
-  Bad arguments
-  ---------------------------------------------------------------------------*/
+  expect::Thor$::LLD$::INT$::disableIRQ( 0, SDIO_IRQn );
+  expect::Thor$::LLD$::INT$::clearPendingIRQ( 0, SDIO_IRQn );
+  expect::Thor$::LLD$::INT$::setPriority( 0, SDIO_IRQn, INT::SDIO_IT_PREEMPT_PRIORITY, 0 );
+
+  // Execute
   CHECK_EQUAL( false, SDIO::attachDriverInstances( nullptr, SDIO::NUM_SDIO_PERIPHS ) );
   CHECK_EQUAL( false, SDIO::attachDriverInstances( driverList, 0 ) );
 
-  /*---------------------------------------------------------------------------
-  Check that the driver is reported as attached
-  ---------------------------------------------------------------------------*/
-  CHECK_EQUAL( true, SDIO::attachDriverInstances( driverList, SDIO::NUM_SDIO_PERIPHS ) );
+  // Validate
+  mock().checkExpectations();
+  mock().clear();
 }
 
-/*-----------------------------------------------------------------------------
-Test Common Driver
------------------------------------------------------------------------------*/
+
+TEST( DriverAttachment, ExpectedBehavior )
+{
+  // Setup
+  SDIO::Driver driverList[ SDIO::NUM_SDIO_PERIPHS ];
+
+  expect::Thor$::LLD$::INT$::disableIRQ( 1, SDIO_IRQn );
+  expect::Thor$::LLD$::INT$::clearPendingIRQ( 1, SDIO_IRQn );
+  expect::Thor$::LLD$::INT$::setPriority( 1, SDIO_IRQn, INT::SDIO_IT_PREEMPT_PRIORITY, 0 );
+
+  // Execute
+  CHECK_EQUAL( true, SDIO::attachDriverInstances( driverList, SDIO::NUM_SDIO_PERIPHS ) );
+
+  // Validate
+  mock().checkExpectations();
+  mock().clear();
+}

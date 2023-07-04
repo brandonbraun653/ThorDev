@@ -11,5 +11,5 @@ gen_static_lib_variants(
     thor_intf_inc
     thor_intf_inc_mock
   EXPORT_DIR
-    "${PROJECT_BINARY_DIR}/Thor/lld/common"
+    "${PROJECT_BINARY_DIR}/mock/Thor/lld/common/cortex-m4"
 )

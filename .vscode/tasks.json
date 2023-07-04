@@ -28,6 +28,17 @@
         },
         "problemMatcher": [],
         "args": []
+      },
+      {
+        "label": "Generate Mock for Current File",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "${workspaceFolder}/generate_mocks.py",
+          "--file",
+          "${file}"
+        ],
+        "problemMatcher": []
       }
     ]
   }
