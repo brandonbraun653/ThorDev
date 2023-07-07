@@ -11,14 +11,21 @@
 /*-----------------------------------------------------------------------------
 Includes
 -----------------------------------------------------------------------------*/
-#include "CppUTest/TestHarness.h"
-#include "CppUTest/CommandLineTestRunner.h"
+#include <tests/harness/mbed_test_harness.hpp>
 
-int main(int ac, char** av)
+#include "CppUTest/TestHarness.h"
+
+/*-----------------------------------------------------------------------------
+Public Functions
+-----------------------------------------------------------------------------*/
+int main()
 {
-   return CommandLineTestRunner::RunAllTests(ac, av);
+  return Thor::Testing::ExecuteMainTestThread();
 }
 
+/*-----------------------------------------------------------------------------
+Test Group
+-----------------------------------------------------------------------------*/
 TEST_GROUP(FirstTestGroup)
 {
 };

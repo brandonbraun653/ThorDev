@@ -37,17 +37,14 @@ endif()
 add_subdirectory("Thor")
 add_subdirectory("lib/Aurora")
 add_subdirectory("lib/Chimera")
+add_subdirectory("lib/CommonTools/cpputest")
 add_subdirectory("lib/FreeRTOS")
 
 # ====================================================
 # Import test targets
 # ====================================================
 # This is a bit kludgy, but it works for now. I'll need to figure out a better way to do this
-add_subdirectory("tests/module/hld/sdio")
-add_subdirectory("tests/module/lld/stm32f4x/sdio")
-add_subdirectory("tests/module/lld/interface/sdio")
-
-add_subdirectory("Thor/lld/stm32f4x")
+add_subdirectory("tests")
 add_subdirectory("mock")
 
 # ====================================================
@@ -70,38 +67,38 @@ gen_intf_lib(
 # Need to figure out how to switch this based on the target
 target_compile_definitions(project_intf_inc INTERFACE STM32F446xx TARGET_STM32F4)
 
-# # FreeRTOS Configuration
-# gen_intf_lib(
-#   TARGET
-#     freertos_cfg
-#   INTF_DEFINES
-#     #SEGGER_SYS_VIEW
-#   INTF_INCLUDES
-#     "${PROJECT_ROOT}/tests/config/freertos"
-#     "${PROJECT_ROOT}/lib/Aurora/lib/segger/contrib/cortex_m4_freertos"
-#   INTF_LIBRARIES
-#     segger_sys_view_intf
-#     segger_sys_view_cortex_m4_freertos_intf
-#   EXPORT_DIR
-#     "${PROJECT_BINARY_DIR}/Project"
-# )
+# FreeRTOS Configuration
+gen_intf_lib(
+  TARGET
+    freertos_cfg
+  INTF_DEFINES
+    #SEGGER_SYS_VIEW
+  INTF_INCLUDES
+    "${PROJECT_ROOT}/tests/config/freertos"
+    "${PROJECT_ROOT}/lib/Aurora/lib/segger/contrib/cortex_m4_freertos"
+  INTF_LIBRARIES
+    segger_sys_view_intf
+    segger_sys_view_cortex_m4_freertos_intf
+  EXPORT_DIR
+    "${PROJECT_BINARY_DIR}/Project"
+)
 
-# gen_intf_lib(
-#   TARGET
-#     freertos_port
-#   INTF_INCLUDES
-#     "${PROJECT_ROOT}/lib/FreeRTOS/portable/GCC/ARM_CM4F"
-#   INTF_DEFINES
-#     FREERTOS_CFG_PORT_ARM_CM4F=1
-#   EXPORT_DIR
-#     "${PROJECT_BINARY_DIR}/Project"
-# )
+gen_intf_lib(
+  TARGET
+    freertos_port
+  INTF_INCLUDES
+    "${PROJECT_ROOT}/lib/FreeRTOS/portable/GCC/ARM_CM4F"
+  INTF_DEFINES
+    FREERTOS_CFG_PORT_ARM_CM4F=1
+  EXPORT_DIR
+    "${PROJECT_BINARY_DIR}/Project"
+)
 
-# gen_intf_lib(
-#   TARGET
-#     freertos_heap
-#   INTF_DEFINES
-#     FREERTOS_CFG_MEM_MANG_HEAP4=1
-#   EXPORT_DIR
-#     "${PROJECT_BINARY_DIR}/Project"
-# )
+gen_intf_lib(
+  TARGET
+    freertos_heap
+  INTF_DEFINES
+    FREERTOS_CFG_MEM_MANG_HEAP4=1
+  EXPORT_DIR
+    "${PROJECT_BINARY_DIR}/Project"
+)
