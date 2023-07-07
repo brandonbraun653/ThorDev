@@ -131,6 +131,11 @@ namespace Thor::Testing
     const char *av_override[] = { "-c", "-v" };
 
     /*-------------------------------------------------------------------------
+    Local Variables
+    -------------------------------------------------------------------------*/
+    char fmt_buffer[ 128 ];
+
+    /*-------------------------------------------------------------------------
     Test driver setup
     -------------------------------------------------------------------------*/
     init_serial_port();
@@ -143,9 +148,18 @@ namespace Thor::Testing
     /*-------------------------------------------------------------------------
     Execute the tests
     -------------------------------------------------------------------------*/
-    LOG_INFO( "Starting test: %s", Driver::getTestName() );
+    auto serial = Chimera::Serial::getDriver( THOR_TEST_SERIAL_CHANNEL );
+    RT_HARD_ASSERT( serial );
+
+    memset( fmt_buffer, 0, sizeof( fmt_buffer ) );
+    snprintf( fmt_buffer, sizeof( fmt_buffer ), "\rStarting test: %s\r\n", Driver::getTestName() );
+    serial->write( fmt_buffer, strlen( fmt_buffer ), Chimera::Thread::TIMEOUT_BLOCK );
+
     int rcode = CommandLineTestRunner::RunAllTests( ARRAY_COUNT( av_override ), av_override );
-    LOG_INFO( "Test exit with code: %d", rcode );
+
+    memset( fmt_buffer, 0, sizeof( fmt_buffer ) );
+    snprintf( fmt_buffer, sizeof( fmt_buffer ), "Test exit with code: %d\r\n", rcode );
+    serial->write( fmt_buffer, strlen( fmt_buffer ), Chimera::Thread::TIMEOUT_BLOCK );
 
     /*-------------------------------------------------------------------------
     Perform project specific teardown

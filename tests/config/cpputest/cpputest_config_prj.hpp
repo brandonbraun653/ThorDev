@@ -1,36 +1,25 @@
 /******************************************************************************
  *  File Name:
- *    test_lld_sdio.cpp
+ *    cpputest_config_prj.hpp
  *
  *  Description:
- *    Tests the SDIO LLD driver
+ *    Project configuration for CppUTest
  *
  *  2023 | Brandon Braun | brandonbraun653@protonmail.com
  *****************************************************************************/
 
+#pragma once
+#ifndef THOR_DEV_CPPUTEST_CONFIG_HPP
+#define THOR_DEV_CPPUTEST_CONFIG_HPP
+
 /*-----------------------------------------------------------------------------
 Includes
 -----------------------------------------------------------------------------*/
-#include <tests/harness/mbed_test_harness.hpp>
-
-#include "CppUTest/TestHarness.h"
+#include <tests/harness/mbed_test_harness_cfg.hpp>
 
 /*-----------------------------------------------------------------------------
-Public Functions
+Constants
 -----------------------------------------------------------------------------*/
-int main()
-{
-  return Thor::Testing::ExecuteMainTestThread();
-}
+#define CPPUTEST_PLATFORM_SERIAL_CHANNEL  ( THOR_TEST_SERIAL_CHANNEL )
 
-/*-----------------------------------------------------------------------------
-Test Group
------------------------------------------------------------------------------*/
-TEST_GROUP(FirstTestGroup)
-{
-};
-
-TEST(FirstTestGroup, FirstTest)
-{
-   CHECK( true );
-}
+#endif  /* !THOR_DEV_CPPUTEST_CONFIG_HPP */

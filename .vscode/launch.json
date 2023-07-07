@@ -25,6 +25,22 @@
               "ignoreFailures": true
           }
       ]
-    }
+    },
+    {
+      "name": "Test: BMP OrbitESC V3",
+      "cwd": "${workspaceRoot}",
+      "executable": "./artifacts/last_build_version/mbed_test_driver",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "bmp",
+      "interface": "swd",
+      "device": "STM32F446RE",
+      "svdFile": "${workspaceFolder}/lib/CommonTools/svd/STM32F446.svd",
+      "gdbPath": "arm-none-eabi-gdb",
+      "BMPGDBSerialPort": "/dev/ttyACM0",
+      "preRestartCommands": [
+          "enable breakpoint"
+      ]
+    },
   ]
 }

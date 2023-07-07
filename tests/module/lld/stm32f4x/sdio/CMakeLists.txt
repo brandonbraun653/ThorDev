@@ -84,7 +84,7 @@ target_link_libraries(${TestName} PRIVATE
   CppUTest_inc
 
   # Project Libraries
-  CppUTest
+  CppUTest_rel
   aurora_core
   aurora_logging
   chimera_core
