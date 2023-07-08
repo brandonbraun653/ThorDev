@@ -19,11 +19,6 @@ Includes
 #include "CppUTest/TestHarness.h"
 
 /*-----------------------------------------------------------------------------
-Static Functions
------------------------------------------------------------------------------*/
-
-
-/*-----------------------------------------------------------------------------
 Public Functions
 -----------------------------------------------------------------------------*/
 int main()
@@ -32,11 +27,11 @@ int main()
 }
 
 /*-----------------------------------------------------------------------------
-Test Group
+Test Group: Isolated Functional Behavior
 -----------------------------------------------------------------------------*/
 namespace LLD = ::Thor::LLD::SDIO;
 
-TEST_GROUP( DriverTests )
+TEST_GROUP( IsolatedFuncTests )
 {
   LLD::Driver *sdio;
 
@@ -55,13 +50,13 @@ TEST_GROUP( DriverTests )
 };
 
 
-TEST( DriverTests, Reset )
+TEST( IsolatedFuncTests, Reset )
 {
   CHECK( sdio->reset() == Chimera::Status::OK );
 }
 
 
-TEST( DriverTests, ClockEnableDisable )
+TEST( IsolatedFuncTests, ClockEnableDisable )
 {
   using namespace Thor::LLD::RCC;
 
@@ -90,7 +85,21 @@ TEST( DriverTests, ClockEnableDisable )
 }
 
 
-TEST( DriverTests, EnterExitCriticalSection )
+TEST( IsolatedFuncTests, ClockAllowsRegisterAccess )
+{
+  sdio->clockEnable();
+
+  LLD::PWRCTRL::set( LLD::SDIO1_PERIPH, 0x3 << LLD::POWER_PWRCTRL_Pos );
+  CHECK( LLD::PWRCTRL::get( LLD::SDIO1_PERIPH ) == ( 0x3 << LLD::POWER_PWRCTRL_Pos ) );
+
+  LLD::PWRCTRL::clear( LLD::SDIO1_PERIPH, 0x3 << LLD::POWER_PWRCTRL_Pos );
+  CHECK( LLD::PWRCTRL::get( LLD::SDIO1_PERIPH ) == 0x0 );
+
+  sdio->clockDisable();
+}
+
+
+TEST( IsolatedFuncTests, EnterExitCriticalSection )
 {
   /*---------------------------------------------------------------------------
   Ensure we've started in a known state
@@ -111,3 +120,64 @@ TEST( DriverTests, EnterExitCriticalSection )
   sdio->enterCriticalSection();
   CHECK( false == Thor::LLD::INT::isEnabledIRQ( LLD::Resource::IRQSignals[ LLD::SDIO1_RESOURCE_INDEX ] ) );
 }
+
+
+/*-----------------------------------------------------------------------------
+Test Group: System Configuration Tests
+-----------------------------------------------------------------------------*/
+TEST_GROUP( SysConfigTests )
+{
+  LLD::Driver *sdio;
+
+  void setup()
+  {
+    sdio = LLD::getDriver( Chimera::SDIO::Channel::SDIO1 );
+    CHECK( sdio != nullptr );
+    CHECK( sdio->attach( LLD::SDIO1_PERIPH ) == Chimera::Status::OK );
+    sdio->clockEnable();
+    sdio->reset();
+  }
+
+  void teardown()
+  {
+    sdio->reset();
+    sdio->clockDisable();
+    sdio = nullptr;
+  }
+};
+
+
+TEST( SysConfigTests, BusFrequencySettings )
+{
+  CHECK( false );
+}
+
+
+TEST( SysConfigTests, SDInit )
+{
+  /*---------------------------------------------------------------------------
+  Ensure we've started in a known state
+  ---------------------------------------------------------------------------*/
+  CHECK( LLD::SDIO1_PERIPH->CLKCR == 0x0 );
+
+  /*---------------------------------------------------------------------------
+  Invoke FUT
+  ---------------------------------------------------------------------------*/
+  CHECK( sdio->init() == Chimera::Status::OK );
+
+  /*---------------------------------------------------------------------------
+  Verify the results
+  ---------------------------------------------------------------------------*/
+  const uint32_t clk_cfg = LLD::SDIO1_PERIPH->CLKCR;
+  CHECK( ( clk_cfg & LLD::CLKCR_HWFC_EN_Msk ) == 0x0 ); // Hardware flow control disabled
+  CHECK( ( clk_cfg & LLD::CLKCR_WIDBUS_Msk ) == 0x0 );  // 1-bit bus width (for now)
+  CHECK( ( clk_cfg & LLD::CLKCR_BYPASS_Msk ) == 0x0 );  // No clock bypass
+  CHECK( ( clk_cfg & LLD::CLKCR_PWRSAV_Msk ) == 0x0 );  // Power saving disabled
+  CHECK( ( clk_cfg & LLD::CLKCR_CLKEN_Msk ) == 0x0 );   // Clock disabled (for now)
+  CHECK( sdio->getBusFrequency() <= 400000 );           // Verify RM0390 29.8.2 SDIO_CLKCR Note 1
+}
+
+/*-----------------------------------------------------------------------------
+Test Group: Integration Tests (requires SD card connection)
+-----------------------------------------------------------------------------*/
+// TODO

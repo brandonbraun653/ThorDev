@@ -7,9 +7,6 @@
             "${workspaceFolder}/Thor"
         ],
         "defaultIncludePaths": [
-            "/usr/include",
-            "/usr/include/x86_64-linux-gnu/c++/11",
-            "/usr/local/include",
             "${workspaceFolder}",
             "${workspaceFolder}/lib/Aurora/include",
             "${workspaceFolder}/lib/Aurora/include/../",
@@ -159,7 +156,8 @@
                 "${thorIncludePaths_HLD}",
                 "${thorIncludePaths_LLD_Intf}",
                 "${thorIncludePaths_LLD_F4}",
-                "${workspaceFolder}/lib/Aurora/lib/embedded_template_library/etl/include"
+                "${workspaceFolder}/lib/Aurora/lib/embedded_template_library/etl/include",
+                "${workspaceFolder}/lib/CommonTools/cpputest/include"
             ],
             "defines": [
                 "${defaultDefines}",
@@ -175,6 +173,9 @@
         {
             "name": "STM32F4 Simulator Development",
             "includePath": [
+                "/usr/include",
+                "/usr/include/x86_64-linux-gnu/c++/11",
+                "/usr/local/include",
                 "${defaultIncludePaths}",
                 "${thorIncludePaths_HLD}",
                 "${thorIncludePaths_LLD_Intf}",
