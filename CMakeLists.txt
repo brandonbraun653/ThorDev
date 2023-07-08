@@ -24,6 +24,10 @@ endif()
 # Import common packages and projects
 # ====================================================
 if(NOT Toolchain::HAS_GCC_ARM_NONE_EABI)
+
+  # This is a bit kludgy, but it works for now. I'll need to figure out a better way to do this
+  add_subdirectory("Thor/lld/stm32f4x")
+
   if(DEFINED ENV{CPPUTEST_HOME})
       message(STATUS "Using CppUTest home: $ENV{CPPUTEST_HOME}")
       set(CPPUTEST_INCLUDE_DIRS $ENV{CPPUTEST_HOME}/include)
@@ -45,7 +49,6 @@ add_subdirectory("lib/FreeRTOS")
 # ====================================================
 # Import test targets
 # ====================================================
-# This is a bit kludgy, but it works for now. I'll need to figure out a better way to do this
 add_subdirectory("tests")
 add_subdirectory("mock")
 

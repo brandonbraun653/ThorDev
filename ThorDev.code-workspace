@@ -127,7 +127,8 @@
       "semaphore": "cpp",
       "stop_token": "cpp",
       "cfenv": "cpp",
-      "cinttypes": "cpp"
+      "cinttypes": "cpp",
+      "interrupt": "cpp"
     },
 		"peacock.color": "#557c9b",
 		"workbench.colorCustomizations": {

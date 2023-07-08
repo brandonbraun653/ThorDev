@@ -52,7 +52,7 @@ TEST( LLD_Interface_SDIO, ChannelSupport )
 #endif
   };
 
-  for( size_t idx = 0; idx < SupportedChannels.size(); idx++ )
+  for ( size_t idx = 0; idx < SupportedChannels.size(); idx++ )
   {
     CHECK_EQUAL( SupportedChannels[ idx ], SDIO::isSupported( static_cast<Chimera::SDIO::Channel>( idx ) ) );
   }
@@ -69,6 +69,16 @@ TEST( LLD_Interface_SDIO, ResourceIndexMapping )
 {
   CHECK_EQUAL( SDIO::SDIO1_RESOURCE_INDEX, SDIO::getResourceIndex( reinterpret_cast<std::uintptr_t>( SDIO::SDIO1_PERIPH ) ) );
   CHECK_EQUAL( INVALID_RESOURCE_INDEX, SDIO::getResourceIndex( 0xFFFFFFFF ) );
+
+  CHECK_EQUAL( SDIO::SDIO1_RESOURCE_INDEX, SDIO::getResourceIndex( Chimera::SDIO::Channel::SDIO1 ) );
+  CHECK_EQUAL( INVALID_RESOURCE_INDEX, SDIO::getResourceIndex( Chimera::SDIO::Channel::UNKNOWN ) );
+  CHECK_EQUAL( INVALID_RESOURCE_INDEX, SDIO::getResourceIndex( Chimera::SDIO::Channel::NUM_OPTIONS ) );
+
+#if defined( STM32_SDIO2_PERIPH_AVAILABLE )
+  CHECK_EQUAL( SDIO::SDIO2_RESOURCE_INDEX, SDIO::getResourceIndex( Chimera::SDIO::Channel::SDIO2 ) );
+#else
+  CHECK_EQUAL( INVALID_RESOURCE_INDEX, SDIO::getResourceIndex( Chimera::SDIO::Channel::SDIO2 ) );
+#endif
 }
 
 
@@ -85,10 +95,23 @@ TEST( LLD_Interface_SDIO, MapChannelAddressToEnum )
 }
 
 
+TEST( LLD_Interface_SDIO, GetDriver )
+{
+  CHECK( nullptr != SDIO::getDriver( Chimera::SDIO::Channel::SDIO1 ) );
+  CHECK( nullptr == SDIO::getDriver( Chimera::SDIO::Channel::UNKNOWN ) );
+  CHECK( nullptr == SDIO::getDriver( Chimera::SDIO::Channel::NUM_OPTIONS ) );
+
+#if defined( STM32_SDIO2_PERIPH_AVAILABLE )
+  CHECK( nullptr != SDIO::getDriver( Chimera::SDIO::Channel::SDIO2 ) );
+#else
+  CHECK( nullptr == SDIO::getDriver( Chimera::SDIO::Channel::SDIO2 ) );
+#endif
+}
+
 /*-----------------------------------------------------------------------------
 Test Driver Attachment
 -----------------------------------------------------------------------------*/
-TEST_GROUP( DriverAttachment ) {};
+TEST_GROUP( DriverAttachment ){};
 
 TEST( DriverAttachment, InvalidArguments )
 {
