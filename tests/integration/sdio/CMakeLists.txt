@@ -1,6 +1,6 @@
 include("${COMMON_TOOL_ROOT}/cmake/utility/embedded.cmake")
 
-set(TestName test_lld_sdio)
+set(TestName sdio_integration_test)
 
 # -----------------------------------------------------------------------------
 # Project Libraries

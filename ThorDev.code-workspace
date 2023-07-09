@@ -179,6 +179,7 @@
 		"cmake.useCMakePresets": "always",
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
-		"editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "cortex-debug.variableUseNaturalFormat": false
 	}
 }

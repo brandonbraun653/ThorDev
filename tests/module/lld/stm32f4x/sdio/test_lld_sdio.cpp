@@ -19,6 +19,12 @@ Includes
 #include "CppUTest/TestHarness.h"
 
 /*-----------------------------------------------------------------------------
+Constants
+-----------------------------------------------------------------------------*/
+#define TestChannel ( Chimera::SDIO::Channel::SDIO1 )
+#define TestPeriph ( Thor::LLD::SDIO::SDIO1_PERIPH )
+
+/*-----------------------------------------------------------------------------
 Public Functions
 -----------------------------------------------------------------------------*/
 int main()
@@ -37,9 +43,9 @@ TEST_GROUP( IsolatedFuncTests )
 
   void setup()
   {
-    sdio = LLD::getDriver( Chimera::SDIO::Channel::SDIO1 );
+    sdio = LLD::getDriver( TestChannel );
     CHECK( sdio != nullptr );
-    CHECK( sdio->attach( LLD::SDIO1_PERIPH ) == Chimera::Status::OK );
+    CHECK( sdio->attach( TestPeriph ) == Chimera::Status::OK );
   }
 
   void teardown()
@@ -89,11 +95,11 @@ TEST( IsolatedFuncTests, ClockAllowsRegisterAccess )
 {
   sdio->clockEnable();
 
-  LLD::PWRCTRL::set( LLD::SDIO1_PERIPH, 0x3 << LLD::POWER_PWRCTRL_Pos );
-  CHECK( LLD::PWRCTRL::get( LLD::SDIO1_PERIPH ) == ( 0x3 << LLD::POWER_PWRCTRL_Pos ) );
+  LLD::PWRCTRL::set( TestPeriph, 0x3 << LLD::POWER_PWRCTRL_Pos );
+  CHECK( LLD::PWRCTRL::get( TestPeriph ) == ( 0x3 << LLD::POWER_PWRCTRL_Pos ) );
 
-  LLD::PWRCTRL::clear( LLD::SDIO1_PERIPH, 0x3 << LLD::POWER_PWRCTRL_Pos );
-  CHECK( LLD::PWRCTRL::get( LLD::SDIO1_PERIPH ) == 0x0 );
+  LLD::PWRCTRL::clear( TestPeriph, 0x3 << LLD::POWER_PWRCTRL_Pos );
+  CHECK( LLD::PWRCTRL::get( TestPeriph ) == 0x0 );
 
   sdio->clockDisable();
 }
@@ -122,6 +128,28 @@ TEST( IsolatedFuncTests, EnterExitCriticalSection )
 }
 
 
+TEST( IsolatedFuncTests, ClockBusOutputEnableDisable)
+{
+  /*---------------------------------------------------------------------------
+  Ensure we've started in a known state
+  ---------------------------------------------------------------------------*/
+  sdio->clockEnable();
+  sdio->reset();
+  CHECK( ( TestPeriph->CLKCR & LLD::CLKCR_CLKEN_Msk ) == 0x0 );
+
+  /*---------------------------------------------------------------------------
+  Enable the clock and verify
+  ---------------------------------------------------------------------------*/
+  sdio->busClockEnable();
+  CHECK( ( TestPeriph->CLKCR & LLD::CLKCR_CLKEN_Msk ) == LLD::CLKCR_CLKEN );
+
+  /*---------------------------------------------------------------------------
+  Disable the clock and verify
+  ---------------------------------------------------------------------------*/
+  sdio->busClockDisable();
+  CHECK( ( TestPeriph->CLKCR & LLD::CLKCR_CLKEN_Msk ) == 0x0 );
+}
+
 /*-----------------------------------------------------------------------------
 Test Group: System Configuration Tests
 -----------------------------------------------------------------------------*/
@@ -131,9 +159,9 @@ TEST_GROUP( SysConfigTests )
 
   void setup()
   {
-    sdio = LLD::getDriver( Chimera::SDIO::Channel::SDIO1 );
+    sdio = LLD::getDriver( TestChannel );
     CHECK( sdio != nullptr );
-    CHECK( sdio->attach( LLD::SDIO1_PERIPH ) == Chimera::Status::OK );
+    CHECK( sdio->attach( TestPeriph ) == Chimera::Status::OK );
     sdio->clockEnable();
     sdio->reset();
   }
@@ -147,18 +175,12 @@ TEST_GROUP( SysConfigTests )
 };
 
 
-TEST( SysConfigTests, BusFrequencySettings )
-{
-  CHECK( false );
-}
-
-
 TEST( SysConfigTests, SDInit )
 {
   /*---------------------------------------------------------------------------
   Ensure we've started in a known state
   ---------------------------------------------------------------------------*/
-  CHECK( LLD::SDIO1_PERIPH->CLKCR == 0x0 );
+  CHECK( TestPeriph->CLKCR == 0x0 );
 
   /*---------------------------------------------------------------------------
   Invoke FUT
@@ -168,7 +190,7 @@ TEST( SysConfigTests, SDInit )
   /*---------------------------------------------------------------------------
   Verify the results
   ---------------------------------------------------------------------------*/
-  const uint32_t clk_cfg = LLD::SDIO1_PERIPH->CLKCR;
+  const uint32_t clk_cfg = TestPeriph->CLKCR;
   CHECK( ( clk_cfg & LLD::CLKCR_HWFC_EN_Msk ) == 0x0 ); // Hardware flow control disabled
   CHECK( ( clk_cfg & LLD::CLKCR_WIDBUS_Msk ) == 0x0 );  // 1-bit bus width (for now)
   CHECK( ( clk_cfg & LLD::CLKCR_BYPASS_Msk ) == 0x0 );  // No clock bypass
@@ -180,4 +202,24 @@ TEST( SysConfigTests, SDInit )
 /*-----------------------------------------------------------------------------
 Test Group: Integration Tests (requires SD card connection)
 -----------------------------------------------------------------------------*/
-// TODO
+TEST_GROUP( IntegrationTests )
+{
+  LLD::Driver *sdio;
+
+  void setup()
+  {
+    sdio = LLD::getDriver( TestChannel );
+    CHECK( sdio != nullptr );
+    CHECK( sdio->attach( TestPeriph ) == Chimera::Status::OK );
+    sdio->clockEnable();
+    sdio->reset();
+    sdio->init();
+  }
+
+  void teardown()
+  {
+    sdio->reset();
+    sdio->clockDisable();
+    sdio = nullptr;
+  }
+};
