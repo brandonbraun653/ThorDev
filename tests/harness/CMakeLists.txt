@@ -28,6 +28,7 @@ gen_intf_lib_variants(
     thor_hld_gpio
     thor_hld_i2c
     thor_hld_interrupt
+    thor_hld_sdio
     thor_hld_serial
     thor_hld_spi
     thor_hld_system

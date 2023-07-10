@@ -14,6 +14,7 @@ Includes
 #include <Chimera/sdio>
 #include <Thor/lld/interface/inc/sdio>
 #include <tests/harness/mbed_test_harness.hpp>
+#include <tests/harness/mbed_test_harness_bsp.hpp>
 
 #include "CppUTest/TestHarness.h"
 
@@ -21,7 +22,7 @@ Includes
 Constants
 -----------------------------------------------------------------------------*/
 #define TestChannel ( Chimera::SDIO::Channel::SDIO1 )
-#define TestPeriph ( Thor::LLD::SDIO::SDIO1_PERIPH )
+#define TestPeriph  ( Thor::LLD::SDIO::SDIO1_PERIPH )
 
 /*-----------------------------------------------------------------------------
 Public Functions
@@ -55,6 +56,17 @@ TEST_GROUP( IntegrationTests )
 TEST( IntegrationTests, Init )
 {
   Chimera::SDIO::HWConfig cfg;
+
+  cfg.clear();
+  cfg.channel    = Thor::Testing::BSP::IO::SDIO::Channel;
+  cfg.clockSpeed = Thor::Testing::BSP::IO::SDIO::ClockSpeed;
+  cfg.width      = Thor::Testing::BSP::IO::SDIO::BusWidth;
+  cfg.clkPin     = Thor::Testing::BSP::IO::SDIO::clkPinInit;
+  cfg.cmdPin     = Thor::Testing::BSP::IO::SDIO::cmdPinInit;
+  cfg.dxPin[ 0 ] = Thor::Testing::BSP::IO::SDIO::d0PinInit;
+  cfg.dxPin[ 1 ] = Thor::Testing::BSP::IO::SDIO::d1PinInit;
+  cfg.dxPin[ 2 ] = Thor::Testing::BSP::IO::SDIO::d2PinInit;
+  cfg.dxPin[ 3 ] = Thor::Testing::BSP::IO::SDIO::d3PinInit;
 
   CHECK( sdio->open( cfg ) == Chimera::Status::OK );
 }

@@ -16,13 +16,94 @@
 Includes
 -----------------------------------------------------------------------------*/
 #include <Chimera/gpio>
+#include <Chimera/sdio>
 #include <Chimera/serial>
+#include <cstdint>
 
 /*-----------------------------------------------------------------------------
 Configuration
 -----------------------------------------------------------------------------*/
 namespace Thor::Testing::BSP::IO
 {
+  namespace SDIO
+  {
+    /*-------------------------------------------------------------------------
+    SDIO
+    -------------------------------------------------------------------------*/
+    static constexpr Chimera::SDIO::Channel  Channel    = Chimera::SDIO::Channel::SDIO1;
+    static constexpr Chimera::SDIO::BusWidth BusWidth   = Chimera::SDIO::BusWidth::BUS_WIDTH_4BIT;
+    static constexpr uint32_t                ClockSpeed = 4000000;    // 4 MHz
+
+    /*-------------------------------------------------------------------------
+    GPIO
+    -------------------------------------------------------------------------*/
+    static constexpr Chimera::GPIO::Pin     d0Pin     = 8;
+    static constexpr Chimera::GPIO::Port    d0Port    = Chimera::GPIO::Port::PORTC;
+    static constexpr Chimera::GPIO::PinInit d0PinInit = { .alternate = Chimera::GPIO::Alternate::SDIO_D0,
+                                                          .drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL,
+                                                          .pin       = d0Pin,
+                                                          .port      = d0Port,
+                                                          .pull      = Chimera::GPIO::Pull::NO_PULL,
+                                                          .state     = Chimera::GPIO::State::LOW,
+                                                          .threaded  = false,
+                                                          .validity  = true };
+
+    static constexpr Chimera::GPIO::Pin     d1Pin     = 9;
+    static constexpr Chimera::GPIO::Port    d1Port    = Chimera::GPIO::Port::PORTC;
+    static constexpr Chimera::GPIO::PinInit d1PinInit = { .alternate = Chimera::GPIO::Alternate::SDIO_D1,
+                                                          .drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL,
+                                                          .pin       = d1Pin,
+                                                          .port      = d1Port,
+                                                          .pull      = Chimera::GPIO::Pull::NO_PULL,
+                                                          .state     = Chimera::GPIO::State::LOW,
+                                                          .threaded  = false,
+                                                          .validity  = true };
+
+    static constexpr Chimera::GPIO::Pin     d2Pin     = 10;
+    static constexpr Chimera::GPIO::Port    d2Port    = Chimera::GPIO::Port::PORTC;
+    static constexpr Chimera::GPIO::PinInit d2PinInit = { .alternate = Chimera::GPIO::Alternate::SDIO_D2,
+                                                          .drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL,
+                                                          .pin       = d2Pin,
+                                                          .port      = d2Port,
+                                                          .pull      = Chimera::GPIO::Pull::NO_PULL,
+                                                          .state     = Chimera::GPIO::State::LOW,
+                                                          .threaded  = false,
+                                                          .validity  = true };
+
+    static constexpr Chimera::GPIO::Pin     d3Pin     = 11;
+    static constexpr Chimera::GPIO::Port    d3Port    = Chimera::GPIO::Port::PORTC;
+    static constexpr Chimera::GPIO::PinInit d3PinInit = { .alternate = Chimera::GPIO::Alternate::SDIO_D3,
+                                                          .drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL,
+                                                          .pin       = d3Pin,
+                                                          .port      = d3Port,
+                                                          .pull      = Chimera::GPIO::Pull::NO_PULL,
+                                                          .state     = Chimera::GPIO::State::LOW,
+                                                          .threaded  = false,
+                                                          .validity  = true };
+
+    static constexpr Chimera::GPIO::Pin     clkPin     = 12;
+    static constexpr Chimera::GPIO::Port    clkPort    = Chimera::GPIO::Port::PORTC;
+    static constexpr Chimera::GPIO::PinInit clkPinInit = { .alternate = Chimera::GPIO::Alternate::SDIO_CK,
+                                                           .drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL,
+                                                           .pin       = clkPin,
+                                                           .port      = clkPort,
+                                                           .pull      = Chimera::GPIO::Pull::NO_PULL,
+                                                           .state     = Chimera::GPIO::State::LOW,
+                                                           .threaded  = false,
+                                                           .validity  = true };
+
+    static constexpr Chimera::GPIO::Pin     cmdPin     = 2;
+    static constexpr Chimera::GPIO::Port    cmdPort    = Chimera::GPIO::Port::PORTD;
+    static constexpr Chimera::GPIO::PinInit cmdPinInit = { .alternate = Chimera::GPIO::Alternate::SDIO_CMD,
+                                                           .drive     = Chimera::GPIO::Drive::ALTERNATE_PUSH_PULL,
+                                                           .pin       = cmdPin,
+                                                           .port      = cmdPort,
+                                                           .pull      = Chimera::GPIO::Pull::NO_PULL,
+                                                           .state     = Chimera::GPIO::State::LOW,
+                                                           .threaded  = false,
+                                                           .validity  = true };
+  }    // namespace SDIO
+
   namespace USART
   {
     /*-------------------------------------------------------------------------

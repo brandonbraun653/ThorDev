@@ -31,14 +31,6 @@ int main( int ac, char **av )
 
 namespace Thor::LLD::SDIO
 {
-  bool isSupported( const Chimera::SDIO::Channel channel )
-  {
-    mock().actualCall( "Thor::LLD::SDIO::isSupported" )
-      .withParameterOfType( "Chimera::SDIO::Channel", "channel", &channel )
-      .returnBoolValueOrDefault( false );
-
-    return mock().boolReturnValue();
-  }
 }
 
 /*-----------------------------------------------------------------------------
@@ -54,12 +46,7 @@ TEST_GROUP( UserInterface )
 
 TEST( UserInterface, Initialize )
 {
-  mock().actualCall( "Thor::LLD::SDIO::isSupported" )
-    .withParameter( "channel", Chimera::SDIO::Channel::SDIO1 )
-    .andReturnValue( true );
-
   Chimera::Status_t result = Chimera::SDIO::initialize();
 
-  mock().checkExpectations();
   CHECK_EQUAL( Chimera::Status::NOT_SUPPORTED, result );
 }
