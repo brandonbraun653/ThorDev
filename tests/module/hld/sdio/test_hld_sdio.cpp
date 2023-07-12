@@ -12,6 +12,7 @@
 Includes
 -----------------------------------------------------------------------------*/
 #include <Chimera/sdio>
+#include <mock/Thor/lld/interface/sdio/sdio_driver_expect.hpp>
 
 #include "CppUTest/TestHarness.h"
 #include "CppUTest/CommandLineTestRunner.h"
@@ -29,24 +30,29 @@ int main( int ac, char **av )
   return CommandLineTestRunner::RunAllTests( ac, av );
 }
 
-namespace Thor::LLD::SDIO
-{
-}
-
 /*-----------------------------------------------------------------------------
 Test High Level User Interface
 -----------------------------------------------------------------------------*/
 TEST_GROUP( UserInterface )
 {
+  Chimera::SDIO::Driver_rPtr sdio;
+
   void setup()
   {
+    sdio = Chimera::SDIO::getDriver( Chimera::SDIO::Channel::SDIO1 );
+    CHECK( sdio != nullptr );
   }
 
 };
 
 TEST( UserInterface, Initialize )
 {
-  Chimera::Status_t result = Chimera::SDIO::initialize();
+  using namespace Chimera::SDIO;
+  HWConfig cfg;
 
-  CHECK_EQUAL( Chimera::Status::NOT_SUPPORTED, result );
+  expect::Thor$::LLD$::SDIO$::Driver$::init( 1, nullptr, Chimera::Status::OK );
+
+  CHECK( sdio->open( cfg ) == Chimera::Status::OK );
+
+  mock().checkExpectations();
 }

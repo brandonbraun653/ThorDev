@@ -88,3 +88,749 @@ MockExpectedCall& clockDisable(unsigned int __numCalls__, CppUMockGen::Parameter
 }
 } } } } }
 
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& busClockEnable(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    return busClockEnable(1, __object__);
+}
+MockExpectedCall& busClockEnable(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::busClockEnable");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& busClockDisable(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    return busClockDisable(1, __object__);
+}
+MockExpectedCall& busClockDisable(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::busClockDisable");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& enterCriticalSection(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    return enterCriticalSection(1, __object__);
+}
+MockExpectedCall& enterCriticalSection(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::enterCriticalSection");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& exitCriticalSection(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    return exitCriticalSection(1, __object__);
+}
+MockExpectedCall& exitCriticalSection(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::exitCriticalSection");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& getBusFrequency(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return getBusFrequency(1, __object__, __return__);
+}
+MockExpectedCall& getBusFrequency(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::getBusFrequency");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& init(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    return init(1, __object__, __return__);
+}
+MockExpectedCall& init(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::init");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& deinit(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    return deinit(1, __object__, __return__);
+}
+MockExpectedCall& deinit(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::deinit");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& setPowerStateOn(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    return setPowerStateOn(1, __object__, __return__);
+}
+MockExpectedCall& setPowerStateOn(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::setPowerStateOn");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& setPowerStateOff(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    return setPowerStateOff(1, __object__, __return__);
+}
+MockExpectedCall& setPowerStateOff(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, Chimera::Status_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::setPowerStateOff");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& setSDMMCReadWaitMode(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<uint32_t> mode, Chimera::Status_t __return__)
+{
+    return setSDMMCReadWaitMode(1, __object__, mode, __return__);
+}
+MockExpectedCall& setSDMMCReadWaitMode(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<uint32_t> mode, Chimera::Status_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::setSDMMCReadWaitMode");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(mode.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("mode", mode.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cpsmPutCmd(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const Thor::LLD::SDIO::CPSMCommand &> cmd, Chimera::Status_t __return__)
+{
+    return cpsmPutCmd(1, __object__, cmd, __return__);
+}
+MockExpectedCall& cpsmPutCmd(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const Thor::LLD::SDIO::CPSMCommand &> cmd, Chimera::Status_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cpsmPutCmd");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(cmd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withParameterOfType("Thor::LLD::SDIO::CPSMCommand", "cmd", &cmd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cpsmGetCmdResponse(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint8_t __return__)
+{
+    return cpsmGetCmdResponse(1, __object__, __return__);
+}
+MockExpectedCall& cpsmGetCmdResponse(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint8_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cpsmGetCmdResponse");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cpsmGetResponse(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint8_t> which, uint32_t __return__)
+{
+    return cpsmGetResponse(1, __object__, which, __return__);
+}
+MockExpectedCall& cpsmGetResponse(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint8_t> which, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cpsmGetResponse");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(which.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("which", which.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& dpsmConfigure(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const Thor::LLD::SDIO::DPSMConfig &> config, Chimera::Status_t __return__)
+{
+    return dpsmConfigure(1, __object__, config, __return__);
+}
+MockExpectedCall& dpsmConfigure(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const Thor::LLD::SDIO::DPSMConfig &> config, Chimera::Status_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::dpsmConfigure");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(config.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withParameterOfType("Thor::LLD::SDIO::DPSMConfig", "config", &config.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& dpsmGetDataCounter(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return dpsmGetDataCounter(1, __object__, __return__);
+}
+MockExpectedCall& dpsmGetDataCounter(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::dpsmGetDataCounter");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& dpsmGetFIFOCount(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return dpsmGetFIFOCount(1, __object__, __return__);
+}
+MockExpectedCall& dpsmGetFIFOCount(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::dpsmGetFIFOCount");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdAppCommand(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    return cmdAppCommand(1, __object__, Argument, __return__);
+}
+MockExpectedCall& cmdAppCommand(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdAppCommand");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Argument.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Argument", Argument.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdAppOperCommand(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    return cmdAppOperCommand(1, __object__, Argument, __return__);
+}
+MockExpectedCall& cmdAppOperCommand(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdAppOperCommand");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Argument.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Argument", Argument.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdBlockLength(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> BlockSize, uint32_t __return__)
+{
+    return cmdBlockLength(1, __object__, BlockSize, __return__);
+}
+MockExpectedCall& cmdBlockLength(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> BlockSize, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdBlockLength");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(BlockSize.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("BlockSize", BlockSize.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdBusWidth(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> BusWidth, uint32_t __return__)
+{
+    return cmdBusWidth(1, __object__, BusWidth, __return__);
+}
+MockExpectedCall& cmdBusWidth(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> BusWidth, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdBusWidth");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(BusWidth.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("BusWidth", BusWidth.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdErase(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return cmdErase(1, __object__, __return__);
+}
+MockExpectedCall& cmdErase(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdErase");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdEraseEndAdd(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> EndAdd, uint32_t __return__)
+{
+    return cmdEraseEndAdd(1, __object__, EndAdd, __return__);
+}
+MockExpectedCall& cmdEraseEndAdd(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> EndAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdEraseEndAdd");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(EndAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("EndAdd", EndAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdEraseStartAdd(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> StartAdd, uint32_t __return__)
+{
+    return cmdEraseStartAdd(1, __object__, StartAdd, __return__);
+}
+MockExpectedCall& cmdEraseStartAdd(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> StartAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdEraseStartAdd");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(StartAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("StartAdd", StartAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdGoIdleState(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return cmdGoIdleState(1, __object__, __return__);
+}
+MockExpectedCall& cmdGoIdleState(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdGoIdleState");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdOpCondition(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    return cmdOpCondition(1, __object__, Argument, __return__);
+}
+MockExpectedCall& cmdOpCondition(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdOpCondition");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Argument.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Argument", Argument.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdOperCond(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return cmdOperCond(1, __object__, __return__);
+}
+MockExpectedCall& cmdOperCond(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdOperCond");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdReadMultiBlock(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> ReadAdd, uint32_t __return__)
+{
+    return cmdReadMultiBlock(1, __object__, ReadAdd, __return__);
+}
+MockExpectedCall& cmdReadMultiBlock(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> ReadAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdReadMultiBlock");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(ReadAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("ReadAdd", ReadAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdReadSingleBlock(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> ReadAdd, uint32_t __return__)
+{
+    return cmdReadSingleBlock(1, __object__, ReadAdd, __return__);
+}
+MockExpectedCall& cmdReadSingleBlock(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> ReadAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdReadSingleBlock");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(ReadAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("ReadAdd", ReadAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSDEraseEndAdd(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> EndAdd, uint32_t __return__)
+{
+    return cmdSDEraseEndAdd(1, __object__, EndAdd, __return__);
+}
+MockExpectedCall& cmdSDEraseEndAdd(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> EndAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSDEraseEndAdd");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(EndAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("EndAdd", EndAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSDEraseStartAdd(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> StartAdd, uint32_t __return__)
+{
+    return cmdSDEraseStartAdd(1, __object__, StartAdd, __return__);
+}
+MockExpectedCall& cmdSDEraseStartAdd(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> StartAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSDEraseStartAdd");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(StartAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("StartAdd", StartAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSelDesel(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint64_t> Addr, uint32_t __return__)
+{
+    return cmdSelDesel(1, __object__, Addr, __return__);
+}
+MockExpectedCall& cmdSelDesel(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint64_t> Addr, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSelDesel");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Addr.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedLongIntParameter("Addr", Addr.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSendCID(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return cmdSendCID(1, __object__, __return__);
+}
+MockExpectedCall& cmdSendCID(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSendCID");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSendCSD(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    return cmdSendCSD(1, __object__, Argument, __return__);
+}
+MockExpectedCall& cmdSendCSD(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSendCSD");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Argument.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Argument", Argument.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSendEXTCSD(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    return cmdSendEXTCSD(1, __object__, Argument, __return__);
+}
+MockExpectedCall& cmdSendEXTCSD(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSendEXTCSD");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Argument.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Argument", Argument.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSendSCR(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return cmdSendSCR(1, __object__, __return__);
+}
+MockExpectedCall& cmdSendSCR(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSendSCR");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSendStatus(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    return cmdSendStatus(1, __object__, Argument, __return__);
+}
+MockExpectedCall& cmdSendStatus(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSendStatus");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Argument.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Argument", Argument.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSetRelAdd(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint16_t * pRCA, size_t __sizeof_pRCA, uint32_t __return__)
+{
+    return cmdSetRelAdd(1, __object__, pRCA, __sizeof_pRCA, __return__);
+}
+MockExpectedCall& cmdSetRelAdd(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint16_t * pRCA, size_t __sizeof_pRCA, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSetRelAdd");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.withOutputParameterReturning("pRCA", pRCA, __sizeof_pRCA);
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSetRelAddMmc(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint16_t> RCA, uint32_t __return__)
+{
+    return cmdSetRelAddMmc(1, __object__, RCA, __return__);
+}
+MockExpectedCall& cmdSetRelAddMmc(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint16_t> RCA, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSetRelAddMmc");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(RCA.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("RCA", RCA.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdStatusRegister(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return cmdStatusRegister(1, __object__, __return__);
+}
+MockExpectedCall& cmdStatusRegister(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdStatusRegister");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdStopTransfer(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return cmdStopTransfer(1, __object__, __return__);
+}
+MockExpectedCall& cmdStopTransfer(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdStopTransfer");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdSwitch(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    return cmdSwitch(1, __object__, Argument, __return__);
+}
+MockExpectedCall& cmdSwitch(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> Argument, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdSwitch");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(Argument.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Argument", Argument.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdWriteMultiBlock(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> WriteAdd, uint32_t __return__)
+{
+    return cmdWriteMultiBlock(1, __object__, WriteAdd, __return__);
+}
+MockExpectedCall& cmdWriteMultiBlock(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> WriteAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdWriteMultiBlock");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(WriteAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("WriteAdd", WriteAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& cmdWriteSingleBlock(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> WriteAdd, uint32_t __return__)
+{
+    return cmdWriteSingleBlock(1, __object__, WriteAdd, __return__);
+}
+MockExpectedCall& cmdWriteSingleBlock(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint32_t> WriteAdd, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::cmdWriteSingleBlock");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(WriteAdd.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("WriteAdd", WriteAdd.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& getCmdResp1(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<uint8_t> SD_CMD, CppUMockGen::Parameter<uint32_t> Timeout, uint32_t __return__)
+{
+    return getCmdResp1(1, __object__, SD_CMD, Timeout, __return__);
+}
+MockExpectedCall& getCmdResp1(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<uint8_t> SD_CMD, CppUMockGen::Parameter<uint32_t> Timeout, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::getCmdResp1");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(SD_CMD.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("SD_CMD", SD_CMD.getValue()); }
+    if(Timeout.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("Timeout", Timeout.getValue()); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& getCmdResp2(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return getCmdResp2(1, __object__, __return__);
+}
+MockExpectedCall& getCmdResp2(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::getCmdResp2");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& getCmdResp3(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return getCmdResp3(1, __object__, __return__);
+}
+MockExpectedCall& getCmdResp3(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::getCmdResp3");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& getCmdResp6(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<uint8_t> SD_CMD, uint16_t * pRCA, size_t __sizeof_pRCA, uint32_t __return__)
+{
+    return getCmdResp6(1, __object__, SD_CMD, pRCA, __sizeof_pRCA, __return__);
+}
+MockExpectedCall& getCmdResp6(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<uint8_t> SD_CMD, uint16_t * pRCA, size_t __sizeof_pRCA, uint32_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::getCmdResp6");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    if(SD_CMD.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withUnsignedIntParameter("SD_CMD", SD_CMD.getValue()); }
+    __expectedCall__.withOutputParameterReturning("pRCA", pRCA, __sizeof_pRCA);
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
+MockExpectedCall& getCmdResp7(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    return getCmdResp7(1, __object__, __return__);
+}
+MockExpectedCall& getCmdResp7(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, uint32_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::Driver::getCmdResp7");
+    if(!__object__.isIgnored()) { __expectedCall__.onObject(const_cast<Thor::LLD::SDIO::Driver*>(__object__.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } } }
+

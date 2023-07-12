@@ -40,3 +40,243 @@ void Thor::LLD::SDIO::Driver::clockDisable()
     mock().actualCall("Thor::LLD::SDIO::Driver::clockDisable").onObject(this);
 }
 
+void Thor::LLD::SDIO::Driver::busClockEnable()
+{
+    mock().actualCall("Thor::LLD::SDIO::Driver::busClockEnable").onObject(this);
+}
+
+void Thor::LLD::SDIO::Driver::busClockDisable()
+{
+    mock().actualCall("Thor::LLD::SDIO::Driver::busClockDisable").onObject(this);
+}
+
+void Thor::LLD::SDIO::Driver::enterCriticalSection()
+{
+    mock().actualCall("Thor::LLD::SDIO::Driver::enterCriticalSection").onObject(this);
+}
+
+void Thor::LLD::SDIO::Driver::exitCriticalSection()
+{
+    mock().actualCall("Thor::LLD::SDIO::Driver::exitCriticalSection").onObject(this);
+}
+
+uint32_t Thor::LLD::SDIO::Driver::getBusFrequency()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::getBusFrequency").onObject(this).returnUnsignedIntValue());
+}
+
+Chimera::Status_t Thor::LLD::SDIO::Driver::init()
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::Driver::init").onObject(this).returnUnsignedIntValue());
+}
+
+Chimera::Status_t Thor::LLD::SDIO::Driver::deinit()
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::Driver::deinit").onObject(this).returnUnsignedIntValue());
+}
+
+Chimera::Status_t Thor::LLD::SDIO::Driver::setPowerStateOn()
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::Driver::setPowerStateOn").onObject(this).returnUnsignedIntValue());
+}
+
+Chimera::Status_t Thor::LLD::SDIO::Driver::setPowerStateOff()
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::Driver::setPowerStateOff").onObject(this).returnUnsignedIntValue());
+}
+
+Chimera::Status_t Thor::LLD::SDIO::Driver::setSDMMCReadWaitMode(uint32_t mode)
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::Driver::setSDMMCReadWaitMode").onObject(this).withUnsignedIntParameter("mode", mode).returnUnsignedIntValue());
+}
+
+Chimera::Status_t Thor::LLD::SDIO::Driver::cpsmPutCmd(const Thor::LLD::SDIO::CPSMCommand & cmd)
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cpsmPutCmd").onObject(this).withParameterOfType("Thor::LLD::SDIO::CPSMCommand", "cmd", &cmd).returnUnsignedIntValue());
+}
+
+uint8_t Thor::LLD::SDIO::Driver::cpsmGetCmdResponse()
+{
+    return static_cast<uint8_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cpsmGetCmdResponse").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cpsmGetResponse(const uint8_t which)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cpsmGetResponse").onObject(this).withUnsignedIntParameter("which", which).returnUnsignedIntValue());
+}
+
+Chimera::Status_t Thor::LLD::SDIO::Driver::dpsmConfigure(const Thor::LLD::SDIO::DPSMConfig & config)
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::Driver::dpsmConfigure").onObject(this).withParameterOfType("Thor::LLD::SDIO::DPSMConfig", "config", &config).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::dpsmGetDataCounter()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::dpsmGetDataCounter").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::dpsmGetFIFOCount()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::dpsmGetFIFOCount").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdAppCommand(const uint32_t Argument)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdAppCommand").onObject(this).withUnsignedIntParameter("Argument", Argument).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdAppOperCommand(const uint32_t Argument)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdAppOperCommand").onObject(this).withUnsignedIntParameter("Argument", Argument).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdBlockLength(const uint32_t BlockSize)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdBlockLength").onObject(this).withUnsignedIntParameter("BlockSize", BlockSize).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdBusWidth(const uint32_t BusWidth)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdBusWidth").onObject(this).withUnsignedIntParameter("BusWidth", BusWidth).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdErase()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdErase").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdEraseEndAdd(const uint32_t EndAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdEraseEndAdd").onObject(this).withUnsignedIntParameter("EndAdd", EndAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdEraseStartAdd(const uint32_t StartAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdEraseStartAdd").onObject(this).withUnsignedIntParameter("StartAdd", StartAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdGoIdleState()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdGoIdleState").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdOpCondition(const uint32_t Argument)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdOpCondition").onObject(this).withUnsignedIntParameter("Argument", Argument).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdOperCond()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdOperCond").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdReadMultiBlock(const uint32_t ReadAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdReadMultiBlock").onObject(this).withUnsignedIntParameter("ReadAdd", ReadAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdReadSingleBlock(const uint32_t ReadAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdReadSingleBlock").onObject(this).withUnsignedIntParameter("ReadAdd", ReadAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSDEraseEndAdd(const uint32_t EndAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSDEraseEndAdd").onObject(this).withUnsignedIntParameter("EndAdd", EndAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSDEraseStartAdd(const uint32_t StartAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSDEraseStartAdd").onObject(this).withUnsignedIntParameter("StartAdd", StartAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSelDesel(const uint64_t Addr)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSelDesel").onObject(this).withUnsignedLongIntParameter("Addr", Addr).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSendCID()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSendCID").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSendCSD(const uint32_t Argument)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSendCSD").onObject(this).withUnsignedIntParameter("Argument", Argument).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSendEXTCSD(const uint32_t Argument)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSendEXTCSD").onObject(this).withUnsignedIntParameter("Argument", Argument).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSendSCR()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSendSCR").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSendStatus(const uint32_t Argument)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSendStatus").onObject(this).withUnsignedIntParameter("Argument", Argument).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSetRelAdd(uint16_t * pRCA)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSetRelAdd").onObject(this).withOutputParameter("pRCA", pRCA).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSetRelAddMmc(const uint16_t RCA)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSetRelAddMmc").onObject(this).withUnsignedIntParameter("RCA", RCA).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdStatusRegister()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdStatusRegister").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdStopTransfer()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdStopTransfer").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdSwitch(const uint32_t Argument)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdSwitch").onObject(this).withUnsignedIntParameter("Argument", Argument).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdWriteMultiBlock(const uint32_t WriteAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdWriteMultiBlock").onObject(this).withUnsignedIntParameter("WriteAdd", WriteAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::cmdWriteSingleBlock(const uint32_t WriteAdd)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cmdWriteSingleBlock").onObject(this).withUnsignedIntParameter("WriteAdd", WriteAdd).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::getCmdResp1(uint8_t SD_CMD, uint32_t Timeout)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::getCmdResp1").onObject(this).withUnsignedIntParameter("SD_CMD", SD_CMD).withUnsignedIntParameter("Timeout", Timeout).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::getCmdResp2()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::getCmdResp2").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::getCmdResp3()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::getCmdResp3").onObject(this).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::getCmdResp6(uint8_t SD_CMD, uint16_t * pRCA)
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::getCmdResp6").onObject(this).withUnsignedIntParameter("SD_CMD", SD_CMD).withOutputParameter("pRCA", pRCA).returnUnsignedIntValue());
+}
+
+uint32_t Thor::LLD::SDIO::Driver::getCmdResp7()
+{
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::getCmdResp7").onObject(this).returnUnsignedIntValue());
+}
+

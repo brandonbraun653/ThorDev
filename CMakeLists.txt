@@ -24,10 +24,6 @@ endif()
 # Import common packages and projects
 # ====================================================
 if(NOT Toolchain::HAS_GCC_ARM_NONE_EABI)
-
-  # This is a bit kludgy, but it works for now. I'll need to figure out a better way to do this
-  add_subdirectory("Thor/lld/stm32f4x")
-
   if(DEFINED ENV{CPPUTEST_HOME})
       message(STATUS "Using CppUTest home: $ENV{CPPUTEST_HOME}")
       set(CPPUTEST_INCLUDE_DIRS $ENV{CPPUTEST_HOME}/include)
@@ -45,6 +41,13 @@ add_subdirectory("lib/Aurora")
 add_subdirectory("lib/Chimera")
 add_subdirectory("lib/CommonTools/cpputest")
 add_subdirectory("lib/FreeRTOS")
+
+# This is a bit kludgy, but it works for now. I'll need to figure
+# out a better way to do this. Currently depends on importing Thor
+# first so that various build attributes are available.
+if(NOT Toolchain::HAS_GCC_ARM_NONE_EABI)
+  add_subdirectory("Thor/lld/stm32f4x")
+endif()
 
 # ====================================================
 # Import test targets
