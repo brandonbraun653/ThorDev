@@ -15,10 +15,13 @@ target_link_libraries(${TestDriverName} PRIVATE
   thor_intf_inc
   thor_intf_inc_mock
 
+  # Library Under Test
+  thor_hld_sdio
+
   # Project Libraries
   thor_lld_intf_sdio_mock
-  chimera_peripheral_sdio
-  chimera_common
+  chimera_core
+  aurora_logging
 )
 
 target_compile_definitions(${TestDriverName} PRIVATE

@@ -37,6 +37,7 @@
             "${workspaceFolder}/lib/FreeRTOS/portable/GCC/ARM_CM4F",
             "${workspaceFolder}/tests/config",
             "${workspaceFolder}/tests/config/bsp",
+            "${workspaceFolder}/tests/config/chimera",
             "${workspaceFolder}/tests/config/cpputest",
             "${workspaceFolder}/tests/config/freertos",
             "${workspaceFolder}/tests/config/thor",
@@ -187,18 +188,6 @@
                 "STM32F446xx",
                 "TARGET_STM32F4",
                 "THOR_USER_CONFIG"
-            ],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "gnu17",
-            "cppStandard": "gnu++20"
-        },
-        {
-            "name": "Simulator Development",
-            "includePath": [
-                "${defaultIncludePaths}"
-            ],
-            "defines": [
-                "${defaultSimDefines}"
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",

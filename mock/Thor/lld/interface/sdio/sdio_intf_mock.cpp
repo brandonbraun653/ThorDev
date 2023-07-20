@@ -10,9 +10,24 @@
 
 #include <CppUTestExt/MockSupport.h>
 
+Chimera::Status_t Thor::LLD::SDIO::initialize()
+{
+    return static_cast<Chimera::Status_t>(mock().actualCall("Thor::LLD::SDIO::initialize").returnUnsignedIntValue());
+}
+
 bool Thor::LLD::SDIO::isSupported(const Chimera::SDIO::Channel channel)
 {
     return mock().actualCall("Thor::LLD::SDIO::isSupported").withIntParameter("channel", static_cast<int>(channel)).returnBoolValue();
+}
+
+Thor::LLD::SDIO::Driver_rPtr Thor::LLD::SDIO::getDriver(const Chimera::SDIO::Channel channel)
+{
+    return static_cast<Thor::LLD::SDIO::Driver_rPtr>(mock().actualCall("Thor::LLD::SDIO::getDriver").withIntParameter("channel", static_cast<int>(channel)).returnPointerValue());
+}
+
+Thor::LLD::RIndex_t Thor::LLD::SDIO::getResourceIndex(const Chimera::SDIO::Channel channel)
+{
+    return static_cast<Thor::LLD::RIndex_t>(mock().actualCall("Thor::LLD::SDIO::getResourceIndex").withIntParameter("channel", static_cast<int>(channel)).returnUnsignedIntValue());
 }
 
 Thor::LLD::RIndex_t Thor::LLD::SDIO::getResourceIndex(const std::uintptr_t address)

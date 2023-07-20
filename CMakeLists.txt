@@ -67,6 +67,7 @@ gen_intf_lib(
   INTF_INCLUDES
     "${PROJECT_ROOT}"
     "${PROJECT_ROOT}/tests/config/bsp"
+    "${PROJECT_ROOT}/tests/config/chimera"
     "${PROJECT_ROOT}/tests/config/cpputest"
     "${PROJECT_ROOT}/tests/config/freertos"
     "${PROJECT_ROOT}/tests/config/thor"

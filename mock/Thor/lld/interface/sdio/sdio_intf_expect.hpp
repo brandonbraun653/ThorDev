@@ -13,8 +13,23 @@
 #include <CppUTestExt/MockSupport.h>
 
 namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
+MockExpectedCall& initialize(Chimera::Status_t __return__);
+MockExpectedCall& initialize(unsigned int __numCalls__, Chimera::Status_t __return__);
+} } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
 MockExpectedCall& isSupported(CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, bool __return__);
 MockExpectedCall& isSupported(unsigned int __numCalls__, CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, bool __return__);
+} } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
+MockExpectedCall& getDriver(CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::SDIO::Driver_rPtr __return__);
+MockExpectedCall& getDriver(unsigned int __numCalls__, CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::SDIO::Driver_rPtr __return__);
+} } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
+MockExpectedCall& getResourceIndex(CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::RIndex_t __return__);
+MockExpectedCall& getResourceIndex(unsigned int __numCalls__, CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::RIndex_t __return__);
 } } } }
 
 namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {

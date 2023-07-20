@@ -9,6 +9,19 @@
 #include "sdio_intf_expect.hpp"
 
 namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
+MockExpectedCall& initialize(Chimera::Status_t __return__)
+{
+    return initialize(1, __return__);
+}
+MockExpectedCall& initialize(unsigned int __numCalls__, Chimera::Status_t __return__)
+{
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::initialize");
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
+    return __expectedCall__;
+}
+} } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
 MockExpectedCall& isSupported(CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, bool __return__)
 {
     return isSupported(1, channel, __return__);
@@ -19,6 +32,38 @@ MockExpectedCall& isSupported(unsigned int __numCalls__, CppUMockGen::Parameter<
     MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::isSupported");
     if(channel.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withIntParameter("channel", static_cast<int>(channel.getValue())); }
     __expectedCall__.andReturnValue(__return__);
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
+MockExpectedCall& getDriver(CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::SDIO::Driver_rPtr __return__)
+{
+    return getDriver(1, channel, __return__);
+}
+MockExpectedCall& getDriver(unsigned int __numCalls__, CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::SDIO::Driver_rPtr __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::getDriver");
+    if(channel.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withIntParameter("channel", static_cast<int>(channel.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<void*>(__return__));
+    if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
+    return __expectedCall__;
+}
+} } } }
+
+namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ {
+MockExpectedCall& getResourceIndex(CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::RIndex_t __return__)
+{
+    return getResourceIndex(1, channel, __return__);
+}
+MockExpectedCall& getResourceIndex(unsigned int __numCalls__, CppUMockGen::Parameter<const Chimera::SDIO::Channel> channel, Thor::LLD::RIndex_t __return__)
+{
+    bool __ignoreOtherParams__ = false;
+    MockExpectedCall& __expectedCall__ = mock().expectNCalls(__numCalls__, "Thor::LLD::SDIO::getResourceIndex");
+    if(channel.isIgnored()) { __ignoreOtherParams__ = true; } else { __expectedCall__.withIntParameter("channel", static_cast<int>(channel.getValue())); }
+    __expectedCall__.andReturnValue(static_cast<unsigned int>(__return__));
     if(__ignoreOtherParams__) { __expectedCall__.ignoreOtherParameters(); }
     return __expectedCall__;
 }
