@@ -101,22 +101,25 @@ Test HLD Driver Implementation
 -----------------------------------------------------------------------------*/
 TEST_GROUP( SDIOHLD )
 {
+  Thor::LLD::SDIO::Driver_rPtr pLLDriver;
   Chimera::SDIO::Driver_rPtr driver;
   Chimera::SDIO::HWConfig cfg;
 
   void setup()
   {
     /*-------------------------------------------------------------------------
-    Reset test memory
-    -------------------------------------------------------------------------*/
-    driver = nullptr;
-    cfg.clear();
-
-    /*-------------------------------------------------------------------------
     Mock out the LLD interface
     -------------------------------------------------------------------------*/
     expect::Thor$::LLD$::SDIO$::initialize( 1, Chimera::Status::OK );
     expect::Thor$::LLD$::SDIO$::isSupported( 1, TestChannel, true );
+    expect::Thor$::LLD$::SDIO$::Driver$::Driver$ctor();
+
+    /*-------------------------------------------------------------------------
+    Reset test memory
+    -------------------------------------------------------------------------*/
+    driver = nullptr;
+    pLLDriver = new Thor::LLD::SDIO::Driver();
+    cfg.clear();
 
     /*-------------------------------------------------------------------------
     Initialize the driver to prepare for testing
@@ -134,6 +137,11 @@ TEST_GROUP( SDIOHLD )
 
   void teardown()
   {
+    expect::Thor$::LLD$::SDIO$::Driver$::Driver$dtor( pLLDriver );
+
+    delete pLLDriver;
+
+    mock().checkExpectations();
     mock().clear();
   }
 };
@@ -145,4 +153,33 @@ TEST( SDIOHLD, open_InvalidResourceIndex )
   expect::Thor$::LLD$::SDIO$::getResourceIndex( TestChannel, ::Thor::LLD::INVALID_RESOURCE_INDEX );
 
   CHECK( driver->open( cfg ) == Chimera::Status::INVAL_FUNC_PARAM );
+
+  mock().checkExpectations();
 }
+
+
+TEST( SDIOHLD, open_BindAndInitDrivers )
+{
+  cfg.channel = TestChannel;
+  expect::Thor$::LLD$::SDIO$::getResourceIndex( TestChannel, ::Thor::LLD::SDIO::SDIO1_RESOURCE_INDEX );
+  expect::Thor$::LLD$::SDIO$::getDriver( TestChannel, pLLDriver );
+  expect::Thor$::LLD$::SDIO$::Driver$::init( pLLDriver, Chimera::Status::OK );
+
+  CHECK( driver->open( cfg ) == Chimera::Status::OK );
+
+  mock().checkExpectations();
+}
+
+
+TEST( SDIOHLD, open_ReturnStatusOfLLDInit )
+{
+  cfg.channel = TestChannel;
+  expect::Thor$::LLD$::SDIO$::getResourceIndex( TestChannel, ::Thor::LLD::SDIO::SDIO1_RESOURCE_INDEX );
+  expect::Thor$::LLD$::SDIO$::getDriver( TestChannel, pLLDriver );
+  expect::Thor$::LLD$::SDIO$::Driver$::init( pLLDriver, Chimera::Status::FAIL );
+
+  CHECK( driver->open( cfg ) == Chimera::Status::FAIL );
+
+  mock().checkExpectations();
+}
+
