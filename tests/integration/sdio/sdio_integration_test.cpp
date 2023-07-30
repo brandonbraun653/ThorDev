@@ -39,15 +39,34 @@ Test Group: Integration Tests (requires SD card connection)
 TEST_GROUP( IntegrationTests )
 {
   Chimera::SDIO::Driver_rPtr sdio;
+  Chimera::SDIO::HWConfig cfg;
 
   void setup()
   {
+    /*-------------------------------------------------------------------------
+    Grab a reference to the driver instance
+    -------------------------------------------------------------------------*/
     sdio = Chimera::SDIO::getDriver( TestChannel );
     CHECK( sdio != nullptr );
+
+    /*-------------------------------------------------------------------------
+    Initialize the driver configuration
+    -------------------------------------------------------------------------*/
+    cfg.clear();
+    cfg.channel    = Thor::Testing::BSP::IO::SDIO::Channel;
+    cfg.clockSpeed = Thor::Testing::BSP::IO::SDIO::ClockSpeed;
+    cfg.width      = Thor::Testing::BSP::IO::SDIO::BusWidth;
+    cfg.clkPin     = Thor::Testing::BSP::IO::SDIO::clkPinInit;
+    cfg.cmdPin     = Thor::Testing::BSP::IO::SDIO::cmdPinInit;
+    cfg.dxPin[ 0 ] = Thor::Testing::BSP::IO::SDIO::d0PinInit;
+    cfg.dxPin[ 1 ] = Thor::Testing::BSP::IO::SDIO::d1PinInit;
+    cfg.dxPin[ 2 ] = Thor::Testing::BSP::IO::SDIO::d2PinInit;
+    cfg.dxPin[ 3 ] = Thor::Testing::BSP::IO::SDIO::d3PinInit;
   }
 
   void teardown()
   {
+    sdio->close();
     sdio = nullptr;
   }
 };
@@ -55,18 +74,12 @@ TEST_GROUP( IntegrationTests )
 
 TEST( IntegrationTests, Init )
 {
-  Chimera::SDIO::HWConfig cfg;
-
-  cfg.clear();
-  cfg.channel    = Thor::Testing::BSP::IO::SDIO::Channel;
-  cfg.clockSpeed = Thor::Testing::BSP::IO::SDIO::ClockSpeed;
-  cfg.width      = Thor::Testing::BSP::IO::SDIO::BusWidth;
-  cfg.clkPin     = Thor::Testing::BSP::IO::SDIO::clkPinInit;
-  cfg.cmdPin     = Thor::Testing::BSP::IO::SDIO::cmdPinInit;
-  cfg.dxPin[ 0 ] = Thor::Testing::BSP::IO::SDIO::d0PinInit;
-  cfg.dxPin[ 1 ] = Thor::Testing::BSP::IO::SDIO::d1PinInit;
-  cfg.dxPin[ 2 ] = Thor::Testing::BSP::IO::SDIO::d2PinInit;
-  cfg.dxPin[ 3 ] = Thor::Testing::BSP::IO::SDIO::d3PinInit;
-
   CHECK( sdio->open( cfg ) == Chimera::Status::OK );
+}
+
+
+TEST( IntegrationTests, Connect )
+{
+  CHECK( sdio->open( cfg ) == Chimera::Status::OK );
+  CHECK( sdio->connect() == Chimera::Status::OK );
 }

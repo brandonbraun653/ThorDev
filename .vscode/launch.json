@@ -42,5 +42,16 @@
           "enable breakpoint"
       ]
     },
+    {
+      "name": "Test: JLink STM32F4 Nucleo",
+      "cwd": "${workspaceFolder}",
+      "executable": "./artifacts/last_build_version/mbed_test_driver",
+      "request": "launch",
+      "type": "cortex-debug",
+      "device": "STM32F446RE",
+      "showDevDebugOutput": "none",
+      "servertype": "jlink",
+      "svdFile": "${workspaceFolder}/lib/CommonTools/svd/STM32F446.svd"
+    },
   ]
 }
