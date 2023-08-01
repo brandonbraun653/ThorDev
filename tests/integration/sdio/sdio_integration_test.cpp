@@ -55,6 +55,7 @@ TEST_GROUP( IntegrationTests )
     cfg.clear();
     cfg.channel    = Thor::Testing::BSP::IO::SDIO::Channel;
     cfg.clockSpeed = Thor::Testing::BSP::IO::SDIO::ClockSpeed;
+    cfg.blockSize  = Thor::Testing::BSP::IO::SDIO::BlockSize;
     cfg.width      = Thor::Testing::BSP::IO::SDIO::BusWidth;
     cfg.clkPin     = Thor::Testing::BSP::IO::SDIO::clkPinInit;
     cfg.cmdPin     = Thor::Testing::BSP::IO::SDIO::cmdPinInit;
