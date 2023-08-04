@@ -21,8 +21,16 @@ Includes
 /*-----------------------------------------------------------------------------
 Constants
 -----------------------------------------------------------------------------*/
-#define TestChannel ( Chimera::SDIO::Channel::SDIO1 )
-#define TestPeriph  ( Thor::LLD::SDIO::SDIO1_PERIPH )
+#define TestChannel     ( Chimera::SDIO::Channel::SDIO1 )
+#define TestPeriph      ( Thor::LLD::SDIO::SDIO1_PERIPH )
+#define TestBlockCount  ( 5 )
+#define TestBlockSize   ( 512 )
+
+/*-----------------------------------------------------------------------------
+Variables
+-----------------------------------------------------------------------------*/
+static uint8_t TestRXBuffer[ TestBlockCount * TestBlockSize ] = { 0 };
+static uint8_t TestTXBuffer[ TestBlockCount * TestBlockSize ] = { 0 };
 
 /*-----------------------------------------------------------------------------
 Public Functions
@@ -83,4 +91,15 @@ TEST( IntegrationTests, Connect )
 {
   CHECK( sdio->open( cfg ) == Chimera::Status::OK );
   CHECK( sdio->connect() == Chimera::Status::OK );
+}
+
+TEST( IntegrationTests, ReadBlock )
+{
+  CHECK( sdio->open( cfg ) == Chimera::Status::OK );
+  CHECK( sdio->connect() == Chimera::Status::OK );
+
+  /*------------------------------------------------
+  Read a block of data from the SD card
+  ------------------------------------------------*/
+  CHECK( sdio->read( 0, TestRXBuffer, TestBlockSize ) == Chimera::Status::OK );
 }
