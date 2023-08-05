@@ -97,9 +97,5 @@ TEST( IntegrationTests, ReadBlock )
 {
   CHECK( sdio->open( cfg ) == Chimera::Status::OK );
   CHECK( sdio->connect() == Chimera::Status::OK );
-
-  /*------------------------------------------------
-  Read a block of data from the SD card
-  ------------------------------------------------*/
-  CHECK( sdio->read( 0, TestRXBuffer, TestBlockSize ) == Chimera::Status::OK );
+  CHECK( sdio->readBlock( 0, 1, TestRXBuffer, TestBlockSize ) == Chimera::Status::OK );
 }
