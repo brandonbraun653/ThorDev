@@ -103,8 +103,8 @@ MockExpectedCall& cpsmGetCmdResponse(unsigned int __numCalls__, CppUMockGen::Par
 } } } } }
 
 namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {
-MockExpectedCall& cpsmGetResponse(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint8_t> which, uint32_t __return__);
-MockExpectedCall& cpsmGetResponse(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint8_t> which, uint32_t __return__);
+MockExpectedCall& cpsmGetRespX(CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint8_t> which, uint32_t __return__);
+MockExpectedCall& cpsmGetRespX(unsigned int __numCalls__, CppUMockGen::Parameter<const Thor::LLD::SDIO::Driver*> __object__, CppUMockGen::Parameter<const uint8_t> which, uint32_t __return__);
 } } } } }
 
 namespace expect { namespace Thor$ { namespace LLD$ { namespace SDIO$ { namespace Driver$ {

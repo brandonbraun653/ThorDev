@@ -100,9 +100,9 @@ uint8_t Thor::LLD::SDIO::Driver::cpsmGetCmdResponse()
     return static_cast<uint8_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cpsmGetCmdResponse").onObject(this).returnUnsignedIntValue());
 }
 
-uint32_t Thor::LLD::SDIO::Driver::cpsmGetResponse(const uint8_t which)
+uint32_t Thor::LLD::SDIO::Driver::cpsmGetRespX(const uint8_t which)
 {
-    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cpsmGetResponse").onObject(this).withUnsignedIntParameter("which", which).returnUnsignedIntValue());
+    return static_cast<uint32_t>(mock().actualCall("Thor::LLD::SDIO::Driver::cpsmGetRespX").onObject(this).withUnsignedIntParameter("which", which).returnUnsignedIntValue());
 }
 
 Chimera::Status_t Thor::LLD::SDIO::Driver::dpsmConfigure(const Thor::LLD::SDIO::DPSMConfig & config)
