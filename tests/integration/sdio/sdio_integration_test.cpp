@@ -100,21 +100,35 @@ TEST( IntegrationTests, Connect )
   CHECK( sdio->connect() == Chimera::Status::OK );
 }
 
-TEST( IntegrationTests, ReadBlock )
+TEST( IntegrationTests, ReadSingleBlock )
 {
   CHECK( sdio->open( cfg ) == Chimera::Status::OK );
   CHECK( sdio->connect() == Chimera::Status::OK );
   CHECK( sdio->readBlock( 0, 1, TestRXBuffer, TestBlockSize ) == Chimera::Status::OK );
 }
 
-TEST( IntegrationTests, WriteBlock )
+TEST( IntegrationTests, ReadMultiBlock )
+{
+  CHECK( sdio->open( cfg ) == Chimera::Status::OK );
+  CHECK( sdio->connect() == Chimera::Status::OK );
+  CHECK( sdio->readBlock( 0, 2, TestRXBuffer, TestBlockSize * 2 ) == Chimera::Status::OK );
+}
+
+TEST( IntegrationTests, WriteSingleBlock )
 {
   CHECK( sdio->open( cfg ) == Chimera::Status::OK );
   CHECK( sdio->connect() == Chimera::Status::OK );
   CHECK( sdio->writeBlock( 0, 1, TestTXBuffer, TestBlockSize ) == Chimera::Status::OK );
 }
 
-TEST( IntegrationTests, BlockDataIntegrity )
+TEST( IntegrationTests, WriteMultiBlock )
+{
+  CHECK( sdio->open( cfg ) == Chimera::Status::OK );
+  CHECK( sdio->connect() == Chimera::Status::OK );
+  CHECK( sdio->writeBlock( 0, 2, TestTXBuffer, TestBlockSize * 2 ) == Chimera::Status::OK );
+}
+
+TEST( IntegrationTests, SingleBlockDataIntegrity )
 {
   /*---------------------------------------------------------------------------
   Connect to the device
@@ -138,4 +152,33 @@ TEST( IntegrationTests, BlockDataIntegrity )
   ---------------------------------------------------------------------------*/
   CHECK( sdio->readBlock( 0, 1, TestRXBuffer, TestBlockSize ) == Chimera::Status::OK );
   CHECK( 0 == memcmp( TestTXBuffer, TestRXBuffer, TestBlockSize ) );
+}
+
+TEST( IntegrationTests, MultiBlockDataIntegrity )
+{
+  constexpr size_t NUM_BLOCKS = 5;
+  constexpr size_t TEST_SIZE = NUM_BLOCKS * TestBlockSize;
+
+  /*---------------------------------------------------------------------------
+  Connect to the device
+  ---------------------------------------------------------------------------*/
+  CHECK( sdio->open( cfg ) == Chimera::Status::OK );
+  CHECK( sdio->connect() == Chimera::Status::OK );
+
+  /*---------------------------------------------------------------------------
+  Write a unique set of data to the card
+  ---------------------------------------------------------------------------*/
+  for ( size_t i = 0; i < ( TestBlockSize / sizeof( uint32_t ) ); i++ )
+  {
+    TestTXBuffer[ i ] = static_cast<uint32_t>( rand() );
+  }
+
+  CHECK( sdio->writeBlock( 0, NUM_BLOCKS, TestTXBuffer, TEST_SIZE ) == Chimera::Status::OK );
+  Chimera::delayMilliseconds( 300 );
+
+  /*---------------------------------------------------------------------------
+  Read the data back and check for equality
+  ---------------------------------------------------------------------------*/
+  CHECK( sdio->readBlock( 0, NUM_BLOCKS, TestRXBuffer, TEST_SIZE ) == Chimera::Status::OK );
+  CHECK( 0 == memcmp( TestTXBuffer, TestRXBuffer, TEST_SIZE ) );
 }

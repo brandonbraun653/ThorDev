@@ -21,6 +21,7 @@ Includes
 #include <tests/harness/mbed_test_harness_cfg.hpp>
 
 /* Include this last to prevent compiling issues */
+#include <CppUTest/Utest.h>
 #include <CppUTest/CommandLineTestRunner.h>
 
 namespace Thor::Testing
@@ -61,6 +62,11 @@ namespace Thor::Testing
   /*---------------------------------------------------------------------------
   Static Functions
   ---------------------------------------------------------------------------*/
+  static void cpputest_crash_method()
+  {
+    RT_HARD_ASSERT( false );
+  }
+
   static void init_serial_port()
   {
     using namespace Chimera::Serial;
@@ -140,6 +146,7 @@ namespace Thor::Testing
     -------------------------------------------------------------------------*/
     init_serial_port();
 
+
     /*-------------------------------------------------------------------------
     Perform project specific setup
     -------------------------------------------------------------------------*/
@@ -155,6 +162,8 @@ namespace Thor::Testing
     snprintf( fmt_buffer, sizeof( fmt_buffer ), "\rStarting test: %s\r\n", Driver::getTestName() );
     serial->write( fmt_buffer, strlen( fmt_buffer ), Chimera::Thread::TIMEOUT_BLOCK );
 
+    UtestShell::getCurrent()->setCrashMethod( cpputest_crash_method );
+    UtestShell::setCrashOnFail();
     int rcode = CommandLineTestRunner::RunAllTests( ARRAY_COUNT( av_override ), av_override );
 
     memset( fmt_buffer, 0, sizeof( fmt_buffer ) );
