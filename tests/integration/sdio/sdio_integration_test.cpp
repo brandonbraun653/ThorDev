@@ -290,8 +290,3 @@ TEST( IntegrationTests, RetrieveCardStatus )
 
   CHECK( sdio->getCardStatus( status ) == Chimera::Status::OK );
 }
-
-TEST( IntegrationTests, CardDependentReadWrite )
-{
-  // TODO: Use the detected card information to perform reads/writes across a wide address range
-}
