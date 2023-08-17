@@ -1,0 +1,55 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 18,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default Config",
+      "description": "Default build using Unix Makefiles generator",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_VERBOSE_MAKEFILE": "OFF",
+        "NATIVE_THREADS": "ON",
+        "TOOLCHAIN": "gcc",
+        "DEVICE_TARGET": "STM32F446RE",
+        "THOR_IMPL": "SIM"
+      }
+    },
+    {
+      "name": "STM32F446RE Debug",
+      "description": "HW target for STM32F446RE",
+      "displayName": "STM32F446RE Debug",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_VERBOSE_MAKEFILE": "OFF",
+        "FREERTOS_THREADS": "ON",
+        "TOOLCHAIN": "arm-none-eabi",
+        "DEVICE_TARGET": "STM32F446RE",
+        "THOR_IMPL": "HW"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "jobs": 8
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ]
+}

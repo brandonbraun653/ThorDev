@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "CMake Clean",
+        "type": "shell",
+        "command": "mkdir -p ${workspaceFolder}/build && rm -rf ${workspaceFolder}/build/*",
+        "problemMatcher": []
+      },
+      {
+        "label": "Configure Simulator",
+        "type": "shell",
+        "command": "cmake -DTOOLCHAIN=gcc -DNATIVE_THREADS=ON -DDEVICE_TARGET=sim -DCMAKE_BUILD_TYPE=Debug ./../",
+        "dependsOn": [
+          "CMake Clean"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}/build"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Build Current Configuration",
+        "type": "shell",
+        "command": "./build_embedded.sh",
+        "options": {
+          "cwd": "${workspaceFolder}/build"
+        },
+        "problemMatcher": [],
+        "args": []
+      },
+      {
+        "label": "Generate Mock for Current File",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "${workspaceFolder}/generate_mocks.py",
+          "--file",
+          "${file}"
+        ],
+        "problemMatcher": []
+      }
+    ]
+  }
